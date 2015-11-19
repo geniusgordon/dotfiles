@@ -1,6 +1,8 @@
 " General
 syntax on
 scriptencoding utf8
+" 回到上次的那行
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " Vim UI
 set cursorline
