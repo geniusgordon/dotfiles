@@ -15,6 +15,7 @@ set smartindent
 set shiftwidth=4 "讓縮排是四格空白
 set tabstop=4 "內縮是四個欄位
 set softtabstop=4 "backspace可刪除tab
+set expandtab "tab變成空白
 
 " Key Binding
 let mapleader = ','
