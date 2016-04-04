@@ -3,6 +3,7 @@ syntax on
 scriptencoding utf8
 " 回到上次的那行
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+set shell=/bin/bash
 
 " Vim UI
 set cursorline
