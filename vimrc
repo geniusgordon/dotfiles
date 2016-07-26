@@ -4,6 +4,7 @@ scriptencoding utf8
 " 回到上次的那行
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 set shell=/bin/bash
+" set backupcopy=yes
 
 " Vim UI
 set cursorline
@@ -13,8 +14,8 @@ set hlsearch
 set autoindent
 set smartindent
 
-set shiftwidth=2 "讓縮排是四格空白
-set tabstop=2 "內縮是四個欄位
+set shiftwidth=2 "讓縮排是兩個格空白
+set tabstop=2 "內縮是兩個欄位
 set softtabstop=2 "backspace可刪除tab
 set expandtab
 
@@ -40,18 +41,31 @@ Plugin 'scrooloose/nerdtree' " file explorer
 nmap <leader>t :NERDTreeToggle<CR>
 
 Plugin 'tpope/vim-commentary' " comment stuff
-Plugin 'mattn/emmet-vim' " fast html
-Plugin 'terryma/vim-multiple-cursors' " multiple cursors
-Plugin 'sk1418/HowMuch' " calculator
 Plugin 'airblade/vim-gitgutter' " git
+
+" html
 Plugin 'othree/html5.vim' " html5
 Plugin 'maksimr/vim-jsbeautify' " html, css, js beautify
-Plugin 'cakebaker/scss-syntax.vim' " scss highlight
+Plugin 'mattn/emmet-vim' " fast html
+Plugin 'briancollins/vim-jst' " ejs highlight
+Plugin 'jwalton512/vim-blade' " laravel blade
+
+" css
+Plugin 'hail2u/vim-css3-syntax'
+
+" js
 Plugin 'mxw/vim-jsx' " jsx highlight
 Plugin 'othree/yajs.vim' " es6 highlight
-Plugin 'elzr/vim-json' " json hightlight
-Plugin 'briancollins/vim-jst' " ejs highlight
+Plugin 'othree/es.next.syntax.vim'
+Plugin 'elzr/vim-json'
+
+" others
+Plugin 'ekalinin/Dockerfile.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+autocmd FileType make setlocal noexpandtab
+autocmd FileType css set filetype:scss
+let g:jsx_ext_required = 0
 
