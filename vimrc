@@ -1,7 +1,7 @@
 " General
 syntax on
 scriptencoding utf8
-" 回到上次的那行
+" Restore cursor
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 set shell=/bin/bash
 " set backupcopy=yes
@@ -14,9 +14,9 @@ set hlsearch
 set autoindent
 set smartindent
 
-set shiftwidth=2 "讓縮排是兩個格空白
-set tabstop=2 "內縮是兩個欄位
-set softtabstop=2 "backspace可刪除tab
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 set expandtab
 
 " Key Binding
