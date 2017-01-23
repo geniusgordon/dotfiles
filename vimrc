@@ -46,6 +46,12 @@ nmap <leader>t :NERDTreeToggle<CR>
 Plugin 'tpope/vim-commentary' " comment stuff
 Plugin 'airblade/vim-gitgutter' " git
 
+Plugin 'vim-airline/vim-airline'
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline#extensions#tabline#enabled = 1
+set laststatus=2
+
 " snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -62,20 +68,22 @@ Plugin 'hail2u/vim-css3-syntax'
 
 " js
 Plugin 'mxw/vim-jsx' " jsx
+let g:jsx_ext_required = 0
+
 Plugin 'othree/yajs.vim' " es6
 Plugin 'othree/es.next.syntax.vim'
 Plugin 'elzr/vim-json'
 
 " others
 Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'petRUShka/vim-sage'
+Plugin 'wikitopian/hardmode'
+Plugin 'sk1418/HowMuch'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 autocmd FileType make setlocal noexpandtab
 autocmd FileType css set filetype:scss
-let g:jsx_ext_required = 0
 
 colorscheme default
 
