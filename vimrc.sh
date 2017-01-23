@@ -25,6 +25,8 @@ log () {
   printf "${NORMAL}"
 }
 
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cp ${DIR}/vimrc ~/.vimrc
 mkdir -p ~/.vim/bundle
 cd ~/.vim/bundle/
 git clone http://github.com/VundleVim/Vundle.vim
