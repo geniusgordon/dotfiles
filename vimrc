@@ -70,8 +70,9 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'mxw/vim-jsx' " jsx
 let g:jsx_ext_required = 0
 
-Plugin 'othree/yajs.vim' " es6
-Plugin 'othree/es.next.syntax.vim'
+Plugin 'pangloss/vim-javascript'
+let g:javascript_plugin_flow = 1
+
 Plugin 'elzr/vim-json'
 
 " others
