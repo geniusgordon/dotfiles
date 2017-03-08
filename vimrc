@@ -87,3 +87,4 @@ autocmd FileType css set filetype:scss
 
 colorscheme default
 
+autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma=all
