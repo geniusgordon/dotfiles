@@ -46,15 +46,18 @@ finish_install() {
 }
 
 install_vimrc() {
+  start_install vimrc
   mkdir -p ~/.vim/bundle
   cd ~/.vim/bundle/
   git clone http://github.com/VundleVim/Vundle.vim
   log "Copying vimrc"
   cp ${DIR}/vimrc ~/.vimrc
   vim -c "PluginInstall" -c "qa!"
+  finish_install vimrc
 }
 
 install_zshrc() {
+  start_install zshrc
   # check if zsh exists
   if ! command_exists zsh; then
     echo "zsh is not installed on your system."
@@ -82,32 +85,39 @@ install_zshrc() {
   # update zshrc
   log "Copying zshrc"
   cp ${DIR}/zshrc ~/.zshrc
+  finish_install zshrc
 }
 
 install_tmux_conf() {
+  start_install tmux.conf
   log "Copying tmux.conf"
   cp ${DIR}/tmux.conf ~/.tmux.conf
+  finish_install tmux.conf
 }
+
+install_all() {
+  install_vimrc
+  install_zshrc
+  install_tmux_conf
+}
+
+if [ "$#" -eq 0 ]; then
+  install_all
+fi
 
 for i in "$@"
 do
   case $i in
     vim)
-      start_install vimrc
       install_vimrc
-      finish_install vimrc
       shift
       ;;
     zsh)
-      start_install zshrc
       install_zshrc
-      finish_install zshrc
       shift
       ;;
     tmux)
-      start_install tmux.conf
       install_tmux_conf
-      finish_install tmux.conf
       shift
       ;;
     *)
