@@ -105,18 +105,44 @@ if [ "$#" -eq 0 ]; then
   install_all
 fi
 
+case "$@" in
+  *-h|--help*)
+    echo ""
+    echo "  Usage: ${GREEN}./install.sh${NORMAL} <dotfiles ...> [options]"
+    echo ""
+    echo "  Options:"
+    echo ""
+    echo "    -h, --help        Show this help message"
+    echo "    -l, --list        Show available dotfiles"
+    echo ""
+    exit 0
+    ;;
+  *-l|--list*)
+    echo ""
+    echo "  Available dotfiles:"
+    echo ""
+    echo "    ${YELLOW}vim/${NORMAL}vimrc"
+    echo "    ${YELLOW}zsh/${NORMAL}zshrc"
+    echo "    ${YELLOW}tmux/${NORMAL}tmux.conf"
+    echo ""
+    echo "  use ${GREEN}./install.sh ${BLUE}vimrc${NORMAL} to install"
+    echo ""
+    exit 0
+    ;;
+esac
+
 for i in "$@"
 do
   case $i in
-    vim)
+    vimrc)
       install_vimrc
       shift
       ;;
-    zsh)
+    zshrc)
       install_zshrc
       shift
       ;;
-    tmux)
+    tmux.conf)
       install_tmux_conf
       shift
       ;;
