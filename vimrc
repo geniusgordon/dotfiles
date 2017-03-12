@@ -46,10 +46,7 @@ nmap <leader>t :NERDTreeToggle<CR>
 Plugin 'tpope/vim-commentary' " comment stuff
 Plugin 'airblade/vim-gitgutter' " git
 
-Plugin 'vim-airline/vim-airline'
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline#extensions#tabline#enabled = 1
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 set laststatus=2
 
 " snippets
