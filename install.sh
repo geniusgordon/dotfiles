@@ -95,10 +95,18 @@ install_tmux_conf() {
   finish_install tmux.conf
 }
 
+install_fonts_conf() {
+  start_install fonts.conf
+  log "Copying fonts.conf"
+  cp ${DIR}/fonts.conf ~/.fonts.conf
+  finish_install fonts.conf
+}
+
 install_all() {
   install_vimrc
   install_zshrc
   install_tmux_conf
+  install_fonts_conf
 }
 
 if [ "$#" -eq 0 ]; then
@@ -124,8 +132,9 @@ case "$@" in
     echo "    ${YELLOW}vim/${NORMAL}vimrc"
     echo "    ${YELLOW}zsh/${NORMAL}zshrc"
     echo "    ${YELLOW}tmux/${NORMAL}tmux.conf"
+    echo "    ${YELLOW}fonts/${NORMAL}fonts.conf"
     echo ""
-    echo "  use ${GREEN}./install.sh ${BLUE}vimrc${NORMAL} to install"
+    echo "  use ${GREEN}./install.sh ${BLUE}vim${NORMAL} to install"
     echo ""
     exit 0
     ;;
@@ -134,18 +143,21 @@ esac
 for i in "$@"
 do
   case $i in
-    vimrc)
+    vim)
       install_vimrc
       shift
       ;;
-    zshrc)
+    zsh)
       install_zshrc
       shift
       ;;
-    tmux.conf)
+    tmux)
       install_tmux_conf
       shift
       ;;
+    fonts)
+      install_fonts_conf
+      shift
     *)
       echo "No install script for $i"
       ;;
