@@ -1,36 +1,3 @@
-" General
-syntax on
-scriptencoding utf8
-" Restore cursor
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-set shell=/bin/bash
-" set backupcopy=yes
-
-" Vim UI
-" set cursorline
-set hlsearch
-
-" Vim Format
-set autoindent
-set smartindent
-
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
-set expandtab
-
-" Key Binding
-let mapleader = ','
-
-" Toggle highlight search
-nmap <leader>/ :set hlsearch! hlsearch?<CR>
-
-" Toggle paste mode
-nmap <leader>p :set invpaste paste?<CR>
-
-" Remove semicolon
-nmap <leader>; :%s/;//g<CR>
-
 " Vundle 
 set nocompatible
 filetype off
@@ -45,6 +12,7 @@ nmap <leader>t :NERDTreeToggle<CR>
 
 Plugin 'tpope/vim-commentary' " comment stuff
 Plugin 'airblade/vim-gitgutter' " git
+Plugin 'tpope/vim-abolish'
 
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 set laststatus=2
@@ -80,9 +48,41 @@ Plugin 'sk1418/HowMuch'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" General
+syntax on
+scriptencoding utf8
+" Restore cursor
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+set shell=/bin/bash
+" set backupcopy=yes
+
+" UI
+colorscheme default
+" set cursorline
+set hlsearch
+highlight Comment cterm=italic
+highlight Special cterm=italic ctermfg=magenta guifg=SlateBlue
+highlight xmlAttrib cterm=italic ctermfg=green guifg=SeaGreen
+
+" Format
+set autoindent
+set smartindent
+
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
+set expandtab
+
+" Key Binding
+let mapleader = ','
+
+" Toggle highlight search
+nmap <leader>/ :set hlsearch! hlsearch?<CR>
+
+" Toggle paste mode
+nmap <leader>p :set invpaste paste?<CR>
+
+" File type specific
 autocmd FileType make setlocal noexpandtab
 autocmd FileType css set filetype:scss
-
-colorscheme default
-
 autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma=all
