@@ -14,6 +14,15 @@ Plugin 'tpope/vim-commentary' " comment stuff
 Plugin 'airblade/vim-gitgutter' " git
 Plugin 'tpope/vim-abolish'
 
+Plugin 'christoomey/vim-tmux-navigator'
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-Down> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 set laststatus=2
 
@@ -51,10 +60,11 @@ filetype plugin indent on    " required
 " General
 syntax on
 scriptencoding utf8
+set term=xterm-256color
+set shell=/bin/bash
+
 " Restore cursor
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-set shell=/bin/bash
-" set backupcopy=yes
 
 " UI
 colorscheme default
@@ -86,3 +96,4 @@ nmap <leader>p :set invpaste paste?<CR>
 autocmd FileType make setlocal noexpandtab
 autocmd FileType css set filetype:scss
 autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma=all
+autocmd FileType python set formatprg=autopep8\ -
