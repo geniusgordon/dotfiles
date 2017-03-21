@@ -26,23 +26,20 @@ else
   NORMAL=""
 fi
 
-log() {
-  printf "${BLUE}"
-  echo $@
-  printf "${NORMAL}"
+log_copy_file() {
+  printf "${BLUE}Copying ${YELLOW}$@${NORMAL}\n"
+}
+
+log_git_clone() {
+  printf "${BLUE}Cloning ${YELLOW}$@${NORMAL}\n"
 }
 
 start_install() {
-  printf "${GREEN}"
-  echo ""
-  echo "Start installing $1"
-  printf "${NORMAL}"
+  printf "${GREEN}Start${NORMAL} install ${YELLOW}$1${NORMAL}\n"
 }
 
 finish_install() {
-  printf "${GREEN}"
-  echo "Finish installing $1"
-  printf "${NORMAL}"
+  printf "${GREEN}Finish${NORMAL} install ${YELLOW}$1${NORMAL}\n"
 }
 
 install_vimrc() {
@@ -50,7 +47,7 @@ install_vimrc() {
   mkdir -p ~/.vim/bundle
   cd ~/.vim/bundle/
   git clone http://github.com/VundleVim/Vundle.vim
-  log "Copying vimrc"
+  log_copy_file "vimrc"
   cp ${DIR}/vimrc ~/.vimrc
   vim -c "PluginInstall" -c "qa!"
   finish_install vimrc
@@ -68,36 +65,36 @@ install_zshrc() {
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed '/env zsh/d')"
 
   # install zsh-plugins
-  log "Cloning zsh-autosuggestions"
+  log_git_clone "zsh-autosuggestions"
   git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
 
-  log "Cloning zsh-syntax-highlighting"
+  log_git_clone "zsh-syntax-highlighting"
   git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
 
-  log "Cloning zsh-syntax-highlighting-filetypes"
+  log_git_clone "zsh-syntax-highlighting-filetypes"
   git clone https://github.com/trapd00r/zsh-syntax-highlighting-filetypes ~/.oh-my-zsh/plugins/zsh-syntax-highlighting-filetypes
 
   # setup theme
-  log "Creating custom theme"
+  echo "Creating custom theme"
   mkdir -p ~/.oh-my-zsh/custom/themes
   cp ${DIR}/gordon.zsh-theme ~/.oh-my-zsh/custom/themes/gordon.zsh-theme
 
   # update zshrc
-  log "Copying zshrc"
+  log_copy_file "zshrc"
   cp ${DIR}/zshrc ~/.zshrc
   finish_install zshrc
 }
 
 install_tmux_conf() {
   start_install tmux.conf
-  log "Copying tmux.conf"
+  log_copy_file "tmux.conf"
   cp ${DIR}/tmux.conf ~/.tmux.conf
   finish_install tmux.conf
 }
 
 install_fonts_conf() {
   start_install fonts.conf
-  log "Copying fonts.conf"
+  log_copy_file "fonts.conf"
   cp ${DIR}/fonts.conf ~/.fonts.conf
   finish_install fonts.conf
 }
