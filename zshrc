@@ -97,3 +97,4 @@ export PATH=/opt/android-sdk/tools:$PATH
 export PATH=/opt/android-sdk/platform-tools:$PATH
 export PATH=$HOME/.local/bin:$PATH
 alias git=hub
+alias glog='git log --oneline --decorate --graph --color | emojify | less'
