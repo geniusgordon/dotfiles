@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/gordon/.oh-my-zsh
+export ZSH=${HOME}/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -86,7 +86,7 @@ source $ZSH/oh-my-zsh.sh
 
 # tabtab source for yarn package
 # uninstall by removing these lines or running `tabtab uninstall yarn`
-[[ -f /home/gordon/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /home/gordon/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
+[[ -f ${HOME}/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . ${HOME}/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
 
 function gi() {
   curl -L -s https://www.gitignore.io/api/$@ ;
