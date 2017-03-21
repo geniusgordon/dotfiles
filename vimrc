@@ -71,7 +71,7 @@ colorscheme default
 " set cursorline
 set hlsearch
 highlight Comment cterm=italic
-highlight Special cterm=italic ctermfg=magenta guifg=SlateBlue
+highlight jsThis cterm=italic ctermfg=magenta guifg=SlateBlue
 highlight xmlAttrib cterm=italic ctermfg=green guifg=SeaGreen
 
 " Format
