@@ -158,6 +158,7 @@ do
     fonts)
       install_fonts_conf
       shift
+      ;;
     *)
       echo "No install script for $i"
       ;;
