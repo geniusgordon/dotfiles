@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [[ "${BLOCK_BUTTON}" -eq 1 || "${BLOCK_BUTTON}" -eq 4 ]]; then
+  xbacklight -inc 20
+elif [[ "${BLOCK_BUTTON}" -eq 3 || "${BLOCK_BUTTON}" -eq 5 ]]; then
+  xbacklight -dec 20
+fi
+
+percent=$(xbacklight -get)
+percent=${percent%.*}
+echo "${percent}%"
+echo "${percent}%"
+echo ""

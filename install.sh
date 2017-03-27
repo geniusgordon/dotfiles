@@ -94,9 +94,21 @@ install_tmux_conf() {
 
 install_fonts_conf() {
   start_install fonts.conf
+  mkdir -p ~/.config/fonts
   log_copy_file "fonts.conf"
-  cp ${DIR}/fonts.conf ~/.fonts.conf
+  cp ${DIR}/fonts.conf ~/.config/fontconfig/fonts.conf
   finish_install fonts.conf
+}
+
+install_i3_conf() {
+  start_install i3
+  mkdir -p ~/.config/i3
+  mkdir -p ~/.config/i3blocks
+  log_copy_file "i3.config"
+  cp ${DIR}/i3.config ~/.config/i3/config
+  log_copy_file "i3blocks.config"
+  cp -r ${DIR}/i3blocks ~/.config/i3blocks
+  finish_install i3
 }
 
 install_all() {
@@ -104,6 +116,7 @@ install_all() {
   install_zshrc
   install_tmux_conf
   install_fonts_conf
+  install_i3_conf
 }
 
 if [ "$#" -eq 0 ]; then
@@ -130,6 +143,7 @@ case "$@" in
     echo "    ${YELLOW}zsh/${NORMAL}zshrc"
     echo "    ${YELLOW}tmux/${NORMAL}tmux.conf"
     echo "    ${YELLOW}fonts/${NORMAL}fonts.conf"
+    echo "    ${YELLOW}i3/${NORMAL}i3.conf,i3blocks.conf"
     echo ""
     echo "  use ${GREEN}./install.sh ${BLUE}vim${NORMAL} to install"
     echo ""
@@ -154,6 +168,10 @@ do
       ;;
     fonts)
       install_fonts_conf
+      shift
+      ;;
+    i3)
+      install_i3_conf
       shift
       ;;
     *)
