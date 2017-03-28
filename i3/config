@@ -17,12 +17,12 @@ set $red     #E53935
 
 # window colors
 #                       border             background         text                 indicator
-client.focused          $light-grey        $light-grey        $dark-grey           $dark-grey
-client.unfocused        $light-grey        $light-grey        $mid-grey            $dark-grey
-client.focused_inactive $light-grey        $light-grey        $dark-grey           $dark-grey
-client.urgent           $red               $red               $dark-grey           $dark-grey
+client.focused          $light-grey        $light-grey        $dark-grey           $light-grey
+client.unfocused        $light-grey        $light-grey        $mid-grey            $light-grey
+client.focused_inactive $light-grey        $light-grey        $dark-grey           $light-grey
+client.urgent           $red               $red               $dark-grey           $light-grey
 
-gaps inner 10
+gaps inner 20
 
 # i3 status bar
 bar {
