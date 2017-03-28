@@ -1,13 +1,16 @@
 #!/bin/bash
 
+# Left click
 if [[ "${BLOCK_BUTTON}" -eq 1 || "${BLOCK_BUTTON}" -eq 4 ]]; then
-  xbacklight -inc 20
+  xbacklight -inc 5
+# Right click
 elif [[ "${BLOCK_BUTTON}" -eq 3 || "${BLOCK_BUTTON}" -eq 5 ]]; then
-  xbacklight -dec 20
+  xbacklight -dec 5
 fi
 
-percent=$(xbacklight -get)
-percent=${percent%.*}
-echo "${percent}%"
-echo "${percent}%"
-echo ""
+brightness=$(xbacklight -get)
+brightness=${brightness/.*/}
+icon=""
+
+echo "${icon} ${brightness}%"
+echo "${icon} ${brightness}%"

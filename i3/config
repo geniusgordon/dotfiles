@@ -7,27 +7,28 @@ set $mod Mod4
 floating_modifier $mod
 
 # UI settings
-font pango:Operator Mono Book 12
+font pango:Lato 12
 hide_edge_borders both
 
 set $light-grey #e7e8eb
-set $mid-grey #8b8e95
-set $dark-grey #2f343f
-set $red     #E53935
+set $mid-grey   #8b8e95
+set $dark-grey  #2f343f
+set $red        #e57373
 
 # window colors
 #                       border             background         text                 indicator
 client.focused          $light-grey        $light-grey        $dark-grey           $light-grey
 client.unfocused        $light-grey        $light-grey        $mid-grey            $light-grey
 client.focused_inactive $light-grey        $light-grey        $dark-grey           $light-grey
-client.urgent           $red               $red               $dark-grey           $light-grey
+client.urgent           $red               $red               $light-grey           $light-grey
 
-gaps inner 20
+gaps inner 16
 
 # i3 status bar
 bar {
   status_command i3blocks
   position top
+  font pango:Operator Mono Book 12
   colors {
     background $dark-grey
     separator #757575
@@ -45,7 +46,7 @@ for_window [class="Google-chrome" window_role="browser"] border normal
 # Key bindings
 
 # Terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -149,16 +150,16 @@ bindsym Control+Mod1+l exec --no-startup-id i3lock -c "$dark-grey" && systemctl 
 
 # resize window
 mode "resize" {
-  bindsym j resize shrink width 10 px or 10 ppt
-  bindsym k resize grow height 10 px or 10 ppt
-  bindsym l resize shrink height 10 px or 10 ppt
-  bindsym semicolon resize grow width 10 px or 10 ppt
+  bindsym j resize shrink width 5 px or 5 ppt
+  bindsym k resize grow height 5 px or 5 ppt
+  bindsym l resize shrink height 5 px or 5 ppt
+  bindsym semicolon resize grow width 5 px or 5 ppt
 
   # same bindings, but for the arrow keys
-  bindsym Left resize shrink width 10 px or 10 ppt
-  bindsym Down resize grow height 10 px or 10 ppt
-  bindsym Up resize shrink height 10 px or 10 ppt
-  bindsym Right resize grow width 10 px or 10 ppt
+  bindsym Left resize shrink width 5 px or 5 ppt
+  bindsym Down resize grow height 5 px or 5 ppt
+  bindsym Up resize shrink height 5 px or 5 ppt
+  bindsym Right resize grow width 5 px or 5 ppt
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"

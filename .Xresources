@@ -1,0 +1,68 @@
+Xft.antialias: true
+Xft.hinting: true
+
+! special colors
+*.foreground:  #ffffff
+*.background:  #000000
+*.cursorColor: #93a1a1
+! black
+*.color0:      #1B2B34
+*.color8:      #4F5B66
+! red          
+*.color1:      #EC5F67
+*.color9:      #EC5F67
+! green        
+*.color2:      #99C794
+*.color10:     #99C794
+! yellow       
+*.color3:      #FAC863
+*.color11:     #FAC863
+! blue         
+*.color4:      #6699CC
+*.color12:     #6699CC
+! magenta      
+*.color5:      #C594C5
+*.color13:     #C594C5
+! cyan         
+*.color6:      #5FB3B3
+*.color14:     #5FB3B3
+! white        
+*.color7:      #A7ADBA
+*.color15:     #D8DEE9
+
+URxvt.internalBorder: 24
+
+URxvt.scrollBar:       false
+URxvt.scrollBar_right: false
+
+URxvt.fading: 50
+URxvt.depth: 32
+URxvt.background: [87]#000000
+
+URxvt.font: xft:Operator Mono Book:pixelsize=20,xft:Noto Color Emoji:pixelsize=20,xft:PowerlineSymbols:pixelsize=20
+URxvt.boldFont:
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+
+URxvt.perl-ext-common: default,matcher,fullscreen,resize-font,vtwheel
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
+URxvt.resoze-font.smaller: C-+
+URxvt.resoze-font.bigger: C--
+URxvt.keysym.F11: perl:fullscreen:switch
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.font: Operator Mono Book 16
+rofi.lines: 5
+rofi.padding: 0
+rofi.line-padding: 12
+rofi.separator-style: none
+rofi.hide-scrollbar: true
+rofi.color-enabled: true
+rofi.color-normal: #00ffffff,#525d76,#00ffffff,#5294e2,#ffffff
+rofi.color-urgent: #00ffffff,#dc322f,#00ffffff,#5294e2,#dc322f
+rofi.color-active: #00ffffff,#c2cad0,#00ffffff,#5294e2,#c2cad0
+rofi.color-window: #ddffffff,#ddfffffff

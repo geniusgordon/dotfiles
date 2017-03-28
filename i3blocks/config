@@ -31,8 +31,11 @@ separator_block_width=20
 markup=none
 color=#e7e8eb
 
+[brightness]
+interval=5
+
 [volume]
-interval=1
+interval=5
 
 [battery]
 interval=5
