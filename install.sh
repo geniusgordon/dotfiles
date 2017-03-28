@@ -102,12 +102,10 @@ install_fonts_conf() {
 
 install_i3_conf() {
   start_install i3
-  mkdir -p ~/.config/i3
-  mkdir -p ~/.config/i3blocks
-  log_copy_file "i3.config"
-  cp ${DIR}/i3.config ~/.config/i3/config
-  log_copy_file "i3blocks.config"
-  cp -r ${DIR}/i3blocks ~/.config/i3blocks
+  log_copy_file "i3/config"
+  cp -r ${DIR}/i3/ ~/.config/
+  log_copy_file "i3blocks/config i3blocks/blocks"
+  cp -r ${DIR}/i3blocks/ ~/.config/
   finish_install i3
 }
 
