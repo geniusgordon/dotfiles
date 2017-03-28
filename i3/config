@@ -39,7 +39,7 @@ bar {
 }
 
 for_window [class="Cerebro"] floating enable
-for_window [class="^.*"] border none
+for_window [class="^.*"] border none, title_format "  %title"
 for_window [class="Google-chrome" window_role="browser"] border normal
 
 # Key bindings
@@ -145,7 +145,7 @@ mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
 bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, (P)oweroff"
 
 # Lock screen
-bindsym Control+Mod1+l exec --no-startup-id i3lock -c "$bg-color" && systemctl suspend
+bindsym Control+Mod1+l exec --no-startup-id i3lock -c "$dark-grey" && systemctl suspend
 
 # resize window
 mode "resize" {
