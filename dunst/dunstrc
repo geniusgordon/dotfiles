@@ -1,0 +1,45 @@
+[global]
+  font = Lato
+  format = "<b>%s</b>\n<span font_size='small'>%b</span>"
+  allow_markup = yes
+  sort = yes
+  indicate_hidden = yes
+  word_wrap = yes
+  geometry = "300x5-12+32"
+  transparency = 8
+  follow = mouse
+  show_indicators = no
+  separator_height = 1
+  padding = 24
+  horizontal_padding = 24
+  separator_color = auto
+  browser = google-chrome-stable
+  icon_position = left
+  icon_folders = /usr/share/icons/Paper/32x32/status/:/usr/share/icons/Paper/32x32/devices/:/usr/share/icons/Paper/32x32/apps/
+
+[frame]
+  width = 0
+
+[shortcuts]
+  close = ctrl+space
+  close_all = ctrl+shift+space
+  history = ctrl+grave
+  context = ctrl+shift+period
+
+[urgency_low]
+  background = "#222222"
+  foreground = "#888888"
+  timeout = 10
+
+[urgency_normal]
+  background = "#285577"
+  foreground = "#ffffff"
+  timeout = 10
+
+[urgency_critical]
+  background = "#900000"
+  foreground = "#ffffff"
+  timeout = 0
+
+[Caprine]
+  appname: 'Electron'

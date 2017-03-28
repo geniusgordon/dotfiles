@@ -109,12 +109,20 @@ install_i3_conf() {
   finish_install i3
 }
 
+install_dunstrc() {
+  start_install dunstrc
+  log_copy_file "dunst/dunstrc"
+  cp -r ${DIR}/dunst/ ~/.config/
+  finish_install dunstrc
+}
+
 install_all() {
   install_vimrc
   install_zshrc
   install_tmux_conf
   install_fonts_conf
   install_i3_conf
+  install_dunstrc
 }
 
 if [ "$#" -eq 0 ]; then
@@ -142,6 +150,7 @@ case "$@" in
     echo "    ${YELLOW}tmux/${NORMAL}tmux.conf"
     echo "    ${YELLOW}fonts/${NORMAL}fonts.conf"
     echo "    ${YELLOW}i3/${NORMAL}i3.conf,i3blocks.conf"
+    echo "    ${YELLOW}dunst/${NORMAL}dunstrc"
     echo ""
     echo "  use ${GREEN}./install.sh ${BLUE}vim${NORMAL} to install"
     echo ""
@@ -170,6 +179,10 @@ do
       ;;
     i3)
       install_i3_conf
+      shift
+      ;;
+    dunst)
+      install_dunstrc
       shift
       ;;
     *)
