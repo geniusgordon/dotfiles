@@ -4,6 +4,5 @@ format="%Y-%m-%d"
 datetime=$(date "+${format}")
 icon=""
 
-echo "${datetime}"
-echo "${datetime}"
-echo ""
+echo " ${datetime}"
+echo " ${datetime}"

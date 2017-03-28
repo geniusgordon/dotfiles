@@ -29,9 +29,10 @@
 command=$HOME/.config/i3blocks/blocks/$BLOCK_NAME
 separator_block_width=20
 markup=none
+color=#e7e8eb
 
 [volume]
-interval=10
+interval=1
 
 [battery]
 interval=5

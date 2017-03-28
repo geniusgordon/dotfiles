@@ -19,14 +19,13 @@ if [[ "${status}" == "on" ]]; then
   if [[ "${volume}" -eq 0 ]]; then
     echo "MUTE"
     echo "MUTE"
-    echo "#ff0000"
   else
     if [[ "${volume}" -lt 33 ]]; then
-      icon="🔈"
+      icon=""
     elif [[ "${volume}" -lt 66 ]]; then
-      icon="🔉"
+      icon=""
     else
-      icon="🔊"
+      icon=""
     fi
     echo "${icon} ${volume}%"
     echo "${icon} ${volume}%"
@@ -34,5 +33,4 @@ if [[ "${status}" == "on" ]]; then
 else
   echo "MUTE"
   echo "MUTE"
-  echo "#ff0000"
 fi

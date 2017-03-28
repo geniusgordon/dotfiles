@@ -1,5 +1,7 @@
 # General settings
-set $mod Mod4 # Super key
+
+# Super key
+set $mod Mod4
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -8,18 +10,17 @@ floating_modifier $mod
 font pango:Operator Mono Book 12
 hide_edge_borders both
 
-set $bg-color            #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
+set $light-grey #e7e8eb
+set $mid-grey #8b8e95
+set $dark-grey #2f343f
+set $red     #E53935
 
 # window colors
 #                       border             background         text                 indicator
-client.focused          $bg-color          $bg-color          $text-color          $bg-color
-client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color $bg-color
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color $bg-color
-client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color          $bg-color
+client.focused          $light-grey        $light-grey        $dark-grey           $dark-grey
+client.unfocused        $light-grey        $light-grey        $mid-grey            $dark-grey
+client.focused_inactive $light-grey        $light-grey        $dark-grey           $dark-grey
+client.urgent           $red               $red               $dark-grey           $dark-grey
 
 gaps inner 10
 
@@ -28,14 +29,18 @@ bar {
   status_command i3blocks
   position top
   colors {
-    background $bg-color
+    background $dark-grey
     separator #757575
     #                  border             background         text
-    focused_workspace  $bg-color          $bg-color          $text-color
-    inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+    focused_workspace  $light-grey         $light-grey         $dark-grey
+    inactive_workspace $dark-grey         $dark-grey         $light-grey
+    urgent_workspace   $red               $red               $light-grey
   }
 }
+
+for_window [class="Cerebro"] floating enable
+for_window [class="^.*"] border none
+for_window [class="Google-chrome" window_role="browser"] border normal
 
 # Key bindings
 
@@ -46,7 +51,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+j focus left
@@ -184,3 +189,4 @@ exec --no-startup-id dunst
 exec --no-startup-id feh --bg-fill /usr/share/backgrounds/gnome/Godafoss_Iceland.jpg
 exec --no-startup-id ibus-daemon -drx
 exec --no-startup-id nm-applet
+exec --no-startup-id cerebro
