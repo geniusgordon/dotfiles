@@ -41,7 +41,7 @@ interval=5
 interval=5
 
 [date]
-interval=60
+interval=5
 
 [time]
-interval=60
+interval=5

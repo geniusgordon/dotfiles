@@ -2,7 +2,6 @@
 
 format="%H:%M"
 datetime=$(date "+${format}")
-icon=""
 
 echo " ${datetime}"
 echo " ${datetime}"
