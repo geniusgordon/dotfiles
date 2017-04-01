@@ -62,6 +62,7 @@ syntax on
 scriptencoding utf8
 set term=xterm-256color
 set shell=/bin/bash
+set backupcopy=yes
 
 " Restore cursor
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -95,5 +96,17 @@ nmap <leader>p :set invpaste paste?<CR>
 " File type specific
 autocmd FileType make setlocal noexpandtab
 autocmd FileType css set filetype:scss
-autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma=all
+
+let g:prettier_trailing_comma_type = 'all'
+function SetupPrettier()
+  execute 'set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma='.g:prettier_trailing_comma_type
+endfunction
+function TogglePrettierTrailingCommaType()
+  let g:prettier_trailing_comma_type = g:prettier_trailing_comma_type == 'all' ? 'es5' : 'all'
+  call SetupPrettier()
+  echo 'prettier_trailing_comma_type:' g:prettier_trailing_comma_type
+endfunction
+autocmd FileType javascript call SetupPrettier()
+nmap <leader>, :call TogglePrettierTrailingCommaType()<CR>
+
 autocmd FileType python set formatprg=autopep8\ -
