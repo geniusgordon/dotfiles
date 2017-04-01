@@ -3,5 +3,5 @@
 format="%H:%M"
 datetime=$(date "+${format}")
 
-echo " ${datetime}"
-echo " ${datetime}"
+echo $datetime
+echo $datetime

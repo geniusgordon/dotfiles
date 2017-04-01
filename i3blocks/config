@@ -31,17 +31,43 @@ separator_block_width=20
 markup=none
 color=#e7e8eb
 
-[brightness]
+[bandwidth]
+instance=wlp3s0;in
+label=
+interval=1
+
+[bandwidth]
+instance=wlp3s0;out
+label=
+interval=1
+
+[addr]
+interval=10
+
+[wifi]
+label=
+interval=10
+
+[music]
+label=
 interval=5
 
 [volume]
-interval=5
+interval=once
+signal=1
+
+[brightness]
+label=
+interval=once
+signal=2
 
 [battery]
 interval=5
 
 [date]
+label=
 interval=5
 
 [time]
+label=
 interval=5

@@ -10,7 +10,6 @@ fi
 
 brightness=$(xbacklight -get)
 brightness=${brightness/.*/}
-icon=""
 
-echo "${icon} ${brightness}%"
-echo "${icon} ${brightness}%"
+echo $brightness%
+echo $brightness%

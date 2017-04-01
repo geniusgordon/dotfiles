@@ -1,0 +1,6 @@
+#!/bin/bash
+
+ssid=$(iw dev wlp3s0 link | grep SSID | awk '{print $2}')
+quality=$(grep wlp3s0 /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
+
+echo $ssid $quality%

@@ -11,7 +11,7 @@ p1=${p1/\%/}
 total=$((p0+p1))
 
 if [[ "$total" -lt 40 ]]; then
-  icon="'"
+  icon=""
 elif [[ "$total" -lt 80 ]]; then
   icon=""
 elif [[ "$total" -lt 120 ]]; then
