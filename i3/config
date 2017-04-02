@@ -56,8 +56,8 @@ bindsym $mod+Return exec termite
 bindsym $mod+Shift+q kill
 
 # program launcher
-bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+Shift+d exec --no-startup-id rofi -show window
+bindsym $mod+d exec --no-startup-id ~/.config/i3/launcher.sh drun
+bindsym $mod+Shift+d exec --no-startup-id ~/.config/i3/launcher.sh window
 
 # change focus
 bindsym $mod+j focus left
