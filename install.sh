@@ -104,8 +104,8 @@ install_i3_conf() {
   start_install i3
   log_copy_file "i3/config"
   cp -r ${DIR}/i3/ ~/.config/
-  log_copy_file "i3blocks/config i3blocks/blocks"
-  cp -r ${DIR}/i3blocks/ ~/.config/
+  log_copy_file "polybar/config polybar/blocks"
+  cp -r ${DIR}/polybar/ ~/.config/
   finish_install i3
 }
 
