@@ -22,7 +22,7 @@ font-3 = Noto Color emoji:size=2
 
 modules-left = appmenu i3 music
 modules-center = date
-modules-right = wifi backlight volume bat0 bat1 powermenu
+modules-right = backlight volume bat0 bat1 wifi powermenu
 
 tray-position = right
 tray-background = ${colors.focused-background}
@@ -68,10 +68,10 @@ type = internal/xbacklight
 label =  %percentage%%
 
 [module/wifi]
-type = internal/network
-interface = wlp3s0
-interval = 10
-label-connected =  %essid%
+type = custom/script
+exec = ~/.config/polybar/wifi.sh
+label =  %output%
+click-left = ~/.config/polybar/wifi-menu.sh
 
 [module/i3]
 type = internal/i3

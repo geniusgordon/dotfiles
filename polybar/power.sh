@@ -9,14 +9,15 @@ ROFI=$(\
     -i \
     -dmenu \
     -location 3 \
-    -lines 1 \
-    -columns 4 \
+    -width 12 \
+    -lines 4 \
+    -columns 1 \
     -yoffset 30 \
     -xoffset 1 \
     -p power \
     -font 'Operator Mono Book 12' \
-    -line-padding 12 \
-    -padding 12 \
+    -line-padding 8 \
+    -padding 8 \
     -color-normal "#00ffffff,${FG},#00ffffff,${HLBG},${HLFG}" \
     -color-active "#00ffffff,${FG},#00ffffff,${HLBG},${HLFG}" \
     -color-window "${BG}" | \
