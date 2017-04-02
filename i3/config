@@ -24,28 +24,28 @@ client.urgent           $red               $red               $light-grey       
 
 gaps inner 16
 
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # i3 status bar
-bar {
-  status_command i3blocks
-  position top
-  font pango:Operator Mono Book 12
-  separator_symbol "|"
-  colors {
-    background $dark-grey
-    separator #757575
-    #                  border             background         text
-    focused_workspace  $light-grey         $light-grey         $dark-grey
-    inactive_workspace $dark-grey         $dark-grey         $light-grey
-    urgent_workspace   $red               $red               $light-grey
-  }
-}
+# bar {
+#   status_command i3blocks
+#   position top
+#   font pango:Operator Mono Book 12
+#   separator_symbol "|"
+#   colors {
+#     background $dark-grey
+#     separator #757575
+#     #                  border             background         text
+#     focused_workspace  $light-grey         $light-grey         $dark-grey
+#     inactive_workspace $dark-grey         $dark-grey         $light-grey
+#     urgent_workspace   $red               $red               $light-grey
+#   }
+# }
 
 for_window [class="Cerebro"] floating enable
 for_window [title="Floating for YouTube™"] floating enable
 for_window [title="YAD"] floating enable
 for_window [class="^.*"] border none, title_format "  %title"
 for_window [class="Google-chrome" window_role="browser"] border normal
-for_window [title="Android Emulator.*"] floating enable, border none
 
 # Key bindings
 
@@ -153,7 +153,7 @@ mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
 bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, (P)oweroff"
 
 # Lock screen
-bindsym Control+Mod1+l exec --no-startup-id gnome-screensaver-command -a
+bindsym Control+Mod1+l exec --no-startup-id ~/.config/i3/lock.sh && systemctl suspend
 
 # resize window
 mode "resize" {
@@ -176,13 +176,14 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Audio
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
-bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle && pkill -RTMIN+1 i3blocks
+bindsym Pause exec --no-startup-id playerctl play-pause
 
 # Brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 && pkill -RTMIN+2 i3blocks
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 && pkill -RTMIN+2 i3blocks
 
 # Screenshots
 bindsym --release Print exec  --no-startup-id gnome-screenshot
