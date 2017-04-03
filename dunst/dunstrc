@@ -1,7 +1,7 @@
 [global]
   font = Lato
-  format = "<b>%s</b>\n<span font_size='small'>%b</span>"
-  allow_markup = yes
+  format = "%s\n%b"
+  allow_markup = no
   sort = yes
   indicate_hidden = yes
   word_wrap = yes
@@ -28,7 +28,7 @@
 
 [urgency_low]
   background = "#222222"
-  foreground = "#888888"
+  foreground = "#ffffff"
   timeout = 10
 
 [urgency_normal]
@@ -40,6 +40,3 @@
   background = "#900000"
   foreground = "#ffffff"
   timeout = 0
-
-[Caprine]
-  appname: 'Electron'
