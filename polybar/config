@@ -1,8 +1,10 @@
 [colors]
-background = #cc2f343f
-focused-background = #cc000000
-foreground = #e7e8eb
+blue = #64b5f6
 red = #e57373
+foreground = #cce7e8eb
+background = #cc2f343f
+focused-foreground = #cce7e8eb
+focused-background = #cc000000
 
 [settings]
 format-padding = 1
@@ -12,17 +14,16 @@ bottom = false
 height = 32
 background = ${colors.background}
 foreground = ${colors.foreground}
-underline-size = 2
-padding = 1
+padding = 2
 
-font-0 = Operator Mono Book:size=12
+font-0 = Lato:size=12
 font-1 = Noto Sans CJK TC:size=12
 font-2 = FontAwesome:size=12
-font-3 = Noto Color emoji:size=2
 
 modules-left = appmenu i3 music
 modules-center = date
 modules-right = backlight volume bat0 bat1 wifi powermenu
+module-margin = 1
 
 tray-position = right
 tray-background = ${colors.focused-background}
@@ -85,20 +86,20 @@ ws-icon-default = 
 
 label-focused = %icon%
 label-focused-background = ${colors.focused-background}
-label-focused-underline = ${colors.foreground}
-label-focused-padding = 1
+label-focused-foreground = ${colors.focused-foreground}
+label-focused-padding = 2
 
 label-unfocused = %icon%
-label-unfocused-padding = 1
+label-unfocused-padding = 2
 
 label-urgent = %icon%
 label-urgent-background = ${colors.red}
-label-urgent-padding = 1
+label-urgent-padding = 2
 
 [module/music]
 type = custom/script
 interval = 2
-label = %output:0:45:...%
+label = %output%
 exec-if = playerctl status
 exec = ~/.config/polybar/playerctl.sh
 click-left = playerctl play-pause
@@ -107,12 +108,14 @@ click-left = playerctl play-pause
 type = custom/text
 content = 
 content-background = ${colors.focused-background}
-content-padding = 1
+content-foreground = ${colors.focused-foreground}
+content-padding = 2
 click-left = ~/.config/polybar/menu.sh
 
 [module/powermenu]
 type = custom/text
 content = 
 content-background = ${colors.focused-background}
-content-padding = 1
+content-foreground = ${colors.focused-foreground}
+content-padding = 2
 click-left = ~/.config/polybar/power.sh

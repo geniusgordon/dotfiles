@@ -1,24 +1,33 @@
-BG='#ee2f343f'
-FG='#e7e8eb'
-HLBG='#e7e8eb'
-HLFG='#2f343f'
+FG='#2f343f'
+BG='#cce7e8eb'
+HLFG='#e7e8eb'
+HLBG='#cc2f343f'
 SETTINGS=' Network Settings'
-WIFI_LIST=$(nmcli d wifi list | tail -n +2 | awk '$1 == "*" {print $2, $8}; $1 != "*" {print $1, $7}')
+WIFI_LIST=$(\
+  nmcli -f 'BARS,SSID' d wifi list | \
+  tail -n +2 \
+)
+LINES=$(echo -e "$WIFI_LIST" | awk 'END {print NR}')
+if [[ "$LINES" -gt 10 ]]; then
+  LINES=10
+fi
+LINES=$((LINES+1))
 WIFI=$(\
   echo -e "$SETTINGS\n$WIFI_LIST" | \
   rofi \
     -i \
     -dmenu \
     -location 3 \
-    -width 15 \
-    -lines 10 \
+    -width 16 \
+    -lines $LINES \
     -columns 1 \
-    -yoffset 30 \
-    -xoffset 1 \
+    -yoffset 32 \
+    -xoffset -15 \
     -p wifi \
-    -font 'Operator Mono Book 12' \
-    -line-padding 8 \
-    -padding 8 \
+    -bw 0 \
+    -font 'Lato 12' \
+    -line-padding 4 \
+    -padding 4 \
     -color-normal "#00ffffff,${FG},#00ffffff,${HLBG},${HLFG}" \
     -color-active "#00ffffff,${FG},#00ffffff,${HLBG},${HLFG}" \
     -color-window "${BG}"

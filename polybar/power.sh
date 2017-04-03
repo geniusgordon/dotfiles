@@ -1,7 +1,7 @@
-BG='#ee2f343f'
-FG='#e7e8eb'
-HLBG='#e7e8eb'
-HLFG='#2f343f'
+FG='#2f343f'
+BG='#cce7e8eb'
+HLFG='#e7e8eb'
+HLBG='#cc2f343f'
 POWER=" Log Out\n Lock\n Reboot\n Power Off"
 ROFI=$(\
   echo -e $POWER | \
@@ -12,12 +12,13 @@ ROFI=$(\
     -width 12 \
     -lines 4 \
     -columns 1 \
-    -yoffset 30 \
-    -xoffset 1 \
+    -yoffset 32 \
+    -xoffset -5 \
     -p power \
-    -font 'Operator Mono Book 12' \
-    -line-padding 8 \
-    -padding 8 \
+    -bw 0 \
+    -font 'Lato 12' \
+    -line-padding 4 \
+    -padding 4 \
     -color-normal "#00ffffff,${FG},#00ffffff,${HLBG},${HLFG}" \
     -color-active "#00ffffff,${FG},#00ffffff,${HLBG},${HLFG}" \
     -color-window "${BG}" | \
