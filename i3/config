@@ -121,7 +121,6 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+c workspace chat
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -197,5 +196,4 @@ exec --no-startup-id compton -bcf
 exec --no-startup-id dunst
 exec --no-startup-id feh --bg-fill /usr/share/backgrounds/gnome/Godafoss_Iceland.jpg
 exec --no-startup-id ibus-daemon -drx
-exec --no-startup-id nm-applet
-exec --no-startup-id gnome-screensaver
+exec --no-startup-id gpick
