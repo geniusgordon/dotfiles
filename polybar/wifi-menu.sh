@@ -1,10 +1,11 @@
-FG='#2f343f'
-BG='#cce7e8eb'
-HLFG='#e7e8eb'
-HLBG='#cc2f343f'
-SETTINGS=' Network Settings'
+FG='#242424'
+BG='#fefefe'
+HLFG='#242424'
+HLBG='#eeeeee'
+SETTINGS='   Network Settings'
 WIFI_LIST=$(\
-  nmcli -f 'BARS,SSID' d wifi list | \
+  nmcli -f 'SSID' d wifi list | \
+  awk '{print "   "$0}' | \
   tail -n +2 \
 )
 LINES=$(echo -e "$WIFI_LIST" | awk 'END {print NR}')
@@ -18,7 +19,7 @@ WIFI=$(\
     -i \
     -dmenu \
     -location 3 \
-    -width 16 \
+    -width 12 \
     -lines $LINES \
     -columns 1 \
     -yoffset 32 \
@@ -36,7 +37,7 @@ if [[ "$WIFI" == "$SETTINGS" ]]; then
   gnome-control-center network
   exit 0
 fi
-WIFI=$(echo "$WIFI" | awk '{print $1}')
+WIFI=$(echo "$WIFI" | awk '{print $2}')
 if [[ ${#WIFI} -gt 0 ]]; then
   nmcli c show "$WIFI"
   if [[ $? -eq 0 ]]; then

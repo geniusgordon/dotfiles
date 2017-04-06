@@ -1,10 +1,10 @@
-FG='#2f343f'
-BG='#cce7e8eb'
-HLFG='#e7e8eb'
-HLBG='#cc2f343f'
-POWER=" Log Out\n Lock\n Reboot\n Power Off"
+FG='#242424'
+BG='#fefefe'
+HLFG='#242424'
+HLBG='#eeeeee'
+POWER="   Lock\n   Log Out\n   Reboot\n   Power Off"
 ROFI=$(\
-  echo -e $POWER | \
+  echo -e "$POWER" | \
   rofi \
     -i \
     -dmenu \

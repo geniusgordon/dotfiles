@@ -1,10 +1,10 @@
 [colors]
 blue = #64b5f6
 red = #e57373
-foreground = #cce7e8eb
-background = #cc2f343f
-focused-foreground = #cce7e8eb
-focused-background = #cc000000
+foreground = #e7e8eb
+background = #aa2f343f
+focused-foreground = #e7e8eb
+focused-background = #aa000000
 
 [settings]
 format-padding = 1
@@ -18,7 +18,7 @@ padding = 2
 
 font-0 = Lato:size=12
 font-1 = Noto Sans CJK TC:size=12
-font-2 = FontAwesome:size=12
+font-2 = Operator Mono Book:size=12
 
 modules-left = appmenu i3 music
 modules-center = date
@@ -63,6 +63,7 @@ label-muted-foreground = ${colors.red}
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
+ramp-headphones-0 = 
 
 [module/backlight]
 type = internal/xbacklight
@@ -77,11 +78,18 @@ click-left = ~/.config/polybar/wifi-menu.sh
 [module/i3]
 type = internal/i3
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
+;ws-icon-0 = 1;
+;ws-icon-1 = 2;
+;ws-icon-2 = 3;
+;ws-icon-3 = 4;
+;ws-icon-4 = 5;
+;ws-icon-5 = 6;
+ws-icon-0 = 1;Chat
+ws-icon-1 = 2;Code
+ws-icon-2 = 3;Terminal
+ws-icon-3 = 4;Web
+ws-icon-4 = 5;Music
+ws-icon-5 = 6;Mail
 ws-icon-default = 
 
 label-focused = %icon%
@@ -106,9 +114,7 @@ click-left = playerctl play-pause
 
 [module/appmenu]
 type = custom/text
-content = 
-content-background = ${colors.focused-background}
-content-foreground = ${colors.focused-foreground}
+content = 
 content-padding = 2
 click-left = ~/.config/polybar/menu.sh
 
