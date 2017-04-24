@@ -22,7 +22,7 @@ client.unfocused        $light-grey        $light-grey        $mid-grey         
 client.focused_inactive $light-grey        $light-grey        $dark-grey           $light-grey
 client.urgent           $red               $red               $light-grey           $light-grey
 
-gaps inner 16
+gaps inner 1
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # i3 status bar
@@ -45,7 +45,7 @@ for_window [class="Cerebro"] floating enable
 for_window [title="Floating for YouTube™"] floating enable
 for_window [title="YAD"] floating enable
 for_window [class="^.*"] border none, title_format "  %title"
-for_window [class="Google-chrome" window_role="browser"] border normal
+# for_window [class="Google-chrome" window_role="browser"] border normal
 
 # Key bindings
 
@@ -56,8 +56,7 @@ bindsym $mod+Return exec termite
 bindsym $mod+Shift+q kill
 
 # program launcher
-bindsym $mod+d exec --no-startup-id ~/.config/i3/launcher.sh drun
-bindsym $mod+Shift+d exec --no-startup-id ~/.config/i3/launcher.sh window
+bindsym $mod+d exec --no-startup-id albert toggle
 
 # change focus
 bindsym $mod+j focus left
@@ -91,6 +90,7 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+bindsym $mod+z exec --no-startup-id ~/.config/i3/info.sh
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -120,7 +120,9 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym Mod1+Tab workspace next
 bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+t exec --no-startup-id ~/.config/i3/new_workspace.sh
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -149,7 +151,8 @@ mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
   bindsym Escape mode "default"
 }
 
-bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, (P)oweroff"
+# bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, (P)oweroff"
+bindsym $mod+Shift+e exec --no-startup-id ~/.config/polybar/power.sh
 
 # Lock screen
 bindsym Control+Mod1+l exec --no-startup-id ~/.config/i3/lock.sh && systemctl suspend
@@ -192,8 +195,12 @@ bindsym --release Control+Print exec  --no-startup-id gnome-screenshot -c
 bindsym --release Control+Shift+Print exec  --no-startup-id gnome-screenshot -ac
 bindsym --release Control+Mod1+Print exec  --no-startup-id gnome-screenshot -wc
 
-exec --no-startup-id compton -bcf
+exec --no-startup-id compton -bcf --blur-background --blur-kern '11x11gaussian'
 exec --no-startup-id dunst
-exec --no-startup-id feh --bg-fill /usr/share/backgrounds/gnome/Godafoss_Iceland.jpg
 exec --no-startup-id ibus-daemon -drx
 exec --no-startup-id gpick
+exec --no-startup-id albert
+exec --no-startup-id nm-applet
+exec --no-startup-id udiskie
+exec --no-startup-id ~/.config/i3/battery.sh
+exec --no-startup-id ~/.local/bin/wallpaper -r

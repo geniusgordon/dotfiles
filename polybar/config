@@ -2,9 +2,9 @@
 blue = #64b5f6
 red = #e57373
 foreground = #e7e8eb
-background = #aa2f343f
+background = #2f343f
 focused-foreground = #e7e8eb
-focused-background = #aa000000
+focused-background = #000000
 
 [settings]
 format-padding = 1
@@ -22,7 +22,7 @@ font-2 = Operator Mono Book:size=12
 
 modules-left = appmenu i3 music
 modules-center = date
-modules-right = backlight volume bat0 bat1 wifi powermenu
+modules-right = backlight volume bat0 bat1 powermenu
 module-margin = 1
 
 tray-position = right
@@ -41,6 +41,8 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
+ramp-capacity-0-foreground = ${colors.red}
+ramp-capacity-1-foreground = ${colors.red}
 
 [module/bat1]
 type = internal/battery
@@ -115,8 +117,9 @@ click-left = playerctl play-pause
 [module/appmenu]
 type = custom/text
 content = 
+content-foreground = #0F94D2
 content-padding = 2
-click-left = ~/.config/polybar/menu.sh
+click-left = albert toggle
 
 [module/powermenu]
 type = custom/text

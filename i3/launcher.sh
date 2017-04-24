@@ -1,7 +1,7 @@
 TYPE=${1:-drun}
 rofi \
   -show $TYPE \
-  -font 'Operator Mono Book 16' \
+  -font 'Lato 16' \
   -lines 5 \
   -padding 12 \
   -line-padding 12 \
