@@ -1,3 +1,5 @@
+let mapleader = ','
+
 " Vundle 
 set nocompatible
 filetype off
@@ -8,11 +10,15 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'L9' " Vim script library
 
 Plugin 'scrooloose/nerdtree' " file explorer
+Plugin 'ryanoasis/vim-devicons'
 nmap <leader>t :NERDTreeToggle<CR>
+
+Plugin 'Yggdroot/indentLine'
+let g:indentLine_color_term = 239
 
 Plugin 'tpope/vim-commentary' " comment stuff
 Plugin 'airblade/vim-gitgutter' " git
-Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-abolish' " fast manipulations
 
 Plugin 'christoomey/vim-tmux-navigator'
 let g:tmux_navigator_no_mappings = 1
@@ -22,9 +28,6 @@ nnoremap <silent> <C-Down> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
-
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-set laststatus=2
 
 " snippets
 Plugin 'SirVer/ultisnips'
@@ -48,6 +51,7 @@ Plugin 'pangloss/vim-javascript'
 let g:javascript_plugin_flow = 1
 
 Plugin 'elzr/vim-json'
+" Plugin 'flowtype/vim-flow'
 
 " others
 Plugin 'ekalinin/Dockerfile.vim'
@@ -63,17 +67,28 @@ scriptencoding utf8
 set term=xterm-256color
 set shell=/bin/bash
 set backupcopy=yes
+set omnifunc=syntaxcomplete#Complete
 
 " Restore cursor
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " UI
 colorscheme default
-" set cursorline
+hi Comment cterm=italic
+hi jsThis cterm=italic ctermfg=magenta
+hi xmlAttrib cterm=italic ctermfg=green
+hi VertSplit ctermfg=235 ctermbg=235
+hi LineNr ctermfg=237
+hi CursorLine cterm=none ctermbg=237
+hi StatusLine cterm=reverse ctermfg=235 ctermbg=245
+hi StatusLineNC ctermfg=235 ctermbg=237
+hi NonText ctermfg=237 ctermbg=235
+hi EndOfBuffer ctermfg=237 ctermbg=235
+set nu
 set hlsearch
-highlight Comment cterm=italic
-highlight jsThis cterm=italic ctermfg=magenta guifg=SlateBlue
-highlight xmlAttrib cterm=italic ctermfg=green guifg=SeaGreen
+set statusline=%=%P\ %f\ %m
+set fillchars=vert:\ ,stl:\ ,stlnc:\ "
+set laststatus=2
 
 " Format
 set autoindent
@@ -85,8 +100,6 @@ set softtabstop=2
 set expandtab
 
 " Key Binding
-let mapleader = ','
-
 " Toggle highlight search
 nmap <leader>/ :set hlsearch! hlsearch?<CR>
 
@@ -97,16 +110,20 @@ nmap <leader>p :set invpaste paste?<CR>
 autocmd FileType make setlocal noexpandtab
 autocmd FileType css set filetype:scss
 
-let g:prettier_trailing_comma_type = 'all'
+let g:prettier#trailing_comma = 'all'
 function SetupPrettier()
-  execute 'set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma='.g:prettier_trailing_comma_type
+  execute 'set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma='.g:prettier#trailing_comma
 endfunction
-function TogglePrettierTrailingCommaType()
-  let g:prettier_trailing_comma_type = g:prettier_trailing_comma_type == 'all' ? 'es5' : 'all'
+function TogglePrettierTrailingComma()
+  let g:prettier#trailing_comma = g:prettier#trailing_comma == 'all' ? 'es5' : 'all'
   call SetupPrettier()
-  echo 'prettier_trailing_comma_type:' g:prettier_trailing_comma_type
+  echo 'prettier#trailing_comma:' g:prettier#trailing_comma
 endfunction
 autocmd FileType javascript call SetupPrettier()
-nmap <leader>, :call TogglePrettierTrailingCommaType()<CR>
+nmap <leader>, :call TogglePrettierTrailingComma()<CR>
 
 autocmd FileType python set formatprg=autopep8\ -
+
+" map alt to  because termite is 7bit
+set <M-f>=f
+nmap <M-f> gggqG<C-o><C-o>
