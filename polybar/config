@@ -1,10 +1,10 @@
 [colors]
-blue = #64b5f6
+blue = #64b5f
 red = #e57373
 foreground = #e7e8eb
-background = #2f343f
+background = #3a3a3a
 focused-foreground = #e7e8eb
-focused-background = #000000
+focused-background = #262626
 
 [settings]
 format-padding = 1

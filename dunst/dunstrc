@@ -5,7 +5,7 @@
   sort = yes
   indicate_hidden = yes
   word_wrap = yes
-  geometry = "300x5-12+32"
+  geometry = "300x5-12+36"
   transparency = 8
   follow = mouse
   show_indicators = no

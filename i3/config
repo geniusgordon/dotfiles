@@ -44,8 +44,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 for_window [class="Cerebro"] floating enable
 for_window [title="Floating for YouTube™"] floating enable
 for_window [title="YAD"] floating enable
-for_window [class="^.*"] border none, title_format "  %title"
-# for_window [class="Google-chrome" window_role="browser"] border normal
+for_window [class="^.*"] border none
+for_window [title="^Android Emulator.*"] border none
 
 # Key bindings
 
