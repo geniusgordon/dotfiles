@@ -67,6 +67,10 @@ endfunction
 
 Plugin 'scrooloose/nerdtree' " file explorer
 " Plugin 'ryanoasis/vim-devicons'
+
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+let g:NERDTreeHighlightFoldersFullName = 1
+
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 nmap <leader>t :NERDTreeToggle<CR>
 let g:NERDTreeIndicatorMapCustom = {
