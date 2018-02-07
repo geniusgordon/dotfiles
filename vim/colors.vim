@@ -10,7 +10,7 @@ hi LineNr       ctermfg=242
 hi CursorLine   cterm=none ctermbg=239
 hi Visual       cterm=none ctermbg=241
 hi Folded       cterm=none ctermbg=237
-hi NonText      ctermfg=237 ctermbg=235
+hi NonText      ctermfg=241 ctermbg=none
 hi EndOfBuffer  ctermfg=241 ctermbg=none
 hi Pmenu        ctermfg=241 ctermbg=238
 hi PmenuSel     ctermfg=255 ctermbg=241

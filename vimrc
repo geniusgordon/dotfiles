@@ -33,16 +33,10 @@ Plugin 'pangloss/vim-javascript'
 let g:javascript_plugin_flow = 1
 
 Plugin 'elzr/vim-json'
+let g:limelight_conceal_ctermfg = 'gray'
+
 Plugin 'flowtype/vim-flow'
 let g:flow#autoclose = 1
-
-Plugin 'reedes/vim-pencil'
-let g:pencil#wrapModeDefault = 'soft'
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,mkd call pencil#init()
-  autocmd FileType text         call pencil#init()
-augroup END
 
 " Plugin 'vim-airline/vim-airline'
 Plugin 'vim-scripts/IndexedSearch'
@@ -54,18 +48,34 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'wikitopian/hardmode'
 Plugin 'sk1418/HowMuch'
 
+Plugin 'junegunn/limelight.vim'
+let g:limelight_conceal_ctermfg = 239
+
 Plugin 'junegunn/goyo.vim' " distraction-free writing
 nmap <leader>g :Goyo<CR>
+let g:goyo_height = '100%'
 au! User GoyoEnter nested call <SID>goyo_enter()
 au! User GoyoLeave nested call <SID>goyo_leave()
 function! s:goyo_enter()
+  hi StatusLineNC ctermfg=white
   set nu
-  hi Statusline ctermfg=235 ctermbg=235
+  set so=999
+  Limelight
 endfunction
 function! s:goyo_leave()
+  set so=5
   so ~/.vim/colors.vim
   so ~/.vim/statusline.vim
+  Limelight!
 endfunction
+
+Plugin 'reedes/vim-pencil'
+let g:pencil#wrapModeDefault = 'soft'
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType text         call pencil#init()
+augroup END
 
 Plugin 'scrooloose/nerdtree' " file explorer
 " Plugin 'ryanoasis/vim-devicons'
@@ -122,11 +132,13 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 set nu
 set hlsearch
 set cursorline
+set so=5
 
 " Format
 set autoindent
 set smartindent
 
+" Tab
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
