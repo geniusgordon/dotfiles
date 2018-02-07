@@ -7,8 +7,8 @@ hi jsThis       cterm=italic ctermfg=magenta
 hi xmlAttrib    cterm=italic ctermfg=green
 hi VertSplit    ctermfg=235 ctermbg=235
 hi LineNr       ctermfg=242
-hi CursorLine   cterm=none ctermbg=239
-hi Visual       cterm=none ctermbg=241
+hi CursorLine   cterm=none ctermbg=237
+hi Visual       cterm=none ctermbg=239
 hi Folded       cterm=none ctermbg=237
 hi NonText      ctermfg=241 ctermbg=none
 hi EndOfBuffer  ctermfg=241 ctermbg=none
