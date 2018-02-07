@@ -9,6 +9,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'L9' " Vim script library
 
+Plugin 'w0rp/ale' " Asynchronous Lint Engine
+
 " snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -68,6 +70,8 @@ endfunction
 Plugin 'scrooloose/nerdtree' " file explorer
 " Plugin 'ryanoasis/vim-devicons'
 
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 let g:NERDTreeHighlightFoldersFullName = 1
 
@@ -117,6 +121,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " UI
 set nu
 set hlsearch
+set cursorline
 
 " Format
 set autoindent
