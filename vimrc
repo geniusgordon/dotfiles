@@ -53,6 +53,7 @@ let g:limelight_conceal_ctermfg = 239
 
 Plugin 'junegunn/goyo.vim' " distraction-free writing
 nmap <leader>g :Goyo<CR>
+let g:goyo_width = 83
 let g:goyo_height = '100%'
 au! User GoyoEnter nested call <SID>goyo_enter()
 au! User GoyoLeave nested call <SID>goyo_leave()
@@ -60,12 +61,14 @@ function! s:goyo_enter()
   hi StatusLineNC ctermfg=white
   set nu
   set so=999
+  GitGutterEnable
   Limelight
 endfunction
 function! s:goyo_leave()
   set so=5
   so ~/.vim/colors.vim
   so ~/.vim/statusline.vim
+  e
   Limelight!
 endfunction
 
@@ -79,7 +82,7 @@ augroup END
 
 Plugin 'scrooloose/nerdtree' " file explorer
 " Plugin 'ryanoasis/vim-devicons'
-
+let NERDTreeQuitOnOpen = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -91,12 +94,12 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "~",
     \ "Staged"    : "+",
     \ "Untracked" : "*",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
+    \ "Renamed"   : " ",
+    \ "Unmerged"  : "=",
     \ "Deleted"   : "x",
     \ "Dirty"     : "*",
-    \ "Clean"     : "",
-    \ 'Ignored'   : "",
+    \ "Clean"     : " ",
+    \ 'Ignored'   : " ",
     \ "Unknown"   : "?"
     \ }
 
