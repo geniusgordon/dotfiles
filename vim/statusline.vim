@@ -57,9 +57,16 @@ function! LinterStatus() abort
   setl statusline+=%{GetLinterStatus(2)}
 endfunction
 
-setl statusline=%=
-setl statusline+=\ %f%m\ "
-setl statusline+=%1*\ %3P\ %2l:\%2c\ "
-setl statusline+=%2*\ %{strlen(&ft)?&ft:'none'}\ "
-setl statusline+=%3*\ %{toupper(g:currentmode[mode()])}\ %0*"
-call LinterStatus()
+function! SetupStatusline() abort
+  setl statusline=%=
+  setl statusline+=\ %f%m\ "
+  setl statusline+=%1*\ %3P\ %2l:\%2c\ "
+  setl statusline+=%2*\ %{strlen(&ft)?&ft:'none'}\ "
+  setl statusline+=%3*\ %{toupper(g:currentmode[mode()])}\ %0*"
+  call LinterStatus()
+endfunction
+
+call SetupStatusline()
+
+au WinEnter * call SetupStatusline()
+au WinLeave * setl statusline=%=\ %f%m\ "
