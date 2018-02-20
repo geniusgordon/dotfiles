@@ -49,20 +49,20 @@ function! GetLinterStatus(level) abort
 endfunction
 
 function! LinterStatus() abort
-  setl statusline+=%4*
-  setl statusline+=%{GetLinterStatus(0)}
-  setl statusline+=%5*
-  setl statusline+=%{GetLinterStatus(1)}
-  setl statusline+=%6*
-  setl statusline+=%{GetLinterStatus(2)}
+  set statusline+=%4*
+  set statusline+=%{GetLinterStatus(0)}
+  set statusline+=%5*
+  set statusline+=%{GetLinterStatus(1)}
+  set statusline+=%6*
+  set statusline+=%{GetLinterStatus(2)}
 endfunction
 
 function! SetupStatusline() abort
-  setl statusline=%=
-  setl statusline+=\ %f%m\ "
-  setl statusline+=%1*\ %3P\ %2l:\%2c\ "
-  setl statusline+=%2*\ %{strlen(&ft)?&ft:'none'}\ "
-  setl statusline+=%3*\ %{toupper(g:currentmode[mode()])}\ %0*"
+  set statusline=%=
+  set statusline+=\ %f%m\ "
+  set statusline+=%1*\ %3P\ %2l:\%2c\ "
+  set statusline+=%2*\ %{strlen(&ft)?&ft:'none'}\ "
+  set statusline+=%3*\ %{toupper(g:currentmode[mode()])}\ %0*"
   call LinterStatus()
 endfunction
 
