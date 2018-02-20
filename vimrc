@@ -38,6 +38,14 @@ let g:limelight_conceal_ctermfg = 'gray'
 Plugin 'flowtype/vim-flow'
 let g:flow#autoclose = 1
 
+Plugin 'jparise/vim-graphql'
+Plugin 'prettier/vim-prettier'
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#jsx_bracket_same_line = 'false'
+let g:prettier#config#arrow_parens = 'avoid'
+
+Plugin 'udalov/kotlin-vim'
+
 " Plugin 'vim-airline/vim-airline'
 Plugin 'vim-scripts/IndexedSearch'
 Plugin 'tpope/vim-commentary' " comment
@@ -55,11 +63,11 @@ Plugin 'junegunn/goyo.vim' " distraction-free writing
 nmap <leader>g :Goyo<CR>
 let g:goyo_width = 83
 let g:goyo_height = '100%'
+let g:goyo_linenr = 1
 au! User GoyoEnter nested call <SID>goyo_enter()
 au! User GoyoLeave nested call <SID>goyo_leave()
 function! s:goyo_enter()
   hi StatusLineNC ctermfg=white
-  set nu
   set so=999
   GitGutterEnable
   Limelight
@@ -103,8 +111,12 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
+Plugin 'junegunn/fzf.vim'
+nmap <c-p> :FZF<CR>
+
 Plugin 'Yggdroot/indentLine'
 let g:indentLine_color_term = 239
+let g:indentLine_concealcursor = 0
 
 Plugin 'christoomey/vim-tmux-navigator'
 let g:tmux_navigator_no_mappings = 1
@@ -127,6 +139,7 @@ set backupcopy=yes
 set omnifunc=syntaxcomplete#Complete
 setlocal foldmethod=syntax
 set foldlevelstart=99
+set clipboard=unnamedplus
 
 " Restore cursor
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
