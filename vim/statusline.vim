@@ -24,8 +24,8 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\ "
 set laststatus=2
 set noshowmode
 
-hi StatusLine cterm=reverse ctermfg=235 ctermbg=245
-hi StatusLineNC ctermfg=235 ctermbg=237
+hi StatusLine cterm=reverse ctermfg=black ctermbg=245
+hi StatusLineNC ctermfg=black ctermbg=241
 hi User1 ctermfg=247 ctermbg=237
 hi User2 ctermfg=249 ctermbg=239
 hi User3 ctermfg=251 ctermbg=241
