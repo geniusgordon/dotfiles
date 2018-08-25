@@ -47,6 +47,7 @@ let g:prettier#config#arrow_parens = 'avoid'
 
 Plugin 'udalov/kotlin-vim'
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'peterhoeg/vim-qml'
 
 Plugin 'vim-scripts/IndexedSearch'
 Plugin 'tpope/vim-commentary' " comment
