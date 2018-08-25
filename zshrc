@@ -93,8 +93,32 @@ function gi() {
 }
 
 export EDITOR=vim
+
+export ANDROID_HOME=/opt/android-sdk/
 export PATH=/opt/android-sdk/tools:$PATH
 export PATH=/opt/android-sdk/platform-tools:$PATH
+
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+
+# alias cat=vimcat
 alias git=hub
 alias glog='git log --oneline --decorate --graph --color | emojify | less'
+
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/gordon/google-cloud-sdk/path.zsh.inc' ]; then source '/home/gordon/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/gordon/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/gordon/google-cloud-sdk/completion.zsh.inc'; fi
+
+export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

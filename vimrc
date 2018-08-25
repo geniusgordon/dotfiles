@@ -10,6 +10,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'L9' " Vim script library
 
 Plugin 'w0rp/ale' " Asynchronous Lint Engine
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " snippets
 Plugin 'SirVer/ultisnips'
@@ -17,10 +19,10 @@ Plugin 'honza/vim-snippets'
 
 " html
 Plugin 'othree/html5.vim' " html5
-Plugin 'maksimr/vim-jsbeautify' " html, css, js beautify
 Plugin 'mattn/emmet-vim' " fast html
-Plugin 'briancollins/vim-jst' " ejs
-Plugin 'jwalton512/vim-blade' " laravel blade
+
+Plugin 'elzr/vim-json'
+let g:vim_json_syntax_conceal = 0
 
 " css
 Plugin 'hail2u/vim-css3-syntax'
@@ -32,8 +34,7 @@ let g:jsx_ext_required = 0
 Plugin 'pangloss/vim-javascript'
 let g:javascript_plugin_flow = 1
 
-Plugin 'elzr/vim-json'
-let g:limelight_conceal_ctermfg = 'gray'
+Plugin 'leafgarland/typescript-vim'
 
 Plugin 'flowtype/vim-flow'
 let g:flow#autoclose = 1
@@ -45,15 +46,17 @@ let g:prettier#config#jsx_bracket_same_line = 'false'
 let g:prettier#config#arrow_parens = 'avoid'
 
 Plugin 'udalov/kotlin-vim'
+Plugin 'ekalinin/Dockerfile.vim'
 
-" Plugin 'vim-airline/vim-airline'
 Plugin 'vim-scripts/IndexedSearch'
 Plugin 'tpope/vim-commentary' " comment
 Plugin 'airblade/vim-gitgutter' " git indicator
 Plugin 'tpope/vim-fugitive' " git commands
 Plugin 'tpope/vim-abolish' " fast manipulations
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'wikitopian/hardmode'
+Plugin 'wellle/targets.vim' " adds various text objects
+Plugin 'andymass/vim-matchup' " better % navigation
+Plugin 'tpope/vim-surround'
+Plugin 'skywind3000/vim-keysound'
 Plugin 'sk1418/HowMuch'
 
 Plugin 'junegunn/limelight.vim'
@@ -179,3 +182,7 @@ au FileType css set filetype:scss
 source ~/.vim/format.vim
 source ~/.vim/colors.vim
 source ~/.vim/statusline.vim
+
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
