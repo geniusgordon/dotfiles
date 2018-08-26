@@ -46,9 +46,7 @@ install_vimrc() {
   start_install vimrc
   log_copy_file ".vim/"
   cp -r ${DIR}/vim ~/.vim
-  mkdir -p ~/.vim/bundle
-  cd ~/.vim/bundle/
-  git clone http://github.com/VundleVim/Vundle.vim
+  curl -fLo /home/gordon/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   log_copy_file "vimrc"
   cp ${DIR}/vimrc ~/.vimrc
   vim -c "PluginInstall" -c "qa!"

@@ -1,69 +1,64 @@
 let mapleader = ','
 
-" Vundle
-set nocompatible
-filetype off
+call plug#begin('~/.vim/plugged')
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'L9' " Vim script library
+Plug 'VundleVim/Vundle.vim'
 
-Plugin 'w0rp/ale' " Asynchronous Lint Engine
+Plug 'w0rp/ale' " Asynchronous Lint Engine
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " html
-Plugin 'othree/html5.vim' " html5
-Plugin 'mattn/emmet-vim' " fast html
+Plug 'othree/html5.vim' " html5
+Plug 'mattn/emmet-vim' " fast html
 
-Plugin 'elzr/vim-json'
+Plug 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
 
 " css
-Plugin 'hail2u/vim-css3-syntax'
+Plug 'hail2u/vim-css3-syntax'
 
 " js
-Plugin 'mxw/vim-jsx' " jsx
+Plug 'mxw/vim-jsx' " jsx
 let g:jsx_ext_required = 0
 
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 let g:javascript_plugin_flow = 1
 
-Plugin 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim', { 'for': 'javascript' }
 
-Plugin 'flowtype/vim-flow'
+Plug 'flowtype/vim-flow', { 'for': 'javascript' }
 let g:flow#autoclose = 1
 
-Plugin 'jparise/vim-graphql'
-Plugin 'prettier/vim-prettier'
+Plug 'jparise/vim-graphql'
+Plug 'prettier/vim-prettier'
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
 let g:prettier#config#arrow_parens = 'avoid'
 
-Plugin 'udalov/kotlin-vim'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'peterhoeg/vim-qml'
+Plug 'udalov/kotlin-vim'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'peterhoeg/vim-qml'
 
-Plugin 'vim-scripts/IndexedSearch'
-Plugin 'tpope/vim-commentary' " comment
-Plugin 'airblade/vim-gitgutter' " git indicator
-Plugin 'tpope/vim-fugitive' " git commands
-Plugin 'tpope/vim-abolish' " fast manipulations
-Plugin 'wellle/targets.vim' " adds various text objects
-Plugin 'andymass/vim-matchup' " better % navigation
-Plugin 'tpope/vim-surround'
-Plugin 'skywind3000/vim-keysound'
-Plugin 'sk1418/HowMuch'
+Plug 'vim-scripts/IndexedSearch'
+Plug 'tpope/vim-commentary' " comment
+Plug 'airblade/vim-gitgutter' " git indicator
+Plug 'tpope/vim-fugitive' " git commands
+Plug 'tpope/vim-abolish' " fast manipulations
+Plug 'wellle/targets.vim' " adds various text objects
+Plug 'andymass/vim-matchup' " better % navigation
+Plug 'tpope/vim-surround'
+Plug 'skywind3000/vim-keysound'
+Plug 'sk1418/HowMuch'
 
-Plugin 'junegunn/limelight.vim'
+Plug 'junegunn/limelight.vim'
 let g:limelight_conceal_ctermfg = 239
 
-Plugin 'junegunn/goyo.vim' " distraction-free writing
+Plug 'junegunn/goyo.vim' " distraction-free writing
 nmap <leader>g :Goyo<CR>
 let g:goyo_width = 83
 let g:goyo_height = '100%'
@@ -84,7 +79,7 @@ function! s:goyo_leave()
   Limelight!
 endfunction
 
-Plugin 'reedes/vim-pencil'
+Plug 'reedes/vim-pencil'
 let g:pencil#wrapModeDefault = 'soft'
 augroup pencil
   autocmd!
@@ -92,15 +87,15 @@ augroup pencil
   autocmd FileType text         call pencil#init()
 augroup END
 
-Plugin 'scrooloose/nerdtree' " file explorer
-" Plugin 'ryanoasis/vim-devicons'
+" file explorer
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 let NERDTreeQuitOnOpen = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' }
 let g:NERDTreeHighlightFoldersFullName = 1
 
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 nmap <leader>t :NERDTreeToggle<CR>
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "~",
@@ -115,14 +110,14 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf.vim'
 nmap <c-p> :FZF<CR>
 
-Plugin 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 let g:indentLine_color_term = 239
 let g:indentLine_concealcursor = 0
 
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 let g:tmux_navigator_no_mappings = 1
 
 nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
@@ -131,8 +126,7 @@ nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 " General
 syntax on
