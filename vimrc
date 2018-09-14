@@ -7,6 +7,10 @@ Plug 'VundleVim/Vundle.vim'
 Plug 'w0rp/ale' " Asynchronous Lint Engine
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+let b:ale_linters = {
+    \ 'java': ['google-java-format'],
+    \ 'kotlin': ['ktlint']
+    \ }
 
 " snippets
 Plug 'SirVer/ultisnips'
@@ -29,9 +33,10 @@ let g:jsx_ext_required = 0
 Plug 'pangloss/vim-javascript'
 let g:javascript_plugin_flow = 1
 
-Plug 'leafgarland/typescript-vim', { 'for': 'javascript' }
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
-Plug 'flowtype/vim-flow', { 'for': 'javascript' }
+Plug 'flowtype/vim-flow'
 let g:flow#autoclose = 1
 
 Plug 'jparise/vim-graphql'
@@ -40,9 +45,13 @@ let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
 let g:prettier#config#arrow_parens = 'avoid'
 
+Plug 'fatih/vim-go'
+
 Plug 'udalov/kotlin-vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'peterhoeg/vim-qml'
+Plug 'hsanson/vim-android'
+let g:android_sdk_path = '/opt/android-sdk'
 
 Plug 'vim-scripts/IndexedSearch'
 Plug 'tpope/vim-commentary' " comment
@@ -52,7 +61,6 @@ Plug 'tpope/vim-abolish' " fast manipulations
 Plug 'wellle/targets.vim' " adds various text objects
 Plug 'andymass/vim-matchup' " better % navigation
 Plug 'tpope/vim-surround'
-Plug 'skywind3000/vim-keysound'
 Plug 'sk1418/HowMuch'
 
 Plug 'junegunn/limelight.vim'
