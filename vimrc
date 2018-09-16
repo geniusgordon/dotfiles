@@ -7,7 +7,9 @@ Plug 'VundleVim/Vundle.vim'
 Plug 'w0rp/ale' " Asynchronous Lint Engine
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-let b:ale_linters = {
+let g:ale_completion_enabled = 1
+let g:ale_open_list = 1
+let g:ale_linters = {
     \ 'java': ['google-java-format'],
     \ 'kotlin': ['ktlint']
     \ }
@@ -63,8 +65,8 @@ Plug 'andymass/vim-matchup' " better % navigation
 Plug 'tpope/vim-surround'
 Plug 'sk1418/HowMuch'
 
-Plug 'junegunn/limelight.vim'
-let g:limelight_conceal_ctermfg = 239
+" Plug 'junegunn/limelight.vim'
+" let g:limelight_conceal_ctermfg = 239
 
 Plug 'junegunn/goyo.vim' " distraction-free writing
 nmap <leader>g :Goyo<CR>
@@ -77,14 +79,13 @@ function! s:goyo_enter()
   hi StatusLineNC ctermfg=white
   set so=999
   GitGutterEnable
-  Limelight
+  " Limelight
 endfunction
 function! s:goyo_leave()
   set so=5
   so ~/.vim/colors.vim
   so ~/.vim/statusline.vim
-  e
-  Limelight!
+  " Limelight!
 endfunction
 
 Plug 'reedes/vim-pencil'
