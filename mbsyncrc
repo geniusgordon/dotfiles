@@ -1,0 +1,78 @@
+# vim: syntax=mbsync
+
+IMAPAccount gmail
+Host imap.gmail.com
+User geniusgordon@gmail.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mail/passwd/gmail.asc"
+SSLType IMAPS
+CertificateFile "/etc/ssl/certs/ca-certificates.crt"
+
+IMAPAccount nthu-gapp
+Host imap.gmail.com
+User geniusgordon@gapp.nthu.edu.tw
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mail/passwd/nthu-gapp.asc"
+SSLType IMAPS
+CertificateFile "/etc/ssl/certs/ca-certificates.crt"
+
+IMAPAccount nthu
+Host imap.m102.nthu.edu.tw
+User s102062312
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mail/passwd/nthu.asc"
+SSLType NONE
+
+IMAPStore gmail-remote
+Account gmail
+
+IMAPStore nthu-remote
+Account nthu
+
+IMAPStore nthu-gapp-remote
+Account nthu-gapp
+
+MaildirStore gmail-local
+Subfolders Verbatim
+Path "~/.mail/gmail/"
+Inbox "~/.mail/gmail/inbox"
+
+MaildirStore nthu-local
+Subfolders Verbatim
+Path "~/.mail/nthu/"
+Inbox "~/.mail/nthu/inbox"
+
+MaildirStore nthu-gapp-local
+Subfolders Verbatim
+Path "~/.mail/nthu-gapp/"
+Inbox "~/.mail/nthu-gapp/inbox"
+
+Channel gmail-inbox
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns "[Gmail]/All Mail"
+Create Both
+
+Channel gmail-draft
+Master :gmail-remote:"[Gmail]/Drafts"
+Slave :gmail-local:draft
+Create Both
+
+Channel gmail-sent
+Master :gmail-remote:"[Gmail]/Sent Mail"
+Slave :gmail-local:sent
+Create Both
+
+Channel nthu
+Master :nthu-remote:
+Slave :nthu-local:
+Create Both
+SyncState *
+
+Channel nthu-gapp
+Master :nthu-gapp-remote:
+Slave :nthu-gapp-local:
+Create Both
+SyncState *
+
+Group gmail
+Channel gmail-inbox
+Channel gmail-draft
+Channel gmail-sent

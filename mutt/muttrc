@@ -1,9 +1,11 @@
 # vim: syntax=neomuttrc
 
-set editor = vim
-set charset = utf-8
-set sort = threads
-set sort_aux = last-date-received
+set editor = "vim"
+set charset = "utf-8"
+set send_charset = "big5:gb2312:utf-8"
+set assumed_charset = "big5:gb2312:utf-8"
+set sort = "threads"
+set sort_aux = "last-date-received"
 
 bind index,pager \Cp sidebar-prev
 bind index,pager \Cn sidebar-next
