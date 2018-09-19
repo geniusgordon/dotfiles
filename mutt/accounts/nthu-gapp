@@ -1,0 +1,15 @@
+# vim: syntax=neomuttrc
+
+set ssl_force_tls = yes
+
+set realname = "Gordon Ueng"
+set from = "geniusgordon@gapp.nthu.edu.tw"
+set use_from = yes
+
+set smtp_url = "smtps://geniusgordon@gapp.nthu.edu.tw@smtp.gmail.com:465/"
+set smtp_pass = `gpg2 -q --for-your-eyes-only --no-tty -d ~/.mail/passwd/nthu-gapp.asc`
+set record = ""
+
+set spoolfile = "+nthu-gapp/inbox"
+set postponed = "+nthu-gapp/[Gmail]/Drafts"
+set trash = "+nthu-gapp/[Gmail]/Trash"

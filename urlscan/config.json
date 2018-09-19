@@ -1,0 +1,115 @@
+{
+    "default": [
+        [
+            "header",
+            "white",
+            "dark blue",
+            "standout",
+            "g50",
+            ""
+        ],
+        [
+            "footer",
+            "white",
+            "dark red",
+            "standout",
+            "g50",
+            ""
+        ],
+        [
+            "msgtext",
+            "",
+            "",
+            "standout",
+            "",
+            ""
+        ],
+        [
+            "msgtext:ellipses",
+            "light gray",
+            "black",
+            "standout",
+            "",
+            ""
+        ],
+        [
+            "urlref:number:braces",
+            "light gray",
+            "black",
+            "standout",
+            "yellow",
+            ""
+        ],
+        [
+            "urlref:number",
+            "yellow",
+            "black",
+            "standout",
+            "yellow",
+            ""
+        ],
+        [
+            "urlref:url",
+            "white",
+            "black",
+            "standout",
+            "g50",
+            ""
+        ],
+        [
+            "url:sel",
+            "white",
+            "dark blue",
+            "bold",
+            "",
+            "g27"
+        ]
+    ],
+    "bw": [
+        [
+            "header",
+            "black",
+            "light gray",
+            "standout"
+        ],
+        [
+            "footer",
+            "black",
+            "light gray",
+            "standout"
+        ],
+        [
+            "msgtext",
+            "",
+            ""
+        ],
+        [
+            "msgtext:ellipses",
+            "white",
+            "black"
+        ],
+        [
+            "urlref:number:braces",
+            "white",
+            "black"
+        ],
+        [
+            "urlref:number",
+            "white",
+            "black",
+            "standout"
+        ],
+        [
+            "urlref:url",
+            "white",
+            "black",
+            "standout"
+        ],
+        [
+            "url:sel",
+            "black",
+            "light gray",
+            "bold"
+        ]
+    ]
+}

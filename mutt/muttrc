@@ -1,0 +1,37 @@
+# vim: syntax=neomuttrc
+
+set editor = vim
+set charset = utf-8
+set sort = threads
+set sort_aux = last-date-received
+
+bind index,pager \Cp sidebar-prev
+bind index,pager \Cn sidebar-next
+bind index,pager \Co sidebar-open
+bind index,pager \Ct sidebar-toggle-visible
+set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
+
+source "~/.mutt/colors"
+source "~/.mutt/pgp"
+
+set folder = "~/.mail"
+mailboxes =gmail
+mailboxes =gmail/inbox =gmail/draft =gmail/sent
+mailboxes =nthu-gapp
+mailboxes =nthu-gapp/inbox
+mailboxes =nthu
+mailboxes =nthu/inbox
+set sidebar_short_path
+set sidebar_delim_chars="/"
+set sidebar_folder_indent
+set sidebar_indent_string="- "
+
+folder-hook $folder "source ~/.mutt/accounts/nthu"
+folder-hook $folder "source ~/.mutt/accounts/gmail"
+folder-hook $folder "source ~/.mutt/accounts/nthu-gapp"
+source "~/.mutt/accounts/nthu"
+source "~/.mutt/accounts/nthu-gapp"
+source "~/.mutt/accounts/gmail"
+
+macro index G "!mbsync -a"
+macro index,pager \cv <pipe-entry>'urlscan'<enter> 'Follow links with urlscan'

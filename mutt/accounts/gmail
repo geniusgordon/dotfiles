@@ -1,0 +1,15 @@
+# vim: syntax=neomuttrc
+
+set ssl_force_tls = yes
+
+set realname = "Gordon Ueng"
+set from = "geniusgordon@gmail.com"
+set use_from = yes
+
+set smtp_url = "smtps://geniusgordon@gmail.com@smtp.gmail.com:465/"
+set smtp_pass = `gpg2 -q --for-your-eyes-only --no-tty -d ~/.mail/passwd/gmail.asc`
+set record = ""
+
+set spoolfile = "+gmail/inbox"
+set postponed = "+gmail/[Gmail]/Drafts"
+set trash = "+gmail/[Gmail]/Trash"

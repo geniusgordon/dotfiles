@@ -1,0 +1,58 @@
+# vim: syntax=neomuttrc
+
+set date_format = "%m/%d"
+set index_format = "%4C %Z %D %-15.15L %s"
+set sort = "threads"
+set mark_old = "no"
+
+color status     color245  default
+color indicator  default   color237
+color tree       magenta   default
+color error      white     red
+
+color index_author     cyan      default  ".*"
+color index_flags      default   red      "~N"
+color index_collapsed  default   default
+color index_date       green     default
+color index_number     color243  default
+
+color sidebar_indicator default color241
+color sidebar_highlight white   color237
+color sidebar_new       red     default
+
+color hdrdefault  color243  default
+color header      green     default  "^date:"
+color header      cyan      default  "^from:"
+color header      yellow    default  "^to:"
+color header      yellow    default  "^cc:"
+color header      red       default  "^subject:"
+
+# urls
+color body  color245  default  "(^|<| )(http|https|ftp|file|telnet|news|finger)://[^ ]+( |>|$)"
+color body  blue      default  "(^|<| )mailto:[^ ]+@[^ ]( |>|$)"
+color body  blue      default  "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+
+## pgp
+color body  default   red      "(BAD signature)"
+color body  green     default  "(Good signature)"
+
+# quote blocks
+color quoted   magenta  default
+color quoted1  cyan     default
+color quoted2  green    default
+color quoted3  magenta  default
+color quoted4  cyan     default
+color quoted5  green    default
+color quoted6  magenta  default
+color quoted7  cyan     default
+
+color   attach_headers  green   default  "Autoview"
+color   attach_headers  yellow  default  "^\\[--"
+color   attach_headers  yellow  default  "--]$"
+color   attach_headers  yellow  default  "Attachment #[0-9]+"
+color   attach_headers  yellow  default  "PGP output follows \(.*\)"
+color   attach_headers  yellow  default  "End of PGP output"
+color   attach_headers  yellow  default  "The following data is signed"
+color   attach_headers  yellow  default  "End of signed data"
+color   attach_headers  green   default  "Type: [a-z]+/[a-z0-9\-]+"
+color   attach_headers  green   default  "Size: [0-9\.]+[KM]"

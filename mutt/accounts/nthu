@@ -1,0 +1,13 @@
+# vim: syntax=neomuttrc
+
+set realname = "翁子皓"
+set from = "s102062312@m102.nthu.edu.tw"
+set use_from = yes
+
+set smtp_url = ""
+set smtp_pass = `gpg2 -q --for-your-eyes-only --no-tty -d ~/.mail/passwd/nthu.asc`
+set record = ""
+
+set spoolfile = "+nthu/inbox"
+set postponed = "+nthu/draft"
+set trash = "+nthu/trash"
