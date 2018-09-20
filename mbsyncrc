@@ -44,21 +44,12 @@ Subfolders Verbatim
 Path "~/.mail/nthu-gapp/"
 Inbox "~/.mail/nthu-gapp/inbox"
 
-Channel gmail-inbox
+Channel gmail
 Master :gmail-remote:
 Slave :gmail-local:
-Patterns "[Gmail]/All Mail"
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
 Create Both
-
-Channel gmail-draft
-Master :gmail-remote:"[Gmail]/Drafts"
-Slave :gmail-local:draft
-Create Both
-
-Channel gmail-sent
-Master :gmail-remote:"[Gmail]/Sent Mail"
-Slave :gmail-local:sent
-Create Both
+SyncState *
 
 Channel nthu
 Master :nthu-remote:
@@ -71,8 +62,3 @@ Master :nthu-gapp-remote:
 Slave :nthu-gapp-local:
 Create Both
 SyncState *
-
-Group gmail
-Channel gmail-inbox
-Channel gmail-draft
-Channel gmail-sent
