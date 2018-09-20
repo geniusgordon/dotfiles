@@ -1,5 +1,9 @@
 # vim: syntax=mbsync
 
+Create Both
+Expunge Both
+SyncState *
+
 IMAPAccount gmail
 Host imap.gmail.com
 User geniusgordon@gmail.com
@@ -44,21 +48,27 @@ Subfolders Verbatim
 Path "~/.mail/nthu-gapp/"
 Inbox "~/.mail/nthu-gapp/inbox"
 
-Channel gmail
+Channel gmail-inbox
 Master :gmail-remote:
 Slave :gmail-local:
-Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
-Create Both
-SyncState *
+Patterns "INBOX"
+
+Channel gmail-sent
+Master :gmail-remote:"[Gmail]/Sent Mail"
+Slave :gmail-local:sent
+
+Channel gmail-draft
+Master :gmail-remote:"[Gmail]/Draft"
+Slave :gmail-local:draft
+
+Channel gmail-trash
+Master :gmail-remote:"[Gmail]/Trash"
+Slave :gmail-local:trash
 
 Channel nthu
 Master :nthu-remote:
 Slave :nthu-local:
-Create Both
-SyncState *
 
 Channel nthu-gapp
 Master :nthu-gapp-remote:
 Slave :nthu-gapp-local:
-Create Both
-SyncState *

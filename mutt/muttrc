@@ -11,7 +11,11 @@ bind index,pager \Cp sidebar-prev
 bind index,pager \Cn sidebar-next
 bind index,pager \Co sidebar-open
 bind index,pager \Ct sidebar-toggle-visible
-set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_short_path
+set sidebar_delim_chars = "/"
+set sidebar_folder_indent
+set sidebar_indent_string = "- "
 
 source "~/.mutt/colors"
 source "~/.mutt/pgp"
@@ -23,14 +27,10 @@ mailboxes =nthu-gapp
 mailboxes =nthu-gapp/inbox
 mailboxes =nthu
 mailboxes =nthu/inbox
-set sidebar_short_path
-set sidebar_delim_chars="/"
-set sidebar_folder_indent
-set sidebar_indent_string="- "
 
 folder-hook $folder "source ~/.mutt/accounts/nthu"
-folder-hook $folder "source ~/.mutt/accounts/gmail"
 folder-hook $folder "source ~/.mutt/accounts/nthu-gapp"
+folder-hook $folder "source ~/.mutt/accounts/gmail"
 source "~/.mutt/accounts/nthu"
 source "~/.mutt/accounts/nthu-gapp"
 source "~/.mutt/accounts/gmail"
