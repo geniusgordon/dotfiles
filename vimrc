@@ -7,8 +7,7 @@ Plug 'VundleVim/Vundle.vim'
 Plug 'w0rp/ale' " Asynchronous Lint Engine
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-let g:ale_completion_enabled = 1
-let g:ale_open_list = 1
+let g:ale_set_loclist = 1
 let g:ale_linters = {
     \ 'java': ['google-java-format'],
     \ 'kotlin': ['ktlint']
@@ -56,13 +55,13 @@ Plug 'hsanson/vim-android'
 let g:android_sdk_path = '/opt/android-sdk'
 
 Plug 'vim-scripts/IndexedSearch'
-Plug 'tpope/vim-commentary' " comment
 Plug 'airblade/vim-gitgutter' " git indicator
+Plug 'tpope/vim-commentary' " comment
 Plug 'tpope/vim-fugitive' " git commands
 Plug 'tpope/vim-abolish' " fast manipulations
+Plug 'tpope/vim-surround'
 Plug 'wellle/targets.vim' " adds various text objects
 Plug 'andymass/vim-matchup' " better % navigation
-Plug 'tpope/vim-surround'
 Plug 'sk1418/HowMuch'
 
 " Plug 'junegunn/limelight.vim'
@@ -139,6 +138,7 @@ call plug#end()
 
 " General
 syntax on
+set fenc=utf8
 scriptencoding utf8
 set term=xterm-256color
 set shell=/bin/bash
@@ -146,7 +146,6 @@ set backupcopy=yes
 set omnifunc=syntaxcomplete#Complete
 setlocal foldmethod=syntax
 set foldlevelstart=99
-set clipboard=unnamedplus
 
 " Restore cursor
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -182,11 +181,20 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 " File type specific
 au FileType make setlocal noexpandtab
 au FileType css set filetype:scss
+au BufRead /tmp/neomutt-* set tw=72
 
 source ~/.vim/format.vim
 source ~/.vim/colors.vim
 source ~/.vim/statusline.vim
 
+" echo highlight group under cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" open quickfix after grep
+augroup quickfix
+  autocmd!
+  autocmd QuickFixCmdPost [^l]* cwindow
+  autocmd QuickFixCmdPost l*    lwindow
+augroup END
