@@ -134,6 +134,8 @@ nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
 
+Plug 'yssl/QFEnter'
+
 call plug#end()
 
 " General
