@@ -49,7 +49,7 @@ install_vimrc() {
   curl -fLo /home/gordon/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   log_copy_file "vimrc"
   cp ${DIR}/vimrc ~/.vimrc
-  vim -c "PluginInstall" -c "qa!"
+  vim -c "PlugInstall" -c "qa!"
   finish_install vimrc
 }
 
