@@ -128,11 +128,11 @@ let g:indentLine_concealcursor = 0
 Plug 'christoomey/vim-tmux-navigator'
 let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-Down> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
-nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+nnoremap <C-w>h :TmuxNavigateLeft<cr>
+nnoremap <C-w>j :TmuxNavigateDown<cr>
+nnoremap <C-w>k :TmuxNavigateUp<cr>
+nnoremap <C-w>l :TmuxNavigateRight<cr>
+nnoremap <C-w>/ :TmuxNavigatePrevious<cr>
 
 Plug 'yssl/QFEnter'
 
