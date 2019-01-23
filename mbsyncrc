@@ -49,9 +49,8 @@ Path "~/.mail/nthu-gapp/"
 Inbox "~/.mail/nthu-gapp/inbox"
 
 Channel gmail-inbox
-Master :gmail-remote:
-Slave :gmail-local:
-Patterns "INBOX"
+Master :gmail-remote:"[Gmail]/All Mail"
+Slave :gmail-local:inbox
 
 Channel gmail-sent
 Master :gmail-remote:"[Gmail]/Sent Mail"

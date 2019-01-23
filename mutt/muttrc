@@ -6,6 +6,7 @@ set send_charset = "big5:gb2312:utf-8"
 set assumed_charset = "big5:gb2312:utf-8"
 set sort = "threads"
 set sort_aux = "last-date-received"
+set wrap = 72
 
 bind index,pager \Cp sidebar-prev
 bind index,pager \Cn sidebar-next
@@ -20,9 +21,16 @@ set sidebar_indent_string = "- "
 source "~/.mutt/colors"
 source "~/.mutt/pgp"
 
+set folder = "~/Documents/mailing-lists"
+mailboxes =vim/vim_use
+mailboxes =arch/arch-general.mbox
+mailboxes =mutt/mutt-users.txt
+mailboxes =gnome/desktop-devel-list.txt
 set folder = "~/.mail"
 mailboxes =gmail
 mailboxes =gmail/inbox =gmail/draft =gmail/sent
+mailboxes =firstory.inc
+mailboxes =firstory.inc/inbox
 mailboxes =nthu-gapp
 mailboxes =nthu-gapp/inbox
 mailboxes =nthu
@@ -35,5 +43,19 @@ source "~/.mutt/accounts/nthu"
 source "~/.mutt/accounts/nthu-gapp"
 source "~/.mutt/accounts/gmail"
 
-macro index G "!mbsync -a"
 macro index,pager \cv <pipe-entry>'urlscan'<enter> 'Follow links with urlscan'
+
+bind alias,index,browser,query G last-entry
+bind pager G bottom
+
+bind index,pager g noop
+bind alias,index,browser,query gg first-entry
+bind pager gg top
+
+bind alias,index,pager,browser,query \Cd half-down
+bind alias,index,pager,browser,query \Cu half-up
+bind alias,index,pager,browser,query \Cf next-page
+bind alias,index,pager,browser,query \Cb previous-page
+
+bind index { previous-thread
+bind index } next-thread
