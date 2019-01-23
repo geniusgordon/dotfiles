@@ -25,3 +25,4 @@ hi DiffDelete   ctermfg=red ctermbg=red
 hi DiffChange   none
 hi DiffText     ctermfg=black ctermbg=yellow
 hi MatchParen   ctermbg=239
+hi Directory    ctermfg=cyan
