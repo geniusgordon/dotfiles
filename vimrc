@@ -2,8 +2,6 @@ let mapleader = ','
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'VundleVim/Vundle.vim'
-
 Plug 'w0rp/ale' " Asynchronous Lint Engine
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -16,6 +14,9 @@ let g:ale_linters = {
 " snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+
+" omni complete
+Plug 'Quramy/tsuquyomi' " typescript
 
 " html
 Plug 'othree/html5.vim' " html5
@@ -36,9 +37,6 @@ let g:javascript_plugin_flow = 1
 
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-
-Plug 'flowtype/vim-flow'
-let g:flow#autoclose = 1
 
 Plug 'jparise/vim-graphql'
 Plug 'prettier/vim-prettier'
@@ -140,6 +138,7 @@ call plug#end()
 
 " General
 syntax on
+filetype plugin on
 set fenc=utf8
 scriptencoding utf8
 set term=xterm-256color
