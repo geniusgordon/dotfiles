@@ -11,12 +11,13 @@ let g:ale_linters = {
     \ 'kotlin': ['ktlint']
     \ }
 
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+" nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
+" nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
+
 " snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-
-" omni complete
-Plug 'Quramy/tsuquyomi' " typescript
 
 " html
 Plug 'othree/html5.vim' " html5
@@ -29,17 +30,19 @@ let g:vim_json_syntax_conceal = 0
 Plug 'hail2u/vim-css3-syntax'
 
 " js
-Plug 'mxw/vim-jsx' " jsx
-let g:jsx_ext_required = 0
-
 Plug 'pangloss/vim-javascript'
 let g:javascript_plugin_flow = 1
+
+Plug 'mxw/vim-jsx' " jsx
+let g:jsx_ext_required = 0
 
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
 Plug 'jparise/vim-graphql'
-Plug 'prettier/vim-prettier'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
 let g:prettier#config#arrow_parens = 'avoid'
@@ -49,8 +52,8 @@ Plug 'fatih/vim-go'
 Plug 'udalov/kotlin-vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'peterhoeg/vim-qml'
-Plug 'hsanson/vim-android'
-let g:android_sdk_path = '/opt/android-sdk'
+" Plug 'hsanson/vim-android'
+" let g:android_sdk_path = '/opt/android-sdk'
 
 Plug 'vim-scripts/IndexedSearch'
 Plug 'airblade/vim-gitgutter' " git indicator
@@ -133,6 +136,9 @@ nnoremap <C-w>l :TmuxNavigateRight<cr>
 nnoremap <C-w>/ :TmuxNavigatePrevious<cr>
 
 Plug 'yssl/QFEnter'
+
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
 
 call plug#end()
 
