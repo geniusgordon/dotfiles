@@ -7,21 +7,23 @@ SyncState *
 IMAPAccount gmail
 Host imap.gmail.com
 User geniusgordon@gmail.com
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mail/passwd/gmail.asc"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.mail/passwd/gmail.asc"
 SSLType IMAPS
+AuthMechs PLAIN
 CertificateFile "/etc/ssl/certs/ca-certificates.crt"
 
 IMAPAccount nthu-gapp
 Host imap.gmail.com
 User geniusgordon@gapp.nthu.edu.tw
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mail/passwd/nthu-gapp.asc"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.mail/passwd/nthu-gapp.asc"
 SSLType IMAPS
+AuthMechs PLAIN
 CertificateFile "/etc/ssl/certs/ca-certificates.crt"
 
 IMAPAccount nthu
 Host imap.m102.nthu.edu.tw
 User s102062312
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mail/passwd/nthu.asc"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.mail/passwd/nthu.asc"
 SSLType NONE
 
 IMAPStore gmail-remote
