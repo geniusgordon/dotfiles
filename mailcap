@@ -1,4 +1,5 @@
-audio/*; /usr/bin/xdg-open %s
+application/*; mkdir -p /tmp/mutt \; cp %s /tmp/mutt \; xdg-open /tmp/mutt/$(basename %s)
+audio/*; mkdir -p /tmp/mutt \; cp %s /tmp/mutt \; xdg-open /tmp/mutt/$(basename %s)
 image/*; mkdir -p /tmp/mutt \; cp %s /tmp/mutt \; xdg-open /tmp/mutt/$(basename %s)
 text/calendar; /usr/bin/gcalcli --calendar geniusgordon@gmail import -v %s ; needsterminal
 text/html; /usr/bin/xdg-open %s 2> /dev/null; nametemplate=%s.html ; copiousoutput
