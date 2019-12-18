@@ -10,6 +10,7 @@ let g:ale_linters = {
     \ 'java': ['google-java-format'],
     \ 'kotlin': ['ktlint']
     \ }
+let g:ale_lint_on_text_changed = 'never'
 
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 " nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
@@ -120,7 +121,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 
 Plug 'junegunn/fzf.vim'
-nmap <c-p> :FZF<CR>
+nmap <leader>p :FZF<CR>
 
 Plug 'Yggdroot/indentLine'
 let g:indentLine_color_term = 239
@@ -136,19 +137,20 @@ nnoremap <C-w>l :TmuxNavigateRight<cr>
 nnoremap <C-w>/ :TmuxNavigatePrevious<cr>
 
 Plug 'yssl/QFEnter'
-
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
+Plug 'vim-scripts/fcitx.vim'
 
 call plug#end()
 
 " General
 syntax on
 filetype plugin on
+set wildmenu
 set fenc=utf8
 scriptencoding utf8
 set term=xterm-256color
-set shell=/bin/bash
+set shell=/usr/bin/zsh
 set backupcopy=yes
 set omnifunc=syntaxcomplete#Complete
 setlocal foldmethod=syntax
@@ -176,9 +178,6 @@ set expandtab
 " Key Binding
 " Toggle highlight search
 nmap <leader>/ :set hlsearch! hlsearch?<CR>
-
-" Toggle paste mode
-nmap <leader>p :set invpaste paste?<CR>
 
 " Syntax highlighting group used at the cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'

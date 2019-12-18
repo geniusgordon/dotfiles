@@ -33,6 +33,10 @@ hi DiffDelete   ctermfg=red ctermbg=red
 hi DiffChange   none
 hi DiffText     ctermfg=black ctermbg=yellow
 
+hi TabLineSel   ctermfg=247 ctermbg=237
+hi TabLine      cterm=none ctermfg=245 ctermbg=black
+hi TabLineFill  ctermfg=black
+
 hi GitGutterAdd       ctermfg=green
 hi GitGutterDelete    ctermfg=red
 hi GitGutterChange    ctermfg=yellow
