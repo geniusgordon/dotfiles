@@ -1,11 +1,8 @@
-au FileType python set formatprg=autopep8\ -
-
-" map alt to  because termite is 7bit
-set <M-f>=f
-
-nmap <M-f> gggqG<C-o><C-o>
-
-au FileType javascript,typescript,flow,json nmap <M-f> :PrettierAsync<CR>
-au FileType css,scss,less nmap <M-f> :PrettierAsync<CR>
-au FileType html,vue,angular nmap <M-f> :PrettierAsync<CR>
-au FileType graphql,markdown,yaml nmap <M-f> :PrettierAsync<CR>
+nmap <leader>f gggqG<C-o><C-o>
+au FileType javascript.jsx set formatprg=prettier\ --stdin-filepath=file.js
+au FileType css set formatprg=prettier\ --stdin-filepath=file.css
+au FileType scss set formatprg=prettier\ --stdin-filepath=file.scss
+au FileType html set formatprg=prettier\ --stdin-filepath=file.html
+au FileType json set formatprg=prettier\ --stdin-filepath=file.json
+au FileType markdown set formatprg=prettier\ --stdin-filepath=file.md
+au FileType yaml set formatprg=prettier\ --stdin-filepath=file.yaml

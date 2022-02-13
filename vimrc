@@ -2,23 +2,20 @@ let mapleader = ','
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'w0rp/ale' " Asynchronous Lint Engine
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-let g:ale_set_loclist = 1
-let g:ale_linters = {
-    \ 'java': ['google-java-format'],
-    \ 'kotlin': ['ktlint']
-    \ }
-let g:ale_lint_on_text_changed = 'never'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
+nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-" nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
-" nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
-" snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Use <cr> to confirm completion
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " html
 Plug 'othree/html5.vim' " html5
@@ -32,24 +29,25 @@ Plug 'hail2u/vim-css3-syntax'
 
 " js
 Plug 'pangloss/vim-javascript'
-let g:javascript_plugin_flow = 1
+let g:javascript_plugin_jsdoc = 1
 
-Plug 'mxw/vim-jsx' " jsx
-let g:jsx_ext_required = 0
+Plug 'MaxMEllon/vim-jsx-pretty'
 
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'peitalin/vim-jsx-typescript'
+
+" Plug 'heavenshell/vim-jsdoc', { 
+"   \ 'for': ['javascript', 'javascript.jsx','typescript'], 
+"   \ 'do': 'make install'
+"   \}
 
 Plug 'jparise/vim-graphql'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#jsx_bracket_same_line = 'false'
-let g:prettier#config#arrow_parens = 'avoid'
+Plug 'tomlion/vim-solidity'
+Plug 'digitaltoad/vim-pug'
 
-Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 
+Plug 'pantharshit00/vim-prisma'
 Plug 'udalov/kotlin-vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'peterhoeg/vim-qml'
@@ -61,6 +59,7 @@ Plug 'airblade/vim-gitgutter' " git indicator
 Plug 'tpope/vim-commentary' " comment
 Plug 'tpope/vim-fugitive' " git commands
 Plug 'tpope/vim-abolish' " fast manipulations
+Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'wellle/targets.vim' " adds various text objects
 Plug 'andymass/vim-matchup' " better % navigation
@@ -97,6 +96,8 @@ augroup pencil
   autocmd FileType text         call pencil#init()
 augroup END
 
+Plug 'blueyed/vim-diminactive'
+
 " file explorer
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 let NERDTreeQuitOnOpen = 1
@@ -120,7 +121,8 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 nmap <leader>p :FZF<CR>
 
 Plug 'Yggdroot/indentLine'
@@ -136,21 +138,26 @@ nnoremap <C-w>k :TmuxNavigateUp<cr>
 nnoremap <C-w>l :TmuxNavigateRight<cr>
 nnoremap <C-w>/ :TmuxNavigatePrevious<cr>
 
-Plug 'yssl/QFEnter'
+" Plug 'jiangmiao/auto-pairs'
+Plug 'yssl/QFEnter' " open items from Vim's quickfix
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 Plug 'vim-scripts/fcitx.vim'
+" Plug 'vim-scripts/Vim-EPUB'
+Plug 'amadeus/vim-mjml'
+Plug 'artoj/pgn-syntax-vim'
 
 call plug#end()
 
 " General
 syntax on
+set re=0
 filetype plugin on
 set wildmenu
 set fenc=utf8
 scriptencoding utf8
-set term=xterm-256color
-set shell=/usr/bin/zsh
+" set term=xterm-256color
+set shell=/usr/local/bin/zsh
 set backupcopy=yes
 set omnifunc=syntaxcomplete#Complete
 setlocal foldmethod=syntax
@@ -164,6 +171,7 @@ set nu
 set hlsearch
 set cursorline
 set so=5
+set cmdheight=2
 
 " Format
 set autoindent
@@ -174,6 +182,7 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 set expandtab
+set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 
 " Key Binding
 " Toggle highlight search
@@ -186,7 +195,6 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 
 " File type specific
 au FileType make setlocal noexpandtab
-au FileType css set filetype:scss
 au BufRead /tmp/neomutt-* set tw=72
 
 source ~/.vim/format.vim
