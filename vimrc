@@ -65,8 +65,16 @@ Plug 'wellle/targets.vim' " adds various text objects
 Plug 'andymass/vim-matchup' " better % navigation
 Plug 'sk1418/HowMuch'
 
+Plug 'hashivim/vim-terraform'
+
 " Plug 'junegunn/limelight.vim'
 " let g:limelight_conceal_ctermfg = 239
+Plug 'junegunn/vim-easy-align'
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 Plug 'junegunn/goyo.vim' " distraction-free writing
 nmap <leader>g :Goyo<CR>
