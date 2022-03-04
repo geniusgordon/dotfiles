@@ -15,6 +15,7 @@ hi LineNr       ctermfg=242
 hi CursorLine   cterm=none ctermbg=237
 hi Visual       cterm=none ctermbg=239
 hi Folded       cterm=none ctermbg=237
+hi ColorColumn  ctermbg=235
 
 hi NonText      ctermfg=241 ctermbg=none
 hi EndOfBuffer  ctermfg=241 ctermbg=none
