@@ -1,0 +1,6 @@
+patch:
+  style/font_face: jf-openhuninn-1.1
+  style/candidate_format: "%c. %@"
+  style/label_font_face: 'Andale Mono'
+  style/label_font_point: 14
+  style/inline_preedit: false
