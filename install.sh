@@ -92,6 +92,18 @@ install_tmux_conf() {
   finish_install tmux.conf
 }
 
+install_rime_conf() {
+  start_install rime.conf
+  mkdir -p ~/Library/Rime
+
+  for f in $(ls rime)
+  do
+    log_copy_file rime/$f
+    cp ${DIR}/rime/$f ~/Library/Rime
+  done
+  finish_install rime.conf
+}
+
 install_fonts_conf() {
   start_install fonts.conf
   mkdir -p ~/.config/fonts
@@ -171,6 +183,10 @@ do
       ;;
     tmux)
       install_tmux_conf
+      shift
+      ;;
+    rime)
+      install_rime_conf
       shift
       ;;
     fonts)
