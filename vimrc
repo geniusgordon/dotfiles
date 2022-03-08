@@ -17,55 +17,49 @@ nmap <leader>f  <Plug>(coc-format-selected)
 " Use <cr> to confirm completion
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" html
+" Syntax
 Plug 'othree/html5.vim' " html5
 Plug 'mattn/emmet-vim' " fast html
 
 Plug 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
 
-" css
 Plug 'hail2u/vim-css3-syntax'
 
-" js
 Plug 'pangloss/vim-javascript'
 let g:javascript_plugin_jsdoc = 1
 
 Plug 'MaxMEllon/vim-jsx-pretty'
-
-" Plug 'leafgarland/typescript-vim'
-" Plug 'peitalin/vim-jsx-typescript'
-
-" Plug 'heavenshell/vim-jsdoc', { 
-"   \ 'for': ['javascript', 'javascript.jsx','typescript'], 
-"   \ 'do': 'make install'
-"   \}
-
 Plug 'jparise/vim-graphql'
 Plug 'tomlion/vim-solidity'
 Plug 'digitaltoad/vim-pug'
-
-" Plug 'fatih/vim-go'
-
 Plug 'pantharshit00/vim-prisma'
 Plug 'udalov/kotlin-vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'peterhoeg/vim-qml'
-" Plug 'hsanson/vim-android'
-" let g:android_sdk_path = '/opt/android-sdk'
+Plug 'hashivim/vim-terraform'
+" Plug 'vim-scripts/Vim-EPUB'
+Plug 'amadeus/vim-mjml'
+Plug 'artoj/pgn-syntax-vim'
 
+" Other utilities
 Plug 'vim-scripts/IndexedSearch'
-Plug 'airblade/vim-gitgutter' " git indicator
-Plug 'tpope/vim-commentary' " comment
-Plug 'tpope/vim-fugitive' " git commands
-Plug 'tpope/vim-abolish' " fast manipulations
+
+" git indicator
+Plug 'airblade/vim-gitgutter'
+
+" comment
+Plug 'tpope/vim-commentary'
+" git commands
+Plug 'tpope/vim-fugitive'
+" fast manipulations
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'wellle/targets.vim' " adds various text objects
 Plug 'andymass/vim-matchup' " better % navigation
 Plug 'sk1418/HowMuch'
-
-Plug 'hashivim/vim-terraform'
+Plug 'christianrondeau/vim-base64'
 
 " Plug 'junegunn/limelight.vim'
 " let g:limelight_conceal_ctermfg = 239
@@ -104,7 +98,8 @@ augroup pencil
   autocmd FileType text         call pencil#init()
 augroup END
 
-Plug 'blueyed/vim-diminactive'
+" Plug 'blueyed/vim-diminactive'
+Plug 'TaDaa/vimade'
 
 " file explorer
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -146,14 +141,11 @@ nnoremap <C-w>k :TmuxNavigateUp<cr>
 nnoremap <C-w>l :TmuxNavigateRight<cr>
 nnoremap <C-w>/ :TmuxNavigatePrevious<cr>
 
-" Plug 'jiangmiao/auto-pairs'
-Plug 'yssl/QFEnter' " open items from Vim's quickfix
+" open items from Vim's quickfix
+Plug 'yssl/QFEnter'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 Plug 'vim-scripts/fcitx.vim'
-" Plug 'vim-scripts/Vim-EPUB'
-Plug 'amadeus/vim-mjml'
-Plug 'artoj/pgn-syntax-vim'
 
 call plug#end()
 
@@ -165,9 +157,8 @@ set wildmenu
 set fenc=utf8
 scriptencoding utf8
 " set term=xterm-256color
-set shell=/usr/local/bin/zsh
+set shell=/bin/zsh
 set backupcopy=yes
-set omnifunc=syntaxcomplete#Complete
 setlocal foldmethod=syntax
 set foldlevelstart=99
 
@@ -191,10 +182,12 @@ set tabstop=2
 set softtabstop=2
 set expandtab
 set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+set backspace=indent,eol,start
 
 " Key Binding
 " Toggle highlight search
 nmap <leader>/ :set hlsearch! hlsearch?<CR>
+nmap <leader>v :set paste! paste?<CR>
 
 " Syntax highlighting group used at the cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
