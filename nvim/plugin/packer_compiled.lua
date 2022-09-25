@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/Users/gordon/.local/share/nvim/site/pack/packer/start/targets.vim",
     url = "https://github.com/wellle/targets.vim"
   },
+  ["telescope-coc.nvim"] = {
+    loaded = true,
+    path = "/Users/gordon/.local/share/nvim/site/pack/packer/start/telescope-coc.nvim",
+    url = "https://github.com/fannheyward/telescope-coc.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/gordon/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -143,6 +148,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/gordon/.local/share/nvim/site/pack/packer/start/vim-base64",
     url = "https://github.com/christianrondeau/vim-base64"
+  },
+  ["vim-be-good"] = {
+    loaded = true,
+    path = "/Users/gordon/.local/share/nvim/site/pack/packer/start/vim-be-good",
+    url = "https://github.com/ThePrimeagen/vim-be-good"
   },
   ["vim-commentary"] = {
     loaded = true,

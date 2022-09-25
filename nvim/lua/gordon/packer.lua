@@ -1,7 +1,7 @@
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  -- Simple plugins can be specified as strings
+  use("ThePrimeagen/vim-be-good")
   use("TimUntersberger/neogit")
 
   -- TJ created lodash of neovim
@@ -15,6 +15,7 @@ return require('packer').startup(function(use)
 
   -- use('SirVer/ultisnips')
   use{'neoclide/coc.nvim', branch = 'release'}
+  use("fannheyward/telescope-coc.nvim")
 
   use('vim-scripts/IndexedSearch')
   -- use('airblade/vim-gitgutter')

@@ -1,0 +1,32 @@
+{
+  "suggest.noselect": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "go",
+    "graphql",
+    "javascriptreact",
+    "json",
+    "rust",
+    "typescript",
+    "typescript.tsx",
+    "typescriptreact",
+    "yaml"
+  ],
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {},
+      "settings": {}
+    }
+  },
+  "eslint.autoFixOnSave": true,
+  "eslint.lintTask.options": [".", "--ext", ".js,.jsx,.ts,.tsx"],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "typescript.preferences.importModuleSpecifier": "relative"
+}

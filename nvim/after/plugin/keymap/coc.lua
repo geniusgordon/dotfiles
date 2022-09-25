@@ -14,7 +14,7 @@ nnoremap("gy", ":call CocActionAsync('jumpTypeDefinition')<CR>", { silent = true
 nnoremap("gvd", ":call CocActionAsync('jumpDefinition', 'vsplit')<CR>", { silent = true })
 nnoremap("gvy", ":call CocActionAsync('jumpTypeDefinition', 'vsplit')<CR>", { silent = true })
 nnoremap("gi", ":call CocActionAsync('jumpImplementation')<CR>", { silent = true })
-nnoremap("gr", ":call CocActionAsync('jumpReferences')<CR>", { silent = true })
+nnoremap("gr", ":Telescope coc references<CR>", { silent = true })
 
 nnoremap("<leader>rn", ":call CocActionAsync('rename')<CR>", { silent = true })
 
