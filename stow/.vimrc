@@ -2,17 +2,34 @@ let mapleader = ','
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'SirVer/ultisnips'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
 nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gd :call CocAction('jumpDefinition')<CR>
+nmap <silent> gy :call CocAction('jumpDefinition')<CR>
+nmap <silent> gvd :call CocAction('jumpDefinition', 'vsplit')<CR>
+nmap <silent> gvy :cal l CocAction('jumpDefinition', 'vsplit')<CR>
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
 
 " Use <cr> to confirm completion
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -24,6 +41,7 @@ Plug 'mattn/emmet-vim' " fast html
 Plug 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
 
+Plug 'kevinoid/vim-jsonc'
 Plug 'hail2u/vim-css3-syntax'
 
 Plug 'pangloss/vim-javascript'
@@ -41,6 +59,7 @@ Plug 'hashivim/vim-terraform'
 " Plug 'vim-scripts/Vim-EPUB'
 Plug 'amadeus/vim-mjml'
 Plug 'artoj/pgn-syntax-vim'
+Plug 'vim-scripts/applescript.vim'
 
 " Other utilities
 Plug 'vim-scripts/IndexedSearch'
@@ -99,7 +118,7 @@ augroup pencil
 augroup END
 
 " Plug 'blueyed/vim-diminactive'
-Plug 'TaDaa/vimade'
+" Plug 'TaDaa/vimade'
 
 " file explorer
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -128,9 +147,9 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 nmap <leader>p :FZF<CR>
 
-Plug 'Yggdroot/indentLine'
-let g:indentLine_color_term = 239
-let g:indentLine_concealcursor = 0
+" Plug 'Yggdroot/indentLine'
+" let g:indentLine_color_term = 239
+" let g:indentLine_concealcursor = 0
 
 Plug 'christoomey/vim-tmux-navigator'
 let g:tmux_navigator_no_mappings = 1
@@ -166,7 +185,7 @@ set foldlevelstart=99
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " UI
-set nu
+set nu rnu
 set hlsearch
 set cursorline
 set so=5

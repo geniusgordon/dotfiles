@@ -42,5 +42,6 @@ hi GitGutterAdd       ctermfg=green
 hi GitGutterDelete    ctermfg=red
 hi GitGutterChange    ctermfg=yellow
 
+hi CocFloating          ctermbg=238
 hi CocErrorHighlight    ctermbg=red
 hi CocWarningHighlight  ctermbg=yellow
