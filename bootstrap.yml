@@ -5,5 +5,6 @@
     - role: gantsign.oh-my-zsh
       users:
         - username: "{{ ansible_user_id }}"
+    - role: zsh
     - role: stow
     - role: nvim
