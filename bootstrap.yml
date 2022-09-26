@@ -1,0 +1,9 @@
+- name: Bootstrap development environment
+  hosts: localhost
+  roles:
+    - role: package
+    - role: gantsign.oh-my-zsh
+      users:
+        - username: "{{ ansible_user_id }}"
+    - role: stow
+    - role: nvim

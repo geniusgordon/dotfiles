@@ -1,0 +1,35 @@
+- name: Install packages with apt
+  become: true
+  ansible.builtin.apt:
+    name:
+      - fd
+      - fzf
+      - git
+      - jq
+      - neovim
+      - stow
+      - tmux
+    state: present
+  when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+- name: Install packages with brew
+  community.general.homebrew:
+    name:
+      - awscli
+      - browserpass
+      - fd
+      - fzf
+      - git
+      - gnupg
+      - gopass
+      - helm
+      - iperf3
+      - jq
+      - kubernetes-cli
+      - mitmproxy
+      - neovim
+      - pass
+      - pinentry-mac
+      - stow
+      - tmux
+    state: present
+  when: ansible_distribution == "MacOSX"
