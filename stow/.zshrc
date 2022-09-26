@@ -47,4 +47,6 @@ export FZF_DEFAULT_COMMAND='fd'
 
 eval "$(rbenv init - zsh)"
 
-source /Users/gordon/.gvm/scripts/gvm
+if [ -f "$HOME/.gvm/scripts/gvm" ]; then
+  source $HOME/.gvm/scripts/gvm
+fi

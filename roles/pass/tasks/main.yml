@@ -1,0 +1,5 @@
+- name: Clone password store
+  ansible.builtin.git:
+    repo: git@github.com:geniusgordon/pass.git
+    dest: "{{ ansible_env.HOME }}/.password-store"
+    depth: 1

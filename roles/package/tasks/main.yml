@@ -7,8 +7,10 @@
       - git
       - jq
       - neovim
+      - pass
       - stow
       - tmux
+      - webext-browserpass
     state: present
   when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
 - name: Install packages with brew
