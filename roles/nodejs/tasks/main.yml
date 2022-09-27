@@ -1,0 +1,14 @@
+- name: Install n on Mac
+  community.general.homebrew:
+    name:
+      - n
+    state: present
+  when: ansible_distribution == "MacOSX"
+- name: Install n on Linux
+  shell: "curl -L https://bit.ly/n-install | bash"
+  when: >
+    ansible_distribution == "Ubuntu" or
+    ansible_distribution == "Debian" or
+    ansible_distribution == "Pop!_OS"
+- name: Install nodejs lts
+  shell: n lts
