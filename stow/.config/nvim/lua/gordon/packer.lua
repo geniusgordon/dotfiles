@@ -13,7 +13,7 @@ return require('packer').startup(function(use)
 
   use("mbbill/undotree")
 
-  -- use('SirVer/ultisnips')
+  use('SirVer/ultisnips')
   use{'neoclide/coc.nvim', branch = 'release'}
   use("fannheyward/telescope-coc.nvim")
 
