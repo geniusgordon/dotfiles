@@ -16,8 +16,9 @@ function ColorMyPencils()
         vim.api.nvim_set_hl(0, thing, opts)
     end
 
-    hl("SignColumn", {
-        bg = "none",
-    })
+    hl("SignColumn", { bg = "none" })
+
+    hl("xmlAttrib", { italic = true, fg = "green" })
+    hl("typescriptPredefinedType", { link = "String" })
 end
 ColorMyPencils()
