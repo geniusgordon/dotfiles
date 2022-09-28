@@ -32,6 +32,7 @@ return require('packer').startup(function(use)
 
   -- color theme
   use('folke/tokyonight.nvim')
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- language
   use('pangloss/vim-javascript')
