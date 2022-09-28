@@ -26,3 +26,12 @@ nnoremap("<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 nnoremap("<leader>/", ":set hlsearch! hlsearch?<CR>")
 nnoremap("<leader>v", ":set paste! paste?<CR>")
+
+nnoremap("<F10>", function ()
+  local line = vim.fn.line(".")
+  local col = vim.fn.col(".")
+  local hi = vim.fn.synIDattr(vim.fn.synID(line, col , 1), "name")
+  local trans = vim.fn.synIDattr(vim.fn.synID(line, col , 0), "name")
+  local lo = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.synID(line, col , 1)), "name")
+  print("hi<" .. hi .. "> trans<" .. trans .. "> lo<" .. lo .. ">")
+end)
