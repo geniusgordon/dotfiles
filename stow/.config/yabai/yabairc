@@ -13,6 +13,7 @@ yabai -m space 9 --label nine
 # float system preferences. Most of these just diable Yabai form resizing them.
 yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Preview$" manage=off
 yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
 yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
@@ -30,10 +31,11 @@ yabai -m config window_opacity_duration      0.0
 yabai -m config active_window_opacity        1.0
 yabai -m config normal_window_opacity        0.90
 yabai -m config window_border                on
-yabai -m config window_border_width          3
-yabai -m config active_window_border_color   0xFF40FF00
-yabai -m config normal_window_border_color   0x00FFFFFF
-yabai -m config insert_feedback_color        0xFFD75F5F
+yabai -m config window_border_width          4
+yabai -m config active_window_border_color   0xffe1e3e4
+# yabai -m config normal_window_border_color 0xff555555
+yabai -m config normal_window_border_color   0xff2a2f38
+yabai -m config insert_feedback_color        0xff9dd274
 
 
 # general space settings
@@ -43,5 +45,6 @@ yabai -m config bottom_padding               2
 yabai -m config left_padding                 2
 yabai -m config right_padding                2
 yabai -m config window_gap                   10
+yabai -m config window_border_blur           off
 
 echo "yabai configuration loaded.."
