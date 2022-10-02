@@ -43,4 +43,6 @@ vim.opt.shortmess:append("c")
 
 vim.opt.colorcolumn = "80"
 
+vim.opt.clipboard = "unnamed"
+
 vim.g.mapleader = " "

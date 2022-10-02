@@ -50,4 +50,4 @@ shift + cmd - l : yabai -m window --resize right:-20:0
 hyper - f : yabai -m window --toggle zoom-fullscreen
 
 # float / unfloat window and center on screen
-alt - t : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2
+hyper - t : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2
