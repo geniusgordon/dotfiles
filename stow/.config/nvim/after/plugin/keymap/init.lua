@@ -23,6 +23,7 @@ inoremap("<C-c>", "<Esc>")
 
 nnoremap("Q", "<nop>")
 nnoremap("<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+nnoremap("<leader>s'", "vi[:s/\\(\\w\\+\\)/'\\1',/")
 
 nnoremap("<leader>/", ":set hlsearch! hlsearch?<CR>")
 nnoremap("<leader>v", ":set paste! paste?<CR>")
