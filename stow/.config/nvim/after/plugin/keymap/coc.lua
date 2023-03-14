@@ -6,8 +6,14 @@ local xnoremap = Remap.xnoremap
 local vnoremap = Remap.vnoremap
 local inoremap = Remap.inoremap
 
+-- call coc refresh on <C-@>
+nnoremap('<leader>e', "(vim.fn.col('.') == vim.fn.col('$')) ? '' : 'e'", { expr = true })
+inoremap("<C-q>", 'coc#refresh()', { silent = true, expr = true })
+nnoremap("<C-q>", '<leader>e<C-o>:call coc#start()<CR>')
+
 nnoremap("<C-k>", ":call CocActionAsync('diagnosticPrevious')<CR>", { silent = true })
 nnoremap("<C-j>", ":call CocActionAsync('diagnosticNext')<CR>", { silent = true })
+
 
 nnoremap("gd", ":call CocActionAsync('jumpDefinition')<CR>", { silent = true })
 nnoremap("gy", ":call CocActionAsync('jumpTypeDefinition')<CR>", { silent = true })
@@ -36,7 +42,7 @@ end
 nmap("K", '<CMD>lua _G.show_docs()<CR>', { silent = true })
 
 -- Remap <C-f> and <C-b> for scroll float windows/popups.
-local opts = { silent = true, nowait = true, expr = true }
+local opts = { silent = true, nowait = true, expr = true, replace_keycodes = false }
 nnoremap("<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
 nnoremap("<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
 

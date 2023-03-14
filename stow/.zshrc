@@ -22,6 +22,11 @@ export JAVA_HOME=/opt/homebrew/Cellar/openjdk/17.0.2
 
 alias glog='git log --oneline --decorate --graph --color | less'
 alias vim=nvim
+alias vi=nvim
+alias mutt=neomutt
+
+# make vimdiff execute nvim in diff mode
+alias vimdiff='nvim -d'
 
 export N_PREFIX=$HOME/.local
 

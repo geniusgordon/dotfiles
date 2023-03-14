@@ -20,6 +20,7 @@ yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Path Finder$" manage=off
 yabai -m rule --add app="^Spotify$" manage=off
 yabai -m rule --add app="^Aidoku$" manage=off
+yabai -m rule --add app="^Surfshark$" manage=off
 yabai -m rule --add app="^DataGrip$" title="^Export Data$" manage=off
 
 yabai -m config mouse_follows_focus          off

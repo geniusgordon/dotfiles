@@ -8,7 +8,7 @@ function ColorMyPencils()
     -- vim.g.gruvbox_contrast_dark = 'hard'
     -- vim.g.tokyonight_transparent_sidebar = true
     -- vim.g.tokyonight_transparent = true
-    -- vim.opt.background = "dark"
+    vim.opt.background = "dark"
 
     vim.cmd("colorscheme " .. vim.g.colorscheme)
 
@@ -17,6 +17,7 @@ function ColorMyPencils()
     end
 
     hl("SignColumn", { bg = "none" })
+    hl("GitGutterDelete", { fg = "red", bg = "none" })
 
     hl("xmlAttrib", { italic = true, fg = "green" })
     hl("typescriptPredefinedType", { link = "String" })

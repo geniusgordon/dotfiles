@@ -3,6 +3,12 @@ return require('packer').startup(function(use)
 
   use("ThePrimeagen/vim-be-good")
   use("TimUntersberger/neogit")
+  use {
+    'sindrets/diffview.nvim',
+    requires = {'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons'}
+  }
+  use('akinsho/git-conflict.nvim')
+  use("APZelos/blamer.nvim")
 
   -- TJ created lodash of neovim
   use("nvim-lua/plenary.nvim")
@@ -18,7 +24,7 @@ return require('packer').startup(function(use)
   use("fannheyward/telescope-coc.nvim")
 
   use('vim-scripts/IndexedSearch')
-  -- use('airblade/vim-gitgutter')
+  use('airblade/vim-gitgutter')
   use('tpope/vim-commentary')
   -- use('tpope/vim-fugitive')
   use('tpope/vim-abolish') -- fast manipulations
@@ -31,10 +37,13 @@ return require('packer').startup(function(use)
   -- use('christoomey/vim-tmux-navigator')
 
   -- color theme
-  use('folke/tokyonight.nvim')
+  -- use('folke/tokyonight.nvim')
   use { "catppuccin/nvim", as = "catppuccin" }
 
   -- language
   use('pangloss/vim-javascript')
   use('MaxMEllon/vim-jsx-pretty')
+  use('hashivim/vim-terraform')
+
+  use('github/copilot.vim')
 end)
