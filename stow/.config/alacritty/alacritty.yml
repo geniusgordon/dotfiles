@@ -15,5 +15,5 @@ font:
   size: 24.0
 window:
   padding:
-    x: 10
-    y: 10
+    x: 16
+    y: 16
