@@ -9,6 +9,7 @@ return require('packer').startup(function(use)
   }
   use('akinsho/git-conflict.nvim')
   use("APZelos/blamer.nvim")
+  use('nvim-tree/nvim-tree.lua')
 
   -- TJ created lodash of neovim
   use("nvim-lua/plenary.nvim")

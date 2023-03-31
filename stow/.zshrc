@@ -1,4 +1,5 @@
 plugins=(git pass zsh-autosuggestions zsh-syntax-highlighting colored-man-pages)
+
 export ZSH_THEME="gordon"
 export ZSH=${HOME}/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -24,7 +25,7 @@ alias glog='git log --oneline --decorate --graph --color | less'
 alias vim=nvim
 alias vi=nvim
 alias mutt=neomutt
-
+alias diff='nvim -d'
 # make vimdiff execute nvim in diff mode
 alias vimdiff='nvim -d'
 

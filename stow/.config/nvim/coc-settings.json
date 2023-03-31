@@ -1,16 +1,8 @@
 {
   "suggest.noselect": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "go",
-    "graphql",
-    "javascriptreact",
-    "json",
-    "rust",
-    "typescript",
-    "typescript.tsx",
-    "typescriptreact",
-    "yaml"
-  ],
+  "[go][graphql][javascript][javascriptreact][json][rust][typescript][typescript.tsx][typescriptreact][yaml]": {
+    "coc.preferences.formatOnSave": true
+  },
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",
