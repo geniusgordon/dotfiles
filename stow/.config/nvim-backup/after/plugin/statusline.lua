@@ -39,9 +39,9 @@ require('lualine').setup {
       }
     },
     lualine_c = {'filename'},
-    lualine_x = {},
-    lualine_y = {'encoding', 'fileformat', 'filetype'},
-    lualine_z = {'progress', 'location'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress', 'location'},
+    lualine_z = {'g:coc_status'}
   },
   inactive_sections = {
     lualine_a = {},
