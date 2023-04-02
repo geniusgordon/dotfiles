@@ -15,6 +15,7 @@ require("lazy").setup({
   {'nvim-tree/nvim-web-devicons'},
   {'nvim-lualine/lualine.nvim'},
   {'github/copilot.vim'},
+  {'nvim-tree/nvim-tree.lua'},
 
   -- completion
   {'hrsh7th/nvim-cmp'},
@@ -31,4 +32,6 @@ require("lazy").setup({
   {'neovim/nvim-lspconfig'},
   {'williamboman/mason.nvim'},
   {'williamboman/mason-lspconfig.nvim'},
+
+  {'j-hui/fidget.nvim'},
 })
