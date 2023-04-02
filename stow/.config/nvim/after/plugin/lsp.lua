@@ -24,6 +24,41 @@ end
 
 local lspconfig = require("lspconfig")
 
+vim.cmd [[autocmd! ColorScheme * highlight LspFloatBorder guifg=white]]
+
+local border = {
+  {"╭", "LspFloatBorder"},
+  {"─", "LspFloatBorder"},
+  {"╮", "LspFloatBorder"},
+  {"│", "LspFloatBorder"},
+  {"╯", "LspFloatBorder"},
+  {"─", "LspFloatBorder"},
+  {"╰", "LspFloatBorder"},
+  {"│", "LspFloatBorder"},
+}
+
+vim.cmd([[
+  highlight! DiagnosticLineNrError guibg=#F38BA8 guifg=black
+  highlight! DiagnosticLineNrWarn guibg=#F9E2AF guifg=black
+  highlight! DiagnosticLineNrInfo guibg=#A6E3A1 guifg=black
+  highlight! DiagnosticLineNrHint guibg=#94E2D5 guifg=black
+]])
+
+
+vim.cmd([[
+  sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
+  sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
+  sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticLineNrInfo
+  sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticLineNrHint
+]])
+
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or border
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
 lspconfig.lua_ls.setup({
   settings = {
     Lua = {

@@ -33,6 +33,17 @@ cmp.setup({
   formatting = {
     format = lspkind.cmp_format({
       with_text = true,
+      before = function (entry, vim_item)
+        vim_item.menu = ({
+          buffer = "[Buffer]",
+          nvim_lsp = "[LSP]",
+          luasnip = "[LuaSnip]",
+          nvim_lua = "[Lua]",
+          latex_symbols = "[LaTeX]",
+        })[entry.source.name]
+
+        return vim_item
+      end
     }),
   },
   experimental = {
