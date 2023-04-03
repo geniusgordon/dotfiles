@@ -80,5 +80,10 @@ lspconfig.eslint.setup({
 })
 
 lspconfig.tsserver.setup({
+  init_options = {
+    preferences = {
+      importModuleSpecifierPreference = 'relative',
+    },
+  },
   on_attach = on_attach,
 })

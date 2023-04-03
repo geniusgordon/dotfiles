@@ -17,6 +17,7 @@ require("lazy").setup({
   {'github/copilot.vim'},
   {'nvim-tree/nvim-tree.lua'},
   {'alexghergh/nvim-tmux-navigation'},
+  {'folke/which-key.nvim'},
 
   -- completion
   {'hrsh7th/nvim-cmp'},
@@ -31,7 +32,10 @@ require("lazy").setup({
 
   -- lsp
   {'neovim/nvim-lspconfig'},
-  {'williamboman/mason.nvim'},
+  {
+    'williamboman/mason.nvim',
+    build = ":MasonUpdate" -- :MasonUpdate updates registry contents
+  },
   {'williamboman/mason-lspconfig.nvim'},
 
   {'j-hui/fidget.nvim'},
