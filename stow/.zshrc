@@ -22,6 +22,7 @@ export PATH="/Users/gordon/.local/share/solana/install/active_release/bin:$PATH"
 export JAVA_HOME=/opt/homebrew/Cellar/openjdk/17.0.2
 
 alias glog='git log --oneline --decorate --graph --color | less'
+# alias ls=colorls
 alias vim=nvim
 alias vi=nvim
 alias mutt=neomutt
