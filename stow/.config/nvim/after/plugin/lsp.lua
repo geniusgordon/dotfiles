@@ -87,3 +87,7 @@ lspconfig.tsserver.setup({
   },
   on_attach = on_attach,
 })
+
+lspconfig.lemminx.setup({
+  on_attach = on_attach,
+})

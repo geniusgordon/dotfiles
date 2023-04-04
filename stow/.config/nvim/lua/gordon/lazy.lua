@@ -17,7 +17,6 @@ require("lazy").setup({
   {'github/copilot.vim'},
   {'nvim-tree/nvim-tree.lua'},
   {'alexghergh/nvim-tmux-navigation'},
-  {'folke/which-key.nvim'},
 
   -- completion
   {'hrsh7th/nvim-cmp'},
