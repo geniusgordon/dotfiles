@@ -1,5 +1,9 @@
+.DS_Store
 stow/.config/nvim/plugin/packer_compiled.lua
 stow/.vim/.netrwhist
 stow/.vim/undodir/
 stow/.config/tmux/plugins/
 stow/Library/Rime/*.userdb
+stow/Library/Rime/build/
+stow/Library/Rime/installation.yaml
+stow/Library/Rime/user.yaml

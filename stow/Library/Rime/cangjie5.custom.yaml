@@ -1,5 +1,0 @@
-__patch:
-# Rx: emoji:customize:schema=cangjie5 {
-  - patch/+:
-      __include: emoji_suggestion:/patch
-# }

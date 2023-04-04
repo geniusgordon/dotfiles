@@ -1,0 +1,60 @@
+---
+name: bopomofo.extended
+version: "1"
+sort: by_weight
+use_preset_vocabulary: true
+import_tables:
+  - terra_pinyin
+...
+# `char+space` types phonemes
+ㄅ	b
+ㄆ	p
+ㄇ	m
+ㄈ	f
+ㄉ	d
+ㄊ	t
+ㄋ	n
+ㄌ	l
+ㄍ	g
+ㄎ	k
+ㄏ	h
+ㄐ	j
+ㄑ	q
+ㄒ	x
+ㄓ	zh
+ㄔ	ch
+ㄕ	sh
+ㄖ	ri
+ㄗ	zi
+ㄘ	ci
+ㄙ	si
+ㄧ	yi
+ㄨ	wu
+ㄩ	yu
+ㄚ	a
+ㄛ	o
+ㄜ	e
+ㄝ	eh
+ㄞ	ai
+ㄟ	ei
+ㄠ	ao
+ㄡ	ou
+ㄢ	an
+ㄣ	en
+ㄤ	ang
+ㄥ	eng
+ㄦ	er
+
+# mimic the behavior of most input methods
+ˊ	2
+ˇ	3
+ˋ	4
+˙	5
+
+# preferred / added punct.
+一	yi1	34%
+一	yi2	33%
+一	yi4	33%
+
+#
+們	men2
