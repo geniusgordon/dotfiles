@@ -7,3 +7,6 @@ stow/Library/Rime/*.userdb
 stow/Library/Rime/build/
 stow/Library/Rime/installation.yaml
 stow/Library/Rime/user.yaml
+stow/Library/Rime/japanese.jmdict.dict.yaml
+stow/Library/Rime/japanese.kana.dict.yaml
+stow/Library/Rime/japanese.mozc.dict.yaml
