@@ -2,3 +2,4 @@ stow/.config/nvim/plugin/packer_compiled.lua
 stow/.vim/.netrwhist
 stow/.vim/undodir/
 stow/.config/tmux/plugins/
+stow/Library/Rime/*.userdb
