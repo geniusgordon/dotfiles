@@ -2,3 +2,8 @@ patch:
   speller/initials: "1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/-6347"
   translator/dictionary: bopomofo.extended
   punctuator/full_shape/~: {commit: "～"}
+__patch:
+# Rx: emoji:customize:schema=bopomofo {
+  - patch/+:
+      __include: emoji_suggestion:/patch
+# }
