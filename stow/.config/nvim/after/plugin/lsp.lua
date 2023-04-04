@@ -59,6 +59,8 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 lspconfig.lua_ls.setup({
   settings = {
     Lua = {
@@ -68,6 +70,7 @@ lspconfig.lua_ls.setup({
     },
   },
   on_attach = on_attach,
+  capabilities = capabilities,
 })
 
 lspconfig.eslint.setup({
@@ -77,6 +80,7 @@ lspconfig.eslint.setup({
       command = "EslintFixAll",
     })
   end,
+  capabilities = capabilities,
 })
 
 lspconfig.tsserver.setup({
@@ -86,8 +90,10 @@ lspconfig.tsserver.setup({
     },
   },
   on_attach = on_attach,
+  capabilities = capabilities,
 })
 
 lspconfig.lemminx.setup({
   on_attach = on_attach,
+  capabilities = capabilities,
 })

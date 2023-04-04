@@ -1,0 +1,12 @@
+patch:
+  style/+:
+    font_face: jf-openhuninn-1.1
+    candidate_format: "%c. %@"
+    label_font_face: 'Andale Mono'
+    label_font_point: 14
+    inline_preedit: false
+  app_options/+:
+    com.google.Chrome/+:
+      inline: false
+    ru.keepcoder.Telegram/+:
+      inline: false
