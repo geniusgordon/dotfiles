@@ -27,8 +27,12 @@ cmp.setup({
     { name = 'buffer', keyword_length = 3 },
   },
   window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered({
+      winhighlight = 'Normal:Normal,FloatBorder:CmpFloatBorder,CursorLine:Visual,Search:None',
+    }),
+    documentation = cmp.config.window.bordered({
+      winhighlight = 'Normal:Normal,FloatBorder:CmpFloatBorder,CursorLine:Visual,Search:None',
+    }),
   },
   formatting = {
     format = lspkind.cmp_format({
@@ -66,3 +70,6 @@ cmp.setup.cmdline({ '/', '?' }, {
     { name = 'buffer' }
   },
 })
+
+local colors = require("gordon.catppuccin").base_30
+vim.api.nvim_set_hl(0, 'CmpFloatBorder', { fg = colors.one_bg3 })

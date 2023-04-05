@@ -12,6 +12,17 @@ require("nvim-tree").setup({
       quit_on_open = true,
     },
   },
+  renderer = {
+    indent_markers = {
+      enable = true,
+    },
+    icons = {
+      show = {
+        folder_arrow = false,
+      },
+
+    }
+  }
 })
 
 vim.keymap.set("n", "<leader>t", ':NvimTreeToggle<cr>')
@@ -33,3 +44,6 @@ local function open_nvim_tree(data)
 end
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
+local colors = require("gordon.catppuccin").base_30
+vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = colors.one_bg3 })
