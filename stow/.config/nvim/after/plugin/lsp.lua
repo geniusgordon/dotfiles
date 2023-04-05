@@ -23,8 +23,9 @@ local on_attach = function(_, _)
 end
 
 local lspconfig = require("lspconfig")
+local colors = require("gordon.catppuccin").base_30
 
-vim.cmd [[autocmd! ColorScheme * highlight LspFloatBorder guifg=white]]
+vim.api.nvim_set_hl(0, 'LspFloatBorder', { fg = colors.one_bg3 })
 
 local border = {
   {"╭", "LspFloatBorder"},
@@ -37,13 +38,10 @@ local border = {
   {"│", "LspFloatBorder"},
 }
 
-vim.cmd([[
-  highlight! DiagnosticLineNrError guibg=#F38BA8 guifg=black
-  highlight! DiagnosticLineNrWarn guibg=#F9E2AF guifg=black
-  highlight! DiagnosticLineNrInfo guibg=#A6E3A1 guifg=black
-  highlight! DiagnosticLineNrHint guibg=#94E2D5 guifg=black
-]])
-
+vim.api.nvim_set_hl(0, 'DiagnosticLineNrError', { bg=colors.red, fg=colors.black })
+vim.api.nvim_set_hl(0, 'DiagnosticLineNrWarn', { bg=colors.orange, fg=colors.black })
+vim.api.nvim_set_hl(0, 'DiagnosticLineNrInfo', { bg=colors.green, fg=colors.black })
+vim.api.nvim_set_hl(0, 'DiagnosticLineNrHint', { bg=colors.cyan, fg=colors.black })
 
 vim.cmd([[
   sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError

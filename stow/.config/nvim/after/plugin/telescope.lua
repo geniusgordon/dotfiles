@@ -1,3 +1,14 @@
+require('telescope').setup({
+  defaults = {
+    prompt_prefix = "   ",
+    layout_config = {
+      horizontal = {
+        preview_width = 0.6,
+      },
+    },
+  }
+})
+
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>p', '<nop>', {})
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
@@ -5,3 +16,22 @@ vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 vim.keymap.set('n', '<leader>ps', function()
   builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
+
+local colors = require("gordon.catppuccin").base_30
+
+vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { fg = colors.red, bg = colors.black2 })
+vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = colors.black })
+vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { fg = colors.black, bg = colors.green })
+vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { fg = colors.black, bg = colors.blue })
+
+vim.api.nvim_set_hl(0, 'TelescopeResultsDiffAdd', { fg = colors.green })
+vim.api.nvim_set_hl(0, 'TelescopeResultsDiffChange', { fg = colors.yellow })
+vim.api.nvim_set_hl(0, 'TelescopeResultsDiffDelete', { fg = colors.red })
+
+vim.api.nvim_set_hl(0, 'TelescopeBorder', { fg = colors.one_bg3 })
+vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = colors.one_bg3 })
+vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { fg = colors.black, bg = colors.green })
+vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { fg = colors.black, bg = colors.blue })
+vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { fg = colors.red, bg = colors.black })
+vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = colors.black })
+vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { bg = colors.black })
