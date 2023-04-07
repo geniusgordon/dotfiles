@@ -38,4 +38,5 @@ require("lazy").setup({
   {'williamboman/mason-lspconfig.nvim'},
 
   {'j-hui/fidget.nvim'},
+  {'folke/which-key.nvim'},
 })

@@ -17,14 +17,14 @@ cmp.setup({
   },
   snippet = {
     expand = function(args)
-      require'luasnip'.lsp_expand(args.body)
+      require 'luasnip'.lsp_expand(args.body)
     end
   },
   sources = {
     { name = 'nvim_lua' },
     { name = 'nvim_lsp' },
     { name = 'path' },
-    { name = 'buffer', keyword_length = 3 },
+    { name = 'buffer',  keyword_length = 3 },
   },
   window = {
     completion = cmp.config.window.bordered({
@@ -37,7 +37,7 @@ cmp.setup({
   formatting = {
     format = lspkind.cmp_format({
       with_text = true,
-      before = function (entry, vim_item)
+      before = function(entry, vim_item)
         vim_item.menu = ({
           buffer = "[Buffer]",
           nvim_lsp = "[LSP]",

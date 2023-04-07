@@ -8,13 +8,13 @@ require("mason-lspconfig").setup({
 local builtin = require('telescope.builtin')
 
 local on_attach = function(_, _)
-  vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, {})
-  vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, {})
+  vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, {})
+  vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end, {})
 
-  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, {})
-  vim.keymap.set("n", "<C-j>", function() vim.diagnostic.goto_next() end, {})
-  vim.keymap.set("n", "<C-k>", function() vim.diagnostic.goto_prev() end, {})
-  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, {})
+  vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end, {})
+  vim.keymap.set('n', '<C-j>', function() vim.diagnostic.goto_next() end, {})
+  vim.keymap.set('n', '<C-k>', function() vim.diagnostic.goto_prev() end, {})
+  vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, {})
 
   vim.keymap.set('n', 'gr', builtin.lsp_references, {})
   vim.keymap.set('n', 'gd', builtin.lsp_definitions, {})
@@ -28,20 +28,20 @@ local colors = require("gordon.catppuccin").base_30
 vim.api.nvim_set_hl(0, 'LspFloatBorder', { fg = colors.one_bg3 })
 
 local border = {
-  {"╭", "LspFloatBorder"},
-  {"─", "LspFloatBorder"},
-  {"╮", "LspFloatBorder"},
-  {"│", "LspFloatBorder"},
-  {"╯", "LspFloatBorder"},
-  {"─", "LspFloatBorder"},
-  {"╰", "LspFloatBorder"},
-  {"│", "LspFloatBorder"},
+  { "╭", "LspFloatBorder" },
+  { "─", "LspFloatBorder" },
+  { "╮", "LspFloatBorder" },
+  { "│", "LspFloatBorder" },
+  { "╯", "LspFloatBorder" },
+  { "─", "LspFloatBorder" },
+  { "╰", "LspFloatBorder" },
+  { "│", "LspFloatBorder" },
 }
 
-vim.api.nvim_set_hl(0, 'DiagnosticLineNrError', { bg=colors.red, fg=colors.black })
-vim.api.nvim_set_hl(0, 'DiagnosticLineNrWarn', { bg=colors.orange, fg=colors.black })
-vim.api.nvim_set_hl(0, 'DiagnosticLineNrInfo', { bg=colors.green, fg=colors.black })
-vim.api.nvim_set_hl(0, 'DiagnosticLineNrHint', { bg=colors.cyan, fg=colors.black })
+vim.api.nvim_set_hl(0, 'DiagnosticLineNrError', { bg = colors.red, fg = colors.black })
+vim.api.nvim_set_hl(0, 'DiagnosticLineNrWarn', { bg = colors.orange, fg = colors.black })
+vim.api.nvim_set_hl(0, 'DiagnosticLineNrInfo', { bg = colors.green, fg = colors.black })
+vim.api.nvim_set_hl(0, 'DiagnosticLineNrHint', { bg = colors.cyan, fg = colors.black })
 
 vim.cmd([[
   sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
@@ -63,7 +63,7 @@ lspconfig.lua_ls.setup({
   settings = {
     Lua = {
       diagnostics = {
-        globals = {'vim'},
+        globals = { 'vim' },
       },
     },
   },

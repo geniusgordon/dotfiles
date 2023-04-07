@@ -29,6 +29,11 @@ vim.keymap.set("n", "<leader>t", ':NvimTreeToggle<cr>')
 vim.keymap.set("n", "<leader>pv", ':NvimTreeFindFile<cr>')
 
 local function open_nvim_tree(data)
+  if #vim.fn.argv() == 0 and not vim.o.insertmode then
+    require("nvim-tree.api").tree.open()
+    return
+  end
+
   -- buffer is a directory
   local directory = vim.fn.isdirectory(data.file) == 1
 
@@ -37,6 +42,7 @@ local function open_nvim_tree(data)
   end
 
   -- change to the directory
+  print(data.file)
   vim.cmd.cd(data.file)
 
   -- open the tree
