@@ -25,6 +25,7 @@ alias glog='git log --oneline --decorate --graph --color | less'
 # alias ls=colorls
 alias vim=nvim
 alias vi=nvim
+alias vim-nvchad='NVIM_APPNAME=nvchad nvim'
 alias mutt=neomutt
 alias diff='nvim -d'
 # make vimdiff execute nvim in diff mode

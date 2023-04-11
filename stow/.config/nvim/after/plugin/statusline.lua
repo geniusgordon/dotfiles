@@ -1,9 +1,9 @@
 require('lualine').setup {
   options = {
-    icons_enabled = false,
+    icons_enabled = true,
     theme = "catppuccin",
-    component_separators = { left = '', right = '|'},
-    section_separators = { left = '', right = ''},
+    component_separators = { left = '', right = '|' },
+    section_separators = { left = '', right = '' },
     disabled_filetypes = {
       statusline = {},
       winbar = {},
@@ -18,7 +18,7 @@ require('lualine').setup {
     }
   },
   sections = {
-    lualine_a = {'mode'},
+    lualine_a = { 'mode' },
     lualine_b = {
       'branch',
       'diff',
@@ -32,22 +32,29 @@ require('lualine').setup {
           info  = 'DiagnosticInfo',
           hint  = 'DiagnosticHint',
         },
-        symbols = {error = 'E', warn = 'W', info = 'I', hint = 'H'},
+        symbols = { error = 'E', warn = 'W', info = 'I', hint = 'H' },
         colored = true,
         update_in_insert = false,
         always_visible = false,
       }
     },
-    lualine_c = {'filename'},
-    lualine_x = {},
-    lualine_y = {'encoding', 'fileformat', 'filetype'},
-    lualine_z = {'progress', 'location'},
+    lualine_c = {
+      {
+        'filetype',
+        icon_only = true,
+        icon = { align = 'right' },
+      },
+      'filename',
+    },
+    lualine_x = { 'fileformat' },
+    lualine_y = { 'encoding' },
+    lualine_z = { 'progress' },
   },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
+    lualine_c = { 'filename' },
+    lualine_x = { 'location' },
     lualine_y = {},
     lualine_z = {}
   },
