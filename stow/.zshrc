@@ -22,10 +22,11 @@ export PATH="/Users/gordon/.local/share/solana/install/active_release/bin:$PATH"
 export JAVA_HOME=/opt/homebrew/Cellar/openjdk/17.0.2
 
 alias glog='git log --oneline --decorate --graph --color | less'
-# alias ls=colorls
+alias ls=lsd
 alias vim=nvim
 alias vi=nvim
 alias vim-nvchad='NVIM_APPNAME=nvchad nvim'
+alias vim-lazy='NVIM_APPNAME=lazy-vim nvim'
 alias mutt=neomutt
 alias diff='nvim -d'
 # make vimdiff execute nvim in diff mode
