@@ -57,6 +57,11 @@ M.setup = function ()
     on_attach = on_attach,
     capabilities = capabilities,
   })
+
+  lspconfig.gopls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
 end
 
 return M

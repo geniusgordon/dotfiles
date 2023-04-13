@@ -43,6 +43,7 @@ require('lualine').setup {
         'filetype',
         icon_only = true,
         icon = { align = 'right' },
+        padding = { left = 1, right = 0 },
       },
       'filename',
     },

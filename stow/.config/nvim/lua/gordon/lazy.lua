@@ -22,6 +22,7 @@ require("lazy").setup({
   { 'nvim-tree/nvim-tree.lua' },
   { 'alexghergh/nvim-tmux-navigation' },
   { 'lewis6991/gitsigns.nvim' },
+  { 'RRethy/vim-illuminate' },
 
   -- completion
   { 'hrsh7th/nvim-cmp' },
