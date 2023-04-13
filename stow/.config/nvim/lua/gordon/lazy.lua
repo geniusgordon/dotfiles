@@ -19,7 +19,16 @@ require("lazy").setup({
   { 'nvim-tree/nvim-web-devicons' },
   { 'nvim-lualine/lualine.nvim' },
   { 'github/copilot.vim' },
-  { 'nvim-tree/nvim-tree.lua' },
+  -- { 'nvim-tree/nvim-tree.lua' },
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v2.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+      'MunifTanjim/nui.nvim',
+    }
+  },
   { 'alexghergh/nvim-tmux-navigation' },
   { 'lewis6991/gitsigns.nvim' },
   { 'RRethy/vim-illuminate' },
