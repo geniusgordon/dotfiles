@@ -60,4 +60,9 @@ require("lazy").setup({
 
   { 'j-hui/fidget.nvim' },
   { 'folke/which-key.nvim' },
+
+  {
+    "rest-nvim/rest.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
 })
