@@ -44,6 +44,7 @@ cmp.setup({
           luasnip = "[LuaSnip]",
           nvim_lua = "[Lua]",
           latex_symbols = "[LaTeX]",
+          ['vim-dadbod-completion'] = '[DB]',
         })[entry.source.name]
 
         return vim_item
@@ -69,6 +70,12 @@ cmp.setup.cmdline({ '/', '?' }, {
   sources = {
     { name = 'buffer' }
   },
+})
+
+cmp.setup.filetype({ 'sql', 'mysql', 'plsql' }, {
+  sources = {
+    { name = 'vim-dadbod-completion' },
+  }
 })
 
 local colors = require("gordon.catppuccin").base_30

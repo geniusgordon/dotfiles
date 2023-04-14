@@ -58,11 +58,29 @@ require("lazy").setup({
   { 'jay-babu/mason-nvim-dap.nvim' },
   { 'rcarriga/nvim-dap-ui' },
 
+  -- format
+  {
+    'jay-babu/mason-null-ls.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    dependencies = {
+      'williamboman/mason.nvim',
+      'jose-elias-alvarez/null-ls.nvim',
+    },
+  },
+
   { 'j-hui/fidget.nvim' },
   { 'folke/which-key.nvim' },
 
   {
     "rest-nvim/rest.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+  },
+
+  {
+    'kristijanhusak/vim-dadbod-ui',
+    dependencies = {
+      'tpope/vim-dadbod',
+      'kristijanhusak/vim-dadbod-completion',
+    },
   },
 })

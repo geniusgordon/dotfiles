@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup =  function ()
+M.setup = function()
   require('mason').setup()
   require('mason-lspconfig').setup({
     ensure_installed = {
@@ -9,14 +9,11 @@ M.setup =  function ()
   })
   require('mason-nvim-dap').setup({
     automatic_setup = true,
-    handlers = {
-      function(config)
-        -- all sources with no handler get passed here
-
-        -- Keep original functionality
-        require('mason-nvim-dap').default_setup(config)
-      end,
-    }
+    handlers = {}
+  })
+  require('mason-null-ls').setup({
+    automatic_setup = true,
+    handlers = {}
   })
 end
 
