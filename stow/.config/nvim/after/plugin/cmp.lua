@@ -1,5 +1,6 @@
 local cmp = require('cmp')
 local lspkind = require('lspkind')
+require('crates').setup()
 lspkind.init()
 
 cmp.setup({
@@ -25,6 +26,7 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'path' },
     { name = 'buffer',  keyword_length = 3 },
+    { name = 'crates' },
   },
   window = {
     completion = cmp.config.window.bordered({

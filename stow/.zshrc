@@ -18,6 +18,7 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 
 export PATH="/Users/gordon/.local/share/solana/install/active_release/bin:$PATH"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 export JAVA_HOME=/opt/homebrew/Cellar/openjdk/17.0.2
 

@@ -43,6 +43,11 @@ require("lazy").setup({
   { 'L3MON4D3/LuaSnip' },
   { 'onsails/lspkind.nvim' },
   { 'saadparwaiz1/cmp_luasnip' },
+  {
+    'saecki/crates.nvim',
+    tag = 'v0.3.0',
+    requires = { 'nvim-lua/plenary.nvim' },
+  },
 
   -- lsp
   { 'neovim/nvim-lspconfig' },
