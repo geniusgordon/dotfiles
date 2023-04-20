@@ -1,7 +1,9 @@
 local cmp = require('cmp')
 local lspkind = require('lspkind')
-require('crates').setup()
 lspkind.init()
+
+require('crates').setup()
+-- require('copilot_cmp').setup()
 
 cmp.setup({
   mapping = {
@@ -27,6 +29,7 @@ cmp.setup({
     { name = 'path' },
     { name = 'buffer',  keyword_length = 3 },
     { name = 'crates' },
+    -- { name = 'copilot' },
   },
   window = {
     completion = cmp.config.window.bordered({
