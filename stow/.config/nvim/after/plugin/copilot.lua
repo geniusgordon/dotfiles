@@ -19,7 +19,7 @@ require('copilot').setup({
       accept_line = false,
       next = "<C-j>",
       prev = "<C-k>",
-      dismiss = "<C-]>",
+      dismiss = "<C-l>",
     },
   },
   filetypes = {

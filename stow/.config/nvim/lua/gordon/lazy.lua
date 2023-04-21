@@ -30,7 +30,7 @@ require("lazy").setup({
   -- },
   { 'alexghergh/nvim-tmux-navigation' },
   { 'lewis6991/gitsigns.nvim' },
-  { 'RRethy/vim-illuminate' },
+  -- { 'RRethy/vim-illuminate' },
   -- { 'github/copilot.vim' },
   { 'zbirenbaum/copilot.lua' },
 

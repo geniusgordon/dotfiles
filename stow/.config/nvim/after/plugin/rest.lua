@@ -33,4 +33,6 @@ require("rest-nvim").setup({
   yank_dry_run = true,
 })
 
-vim.keymap.set('n', '<leader>rr', '<Plug>RestNvim', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>rr', '<Plug>RestNvim', {
+  noremap = true, silent = true, desc = 'RestNvim'
+})
