@@ -14,6 +14,7 @@ require('nvim-treesitter.configs').setup({
     "gitcommit",
     "gitignore",
     "go",
+    "graphql",
     "html",
     "http",
     "javascript",

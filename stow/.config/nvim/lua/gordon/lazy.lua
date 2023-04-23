@@ -33,6 +33,10 @@ require("lazy").setup({
   -- { 'RRethy/vim-illuminate' },
   -- { 'github/copilot.vim' },
   { 'zbirenbaum/copilot.lua' },
+  {
+    'folke/todo-comments.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  },
 
   -- completion
   { 'hrsh7th/nvim-cmp' },
@@ -47,7 +51,7 @@ require("lazy").setup({
   {
     'saecki/crates.nvim',
     tag = 'v0.3.0',
-    requires = { 'nvim-lua/plenary.nvim' },
+    dependencies = { 'nvim-lua/plenary.nvim' },
   },
   { 'zbirenbaum/copilot-cmp' },
 
