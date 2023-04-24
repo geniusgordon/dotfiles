@@ -1,8 +1,10 @@
 local ls = require('luasnip')
 
 local s = ls.snippet
+local t = ls.text_node
 local i = ls.insert_node
 local f = ls.function_node
+local c = ls.choice_node
 local fmt = require('luasnip.extras.fmt').fmt
 local same = require('gordon.snippet').same
 
@@ -28,9 +30,11 @@ end
 return {
   s('fc',
     fmt([[
+import React from 'react';
+
 function {}({{
 {}
-}}: {}Props): JSX.Element {{
+}}: {}Props): {} {{
 }}
 
 type {}Props = {{
@@ -40,10 +44,11 @@ type {}Props = {{
 export default {}
 ]], {
       i(1),     -- name
-      props(2), -- props fields
+      props(3), -- props fields
       same(1),  -- props type
+      c(2, { t('JSX.Element'), t('JSX.Element | null') }), -- return type
       same(1),  -- props type
-      i(2),     -- props type fields
+      i(3),     -- props type fields
       same(1),  -- export
     })
   ),

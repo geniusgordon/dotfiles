@@ -16,10 +16,10 @@ M.setup = function ()
     { "│", "LspFloatBorder" },
   }
 
-  vim.api.nvim_set_hl(0, 'DiagnosticLineNrError', { bg = colors.red, fg = colors.black })
-  vim.api.nvim_set_hl(0, 'DiagnosticLineNrWarn', { bg = colors.orange, fg = colors.black })
-  vim.api.nvim_set_hl(0, 'DiagnosticLineNrInfo', { bg = colors.green, fg = colors.black })
-  vim.api.nvim_set_hl(0, 'DiagnosticLineNrHint', { bg = colors.cyan, fg = colors.black })
+  vim.api.nvim_set_hl(0, 'DiagnosticLineNrError', { link = 'DiagnosticVirtualTextError' })
+  vim.api.nvim_set_hl(0, 'DiagnosticLineNrWarn', { link = 'DiagnosticVirtualTextWarn' })
+  vim.api.nvim_set_hl(0, 'DiagnosticLineNrInfo', { link = 'DiagnosticVirtualTextInfo' })
+  vim.api.nvim_set_hl(0, 'DiagnosticLineNrHint', { link = 'DiagnosticVirtualTextHint'})
 
   vim.cmd([[
   sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
