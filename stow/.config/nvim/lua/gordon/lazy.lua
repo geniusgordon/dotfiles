@@ -18,6 +18,7 @@ require("lazy").setup({
   { 'numToStr/Comment.nvim' },
   { 'nvim-tree/nvim-web-devicons' },
   { 'nvim-lualine/lualine.nvim' },
+  { 'akinsho/bufferline.nvim' },
   { 'nvim-tree/nvim-tree.lua' },
   -- {
   --   'nvim-neo-tree/neo-tree.nvim',

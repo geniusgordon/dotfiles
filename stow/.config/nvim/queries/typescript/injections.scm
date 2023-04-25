@@ -1,4 +1,8 @@
 (call_expression
-  (identifier) @func (#eq? @func "gql")
-  (template_string) @graphql
+  (member_expression
+    (property_identifier) @func (#eq? @func "andWhere")
+  )
+  (arguments
+    (string) @sql
+  )
 )

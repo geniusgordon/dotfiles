@@ -43,13 +43,13 @@ type {}Props = {{
 
 export default {}
 ]], {
-      i(1),     -- name
-      props(3), -- props fields
-      same(1),  -- props type
+      i(1),                                                -- name
+      props(3),                                            -- props fields
+      same(1),                                             -- props type
       c(2, { t('JSX.Element'), t('JSX.Element | null') }), -- return type
-      same(1),  -- props type
-      i(3),     -- props type fields
-      same(1),  -- export
+      same(1),                                             -- props type
+      i(3),                                                -- props type fields
+      same(1),                                             -- export
     })
   ),
 }

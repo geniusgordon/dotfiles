@@ -29,6 +29,20 @@ M.setup = function()
   local lspconfig = require("lspconfig")
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+  vim.diagnostic.config({
+    virtual_text = false,
+    float = {
+      show_header = true,
+      format = function(diagnostic)
+        if diagnostic.source == 'typescript' then
+          local result = vim.fn.system({ 'pretty-ts-error', diagnostic.message })
+          return string.format('%s\n%s\n', result, diagnostic.source)
+        end
+        return string.format('%s\n%s\n', diagnostic.message, diagnostic.source)
+      end,
+    },
+  })
+
   lspconfig.lua_ls.setup({
     settings = {
       Lua = {
