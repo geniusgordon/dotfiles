@@ -12,7 +12,7 @@ M.setup = function()
   require("nvim-tree").setup({
     actions = {
       open_file = {
-        quit_on_open = true,
+        -- quit_on_open = true,
       },
     },
     renderer = {
@@ -51,7 +51,7 @@ M.setup = function()
     require("nvim-tree.api").tree.open()
   end
 
-  vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+  -- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
   local colors = require("gordon.catppuccin").base_30
   vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = colors.one_bg3 })

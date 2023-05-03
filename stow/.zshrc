@@ -32,6 +32,7 @@ alias mutt=neomutt
 alias diff='nvim -d'
 # make vimdiff execute nvim in diff mode
 alias vimdiff='nvim -d'
+alias view='nvim -R'
 
 export N_PREFIX=$HOME/.local
 

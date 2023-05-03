@@ -1,4 +1,4 @@
-vim.opt.mouse = ""
+vim.opt.mouse = "a"
 vim.opt.guicursor="n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20"
 vim.opt.cursorline = true
 
@@ -30,7 +30,8 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
-vim.opt.foldmethod = 'syntax'
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 99
 
 -- Give more space for displaying messages.
@@ -46,4 +47,5 @@ vim.opt.shortmess:append("c")
 vim.opt.colorcolumn = "80"
 
 vim.opt.splitbelow = true
--- vim.opt.clipboard = "unnamed"
+
+vim.g.xml_syntax_folding = true
