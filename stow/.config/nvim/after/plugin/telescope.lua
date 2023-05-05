@@ -1,4 +1,6 @@
-require('telescope').setup({
+local telescope = require('telescope')
+
+telescope.setup({
   defaults = {
     prompt_prefix = "   ",
     layout_config = {
@@ -8,6 +10,9 @@ require('telescope').setup({
     },
   }
 })
+
+telescope.load_extension('dap')
+telescope.load_extension('ui-select')
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>p', '<nop>', {})
