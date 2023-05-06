@@ -93,12 +93,12 @@ type {}Variables = {{
 		fmt(
 			[[
 export function use{}({}) {{
-  const fn = useMutation<
+  const [fn] = useMutation<
     {}Data,
     {}
   >({})
 
-  const {} = React.useCallback(() => {{
+  const {} = React.useCallback(({}) => {{
     return fn({})
   }}, [fn])
 
@@ -123,7 +123,7 @@ type {}Data = {{
 				f(function(args)
 					local str = args[1][1]
 					return string.lower(string.sub(str, 1, 1)) .. string.sub(str, 2)
-				end, { 1 }),
+				end, { 1 }), -- fn name
 				d(4, function(args)
 					if args[1][1] == "" then
 						return sn(nil, { t("") })
@@ -131,27 +131,23 @@ type {}Data = {{
 
 					return sn(
 						nil,
-						fmt(
-							[[{{
-      variables: {{
-        {}
-      }}
-    }}]],
-							{
-								f(function(a)
-									return type_to_obj(a[1])
-								end, ai[6][0][1]),
-							}
-						)
+						fmt([[variables: {}Variables]], { same(1) })
 					)
+				end, ai[3]), -- fn args
+				d(5, function(args)
+					if args[1][1] == "" then
+						return sn(nil, { t("") })
+					end
+
+          return sn(nil, { t("{ variables }") })
 				end, ai[3]), -- variables args
 				f(function(args)
 					local str = args[1][1]
 					return string.lower(string.sub(str, 1, 1)) .. string.sub(str, 2)
 				end, { 1 }),
 				same(1), -- data type
-				i(5), -- data type fields
-				d(6, function(args)
+				i(6), -- data type fields
+				d(7, function(args)
 					if args[1][1] == "" then
 						return sn(nil, { t("") })
 					end

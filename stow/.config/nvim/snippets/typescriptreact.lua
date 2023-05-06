@@ -47,15 +47,16 @@ export default {}
 						fmt(
 							[[{{
   {}
-}}]],
+}}: {}Props]],
 							{
 								f(function(a)
 									return type_to_obj(a[1])
 								end, ai[4][2][1]),
+                same(1),
 							}
 						)
 					)
-				end, ai[4]),
+				end, ai[4]), -- props args
 				c(3, { t("JSX.Element"), t("JSX.Element | null") }), -- return type
 				c(4, {
 					t(""),
