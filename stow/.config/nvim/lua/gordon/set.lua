@@ -49,3 +49,4 @@ vim.opt.colorcolumn = "80"
 vim.opt.splitbelow = true
 
 vim.g.xml_syntax_folding = true
+vim.opt.fillchars = { diff = ' ' }

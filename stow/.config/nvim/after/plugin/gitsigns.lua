@@ -1,4 +1,6 @@
-require('gitsigns').setup {
+local gs = require('gitsigns')
+
+gs.setup {
   signs = {
     add          = { text = '│' },
     change       = { text = '│' },
