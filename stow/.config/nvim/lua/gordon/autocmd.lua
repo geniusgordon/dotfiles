@@ -13,3 +13,8 @@ autocmd("FileType", {
   pattern = "xml",
   command = "setlocal foldmethod=syntax",
 })
+
+autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.http",
+  command = "setlocal filetype=http",
+})

@@ -30,7 +30,6 @@ cmp.setup({
 		{ name = "buffer", keyword_length = 3 },
 		{ name = "crates" },
 		{ name = "luasnip" },
-		-- { name = 'copilot' },
 	},
 	window = {
 		completion = cmp.config.window.bordered({
@@ -77,7 +76,7 @@ cmp.setup.cmdline({ "/", "?" }, {
 
 cmp.setup.filetype({ "sql", "mysql", "plsql" }, {
 	sources = {
-		{ name = "vim-dadbod-completion" },
+		{ name = "vim-dadbod-completion", keyword_length = 3 },
 	},
 })
 

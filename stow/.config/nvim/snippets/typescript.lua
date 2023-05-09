@@ -9,7 +9,6 @@ local d = ls.dynamic_node
 local c = ls.choice_node
 local fmt = require("luasnip.extras.fmt").fmt
 local same = require("gordon.snippet").same
-local type_to_obj = require("gordon.snippet").type_to_obj
 local ai = require("luasnip.nodes.absolute_indexer")
 
 return {
