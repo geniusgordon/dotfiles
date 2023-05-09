@@ -48,7 +48,7 @@ end
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "http",
 	callback = function(event)
-		vim.keymap.set("n", "<leader>rr", "<Plug>RestNvim", {
+		vim.keymap.set("n", "<leader>S", "<Plug>RestNvim", {
 			noremap = true,
 			silent = true,
 			desc = "RestNvim",

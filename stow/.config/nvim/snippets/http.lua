@@ -11,10 +11,24 @@ local fmt = require("luasnip.extras.fmt").fmt
 local same = require("gordon.snippet").same
 
 return {
-	s(
-		"gql",
-		fmt(
-			[[
+  s({
+    trig = "ct",
+    name = "Content-Type"
+  }, {
+    t("Content-Type: "),
+    c(1, {
+      t("application/json"),
+      t("application/x-www-form-urlencoded"),
+      t("multipart/form-data"),
+    }),
+  }),
+  s(
+    {
+      trig = "gql",
+      name = "GraphQL"
+    },
+    fmt(
+      [[
 POST https://{}
 Content-Type: application/json
 
@@ -23,11 +37,11 @@ Content-Type: application/json
   "query": "{}"
 }}
 ]],
-			{
+      {
         i(1), -- url
         i(2), -- operation name
         i(3), -- query
       }
-		)
-	),
+    )
+  ),
 }
