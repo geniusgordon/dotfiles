@@ -15,7 +15,7 @@ require("lazy").setup({
 	},
 	{ "nvim-telescope/telescope-ui-select.nvim" },
 	{ "nvim-telescope/telescope-dap.nvim" },
-  { "camgraff/telescope-tmux.nvim" },
+	{ "camgraff/telescope-tmux.nvim" },
 
 	-- treesitter
 	{
@@ -36,6 +36,7 @@ require("lazy").setup({
 	{ "nvim-lualine/lualine.nvim" },
 	{ "akinsho/bufferline.nvim" },
 	{ "nvim-tree/nvim-tree.lua" },
+	{ "stevearc/oil.nvim" },
 	-- {
 	--   'nvim-neo-tree/neo-tree.nvim',
 	--   branch = 'v2.x',
@@ -96,7 +97,7 @@ require("lazy").setup({
 		},
 	},
 
-	{ "j-hui/fidget.nvim" },
+	{ "j-hui/fidget.nvim", tag = "legacy" },
 	{ "folke/which-key.nvim" },
 
 	{

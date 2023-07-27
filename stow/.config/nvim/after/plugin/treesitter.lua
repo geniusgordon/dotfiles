@@ -65,3 +65,10 @@ vim.keymap.set(
 	":TSPlaygroundToggle<CR>",
 	{ noremap = true, silent = true, desc = "Toggle Treesitter Playground" }
 )
+
+vim.keymap.set(
+  "n",
+  "<C-e>",
+  ":TSHighlightCapturesUnderCursor<CR>",
+  { noremap = true, silent = true, desc = "Highlight Captures Under Cursor" }
+)

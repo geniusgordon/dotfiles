@@ -3,6 +3,8 @@ local M = {}
 M.setup = function ()
   local colors = require("gordon.catppuccin").base_30
 
+  vim.api.nvim_set_hl(0, '@lsp.type.function.typescript', {})
+
   vim.api.nvim_set_hl(0, 'LspFloatBorder', { fg = colors.one_bg3 })
 
   local border = {

@@ -30,6 +30,8 @@ vim.keymap.set('n', '<leader>pb', builtin.buffers, { desc = 'Find buffers' })
 vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = 'Find git branches' })
 vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = 'Find files in git' })
 
+vim.keymap.set('n', '<leader>ph', builtin.highlights, { desc = 'Find highlights' })
+
 vim.keymap.set('n', '<leader>ps', function()
   builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end, { desc = 'Grep for string' })
