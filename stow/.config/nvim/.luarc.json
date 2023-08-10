@@ -34,6 +34,7 @@
         "/Users/gordon/.local/share/nvim/lazy/nvim-dap/lua",
         "/Users/gordon/.local/share/nvim/lazy/Comment.nvim/lua",
         "/Users/gordon/dotfiles/stow/.config/nvim/lua",
+        "${3rd}/luv/library",
         "${3rd}/luv/library"
     ]
 }

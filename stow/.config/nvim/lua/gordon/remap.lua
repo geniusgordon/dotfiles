@@ -44,3 +44,6 @@ vim.keymap.set("n", "<F10>", function()
   local lo = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.synID(line, col, 1)), "name")
   print("hi<" .. hi .. "> trans<" .. trans .. "> lo<" .. lo .. ">")
 end, { desc = "Print highlight group" })
+
+vim.keymap.set("n", "<leader>q", ":copen<CR>", { desc = "Open quickfix" })
+vim.keymap.set("n", "<leader>Q", ":cclose<CR>", { desc = "Close quickfix" })
