@@ -45,5 +45,9 @@ vim.keymap.set("n", "<F10>", function()
   print("hi<" .. hi .. "> trans<" .. trans .. "> lo<" .. lo .. ">")
 end, { desc = "Print highlight group" })
 
-vim.keymap.set("n", "<leader>q", ":copen<CR>", { desc = "Open quickfix" })
+vim.keymap.set("n", "<leader>q", ":botright copen<CR>", { desc = "Open quickfix" })
 vim.keymap.set("n", "<leader>Q", ":cclose<CR>", { desc = "Close quickfix" })
+
+vim.keymap.set("c", "<C-a>", "<Home>", { silent = false })
+vim.keymap.set("c", "<C-f>", "<Right>", { silent = false })
+vim.keymap.set("c", "<C-d>", "<Left>", { silent = false })
