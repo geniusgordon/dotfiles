@@ -2,7 +2,7 @@ function ColorMyPencils(color)
   color = color or "catppuccin"
 
   require("catppuccin").setup({
-    flavour = "mocha",
+    flavour = "macchiato",
   })
 
   vim.cmd.colorscheme(color)

@@ -26,9 +26,10 @@ require("lazy").setup({
 		},
 	},
 	{ "nvim-treesitter/nvim-treesitter-textobjects" },
+	{ "nvim-treesitter/nvim-treesitter-context" },
 	{ "nvim-treesitter/playground" },
-  { "folke/zen-mode.nvim" },
 
+  { "folke/zen-mode.nvim" },
 	{ "mbbill/undotree" },
 	{ "tpope/vim-fugitive" },
 	-- { 'tpope/vim-commentary' },
