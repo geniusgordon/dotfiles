@@ -34,7 +34,7 @@ M.base_30 = {
   lavender = "#c7d1ff",
 }
 
-M.base_16 = {
+catppuccin.base_16 = {
   base00 = "#1E1D2D",
   base01 = "#282737",
   base02 = "#2f2e3e",

@@ -80,5 +80,5 @@ cmp.setup.filetype({ "sql", "mysql", "plsql" }, {
 	},
 })
 
-local colors = require("gordon.catppuccin").base_30
+local colors = require("gordon.colors").base_30
 vim.api.nvim_set_hl(0, "CmpFloatBorder", { fg = colors.one_bg3 })

@@ -11,7 +11,7 @@ gs.setup {
   },
 }
 
-local colors = require('gordon.catppuccin').base_30
+local colors = require('gordon.colors').base_30
 vim.api.nvim_set_hl(0, 'GitSignsAdd', { fg = colors.blue })
 vim.api.nvim_set_hl(0, 'GitSignsChange', { fg = colors.light_grey })
 vim.api.nvim_set_hl(0, 'GitSignsChangedelete', { fg = colors.red })

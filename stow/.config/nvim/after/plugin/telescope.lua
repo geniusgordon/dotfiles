@@ -39,7 +39,7 @@ end, { desc = 'Grep for string' })
 vim.keymap.set("n", "<leader>bw", ":Telescope tmux windows<CR>", { desc = "Find tmux windows" })
 vim.keymap.set("n", "<leader>bs", ":Telescope tmux sessions<CR>", { desc = "Find tmux sessions" })
 
-local colors = require("gordon.catppuccin").base_30
+local colors = require("gordon.colors").base_30
 
 vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { fg = colors.red, bg = colors.black2 })
 vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = colors.black })

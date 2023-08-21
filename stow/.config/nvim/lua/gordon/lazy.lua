@@ -3,6 +3,7 @@ require("lazy").setup({
 		"catppuccin/nvim",
 		name = "catppuccin",
 	},
+	{ "folke/tokyonight.nvim" },
 
 	-- telescope
 	{
@@ -29,7 +30,7 @@ require("lazy").setup({
 	{ "nvim-treesitter/nvim-treesitter-context" },
 	{ "nvim-treesitter/playground" },
 
-  { "folke/zen-mode.nvim" },
+	{ "folke/zen-mode.nvim" },
 	{ "mbbill/undotree" },
 	{ "tpope/vim-fugitive" },
 	-- { 'tpope/vim-commentary' },
