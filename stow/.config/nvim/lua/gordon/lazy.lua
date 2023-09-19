@@ -58,6 +58,8 @@ require("lazy").setup({
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
+  { "chrisbra/csv.vim" },
+	-- { "ThePrimeagen/vim-apm" },
 
 	-- completion
 	{ "hrsh7th/nvim-cmp" },

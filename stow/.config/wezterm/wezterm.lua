@@ -36,6 +36,14 @@ config.keys = {
   },
 }
 
+config.keys = {
+  {
+    key = 'f',
+    mods = 'CMD',
+    action = wezterm.action.ToggleFullScreen,
+  },
+}
+
 -- neovim zen mode
 wezterm.on('user-var-changed', function(window, pane, name, value)
     local overrides = window:get_config_overrides() or {}
