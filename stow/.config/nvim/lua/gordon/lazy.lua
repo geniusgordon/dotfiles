@@ -30,9 +30,14 @@ require("lazy").setup({
 	{ "nvim-treesitter/nvim-treesitter-context" },
 	{ "nvim-treesitter/playground" },
 
+	-- git
+	{ "tpope/vim-fugitive" },
+	{ "sindrets/diffview.nvim" },
+	{ "lewis6991/gitsigns.nvim" },
+
 	{ "folke/zen-mode.nvim" },
 	{ "mbbill/undotree" },
-	{ "tpope/vim-fugitive" },
+
 	-- { 'tpope/vim-commentary' },
 	{ "numToStr/Comment.nvim" },
 	{ "nvim-tree/nvim-web-devicons" },
@@ -50,16 +55,13 @@ require("lazy").setup({
 	--   }
 	-- },
 	{ "alexghergh/nvim-tmux-navigation" },
-	{ "lewis6991/gitsigns.nvim" },
-	-- { 'RRethy/vim-illuminate' },
 	-- { 'github/copilot.vim' },
 	{ "zbirenbaum/copilot.lua" },
 	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
-  { "chrisbra/csv.vim" },
-	-- { "ThePrimeagen/vim-apm" },
+	{ "chrisbra/csv.vim" },
 
 	-- completion
 	{ "hrsh7th/nvim-cmp" },
