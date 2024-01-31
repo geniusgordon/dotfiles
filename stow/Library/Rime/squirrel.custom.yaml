@@ -1,6 +1,6 @@
 patch:
   style/+:
-    font_face: jf-openhuninn-1.1
+    font_face: jf-openhuninn-2.0
     candidate_format: "%c. %@"
     label_font_face: 'Andale Mono'
     label_font_point: 14

@@ -76,7 +76,7 @@ speller:
       - zhuyin:/keymap_bopomofo
 
 translator:
-  dictionary: terra_pinyin
+  dictionary: bopomofo.extended
   prism: bopomofo
   preedit_format:
     - "xlit|1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/- 6347'|ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄧㄨㄩㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦˉˊˇˋ˙ |"
