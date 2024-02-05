@@ -22,13 +22,11 @@ require("lazy").setup({
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		dependencies = {
-			"JoosepAlviste/nvim-ts-context-commentstring",
-		},
 	},
 	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 	{ "nvim-treesitter/nvim-treesitter-context" },
 	{ "nvim-treesitter/playground" },
+  -- { "JoosepAlviste/nvim-ts-context-commentstring" },
 
 	-- git
 	{ "tpope/vim-fugitive" },
