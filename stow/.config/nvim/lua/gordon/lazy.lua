@@ -5,6 +5,7 @@ require("lazy").setup({
 	},
 	{ "folke/tokyonight.nvim" },
 
+	{ "nvim-neotest/nvim-nio" },
 	-- telescope
 	{
 		"nvim-telescope/telescope.nvim",
@@ -17,6 +18,7 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope-ui-select.nvim" },
 	{ "nvim-telescope/telescope-dap.nvim" },
 	{ "camgraff/telescope-tmux.nvim" },
+	{ "FeiyouG/commander.nvim" },
 
 	-- treesitter
 	{
@@ -26,7 +28,7 @@ require("lazy").setup({
 	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 	{ "nvim-treesitter/nvim-treesitter-context" },
 	{ "nvim-treesitter/playground" },
-  -- { "JoosepAlviste/nvim-ts-context-commentstring" },
+	-- { "JoosepAlviste/nvim-ts-context-commentstring" },
 
 	-- git
 	{ "tpope/vim-fugitive" },
@@ -105,10 +107,10 @@ require("lazy").setup({
 	{ "j-hui/fidget.nvim", tag = "legacy" },
 	{ "folke/which-key.nvim" },
 
-	{
-		"rest-nvim/rest.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
+	-- {
+	-- 	"rest-nvim/rest.nvim",
+	-- 	dependencies = { "nvim-lua/plenary.nvim" },
+	-- },
 
 	{
 		"kristijanhusak/vim-dadbod-ui",

@@ -44,6 +44,8 @@ config.keys = {
   },
 }
 
+config.audible_bell = "Disabled"
+
 -- neovim zen mode
 wezterm.on('user-var-changed', function(window, pane, name, value)
     local overrides = window:get_config_overrides() or {}

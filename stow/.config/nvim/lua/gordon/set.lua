@@ -50,3 +50,13 @@ vim.opt.splitbelow = true
 
 vim.g.xml_syntax_folding = true
 vim.opt.fillchars = { diff = ' ' }
+
+vim.opt.listchars = {
+  -- eol = "↲",
+  tab = "▸ ",
+  trail = "•",
+  extends = "❯",
+  precedes = "❮",
+  nbsp = "␣",
+}
+vim.opt.list = true
