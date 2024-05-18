@@ -19,21 +19,26 @@ vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank to system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>x", [["_d]], { desc = "Delete to black hole" })
 
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "Format" })
+vim.keymap.set("n", "<leader>h", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "Toggle inlay hints" })
 
 vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>zz", { desc = "Next error" })
 vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>zz", { desc = "Previous error" })
 
 -- <C-r><C-w> inserts the word under the cursor surrounded by word boundaries
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-  { desc = "Replace word under cursor" })
+vim.keymap.set(
+  "n",
+  "<leader>s",
+  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = "Replace word under cursor" }
+)
 
 vim.keymap.set("n", "<leader>'", "vi[:s/\\(\\w\\+\\)/'\\1',/", { desc = "Add quotes" })
 
-vim.keymap.set("n", "<leader>/", ":set hlsearch! hlsearch?<CR>",
-  { desc = "Toggle search highlighting" })
+vim.keymap.set("n", "<leader>/", ":set hlsearch! hlsearch?<CR>", { desc = "Toggle search highlighting" })
 
-vim.keymap.set("n", "<leader>v", ":set paste! paste?<CR>",
-  { desc = "Toggle paste mode" })
+vim.keymap.set("n", "<leader>v", ":set paste! paste?<CR>", { desc = "Toggle paste mode" })
 
 -- prints the highlight group under the cursor
 vim.keymap.set("n", "<F10>", function()
@@ -53,8 +58,8 @@ vim.keymap.set("c", "<C-f>", "<Right>", { silent = false })
 vim.keymap.set("c", "<C-d>", "<Left>", { silent = false })
 
 local function tmux_sessionizer()
-    local cmd = "tmux new-window 'tmux-sessionizer'"
-    vim.fn.system(cmd)
+  local cmd = "tmux new-window 'tmux-sessionizer'"
+  vim.fn.system(cmd)
 end
 
 vim.keymap.set("n", "<C-f>", tmux_sessionizer, { desc = "Tmux sessionizer" })

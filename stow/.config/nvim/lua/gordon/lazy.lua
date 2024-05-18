@@ -25,10 +25,7 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 	},
-	{ "nvim-treesitter/nvim-treesitter-textobjects" },
 	{ "nvim-treesitter/nvim-treesitter-context" },
-	{ "nvim-treesitter/playground" },
-	-- { "JoosepAlviste/nvim-ts-context-commentstring" },
 
 	-- git
 	{ "tpope/vim-fugitive" },
@@ -38,8 +35,6 @@ require("lazy").setup({
 	{ "folke/zen-mode.nvim" },
 	{ "mbbill/undotree" },
 
-	-- { 'tpope/vim-commentary' },
-	{ "numToStr/Comment.nvim" },
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "nvim-lualine/lualine.nvim" },
 	{ "akinsho/bufferline.nvim" },
