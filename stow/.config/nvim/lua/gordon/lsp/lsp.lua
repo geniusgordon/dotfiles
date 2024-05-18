@@ -75,10 +75,15 @@ M.setup = function()
   })
 
   lspconfig.tsserver.setup({
+    init_options = {
+      preferences = {
+        importModuleSpecifierPreference = "relative"
+      }
+    },
     settings = {
       typescript = {
         preferences = {
-          importModuleSpecifierPreference = "relative",
+          importModuleSpecifier = "relative"
         },
         inlayHints = {
           includeInlayParameterNameHints = "literals",
@@ -93,7 +98,7 @@ M.setup = function()
       },
       javascript = {
         preferences = {
-          importModuleSpecifier = "non-relative",
+          importModuleSpecifier = "relative",
         },
         inlayHints = {
           includeInlayParameterNameHints = "literals",
