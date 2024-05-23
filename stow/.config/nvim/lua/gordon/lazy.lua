@@ -40,17 +40,7 @@ require("lazy").setup({
 	{ "akinsho/bufferline.nvim" },
 	{ "nvim-tree/nvim-tree.lua" },
 	{ "stevearc/oil.nvim" },
-	-- {
-	--   'nvim-neo-tree/neo-tree.nvim',
-	--   branch = 'v2.x',
-	--   dependencies = {
-	--     'nvim-lua/plenary.nvim',
-	--     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-	--     'MunifTanjim/nui.nvim',
-	--   }
-	-- },
 	{ "alexghergh/nvim-tmux-navigation" },
-	-- { 'github/copilot.vim' },
 	{ "zbirenbaum/copilot.lua" },
 	{
 		"folke/todo-comments.nvim",
