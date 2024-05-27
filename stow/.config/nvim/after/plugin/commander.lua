@@ -5,7 +5,7 @@ require("commander").add({
   {
     desc = "Open commander",
     cmd = require("commander").show,
-    keys = { "n", "<C-p>" },
+    keys = { "n", "<C-I>" },
   },
   {
     desc = "Open file with encoding",

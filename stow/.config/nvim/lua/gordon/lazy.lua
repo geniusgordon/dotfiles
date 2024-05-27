@@ -5,6 +5,11 @@ require("lazy").setup({
 	},
 	{ "folke/tokyonight.nvim" },
 
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 	{ "nvim-neotest/nvim-nio" },
 	-- telescope
 	{

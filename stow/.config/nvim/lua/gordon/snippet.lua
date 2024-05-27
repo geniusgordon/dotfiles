@@ -12,7 +12,6 @@ end
 
 M.type_to_obj = function(arg)
   local result = {}
-  print(vim.inspect(arg))
   for _, value in ipairs(arg) do
     local name = string.match(value, "^%s*(%a+)")
 

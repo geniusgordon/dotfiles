@@ -44,6 +44,14 @@ config.keys = {
   },
 }
 
+config.keys = {
+  {
+    key = 'p',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+}
+
 config.audible_bell = "Disabled"
 
 -- neovim zen mode
