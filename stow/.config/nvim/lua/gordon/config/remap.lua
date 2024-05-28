@@ -70,10 +70,3 @@ end, { desc = "Toggle quickfix list" })
 vim.keymap.set("c", "<C-a>", "<Home>", { silent = false })
 vim.keymap.set("c", "<C-f>", "<Right>", { silent = false })
 vim.keymap.set("c", "<C-d>", "<Left>", { silent = false })
-
-local function tmux_sessionizer()
-  local cmd = "tmux new-window 'tmux-sessionizer'"
-  vim.fn.system(cmd)
-end
-
-vim.keymap.set("n", "<C-f>", tmux_sessionizer, { desc = "Tmux sessionizer" })

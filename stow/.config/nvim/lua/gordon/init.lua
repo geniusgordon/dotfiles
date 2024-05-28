@@ -19,7 +19,7 @@ require("gordon.config.undotree")
 require("gordon.config.snippet")
 require("gordon.config.todo")
 require("gordon.config.treesitter")
-require("gordon.config.vim-tmux-navigator")
+require("gordon.config.tmux")
 require("gordon.config.zen")
 
 require("gordon.config.which-key")
