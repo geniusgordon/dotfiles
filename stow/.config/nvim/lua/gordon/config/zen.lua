@@ -1,5 +1,7 @@
+local zen = require("zen-mode")
+
 vim.keymap.set("n", "<leader>z", function()
-	require("zen-mode").toggle({
+	zen.toggle({
 		window = {
 			width = 90,
 		},

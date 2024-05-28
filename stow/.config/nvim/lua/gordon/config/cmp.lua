@@ -2,9 +2,6 @@ local cmp = require("cmp")
 local lspkind = require("lspkind")
 lspkind.init()
 
-require("crates").setup()
--- require('copilot_cmp').setup()
-
 cmp.setup({
 	mapping = {
 		["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -80,5 +77,5 @@ cmp.setup.filetype({ "sql", "mysql", "plsql" }, {
 	},
 })
 
-local colors = require("gordon.colors").base_30
+local colors = require("gordon.lib.colors").base_30
 vim.api.nvim_set_hl(0, "CmpFloatBorder", { fg = colors.one_bg3 })

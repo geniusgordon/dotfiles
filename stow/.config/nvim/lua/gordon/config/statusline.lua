@@ -24,7 +24,7 @@ require('lualine').setup {
       'diff',
       {
         'diagnostics',
-        sources = { 'coc' },
+        sources = { 'nvim_diagnostic' },
         sections = { 'error', 'warn', 'info', 'hint' },
         diagnostics_color = {
           error = 'DiagnosticError',
@@ -32,7 +32,7 @@ require('lualine').setup {
           info  = 'DiagnosticInfo',
           hint  = 'DiagnosticHint',
         },
-        symbols = { error = 'E', warn = 'W', info = 'I', hint = 'H' },
+        symbols = { error = '', warn = '', info = '', hint = '' },
         colored = true,
         update_in_insert = false,
         always_visible = false,

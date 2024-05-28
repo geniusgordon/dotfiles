@@ -1,0 +1,6 @@
+require('neodev').setup()
+require('gordon.lib.lsp.mason').setup()
+require('gordon.lib.lsp.lsp').setup()
+require('gordon.lib.lsp.dap').setup()
+require('gordon.lib.lsp.ui').setup()
+require('gordon.lib.lsp.fidget').setup()

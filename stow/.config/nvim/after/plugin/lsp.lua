@@ -1,5 +1,0 @@
-require('neodev').setup()
-require('gordon.lsp.mason').setup()
-require('gordon.lsp.lsp').setup()
-require('gordon.lsp.dap').setup()
-require('gordon.lsp.ui').setup()
