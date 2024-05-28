@@ -50,8 +50,22 @@ vim.keymap.set("n", "<F10>", function()
   print("hi<" .. hi .. "> trans<" .. trans .. "> lo<" .. lo .. ">")
 end, { desc = "Print highlight group" })
 
-vim.keymap.set("n", "<leader>q", ":botright copen<CR>", { desc = "Open quickfix" })
-vim.keymap.set("n", "<leader>Q", ":cclose<CR>", { desc = "Close quickfix" })
+local function is_quickfix_open()
+  for _, win in pairs(vim.fn.getwininfo()) do
+    if win.quickfix == 1 then
+      return true
+    end
+  end
+  return false
+end
+
+vim.keymap.set("n", "<leader>q", function()
+  if (is_quickfix_open()) then
+    vim.cmd("cclose")
+  else
+    vim.cmd("botright copen")
+  end
+end, { desc = "Toggle quickfix list" })
 
 vim.keymap.set("c", "<C-a>", "<Home>", { silent = false })
 vim.keymap.set("c", "<C-f>", "<Right>", { silent = false })
