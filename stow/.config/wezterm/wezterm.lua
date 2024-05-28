@@ -10,8 +10,8 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
--- config.color_scheme = "Catppuccin Macchiato"
-config.color_scheme = "Tokyo Night"
+config.color_scheme = "Catppuccin Mocha"
+-- config.color_scheme = "Tokyo Night"
 
 config.font = wezterm.font_with_fallback({
   {
