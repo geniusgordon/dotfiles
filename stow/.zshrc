@@ -88,6 +88,8 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 # bindkey ctrl e to execute "tmux-sessionizer" command
 
 function tmux_sessionizer() {
+  exec </dev/tty
+  exec <&1
   tmux-sessionizer
 }
 
