@@ -21,14 +21,6 @@ require("commander").add({
     cmd = fileformat.set_fileformat,
   },
   {
-    desc = "Toggle CSV Header",
-    cmd = csv.toggle_header,
-  },
-  {
-    desc = "Arrange CSV Vertical Header",
-    cmd = csv.toggle_vheader,
-  },
-  {
     desc = "Arrange CSV Column",
     cmd = csv.arrange_column,
   },
