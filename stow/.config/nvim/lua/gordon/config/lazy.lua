@@ -88,6 +88,9 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{ "zbirenbaum/copilot-cmp" },
+	{ "f3fora/cmp-spell" },
+  { "ray-x/cmp-treesitter" },
+  { "kristijanhusak/vim-dadbod-completion" },
 
 	-- lsp
 	{ "neovim/nvim-lspconfig" },
@@ -125,7 +128,6 @@ require("lazy").setup({
 		"kristijanhusak/vim-dadbod-ui",
 		dependencies = {
 			"tpope/vim-dadbod",
-			"kristijanhusak/vim-dadbod-completion",
 		},
 	},
 })

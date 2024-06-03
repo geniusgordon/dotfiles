@@ -60,3 +60,6 @@ vim.opt.listchars = {
   nbsp = "␣",
 }
 vim.opt.list = true
+
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"

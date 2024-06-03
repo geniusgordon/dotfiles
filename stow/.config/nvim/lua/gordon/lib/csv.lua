@@ -1,21 +1,17 @@
 local M = {}
+local colors = require('gordon.lib.colors').base_30
 
 local defaultColorpairs = {
-  { "red",         "red" },
-  { "blue",        "blue" },
-  { "green",       "green" },
-  { "magenta",     "magenta" },
-  { "NONE",        "NONE" },
-  { "darkred",     "darkred" },
-  { "darkblue",    "darkblue" },
-  { "darkgreen",   "darkgreen" },
-  { "darkmagenta", "darkmagenta" },
-  { "darkcyan",    "darkcyan" },
+  -- { colors.red,    colors.red },
+  { "red",     colors.red },
+  { "blue",    colors.blue },
+  { "green",   colors.green },
+  { "cyan",    colors.cyan },
 }
 
 M.set_colorpairs = function(colorpairs)
-  -- M.colorpairs = colorpairs or defaultColorpairs
-  -- vim.g.rcsv_colorpairs = M.colorpairs
+  M.colorpairs = colorpairs or defaultColorpairs
+  vim.g.rcsv_colorpairs = M.colorpairs
 end
 
 M.arrange_column = function()
