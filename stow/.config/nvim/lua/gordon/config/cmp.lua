@@ -2,7 +2,13 @@ local cmp = require("cmp")
 local lspkind = require("lspkind")
 local devicons = require("nvim-web-devicons")
 
-lspkind.init()
+require("copilot_cmp").setup()
+
+lspkind.init({
+  symbol_map = {
+    Copilot = "",
+  },
+})
 
 cmp.setup({
   mapping = {
@@ -23,11 +29,12 @@ cmp.setup({
     end,
   },
   sources = {
+    { name = "copilot" },
     { name = "nvim_lua" },
     { name = "nvim_lsp" },
     { name = 'nvim_lsp_signature_help' },
     { name = "path" },
-    { name = "buffer",  keyword_length = 3 },
+    { name = "buffer",                 keyword_length = 3 },
     { name = "crates" },
     { name = "luasnip" },
     {
@@ -143,3 +150,4 @@ cmp.setup.filetype({ "sql", "mysql", "plsql" }, {
 local colors = require("gordon.lib.colors").base_30
 vim.api.nvim_set_hl(0, "CmpFloatBorder", { fg = colors.one_bg3 })
 vim.api.nvim_set_hl(0, "CmpItemMenu", { link = "CmpItemAbbr", italic = true })
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
