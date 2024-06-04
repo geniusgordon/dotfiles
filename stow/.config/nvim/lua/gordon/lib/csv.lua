@@ -2,10 +2,10 @@ local M = {}
 local colors = require('gordon.lib.colors').base_30
 
 local defaultColorpairs = {
-  -- { colors.red,    colors.red },
-  { "red",     colors.red },
   { "blue",    colors.blue },
+  { "yellow",    colors.yellow },
   { "green",   colors.green },
+  { "yellow",   colors.orange },
   { "cyan",    colors.cyan },
 }
 

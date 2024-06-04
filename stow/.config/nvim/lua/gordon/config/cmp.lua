@@ -91,6 +91,11 @@ cmp.setup({
           item.kind = string.format("%s Column", icon)
           item.kind_hl_group = 'CmpItemKindField'
         end
+        if type(documentation) == 'string' and string.find(documentation, 'Function') then
+          local icon = lspkind.presets.default.Function
+          item.kind = string.format("%s Function", icon)
+          item.kind_hl_group = 'CmpItemKindFunction'
+        end
 
         return item
       end
