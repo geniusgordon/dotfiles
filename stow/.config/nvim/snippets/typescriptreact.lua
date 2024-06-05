@@ -13,20 +13,20 @@ local type_to_obj = require("gordon.snippet").type_to_obj
 local ai = require("luasnip.nodes.absolute_indexer")
 
 local function props(index)
-	return f(function(args)
-		return type_to_obj(args[1])
-	end, ai[index])
+  return f(function(args)
+    return type_to_obj(args[1])
+  end, ai[index])
 end
 
 return {
-	s(
-		{
-			trig = "fc",
-			name = "Functional Component",
-			dscr = "Create a functional component",
-		},
-		fmt(
-			[[
+  s(
+    {
+      trig = "fc",
+      name = "Functional Component",
+      dscr = "Create a functional component",
+    },
+    fmt(
+      [[
 import React from 'react';
 
 function {}({}): {} {{
@@ -36,47 +36,47 @@ function {}({}): {} {{
 
 export default {}
 ]],
-			{
-				i(1), -- name
-				d(2, function(args)
-					if args[1][1] == "" then
-						return sn(nil, { t("") })
-					end
-					return sn(
-						nil,
-						fmt(
-							[[{{
+      {
+        i(1), -- name
+        d(2, function(args)
+          if args[1][1] == "" then
+            return sn(nil, { t("") })
+          end
+          return sn(
+            nil,
+            fmt(
+              [[{{
   {}
 }}: {}Props]],
-							{
-								f(function(a)
-									return type_to_obj(a[1])
-								end, ai[4][2][1]),
+              {
+                f(function(a)
+                  return type_to_obj(a[1])
+                end, ai[4][2][1]),
                 same(1),
-							}
-						)
-					)
-				end, ai[4]), -- props args
-				c(3, { t("JSX.Element"), t("JSX.Element | null") }), -- return type
-				c(4, {
-					t(""),
-					sn(
-						nil,
-						fmt(
-							[[
+              }
+            )
+          )
+        end, ai[4]), -- props args
+        c(3, { t("JSX.Element"), t("JSX.Element | null") }), -- return type
+        c(4, {
+          t(""),
+          sn(
+            nil,
+            fmt(
+              [[
 type {}Props = {{
   {}
 }}
           ]],
-							{
-								same(1),
-								i(1),
-							}
-						)
-					),
-				}),
-				same(1), -- export
-			}
-		)
-	),
+              {
+                same(1),
+                i(1),
+              }
+            )
+          ),
+        }),
+        same(1), -- export
+      }
+    )
+  ),
 }

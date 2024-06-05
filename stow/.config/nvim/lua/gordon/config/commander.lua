@@ -14,7 +14,7 @@ require("commander").add({
   },
   {
     desc = "Save file with encoding",
-    cmd = encoding.save_with_encoding
+    cmd = encoding.save_with_encoding,
   },
   {
     desc = "Set file format",

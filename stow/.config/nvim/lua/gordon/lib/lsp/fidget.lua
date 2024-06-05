@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup = function()
-  require('fidget').setup()
+  require("fidget").setup()
 end
 
 return M

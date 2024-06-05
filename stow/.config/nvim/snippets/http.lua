@@ -13,7 +13,7 @@ local same = require("gordon.snippet").same
 return {
   s({
     trig = "ct",
-    name = "Content-Type"
+    name = "Content-Type",
   }, {
     t("Content-Type: "),
     c(1, {
@@ -25,7 +25,7 @@ return {
   s(
     {
       trig = "gql",
-      name = "GraphQL"
+      name = "GraphQL",
     },
     fmt(
       [[

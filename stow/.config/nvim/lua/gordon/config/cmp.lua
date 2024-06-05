@@ -32,9 +32,9 @@ cmp.setup({
     { name = "copilot" },
     { name = "nvim_lua" },
     { name = "nvim_lsp" },
-    { name = 'nvim_lsp_signature_help' },
+    { name = "nvim_lsp_signature_help" },
     { name = "path" },
-    { name = "buffer",                 keyword_length = 3 },
+    { name = "buffer", keyword_length = 3 },
     { name = "crates" },
     { name = "luasnip" },
     {
@@ -48,7 +48,7 @@ cmp.setup({
         preselect_correct_word = true,
       },
     },
-    { name = 'vim-dadbod-completion' },
+    { name = "vim-dadbod-completion" },
   },
   window = {
     completion = cmp.config.window.bordered({
@@ -73,40 +73,40 @@ cmp.setup({
       })[entry.source.name]
       item.menu = menu or string.format("%s", entry.source.name)
 
-      if entry.source.name == 'vim-dadbod-completion' then
-        item.kind = '󰆼 DB'
+      if entry.source.name == "vim-dadbod-completion" then
+        item.kind = "󰆼 DB"
         local documentation = entry.get_completion_item(entry).documentation
-        if documentation == 'SQL reserved word' then
+        if documentation == "SQL reserved word" then
           local icon = lspkind.presets.default.Keyword
           item.kind = string.format("%s Keyword", icon)
-          item.kind_hl_group = 'CmpItemKindKeyword'
+          item.kind_hl_group = "CmpItemKindKeyword"
         end
-        if documentation == 'table' then
+        if documentation == "table" then
           local icon = lspkind.presets.default.Struct
           item.kind = string.format("%s Table", icon)
-          item.kind_hl_group = 'CmpItemKindStruct'
+          item.kind_hl_group = "CmpItemKindStruct"
         end
-        if type(documentation) == 'string' and string.find(documentation, 'column') then
+        if type(documentation) == "string" and string.find(documentation, "column") then
           local icon = lspkind.presets.default.Field
           item.kind = string.format("%s Column", icon)
-          item.kind_hl_group = 'CmpItemKindField'
+          item.kind_hl_group = "CmpItemKindField"
         end
-        if type(documentation) == 'string' and string.find(documentation, 'Function') then
+        if type(documentation) == "string" and string.find(documentation, "Function") then
           local icon = lspkind.presets.default.Function
           item.kind = string.format("%s Function", icon)
-          item.kind_hl_group = 'CmpItemKindFunction'
+          item.kind_hl_group = "CmpItemKindFunction"
         end
 
         return item
       end
 
-      if entry.source.name == 'spell' then
-        item.kind = '󰓆 Spell'
-        item.kind_hl_group = 'CmpItemKindSnippet'
+      if entry.source.name == "spell" then
+        item.kind = "󰓆 Spell"
+        item.kind_hl_group = "CmpItemKindSnippet"
         return item
       end
 
-      if vim.tbl_contains({ 'path' }, entry.source.name) then
+      if vim.tbl_contains({ "path" }, entry.source.name) then
         local label = entry.get_completion_item(entry).label
         local icon, hl_group = devicons.get_icon(label)
         if icon then
@@ -123,7 +123,7 @@ cmp.setup({
             local icon = lspkind.presets.default[vim_item.kind]
             vim_item.kind = string.format("%s %s", icon, vim_item.kind)
             return vim_item
-          end
+          end,
         },
       })(entry, item)
     end,

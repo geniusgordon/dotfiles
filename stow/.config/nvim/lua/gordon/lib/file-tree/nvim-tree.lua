@@ -23,12 +23,12 @@ M.setup = function()
         show = {
           folder_arrow = false,
         },
-      }
-    }
+      },
+    },
   })
 
-  vim.keymap.set("n", "<leader>t", ':NvimTreeToggle<cr>')
-  vim.keymap.set("n", "<leader>pv", ':NvimTreeFindFile<cr>')
+  vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<cr>")
+  vim.keymap.set("n", "<leader>pv", ":NvimTreeFindFile<cr>")
 
   local function open_nvim_tree(data)
     if #vim.fn.argv() == 0 and not vim.o.insertmode then
@@ -54,7 +54,7 @@ M.setup = function()
   -- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
   local colors = require("gordon.lib.colors").base_30
-  vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = colors.one_bg3 })
+  vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", { fg = colors.one_bg3 })
 end
 
 return M

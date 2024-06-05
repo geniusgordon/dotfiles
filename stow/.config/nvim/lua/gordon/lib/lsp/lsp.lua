@@ -1,6 +1,7 @@
 local M = {}
 
 local builtin = require("telescope.builtin")
+local null_ls = require("null-ls")
 
 local on_attach = function(_, _)
   vim.keymap.set("n", "<leader>ca", function()
@@ -49,6 +50,13 @@ M.setup = function()
     },
   })
 
+  null_ls.setup({
+    sources = {
+      null_ls.builtins.formatting.stylua,
+      null_ls.builtins.formatting.xmllint,
+    },
+  })
+
   lspconfig.lua_ls.setup({
     settings = {
       Lua = {
@@ -57,6 +65,9 @@ M.setup = function()
         },
         hint = {
           enable = true,
+        },
+        format = {
+          enable = false,
         },
       },
     },
@@ -77,13 +88,13 @@ M.setup = function()
   lspconfig.tsserver.setup({
     init_options = {
       preferences = {
-        importModuleSpecifierPreference = "relative"
-      }
+        importModuleSpecifierPreference = "relative",
+      },
     },
     settings = {
       typescript = {
         preferences = {
-          importModuleSpecifier = "relative"
+          importModuleSpecifier = "relative",
         },
         inlayHints = {
           includeInlayParameterNameHints = "literals",
@@ -116,7 +127,7 @@ M.setup = function()
     capabilities = capabilities,
   })
 
-  lspconfig.lemminx.setup({
+  lspconfig.xmlformatter.setup({
     on_attach = on_attach,
     capabilities = capabilities,
   })

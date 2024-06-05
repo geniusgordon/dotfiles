@@ -14,14 +14,14 @@ autocmd("FileType", {
   callback = function()
     vim.opt_local.foldmethod = "syntax"
     vim.opt_local.colorcolumn = ""
-  end
+  end,
 })
 
 autocmd("FileType", {
   pattern = { "csv", "dbout" },
   callback = function()
     vim.opt_local.colorcolumn = ""
-  end
+  end,
 })
 
 autocmd({ "BufRead", "BufNewFile" }, {

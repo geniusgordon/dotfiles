@@ -1,10 +1,10 @@
--- local colorscheme = "tokyonight-night"
-local colorscheme = "catppuccin-mocha"
+local colorscheme = "tokyonight-night"
+-- local colorscheme = "catppuccin-mocha"
 vim.cmd.colorscheme(colorscheme)
 
-require("catppuccin").setup({
-  flavour = "mocha",
-})
+-- require("catppuccin").setup({
+--   flavour = "mocha",
+-- })
 
 local colors = require("gordon.lib.colors").base_30
 vim.api.nvim_set_hl(0, "LineNrAbove", { fg = colors.one_bg3 })

@@ -1,5 +1,5 @@
 vim.opt.mouse = ""
-vim.opt.guicursor="n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20"
+vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20"
 vim.opt.cursorline = true
 
 vim.opt.nu = true
@@ -49,7 +49,7 @@ vim.opt.colorcolumn = "80"
 vim.opt.splitbelow = true
 
 vim.g.xml_syntax_folding = true
-vim.opt.fillchars = { diff = ' ' }
+vim.opt.fillchars = { diff = " " }
 
 vim.opt.listchars = {
   -- eol = "↲",

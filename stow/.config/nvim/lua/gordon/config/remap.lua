@@ -60,7 +60,7 @@ local function is_quickfix_open()
 end
 
 vim.keymap.set("n", "<leader>q", function()
-  if (is_quickfix_open()) then
+  if is_quickfix_open() then
     vim.cmd("cclose")
   else
     vim.cmd("botright copen")

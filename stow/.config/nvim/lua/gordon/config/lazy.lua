@@ -108,16 +108,10 @@ require("lazy").setup({
   { "rcarriga/nvim-dap-ui" },
 
   -- format
-  {
-    "jay-babu/mason-null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
-    },
-  },
+  { "nvimtools/none-ls.nvim" },
+  { "jay-babu/mason-null-ls.nvim" },
 
-  { "j-hui/fidget.nvim",   tag = "legacy" },
+  { "j-hui/fidget.nvim" },
   { "folke/which-key.nvim" },
 
   -- {
