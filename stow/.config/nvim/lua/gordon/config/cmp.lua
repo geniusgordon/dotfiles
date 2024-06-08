@@ -37,17 +37,17 @@ cmp.setup({
     { name = "buffer", keyword_length = 3 },
     { name = "crates" },
     { name = "luasnip" },
-    {
-      name = "spell",
-      keyword_length = 3,
-      option = {
-        keep_all_entries = false,
-        enable_in_context = function()
-          return true
-        end,
-        preselect_correct_word = true,
-      },
-    },
+    -- {
+    --   name = "spell",
+    --   keyword_length = 3,
+    --   option = {
+    --     keep_all_entries = false,
+    --     enable_in_context = function()
+    --       return true
+    --     end,
+    --     preselect_correct_word = true,
+    --   },
+    -- },
     { name = "vim-dadbod-completion" },
   },
   window = {
