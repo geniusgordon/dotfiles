@@ -2,7 +2,7 @@ require("lualine").setup({
   options = {
     icons_enabled = true,
     theme = "tokyonight",
-    component_separators = { left = "", right = "|" },
+    component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = {
       statusline = {},
@@ -55,5 +55,12 @@ require("lualine").setup({
   tabline = {},
   winbar = {},
   inactive_winbar = {},
-  extensions = {},
+  extensions = {
+    "fugitive",
+    "lazy",
+    "mason",
+    "nvim-tree",
+    "oil",
+    "quickfix",
+  },
 })

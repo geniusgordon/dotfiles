@@ -37,7 +37,7 @@ local function setup_lsp_keymap()
     end, { desc = "Find References" })
     vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Find definition" })
     vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "Find implementation" })
-    vim.keymap.set("n", "gt", builtin.lsp_type_definitions, { desc = "Find type definition" })
+    -- vim.keymap.set("n", "gt", builtin.lsp_type_definitions, { desc = "Find type definition" })
   end
 end
 
@@ -80,6 +80,7 @@ M.setup = function()
 
   null_ls.setup({
     sources = {
+      -- null_ls.builtins.formatting.prettierd,
       null_ls.builtins.formatting.sqlfluff.with({
         filetypes = { "sql" },
         extra_args = {
