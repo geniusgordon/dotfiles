@@ -1,13 +1,48 @@
 patch:
   style/+:
+    color_scheme_dark: macos_dark
     font_face: jf-openhuninn-2.0
     font_point: 24
-    candidate_format: "%c. %@"
-    label_font_face: 'Andale Mono'
+    candidate_format: "%c %@ " # 编号 %c 和候选词 %@ 前后的空间
+    label_font_face: jf-openhuninn-2.0
     label_font_point: 16
-    inline_preedit: false
+    comment_font_face: jf-openhuninn-2.0
+    comment_font_point: 16
+    candidate_list_layout: stacked # 候选排布：层叠 stacked | 行 linear
+    text_orientation: horizontal # 行文向： 横 horizontal | 纵 vertical
+    inline_preedit: true # 拼音位于： 候选框 false | 行内 true
+    # translucency: false # 磨砂： false | true
+    # mutual_exclusive: false # 色不叠加： false | true
+    # border_height: 1 # 外边框 高
+    # border_width: 1 # 外边框 宽
+    # corner_radius: 5 # 外边框 圆角半径
+    # hilited_corner_radius: 5 # 选中框 圆角半径
+    # surrounding_extra_expansion: 0 # 候选项背景相对大小？
+    # shadow_size: 0 # 阴影大小
+    # line_spacing: 5 # 行间距
+    # base_offset: 0 # 字基高
+    # alpha: 1 # 透明度，0~1
+    # spacing: 10 # 拼音与候选项之间的距离 （inline_preedit: false）
+    color_space: srgb # 色彩空间： srgb | display_p3
   app_options/+:
     com.google.Chrome/+:
       inline: false
     ru.keepcoder.Telegram/+:
       inline: false
+  preset_color_schemes:
+    macos_dark:
+      name: "MacOS 深色／MacOS Dark"
+      author: 小码哥
+      back_color: 0x261a1b # 底色
+      hilited_candidate_back_color: 0x45353b # 选中底色
+      label_color: 0x999999 # 序号颜色
+      hilited_candidate_label_color: 0xFFFFFF # 选中序号颜色
+      candidate_text_color: 0xFFFFFF # 文字颜色
+      hilited_candidate_text_color: 0xFFFFFF # 选中文字颜色
+      comment_text_color: 0x999999 # 注颜色
+      hilited_comment_text_color: 0x999999 # 选中注颜色
+      text_color: 0xFFFFFF # 拼音颜色 （inline_preedit: false）
+      hilited_text_color: 0xFFFFFF # 选中拼音颜色 （inline_preedit: false）
+      candidate_back_color: 0x2d1f1e # 候选项底色
+      hilited_back_color: 0x2d1f1e # 选中拼音底色 （inline_preedit: false）
+      border_color: 0x050505 # 外边框颜色

@@ -92,6 +92,7 @@ M.setup = function()
       }),
       null_ls.builtins.formatting.stylua,
       null_ls.builtins.formatting.xmllint,
+      null_ls.builtins.formatting.yamlfmt,
     },
     on_attach = setup_format_keymap(),
   })
