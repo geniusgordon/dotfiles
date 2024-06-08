@@ -21,5 +21,6 @@ require("gordon.config.todo")
 require("gordon.config.treesitter")
 require("gordon.config.tmux")
 require("gordon.config.zen")
+require("gordon.config.test")
 
 require("gordon.config.which-key")

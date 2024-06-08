@@ -119,4 +119,7 @@ require("lazy").setup({
       "tpope/vim-dadbod",
     },
   },
+
+  { "preservim/vimux" },
+  { "vim-test/vim-test" },
 })

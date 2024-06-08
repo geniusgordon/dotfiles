@@ -27,7 +27,7 @@ M.setup = function()
     },
   })
 
-  vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<cr>")
+  vim.keymap.set("n", "<leader>pt", ":NvimTreeToggle<cr>")
   vim.keymap.set("n", "<leader>pv", ":NvimTreeFindFile<cr>")
 
   local function open_nvim_tree(data)
