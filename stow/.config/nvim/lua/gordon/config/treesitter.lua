@@ -19,7 +19,7 @@ require("nvim-treesitter.configs").setup({
     "go",
     "graphql",
     "html",
-    -- "http",
+    "http",
     "javascript",
     "jsdoc",
     "json",
@@ -41,6 +41,7 @@ require("nvim-treesitter.configs").setup({
     "lua",
     "vim",
     "vue",
+    "xml",
     "yaml",
   },
   -- Install parsers synchronously (only applied to `ensure_installed`)
