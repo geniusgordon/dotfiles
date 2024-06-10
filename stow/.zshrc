@@ -31,10 +31,11 @@ alias vi=nvim
 alias vim-nvchad='NVIM_APPNAME=nvchad nvim'
 alias vim-lazy='NVIM_APPNAME=lazy-vim nvim'
 alias mutt=neomutt
+
 alias diff='nvim -d'
-# make vimdiff execute nvim in diff mode
 alias vimdiff='nvim -d'
 alias view='nvim -R'
+# export MANPAGER='nvim +Man!'
 
 export N_PREFIX=$HOME/.local
 

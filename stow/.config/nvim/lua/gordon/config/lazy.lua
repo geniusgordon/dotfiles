@@ -31,6 +31,7 @@ require("lazy").setup({
     build = ":TSUpdate",
   },
   { "nvim-treesitter/nvim-treesitter-context" },
+  { "nvim-treesitter/nvim-treesitter-textobjects" },
 
   -- git
   { "tpope/vim-fugitive" },
@@ -107,6 +108,8 @@ require("lazy").setup({
 
   { "j-hui/fidget.nvim" },
   { "folke/which-key.nvim" },
+
+  { "kylechui/nvim-surround" },
 
   -- {
   --  "rest-nvim/rest.nvim",
