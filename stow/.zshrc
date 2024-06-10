@@ -35,7 +35,8 @@ alias mutt=neomutt
 alias diff='nvim -d'
 alias vimdiff='nvim -d'
 alias view='nvim -R'
-# export MANPAGER='nvim +Man!'
+export MANPAGER='nvim +Man!'
+export MANWIDTH=80
 
 export N_PREFIX=$HOME/.local
 
