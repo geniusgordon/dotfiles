@@ -3,7 +3,6 @@ local M = {}
 local builtin = require("telescope.builtin")
 
 local null_ls = require("null-ls")
-local util = require("gordon.lib.util")
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
@@ -61,24 +60,12 @@ local function setup_format_keymap(opts)
   end
 end
 
-local function setup_null_ls(opts)
-  -- local sqlfluff_dialect = opts.sqlfluff_dialect or "mysql"
-  local sqlfluff_dialect = "postgresql"
-
+local function setup_null_ls()
   null_ls.setup({
     sources = {
-      -- null_ls.builtins.formatting.prettierd,
       null_ls.builtins.formatting.black,
-      null_ls.builtins.formatting.sqlfluff.with({
-        filetypes = { "sql" },
-        extra_args = {
-          "--dialect",
-          sqlfluff_dialect,
-          "--config",
-          util.get_script_dir() .. "/config/sqlfluff.cfg",
-        },
-      }),
       null_ls.builtins.formatting.shfmt,
+      null_ls.builtins.formatting.sql_formatter,
       null_ls.builtins.formatting.stylua,
       null_ls.builtins.formatting.xmllint,
       null_ls.builtins.formatting.yamlfmt,
@@ -105,7 +92,7 @@ M.setup = function()
     },
   })
 
-  setup_null_ls({ sqlfluff_dialect = "mysql" })
+  setup_null_ls()
 
   lspconfig.lua_ls.setup({
     settings = {
