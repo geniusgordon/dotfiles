@@ -167,6 +167,16 @@ M.setup = function()
     on_attach = setup_lsp_keymap(),
     capabilities = capabilities,
   })
+
+  lspconfig.terraformls.setup({
+    on_attach = setup_lsp_keymap(),
+    capabilities = capabilities,
+  })
+
+  lspconfig.yamlls.setup({
+    on_attach = setup_lsp_keymap(),
+    capabilities = capabilities,
+  })
 end
 
 M.setup_null_ls = setup_null_ls
