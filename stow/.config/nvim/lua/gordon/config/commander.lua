@@ -1,6 +1,7 @@
 local encoding = require("gordon.lib.encoding")
 local fileformat = require("gordon.lib.fileformat")
 local csv = require("gordon.lib.csv")
+local update_sqlfluff_dialect = require("gordon.lib.lsp.sqlfluff").update_sqlfluff_dialect
 
 require("commander").add({
   {
@@ -27,5 +28,9 @@ require("commander").add({
   {
     desc = "Unarrange CSV Column",
     cmd = csv.unarrange_column,
+  },
+  {
+    desc = "Update SQLFluff Dialect",
+    cmd = update_sqlfluff_dialect,
   },
 })

@@ -1,6 +1,6 @@
 patch:
   style/+:
-    color_scheme_dark: macos_dark
+    color_scheme_dark: catppuccin_mocha
     font_face: jf-openhuninn-2.0
     font_point: 24
     candidate_format: "%c %@ " # 编号 %c 和候选词 %@ 前后的空间
@@ -30,10 +30,10 @@ patch:
     ru.keepcoder.Telegram/+:
       inline: false
   preset_color_schemes:
-    macos_dark:
-      name: "MacOS 深色／MacOS Dark"
-      author: 小码哥
-      back_color: 0x261a1b # 底色
+    tokyonight:
+      name: "Tokyo Night"
+      author: Gordon
+      back_color: 0x2d1f1e # 底色
       hilited_candidate_back_color: 0x45353b # 选中底色
       label_color: 0x999999 # 序号颜色
       hilited_candidate_label_color: 0xFFFFFF # 选中序号颜色
@@ -45,4 +45,20 @@ patch:
       hilited_text_color: 0xFFFFFF # 选中拼音颜色 （inline_preedit: false）
       candidate_back_color: 0x2d1f1e # 候选项底色
       hilited_back_color: 0x2d1f1e # 选中拼音底色 （inline_preedit: false）
+      border_color: 0x050505 # 外边框颜色
+    catppuccin_mocha:
+      name: "Catppuccin Mocha"
+      author: Gordon
+      back_color: 0x443132 # 底色
+      hilited_candidate_back_color: 0x866c70 # 选中底色
+      label_color: 0x999999 # 序号颜色
+      hilited_candidate_label_color: 0xFFFFFF # 选中序号颜色
+      candidate_text_color: 0xFFFFFF # 文字颜色
+      hilited_candidate_text_color: 0xFFFFFF # 选中文字颜色
+      comment_text_color: 0x999999 # 注颜色
+      hilited_comment_text_color: 0x999999 # 选中注颜色
+      text_color: 0xFFFFFF # 拼音颜色 （inline_preedit: false）
+      hilited_text_color: 0xFFFFFF # 选中拼音颜色 （inline_preedit: false）
+      candidate_back_color: 0x443132 # 候选项底色
+      hilited_back_color: 0x443132 # 选中拼音底色 （inline_preedit: false）
       border_color: 0x050505 # 外边框颜色

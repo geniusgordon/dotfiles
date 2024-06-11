@@ -1,6 +1,7 @@
 local M = {}
 
 local builtin = require("telescope.builtin")
+
 local null_ls = require("null-ls")
 local util = require("gordon.lib.util")
 
@@ -60,6 +61,32 @@ local function setup_format_keymap(opts)
   end
 end
 
+local function setup_null_ls(opts)
+  -- local sqlfluff_dialect = opts.sqlfluff_dialect or "mysql"
+  local sqlfluff_dialect = "postgresql"
+
+  null_ls.setup({
+    sources = {
+      -- null_ls.builtins.formatting.prettierd,
+      null_ls.builtins.formatting.black,
+      null_ls.builtins.formatting.sqlfluff.with({
+        filetypes = { "sql" },
+        extra_args = {
+          "--dialect",
+          sqlfluff_dialect,
+          "--config",
+          util.get_script_dir() .. "/config/sqlfluff.cfg",
+        },
+      }),
+      null_ls.builtins.formatting.shfmt,
+      null_ls.builtins.formatting.stylua,
+      null_ls.builtins.formatting.xmllint,
+      null_ls.builtins.formatting.yamlfmt,
+    },
+    on_attach = setup_format_keymap(),
+  })
+end
+
 M.setup = function()
   local lspconfig = require("lspconfig")
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -78,24 +105,7 @@ M.setup = function()
     },
   })
 
-  null_ls.setup({
-    sources = {
-      -- null_ls.builtins.formatting.prettierd,
-      null_ls.builtins.formatting.sqlfluff.with({
-        filetypes = { "sql" },
-        extra_args = {
-          "--dialect",
-          "mysql",
-          "--config",
-          util.get_script_dir() .. "/config/sqlfluff.cfg",
-        },
-      }),
-      null_ls.builtins.formatting.stylua,
-      null_ls.builtins.formatting.xmllint,
-      null_ls.builtins.formatting.yamlfmt,
-    },
-    on_attach = setup_format_keymap(),
-  })
+  setup_null_ls({ sqlfluff_dialect = "mysql" })
 
   lspconfig.lua_ls.setup({
     settings = {
@@ -165,6 +175,13 @@ M.setup = function()
     on_attach = setup_lsp_keymap(),
     capabilities = capabilities,
   })
+
+  lspconfig.bashls.setup({
+    on_attach = setup_lsp_keymap(),
+    capabilities = capabilities,
+  })
 end
+
+M.setup_null_ls = setup_null_ls
 
 return M
