@@ -7,7 +7,7 @@ local action_state = require("telescope.actions.state")
 -- REQUIRED
 harpoon:setup()
 
-vim.keymap.set("n", "<leader>a", function()
+vim.keymap.set("n", "<leader>h", function()
   harpoon:list():add()
   print("Added to Harpoon list: " .. vim.fn.expand("%:p:."))
 end, { desc = "Add current file to Harpoon list", silent = false })

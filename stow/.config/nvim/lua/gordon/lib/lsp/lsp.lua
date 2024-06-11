@@ -8,7 +8,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local function setup_lsp_keymap()
   return function()
-    vim.keymap.set("n", "<leader>h", function()
+    vim.keymap.set("n", "gh", function()
       vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
     end, { desc = "Toggle inlay hints" })
 

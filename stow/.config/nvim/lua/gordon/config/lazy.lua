@@ -47,7 +47,6 @@ require("lazy").setup({
   { "nvim-tree/nvim-tree.lua" },
   { "stevearc/oil.nvim" },
   { "alexghergh/nvim-tmux-navigation" },
-  { "zbirenbaum/copilot.lua" },
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -129,6 +128,19 @@ require("lazy").setup({
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
       "tpope/vim-dadbod",
+    },
+  },
+
+  { "zbirenbaum/copilot.lua" },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+    dependencies = {
+      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+    },
+    opts = {
+      debug = true, -- Enable debugging
     },
   },
 
