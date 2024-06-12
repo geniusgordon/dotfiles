@@ -25,7 +25,7 @@ require("gordon.config.zen")
 require("gordon.config.test")
 require("gordon.config.surround")
 require("gordon.config.rest")
--- require("gordon.config.indent")
+require("gordon.config.indent")
 require("gordon.config.outline")
 
 require("gordon.config.which-key")
