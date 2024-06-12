@@ -29,12 +29,22 @@ M.setup = function()
   vim.api.nvim_set_hl(0, "DiagnosticBgInfo", { bg = colors.blue, fg = colors.one_bg })
   vim.api.nvim_set_hl(0, "DiagnosticBgHint", { bg = colors.green, fg = colors.one_bg })
 
-  vim.cmd([[
-  sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
-  sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
-  sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticLineNrInfo
-  sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticLineNrHint
-  ]])
+  vim.fn.sign_define(
+    "DiagnosticSignError",
+    { text = "", texthl = "DiagnosticSignError", numhl = "DiagnosticLineNrError" }
+  )
+  vim.fn.sign_define(
+    "DiagnosticSignWarn",
+    { text = "", texthl = "DiagnosticSignWarn", numhl = "DiagnosticLineNrWarn" }
+  )
+  vim.fn.sign_define(
+    "DiagnosticSignInfo",
+    { text = "", texthl = "DiagnosticSignInfo", numhl = "DiagnosticLineNrInfo" }
+  )
+  vim.fn.sign_define(
+    "DiagnosticSignHint",
+    { text = "", texthl = "DiagnosticSignHint", numhl = "DiagnosticLineNrHint" }
+  )
 
   local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
   function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)

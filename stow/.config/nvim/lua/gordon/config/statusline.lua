@@ -3,7 +3,8 @@ require("lualine").setup({
     icons_enabled = true,
     theme = "tokyonight",
     component_separators = { left = "", right = "" },
-    section_separators = { left = "", right = "" },
+    -- section_separators = { left = "", right = "" },
+    section_separators = { left = "", right = "" },
     disabled_filetypes = {
       statusline = {},
       winbar = {},
@@ -22,21 +23,6 @@ require("lualine").setup({
     lualine_b = {
       "branch",
       "diff",
-      {
-        "diagnostics",
-        sources = { "nvim_diagnostic" },
-        sections = { "error", "warn", "info", "hint" },
-        diagnostics_color = {
-          error = "DiagnosticError",
-          warn = "DiagnosticWarn",
-          info = "DiagnosticInfo",
-          hint = "DiagnosticHint",
-        },
-        symbols = { error = "", warn = "", info = "", hint = "" },
-        colored = true,
-        update_in_insert = false,
-        always_visible = false,
-      },
     },
     lualine_c = {
       {
@@ -47,7 +33,18 @@ require("lualine").setup({
       },
       "filename",
     },
-    lualine_x = { "fileformat" },
+    lualine_x = {
+      {
+        "diagnostics",
+        sources = { "nvim_diagnostic" },
+        sections = { "error", "warn", "info", "hint" },
+        symbols = { error = " ", warn = " ", hint = " ", info = " " },
+        colored = true,
+        update_in_insert = false,
+        always_visible = false,
+      },
+      "fileformat",
+    },
     lualine_y = { "encoding" },
     lualine_z = { "progress" },
   },

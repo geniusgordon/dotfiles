@@ -1,5 +1,8 @@
--- let test#strategy = "dispatch"
-vim.cmd("let test#strategy = 'vimux'")
+-- vim.cmd("let test#strategy = 'vimux'")
+vim.cmd("let test#strategy = 'neovim_sticky'")
+vim.cmd("let g:test#neovim_sticky#kill_previous = 1") -- Try to abort previous run
+vim.cmd("let g:test#preserve_screen = 0") -- Clear screen from previous run
+vim.cmd("let test#neovim_sticky#reopen_window = 1") -- Reopen terminal split if not visible
 
 vim.keymap.set("n", "<leader>tn", ":TestNearest<CR>", {
   noremap = true,

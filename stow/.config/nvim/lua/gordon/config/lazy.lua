@@ -44,8 +44,10 @@ require("lazy").setup({
   { "nvim-tree/nvim-web-devicons" },
   { "nvim-lualine/lualine.nvim" },
   { "akinsho/bufferline.nvim" },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl" },
   { "nvim-tree/nvim-tree.lua" },
   { "stevearc/oil.nvim" },
+  { "hedyhli/outline.nvim" },
   { "alexghergh/nvim-tmux-navigation" },
   {
     "folke/todo-comments.nvim",

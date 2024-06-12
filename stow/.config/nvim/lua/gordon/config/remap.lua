@@ -66,5 +66,7 @@ vim.keymap.set("c", "<C-a>", "<Home>", { silent = false })
 vim.keymap.set("c", "<C-f>", "<Right>", { silent = false })
 vim.keymap.set("c", "<C-d>", "<Left>", { silent = false })
 
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { silent = false, desc = "Exit terminal mode" })
+
 -- vim.keymap.set("n", "<C-,>", ":vertical resize -5<CR>", { desc = "Decrease vertical size" })
 -- vim.keymap.set("n", "<C-.>", ":vertical resize +5<CR>", { desc = "Increase vertical size" })
