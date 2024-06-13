@@ -20,7 +20,6 @@ cmp.setup({
     ["<C-e>"] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
     }),
   },
   snippet = {
@@ -48,15 +47,10 @@ cmp.setup({
     --     preselect_correct_word = true,
     --   },
     -- },
-    { name = "vim-dadbod-completion" },
   },
   window = {
-    completion = cmp.config.window.bordered({
-      -- winhighlight = "Normal:Normal,FloatBorder:CmpFloatBorder,CursorLine:Visual,Search:None",
-    }),
-    documentation = cmp.config.window.bordered({
-      -- winhighlight = "Normal:Normal,FloatBorder:CmpFloatBorder,CursorLine:Visual,Search:None",
-    }),
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
   formatting = {
     expandable_indicator = false,
@@ -148,6 +142,6 @@ cmp.setup.cmdline({ "/", "?" }, {
 
 cmp.setup.filetype({ "sql", "mysql", "plsql" }, {
   sources = {
-    { name = "vim-dadbod-completion", keyword_length = 3 },
+    { name = "vim-dadbod-completion" },
   },
 })
