@@ -1,7 +1,7 @@
 require("lualine").setup({
   options = {
     icons_enabled = true,
-    theme = "tokyonight",
+    theme = "auto",
     component_separators = { left = "", right = "" },
     -- section_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
@@ -43,9 +43,8 @@ require("lualine").setup({
         update_in_insert = false,
         always_visible = false,
       },
-      "fileformat",
     },
-    lualine_y = { "encoding" },
+    lualine_y = { "fileformat", "encoding" },
     lualine_z = { "progress" },
   },
   inactive_sections = {},

@@ -52,9 +52,6 @@ M.setup = function()
   end
 
   -- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
-
-  local colors = require("gordon.lib.colors").base_30
-  vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", { fg = colors.one_bg3 })
 end
 
 return M

@@ -1,4 +1,7 @@
 require("outline").setup({
+  outline_window = {
+    winhl = "Normal:NvimTreeNormal",
+  },
   symbols = {
     icons = {
       File = { icon = "󰈙", hl = "Identifier" },
@@ -38,4 +41,3 @@ require("outline").setup({
 })
 
 vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
-vim.api.nvim_set_hl(0, "OutlineFoldMarker", { link = "NvimTreeIndentMarker" })

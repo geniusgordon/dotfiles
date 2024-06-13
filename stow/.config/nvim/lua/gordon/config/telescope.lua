@@ -50,22 +50,3 @@ end, { desc = "Open file with encoding" })
 vim.keymap.set("n", "<leader>pe", function()
   encoding.save_with_encoding()
 end, { desc = "Save file with encoding" })
-
-local colors = require("gordon.lib.colors").base_30
-
-vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { fg = colors.red, bg = colors.black2 })
-vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = colors.black })
-vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { fg = colors.black, bg = colors.green })
-vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { fg = colors.black, bg = colors.blue })
-
-vim.api.nvim_set_hl(0, "TelescopeResultsDiffAdd", { fg = colors.green })
-vim.api.nvim_set_hl(0, "TelescopeResultsDiffChange", { fg = colors.yellow })
-vim.api.nvim_set_hl(0, "TelescopeResultsDiffDelete", { fg = colors.red })
-
-vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = colors.one_bg3 })
-vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = colors.one_bg3 })
-vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { fg = colors.black, bg = colors.green })
-vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { fg = colors.black, bg = colors.blue })
-vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { fg = colors.red, bg = colors.black })
-vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = colors.black })
-vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = colors.black })

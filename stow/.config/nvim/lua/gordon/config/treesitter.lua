@@ -81,10 +81,6 @@ require("treesitter-context").setup({
   on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 })
 
-local colors = require("gordon.lib.colors").base_30
-vim.api.nvim_set_hl(0, "TreesitterContext", { bg = colors.one_bg3 })
-vim.api.nvim_set_hl(0, "TreesitterContextBottom", { underline = false })
-
 vim.keymap.set(
   "n",
   "<C-h>",

@@ -52,10 +52,10 @@ cmp.setup({
   },
   window = {
     completion = cmp.config.window.bordered({
-      winhighlight = "Normal:Normal,FloatBorder:CmpFloatBorder,CursorLine:Visual,Search:None",
+      -- winhighlight = "Normal:Normal,FloatBorder:CmpFloatBorder,CursorLine:Visual,Search:None",
     }),
     documentation = cmp.config.window.bordered({
-      winhighlight = "Normal:Normal,FloatBorder:CmpFloatBorder,CursorLine:Visual,Search:None",
+      -- winhighlight = "Normal:Normal,FloatBorder:CmpFloatBorder,CursorLine:Visual,Search:None",
     }),
   },
   formatting = {
@@ -151,8 +151,3 @@ cmp.setup.filetype({ "sql", "mysql", "plsql" }, {
     { name = "vim-dadbod-completion", keyword_length = 3 },
   },
 })
-
-local colors = require("gordon.lib.colors").base_30
-vim.api.nvim_set_hl(0, "CmpFloatBorder", { fg = colors.one_bg3 })
-vim.api.nvim_set_hl(0, "CmpItemMenu", { link = "CmpItemAbbr", italic = true })
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })

@@ -4,6 +4,7 @@ require("lazy").setup({
     name = "catppuccin",
   },
   { "folke/tokyonight.nvim" },
+  { "rebelot/kanagawa.nvim" },
 
   {
     "ThePrimeagen/harpoon",
@@ -148,4 +149,6 @@ require("lazy").setup({
 
   { "preservim/vimux" },
   { "vim-test/vim-test" },
+
+  { "norcalli/nvim-colorizer.lua" },
 })
