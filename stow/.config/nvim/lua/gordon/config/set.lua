@@ -48,7 +48,6 @@ vim.opt.colorcolumn = "80"
 
 vim.opt.splitbelow = true
 
-vim.g.xml_syntax_folding = true
 vim.opt.fillchars = { diff = " " }
 
 vim.opt.listchars = {
@@ -60,6 +59,3 @@ vim.opt.listchars = {
   nbsp = "␣",
 }
 vim.opt.list = true
-
--- vim.opt.spell = true
--- vim.opt.spelllang = "en_us"
