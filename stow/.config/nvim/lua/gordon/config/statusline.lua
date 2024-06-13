@@ -25,13 +25,8 @@ require("lualine").setup({
       "diff",
     },
     lualine_c = {
-      {
-        "filetype",
-        icon_only = true,
-        icon = { align = "right" },
-        padding = { left = 1, right = 0 },
-      },
       "filename",
+      "progress",
     },
     lualine_x = {
       {
@@ -43,9 +38,30 @@ require("lualine").setup({
         update_in_insert = false,
         always_visible = false,
       },
+      {
+        "filetype",
+        icon = { align = "left" },
+      },
     },
-    lualine_y = { "fileformat", "encoding" },
-    lualine_z = { "progress" },
+    lualine_y = { "encoding" },
+    lualine_z = {
+      function()
+        local client_names = {}
+        for _, client in ipairs(vim.lsp.get_clients()) do
+          table.insert(client_names, client.name)
+        end
+
+        if vim.o.columns < 100 then
+          return ""
+        end
+
+        if #client_names == 0 then
+          return ""
+        end
+
+        return "  " .. table.concat(client_names, " ")
+      end,
+    },
   },
   inactive_sections = {},
   tabline = {},
