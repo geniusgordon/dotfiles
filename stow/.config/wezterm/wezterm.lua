@@ -39,23 +39,30 @@ config.keys = {
 		mods = "CTRL",
 		action = wezterm.action.DisableDefaultAssignment,
 	},
-}
-
-config.keys = {
 	{
 		key = "f",
 		mods = "CMD",
 		action = wezterm.action.ToggleFullScreen,
 	},
-}
-
-config.keys = {
 	{
 		key = "p",
 		mods = "CTRL|SHIFT",
 		action = wezterm.action.DisableDefaultAssignment,
 	},
+	{
+		key = ";",
+		mods = "OPT",
+		action = wezterm.action({ SendString = "\x1b;" }),
+	},
 }
+
+for i = 97, 122 do -- ASCII values for 'a' to 'z'
+	table.insert(config.keys, {
+		key = string.char(i),
+		mods = "OPT",
+		action = wezterm.action({ SendString = "\x1b" .. string.char(i) }),
+	})
+end
 
 config.audible_bell = "Disabled"
 

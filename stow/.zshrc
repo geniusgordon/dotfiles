@@ -35,7 +35,7 @@ alias mutt=neomutt
 alias diff='nvim -d'
 alias vimdiff='nvim -d'
 alias view='nvim -R'
-alias vim-db="nvim +DBUI"
+alias vimdb="nvim +DBUI"
 export MANPAGER='nvim +Man!'
 export MANWIDTH=80
 

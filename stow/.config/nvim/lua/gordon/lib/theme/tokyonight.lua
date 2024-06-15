@@ -7,17 +7,17 @@ M.colors = util.createColorPalatte({
   bg = "#1a1b26",
   fg = "#c0caf5",
   fg_light = "#3b4261",
+  bg_light = "#292e42",
   bg_visual = "#182440",
   bg_cursor_line = "#292e42",
   line = "#3b4261",
-  blue = "#7aa2f7",
-  cyan = "#7dcfff",
-  magenta = "#bb9af7",
-  purple = "#9d7cd8",
+  red = "#f7768e",
   orange = "#ff9e64",
   yellow = "#e0af68",
   green = "#9ece6a",
-  red = "#f7768e",
+  cyan = "#7dcfff",
+  blue = "#7aa2f7",
+  magenta = "#bb9af7",
 })
 
 return M
