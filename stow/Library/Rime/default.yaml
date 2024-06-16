@@ -6,6 +6,7 @@ schema_list:
   - schema: bopomofo_tw
   - schema: cangjie5
   - schema: japanese
+  - schema: hangugeo_stdkey
 switcher:
   caption: 〔方案選單〕
   hotkeys:
