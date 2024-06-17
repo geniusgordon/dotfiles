@@ -67,3 +67,5 @@ vim.keymap.set("c", "<C-f>", "<Right>", { silent = false })
 vim.keymap.set("c", "<C-d>", "<Left>", { silent = false })
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { silent = false, desc = "Exit terminal mode" })
+vim.keymap.set("n", "<leader>tv", "<cmd>botright split | terminal<CR>", { desc = "Open terminal in horizontal split" })
+vim.keymap.set("n", "<leader>ts", "<cmd>botright vsplit | terminal<CR>", { desc = "Open terminal in vertical split" })
