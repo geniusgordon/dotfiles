@@ -8,7 +8,7 @@ local f = ls.function_node
 local d = ls.dynamic_node
 local c = ls.choice_node
 local fmt = require("luasnip.extras.fmt").fmt
-local same = require("gordon.snippet").same
+local same = require("gordon.lib.snippet").same
 local ai = require("luasnip.nodes.absolute_indexer")
 
 return {

@@ -8,15 +8,9 @@ local f = ls.function_node
 local d = ls.dynamic_node
 local c = ls.choice_node
 local fmt = require("luasnip.extras.fmt").fmt
-local same = require("gordon.snippet").same
-local type_to_obj = require("gordon.snippet").type_to_obj
+local same = require("gordon.lib.snippet").same
+local type_to_obj = require("gordon.lib.snippet").type_to_obj
 local ai = require("luasnip.nodes.absolute_indexer")
-
-local function props(index)
-  return f(function(args)
-    return type_to_obj(args[1])
-  end, ai[index])
-end
 
 return {
   s(
