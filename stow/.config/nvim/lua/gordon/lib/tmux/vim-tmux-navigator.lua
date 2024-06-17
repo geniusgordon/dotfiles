@@ -13,6 +13,19 @@ M.setup = function()
   vim.keymap.set("n", "<C-w>l", nvim_tmux_nav.NvimTmuxNavigateRight)
   vim.keymap.set("n", "<C-w>\\", nvim_tmux_nav.NvimTmuxNavigateLastActive)
   vim.keymap.set("n", "<C-w>Space", nvim_tmux_nav.NvimTmuxNavigateNext)
+
+  vim.keymap.set("n", "<M-j>", function()
+    vim.cmd("horizontal resize +5")
+  end, { desc = "Increase height" })
+  vim.keymap.set("n", "<M-k>", function()
+    vim.cmd("horizontal resize -5")
+  end, { desc = "Decrease height" })
+  vim.keymap.set("n", "<M-h>", function()
+    vim.cmd("vertical resize +5")
+  end, { desc = "Increase width" })
+  vim.keymap.set("n", "<M-l>", function()
+    vim.cmd("vertical resize -5")
+  end, { desc = "Decrease width" })
 end
 
 return M
