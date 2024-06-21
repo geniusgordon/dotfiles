@@ -107,8 +107,9 @@ require("lazy").setup({
   -- format
   { "nvimtools/none-ls.nvim" },
   { "jay-babu/mason-null-ls.nvim" },
-
+  { "folke/trouble.nvim" },
   { "j-hui/fidget.nvim" },
+
   { "folke/which-key.nvim" },
 
   { "kylechui/nvim-surround" },
