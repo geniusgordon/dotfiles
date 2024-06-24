@@ -13,8 +13,8 @@ local prompts = {
   FixError = "Please explain the error in the following text and provide a solution.",
   BetterNamings = "Please provide better names for the following variables and functions.",
   Documentation = "Please provide documentation for the following code.",
-  SwaggerApiDocs = "Please provide documentation for the following API using Swagger.",
-  SwaggerJsDocs = "Please write JSDoc for the following API using Swagger.",
+  -- SwaggerApiDocs = "Please provide documentation for the following API using Swagger.",
+  -- SwaggerJsDocs = "Please write JSDoc for the following API using Swagger.",
   -- Text related prompts
   Summarize = "Please summarize the following text.",
   Spelling = "Please correct any grammar and spelling errors in the following text.",
@@ -84,11 +84,11 @@ opts.selection = chat_select.unnamed
 
 -- Override the git prompts message
 opts.prompts.Commit = {
-  prompt = "Write commit message for the change with commitizen convention",
+  prompt = "Write commit message for the change with commitizen convention. Use bullet points for body, and write footer if needed.",
   selection = chat_select.gitdiff,
 }
 opts.prompts.CommitStaged = {
-  prompt = "Write commit message for the change with commitizen convention",
+  prompt = "Write commit message for the change with commitizen convention. Use bullet points for body, and write footer if needed.",
   selection = function(source)
     return chat_select.gitdiff(source, true)
   end,
