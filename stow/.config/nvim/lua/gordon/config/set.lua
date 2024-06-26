@@ -12,6 +12,9 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
+vim.o.timeout = true
+vim.o.timeoutlen = 300
+
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
