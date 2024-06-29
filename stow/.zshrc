@@ -8,7 +8,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 export EDITOR=nvim
-export GPG_TTY=`tty`
+export GPG_TTY=$(tty)
 
 export PATH=$HOME/.local/bin:$PATH
 
@@ -46,17 +46,17 @@ export N_PREFIX=$HOME/.local
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then
-  . "$HOME/google-cloud-sdk/path.zsh.inc";
+  . "$HOME/google-cloud-sdk/path.zsh.inc"
 fi
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then
-  . "$HOME/google-cloud-sdk/completion.zsh.inc";
+  . "$HOME/google-cloud-sdk/completion.zsh.inc"
 fi
 if [ -f "$HOME/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh" ]; then
-  . "$HOME/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh";
+  . "$HOME/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh"
 fi
 
 function gi() {
-  curl -L -s https://www.gitignore.io/api/$@ ;
+  curl -L -s https://www.gitignore.io/api/$@
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -68,27 +68,32 @@ if [ -f "$HOME/.gvm/scripts/gvm" ]; then
   source $HOME/.gvm/scripts/gvm
 fi
 
-# FZF Tokyonight
-# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-#   --border
-#   --color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7,gutter:#1a1b26
-#   --color=fg+:#c0caf5,bg+:#292e42,hl+:#7dcfff
-#   --color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff
-#   --color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
+# check if $THEME is set
+if [ -z $THEME ]; then
+  export THEME=tokyonight
+fi
 
-# FZF Catppuccin Mocha
-# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-# --border
-# --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8
-# --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
-# --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8'
-
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-  --border
-  --color=fg:#c5c9c5,bg:#181616,hl:#938AA9,gutter:#181616
-  --color=fg+:#c0caf5,bg+:#223249,hl+:#7FB4CA
-  --color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff
-  --color=marker:#87a987,spinner:#87a987,header:#87a987'
+if [ $THEME = "tokyonight" ]; then
+  export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+    --border
+    --color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7,gutter:#1a1b26
+    --color=fg+:#c0caf5,bg+:#292e42,hl+:#7dcfff
+    --color=info:#f7768e,prompt:#7dcfff,pointer:#7dcfff
+    --color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
+elif [ $THEME = "catppuccino-mocha" ]; then
+  export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+    --border
+    --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8
+    --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
+    --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8'
+elif [ $THEME = "kanagawa-dragon" ]; then
+  export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+    --border
+    --color=fg:#c5c9c5,bg:#181616,hl:#938AA9,gutter:#181616
+    --color=fg+:#c0caf5,bg+:#223249,hl+:#7FB4CA
+    --color=info:#c4746e,prompt:#7dcfff,pointer:#7dcfff
+    --color=marker:#87a987,spinner:#87a987,header:#87a987'
+fi
 
 function tmux_sessionizer() {
   exec </dev/tty

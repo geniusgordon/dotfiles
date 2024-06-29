@@ -88,9 +88,9 @@ local function setup_highlights(colors)
   vim.api.nvim_set_hl(0, "OutlineFoldMarker", { link = "NvimTreeIndentMarker" })
 end
 
--- local theme = setup_theme("tokyonight")
--- local theme = setup_theme("catppuccin-mocha")
-local theme = setup_theme("kanagawa-dragon")
+print("theme: " .. vim.env.THEME)
+local theme_env = vim.env.THEME or "tokyonight"
+local theme = setup_theme(theme_env)
 
 local setup = function()
   vim.cmd.colorscheme(theme.colorscheme)

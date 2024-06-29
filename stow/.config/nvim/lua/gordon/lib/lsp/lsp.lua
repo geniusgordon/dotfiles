@@ -67,9 +67,17 @@ local function setup_null_ls()
   null_ls.setup({
     sources = {
       null_ls.builtins.formatting.black,
-      null_ls.builtins.formatting.shfmt,
+      null_ls.builtins.formatting.shfmt.with({
+        args = { "-i", "2", "-ci" },
+        filetypes = { "sh", "zsh" },
+      }),
       null_ls.builtins.formatting.sql_formatter,
-      null_ls.builtins.formatting.stylua,
+      null_ls.builtins.formatting.stylua.with({
+        extra_args = {
+          "--indent-type=Spaces",
+          "--indent-width=2",
+        },
+      }),
       null_ls.builtins.formatting.xmllint,
       null_ls.builtins.formatting.yamlfmt,
     },
