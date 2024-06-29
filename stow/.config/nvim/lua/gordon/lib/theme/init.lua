@@ -26,12 +26,16 @@ local function setup_kanagawa_dragon()
   return {
     colorscheme = "kanagawa-dragon",
     colors = colors,
+    override = function()
+      vim.g.terminal_color_8 = colors.fg_light
+    end,
   }
 end
 
 ---@class Theme
 ---@field colorscheme string
 ---@field colors ColorPalette
+---@field override function | nil
 ---@param theme "tokyonight" | "catppuccin-mocha" | "kanagawa-dragon"
 ---@return Theme
 local function setup_theme(theme)
@@ -91,6 +95,9 @@ local theme = setup_theme("kanagawa-dragon")
 local setup = function()
   vim.cmd.colorscheme(theme.colorscheme)
   setup_highlights(theme.colors)
+  if theme.override then
+    theme.override()
+  end
 end
 
 local M = {
