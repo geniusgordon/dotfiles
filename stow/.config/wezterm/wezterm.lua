@@ -11,11 +11,33 @@ if wezterm.config_builder then
 end
 
 -- config.color_scheme = "Catppuccin Mocha"
-config.color_scheme = "Tokyo Night"
+-- config.color_scheme = "Tokyo Night"
 -- config.color_scheme = "Kanagawa Dragon (Gogh)"
+-- config.color_scheme = "Kanagawa (Gogh)"
 
 config.colors = {
-	-- background = "#181616",
+	background = "#181616",
+	foreground = "#c5c9c5",
+	ansi = {
+		"#0d0c0c",
+		"#c4746e",
+		"#8a9a7b",
+		"#c4b28a",
+		"#8ba4b0",
+		"#a292a3",
+		"#8ea4a2",
+		"#C8C093",
+	},
+	brights = {
+		"#625e5a",
+		"#E46876",
+		"#87a987",
+		"#E6C384",
+		"#7FB4CA",
+		"#938AA9",
+		"#7AA89F",
+		"#c5c9c5",
+	},
 }
 
 config.font = wezterm.font_with_fallback({

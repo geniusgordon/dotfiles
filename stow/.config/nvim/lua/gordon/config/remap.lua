@@ -70,3 +70,5 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { silent = false, desc = "Exit termi
 
 vim.keymap.set("n", "<leader>tv", "<cmd>botright split | terminal<CR>", { desc = "Open terminal in horizontal split" })
 vim.keymap.set("n", "<leader>ts", "<cmd>botright vsplit | terminal<CR>", { desc = "Open terminal in vertical split" })
+
+vim.keymap.set("n", "<leader>te", "<cmd>tabe<CR>", { desc = "Open new tab" })

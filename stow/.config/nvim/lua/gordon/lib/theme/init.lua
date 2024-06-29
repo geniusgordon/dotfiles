@@ -22,7 +22,6 @@ local function setup_kanagawa_dragon()
   require("kanagawa").setup({
     theme = "dragon",
   })
-  require("kanagawa").setup()
   local colors = require("gordon.lib.theme.kanagawa").colors
   return {
     colorscheme = "kanagawa-dragon",
@@ -85,9 +84,9 @@ local function setup_highlights(colors)
   vim.api.nvim_set_hl(0, "OutlineFoldMarker", { link = "NvimTreeIndentMarker" })
 end
 
-local theme = setup_theme("tokyonight")
+-- local theme = setup_theme("tokyonight")
 -- local theme = setup_theme("catppuccin-mocha")
--- local theme = setup_theme("kanagawa-dragon")
+local theme = setup_theme("kanagawa-dragon")
 
 local setup = function()
   vim.cmd.colorscheme(theme.colorscheme)
