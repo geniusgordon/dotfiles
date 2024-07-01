@@ -28,6 +28,7 @@ local function setup_kanagawa_dragon()
     colors = colors,
     override = function()
       vim.g.terminal_color_8 = colors.fg_light
+      vim.api.nvim_set_hl(0, "Comment", { fg = colors.fg_light })
     end,
   }
 end
@@ -71,7 +72,6 @@ local function setup_highlights(colors)
   vim.api.nvim_set_hl(0, "IblScope", { fg = colors.line })
 
   vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", { fg = colors.line })
-  vim.api.nvim_set_hl(0, "@csv.header", { bold = true, fg = colors.blue })
 
   vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = colors.line })
   vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = colors.bg })
@@ -88,7 +88,6 @@ local function setup_highlights(colors)
   vim.api.nvim_set_hl(0, "OutlineFoldMarker", { link = "NvimTreeIndentMarker" })
 end
 
-print("theme: " .. vim.env.THEME)
 local theme_env = vim.env.THEME or "tokyonight"
 local theme = setup_theme(theme_env)
 
@@ -102,6 +101,7 @@ end
 
 local M = {
   setup = setup,
+  theme = theme,
 }
 
 return M

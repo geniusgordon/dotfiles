@@ -1,6 +1,6 @@
 (document
   .
-  (row) @csv.header
+  (row) @header
 )
 
 "," @punctuation.delimiter
