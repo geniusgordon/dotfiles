@@ -179,6 +179,11 @@ M.setup = function()
     capabilities = capabilities,
   })
 
+  lspconfig.gopls.setup({
+    on_attach = setup_lsp_keymap(),
+    capabilities = capabilities,
+  })
+
   lspconfig.terraformls.setup({
     on_attach = setup_lsp_keymap(),
     capabilities = capabilities,
