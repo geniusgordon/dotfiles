@@ -16,7 +16,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank to system clipboard" })
 
-vim.keymap.set({ "n", "v" }, "<leader>x", [["_d]], { desc = "Delete to black hole" })
+vim.keymap.set({ "n", "v" }, "<leader>X", [["_d]], { desc = "Delete to black hole" })
 
 vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>zz", { desc = "Next error" })
 vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>zz", { desc = "Previous error" })
