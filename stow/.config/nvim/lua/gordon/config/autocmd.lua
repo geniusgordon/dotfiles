@@ -24,6 +24,13 @@ autocmd("FileType", {
   end,
 })
 
+autocmd("FileType", {
+  pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+  callback = function()
+    vim.opt_local.commentstring = "// %s"
+  end,
+})
+
 autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.http",
   command = "setlocal filetype=http",

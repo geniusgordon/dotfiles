@@ -24,9 +24,9 @@ M.setup_colors = function()
     group = id,
     pattern = "*.csv",
     callback = function()
-      vim.api.nvim_set_hl(0, "Number", {})
-      vim.api.nvim_set_hl(0, "String", {})
-      vim.api.nvim_set_hl(0, "Constant", {})
+      vim.api.nvim_set_hl(0, "@number.csv", {})
+      vim.api.nvim_set_hl(0, "@string.csv", {})
+      vim.api.nvim_set_hl(0, "@constant.csv", {})
       vim.api.nvim_set_hl(0, "@header", { bold = true })
     end,
   })

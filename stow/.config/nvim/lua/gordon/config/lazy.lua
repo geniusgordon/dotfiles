@@ -152,4 +152,5 @@ require("lazy").setup({
   { "vim-test/vim-test" },
 
   { "norcalli/nvim-colorizer.lua" },
+  { "lambdalisue/vim-suda" },
 })
