@@ -36,6 +36,8 @@ vim.opt.isfname:append("@-@")
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 99
+vim.o.foldtext =
+  [[substitute(getline(v:foldstart),'\\t',repeat('\\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
 
 -- Give more space for displaying messages.
 vim.opt.cmdheight = 1
@@ -51,7 +53,10 @@ vim.opt.colorcolumn = "80"
 
 vim.opt.splitbelow = true
 
-vim.opt.fillchars = { diff = " " }
+vim.opt.fillchars = {
+  diff = " ",
+  fold = " ",
+}
 
 vim.opt.listchars = {
   -- eol = "↲",

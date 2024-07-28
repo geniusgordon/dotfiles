@@ -18,7 +18,7 @@ autocmd("FileType", {
 })
 
 autocmd("FileType", {
-  pattern = { "csv", "dbout" },
+  pattern = { "csv", "dbout", "qf" },
   callback = function()
     vim.opt_local.colorcolumn = ""
   end,

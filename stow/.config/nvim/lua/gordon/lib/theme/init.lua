@@ -56,6 +56,7 @@ local function setup_highlights(colors)
   vim.api.nvim_set_hl(0, "CursorLine", { bg = colors.bg_cursor_line })
   vim.api.nvim_set_hl(0, "Visual", { bg = colors.bg_visual })
   vim.api.nvim_set_hl(0, "SignColumn", { bg = colors.bg })
+  vim.api.nvim_set_hl(0, "qfLineNr", { fg = colors.red })
 
   vim.api.nvim_set_hl(0, "NormalFloat", { bg = colors.bg })
   vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.line })
