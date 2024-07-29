@@ -58,7 +58,7 @@ end
 ---@param colors ColorPalette
 local function setup_highlights(colors)
   vim.api.nvim_set_hl(0, "Normal", { bg = colors.bg })
-  vim.api.nvim_set_hl(0, "WinSeparator", { fg = colors.line_dark })
+  -- vim.api.nvim_set_hl(0, "WinSeparator", { fg = colors.line_dark })
 
   vim.api.nvim_set_hl(0, "LineNrAbove", { fg = colors.fg_light })
   vim.api.nvim_set_hl(0, "LineNr", { fg = colors.red })
@@ -102,6 +102,8 @@ local function setup_highlights(colors)
 
   vim.api.nvim_set_hl(0, "OutlineFoldMarker", { link = "NvimTreeIndentMarker" })
   vim.api.nvim_set_hl(0, "WhichKeyNormal", { link = "NvimTreeNormal" })
+
+  vim.api.nvim_set_hl(0, "FoldedText", { link = "Visual" })
 end
 
 local theme_env = vim.env.THEME or "tokyonight"

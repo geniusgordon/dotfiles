@@ -29,6 +29,7 @@ require("gordon.config.outline")
 require("gordon.config.trouble")
 require("gordon.config.colorizer")
 require("gordon.config.base64")
+require("gordon.config.tint")
 require("gordon.config.colors")
 
 require("gordon.config.which-key")
