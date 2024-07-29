@@ -12,7 +12,6 @@ autocmd("BufReadPost", {
 autocmd("FileType", {
   pattern = "xml",
   callback = function()
-    vim.opt_local.foldmethod = "syntax"
     vim.opt_local.colorcolumn = ""
   end,
 })

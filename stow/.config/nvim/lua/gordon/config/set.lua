@@ -34,9 +34,9 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevelstart = 99
-vim.o.foldtext =
+vim.opt.foldtext =
   [[substitute(getline(v:foldstart),'\\t',repeat('\\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
 
 -- Give more space for displaying messages.
@@ -49,6 +49,7 @@ vim.opt.updatetime = 50
 -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess:append("c")
 
+vim.opt.textwidth = 80
 vim.opt.colorcolumn = "80"
 
 vim.opt.splitbelow = true

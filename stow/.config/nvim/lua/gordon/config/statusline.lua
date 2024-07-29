@@ -28,6 +28,7 @@ require("lualine").setup({
     },
     lualine_c = {
       "filename",
+      "location",
       "progress",
     },
     lualine_x = {
