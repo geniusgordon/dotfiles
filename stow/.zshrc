@@ -80,12 +80,13 @@ if [ $THEME = "tokyonight" ]; then
     --color=fg+:#c0caf5,bg+:#292e42,hl+:#7dcfff
     --color=info:#f7768e,prompt:#7dcfff,pointer:#7dcfff
     --color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
-elif [ $THEME = "catppuccino-mocha" ]; then
+elif [ $THEME = "catppuccin-mocha" ]; then
   export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
     --border
-    --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8
-    --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
-    --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8'
+    --color=fg:#cdd6f4,bg:#000000,hl:#cba6f7,gutter:#000000
+    --color=fg+:#cdd6f4,bg+:#45475a,hl+:#89dceb
+    --color=info:#f38ba8,prompt:#89dceb,pointer:#89dceb
+    --color=marker:#a6e3a1,spinner:#a6e3a1,header:#a6e3a1'
 elif [ $THEME = "kanagawa-dragon" ]; then
   export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
     --border

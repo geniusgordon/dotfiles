@@ -1,3 +1,5 @@
+local colors = require("gordon.lib.theme.catppuccin").colors
+
 require("lualine").setup({
   options = {
     icons_enabled = true,

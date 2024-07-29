@@ -7,6 +7,7 @@
 ---@field bg_visual string
 ---@field bg_cursor_line string
 ---@field line string
+---@field line_dark string
 ---@field red string Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
 ---@field orange string Integers, Boolean, Constants, XML Attributes, Markup Link Url
 ---@field yellow string Classes, Markup Bold, Search Text Background

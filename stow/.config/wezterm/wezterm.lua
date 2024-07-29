@@ -11,13 +11,16 @@ if wezterm.config_builder then
 end
 
 -- local theme = "tokyonight"
--- local theme = "catppuccin-mocha"
-local theme = "kanagawa-dragon"
+local theme = "catppuccin-mocha"
+-- local theme = "kanagawa-dragon"
 
 if theme == "tokyonight" then
   config.color_scheme = "Tokyo Night"
 elseif theme == "catppuccin-mocha" then
-  config.color_scheme = "Catppuccino Mocha"
+  config.color_scheme = "Catppuccin Mocha"
+  config.colors = {
+    background = "#000000",
+  }
 elseif theme == "kanagawa-dragon" then
   config.colors = {
     background = "#181616",

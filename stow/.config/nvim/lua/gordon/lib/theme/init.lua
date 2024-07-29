@@ -1,6 +1,13 @@
 local function setup_catppuccin_mocha()
   require("catppuccin").setup({
     flavour = "mocha",
+    color_overrides = {
+      mocha = {
+        base = "#000000",
+        mantle = "#000000",
+        crust = "#000000",
+      },
+    },
   })
   local colors = require("gordon.lib.theme.catppuccin").colors
 
@@ -48,7 +55,11 @@ local function setup_theme(theme)
   return setup_catppuccin_mocha()
 end
 
+---@param colors ColorPalette
 local function setup_highlights(colors)
+  vim.api.nvim_set_hl(0, "Normal", { bg = colors.bg })
+  -- vim.api.nvim_set_hl(0, "WinSeparator", { fg = colors.line_dark })
+
   vim.api.nvim_set_hl(0, "LineNrAbove", { fg = colors.fg_light })
   vim.api.nvim_set_hl(0, "LineNr", { fg = colors.red })
   vim.api.nvim_set_hl(0, "LineNrBelow", { fg = colors.fg_light })
@@ -56,10 +67,11 @@ local function setup_highlights(colors)
   vim.api.nvim_set_hl(0, "CursorLine", { bg = colors.bg_cursor_line })
   vim.api.nvim_set_hl(0, "Visual", { bg = colors.bg_visual })
   vim.api.nvim_set_hl(0, "SignColumn", { bg = colors.bg })
+  vim.api.nvim_set_hl(0, "ColorColumn", { bg = colors.bg_light })
   vim.api.nvim_set_hl(0, "qfLineNr", { fg = colors.red })
 
   vim.api.nvim_set_hl(0, "NormalFloat", { bg = colors.bg })
-  vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.line })
+  vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.line, bg = colors.bg })
   vim.api.nvim_set_hl(0, "CmpItemMenu", { link = "CmpItemAbbr", italic = true })
   vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = colors.green })
 
@@ -71,13 +83,15 @@ local function setup_highlights(colors)
   vim.api.nvim_set_hl(0, "IblIndent", { fg = colors.line })
   vim.api.nvim_set_hl(0, "IblWhitespace", { fg = colors.line })
   vim.api.nvim_set_hl(0, "IblScope", { fg = colors.line })
+  vim.api.nvim_set_hl(0, "@ibl.scope.char.1", { fg = colors.line_dark })
 
   vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", { fg = colors.line })
+  vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = colors.bg_light })
 
-  vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = colors.line })
+  vim.api.nvim_set_hl(0, "TelescopeBorder", { link = "FloatBorder" })
   vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = colors.bg })
   vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = colors.bg })
-  vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = colors.line })
+  vim.api.nvim_set_hl(0, "TelescopePromptBorder", { link = "FloatBorder" })
   vim.api.nvim_set_hl(0, "TelescopePromptTitle", { fg = colors.bg, bg = colors.red })
   vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { fg = colors.bg, bg = colors.green })
   vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { fg = colors.bg, bg = colors.blue })
@@ -87,6 +101,7 @@ local function setup_highlights(colors)
   vim.api.nvim_set_hl(0, "TreesitterContextBottom", { underline = false })
 
   vim.api.nvim_set_hl(0, "OutlineFoldMarker", { link = "NvimTreeIndentMarker" })
+  vim.api.nvim_set_hl(0, "WhichKeyNormal", { link = "NvimTreeNormal" })
 end
 
 local theme_env = vim.env.THEME or "tokyonight"

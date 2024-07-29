@@ -11,6 +11,7 @@ M.colors = util.createColorPalatte({
   bg_visual = "#223249",
   bg_cursor_line = "#393836",
   line = "#54546D",
+  line_dark = "#54546D",
   red = "#c4746e",
   orange = "#FF9E3B",
   yellow = "#c4b28a",
