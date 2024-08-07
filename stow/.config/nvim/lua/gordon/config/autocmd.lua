@@ -10,16 +10,19 @@ autocmd("BufReadPost", {
 })
 
 autocmd("FileType", {
-  pattern = "xml",
+  pattern = { "xml", "csv", "dbout", "qf", "markdown" },
   callback = function()
     vim.opt_local.colorcolumn = ""
   end,
 })
 
 autocmd("FileType", {
-  pattern = { "csv", "dbout", "qf" },
+  pattern = { "markdown" },
   callback = function()
-    vim.opt_local.colorcolumn = ""
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.expandtab = true
   end,
 })
 
