@@ -155,5 +155,6 @@ require("lazy").setup({
   { "lambdalisue/vim-suda" },
   { "levouh/tint.nvim" },
 
-  { "OXY2DEV/markview.nvim" },
+  -- { "OXY2DEV/markview.nvim" },
+  -- { "OXY2DEV/helpview.nvim" },
 })

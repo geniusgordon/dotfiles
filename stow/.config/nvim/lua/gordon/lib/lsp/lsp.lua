@@ -80,6 +80,7 @@ local function setup_null_ls()
           "--indent-width=2",
         },
       }),
+      null_ls.builtins.formatting.terraform_fmt,
       null_ls.builtins.formatting.xmllint,
       null_ls.builtins.formatting.yamlfmt,
     },

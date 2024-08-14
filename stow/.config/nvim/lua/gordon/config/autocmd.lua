@@ -33,6 +33,13 @@ autocmd("FileType", {
   end,
 })
 
+autocmd("FileType", {
+  pattern = { "terraform" },
+  callback = function()
+    vim.opt_local.commentstring = "# %s"
+  end,
+})
+
 autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.http",
   command = "setlocal filetype=http",

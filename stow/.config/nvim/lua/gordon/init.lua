@@ -1,3 +1,6 @@
+require("gordon.lazy")
+-- require("gordon.rocks")
+
 require("gordon.config.remap")
 require("gordon.config.set")
 require("gordon.config.autocmd")
