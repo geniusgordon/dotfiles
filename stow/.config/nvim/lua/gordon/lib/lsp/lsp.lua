@@ -69,6 +69,7 @@ local function setup_null_ls()
       null_ls.builtins.formatting.black,
       null_ls.builtins.formatting.gofumpt,
       null_ls.builtins.formatting.goimports,
+      null_ls.builtins.formatting.prettier,
       null_ls.builtins.formatting.shfmt.with({
         args = { "-i", "2", "-ci" },
         filetypes = { "sh", "zsh" },

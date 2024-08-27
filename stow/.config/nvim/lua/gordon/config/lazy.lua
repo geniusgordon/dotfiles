@@ -124,10 +124,7 @@ require("lazy").setup({
   },
   {
     "rest-nvim/rest.nvim",
-    ft = "http",
-    dependencies = { "luarocks.nvim" },
   },
-
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
@@ -154,6 +151,8 @@ require("lazy").setup({
   { "norcalli/nvim-colorizer.lua" },
   { "lambdalisue/vim-suda" },
   { "levouh/tint.nvim" },
+
+  { "martineausimon/nvim-lilypond-suite" },
 
   -- { "OXY2DEV/markview.nvim" },
   -- { "OXY2DEV/helpview.nvim" },
