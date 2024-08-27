@@ -6,42 +6,40 @@ local null_ls = require("null-ls")
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local function setup_lsp_keymap()
-  return function()
-    vim.keymap.set("n", "gh", function()
-      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-    end, { desc = "Toggle inlay hints" })
+local function lsp_on_attach()
+  vim.keymap.set("n", "gh", function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+  end, { desc = "Toggle inlay hints" })
 
-    vim.keymap.set("n", "<leader>ca", function()
-      vim.lsp.buf.code_action()
-    end, { desc = "Code action" })
-    vim.keymap.set("n", "<leader>rn", function()
-      vim.lsp.buf.rename()
-    end, { desc = "Rename" })
+  vim.keymap.set("n", "<leader>ca", function()
+    vim.lsp.buf.code_action()
+  end, { desc = "Code action" })
+  vim.keymap.set("n", "<leader>rn", function()
+    vim.lsp.buf.rename()
+  end, { desc = "Rename" })
 
-    vim.keymap.set("n", "gq", function()
-      vim.diagnostic.setqflist()
-    end, { desc = "Show diagnostics in quickfix" })
-    vim.keymap.set("n", "<C-j>", function()
-      vim.diagnostic.goto_next()
-    end, {})
-    vim.keymap.set("n", "<C-k>", function()
-      vim.diagnostic.goto_prev()
-    end, {})
-    vim.keymap.set("n", "K", function()
-      vim.lsp.buf.hover()
-    end, {})
-    vim.keymap.set("n", "L", function()
-      vim.diagnostic.open_float({ focusable = true })
-    end, {})
+  vim.keymap.set("n", "gq", function()
+    vim.diagnostic.setqflist()
+  end, { desc = "Show diagnostics in quickfix" })
+  vim.keymap.set("n", "<C-j>", function()
+    vim.diagnostic.goto_next()
+  end, {})
+  vim.keymap.set("n", "<C-k>", function()
+    vim.diagnostic.goto_prev()
+  end, {})
+  vim.keymap.set("n", "K", function()
+    vim.lsp.buf.hover()
+  end, {})
+  vim.keymap.set("n", "L", function()
+    vim.diagnostic.open_float({ focusable = true })
+  end, {})
 
-    vim.keymap.set("n", "gr", function()
-      builtin.lsp_references({ show_line = false })
-    end, { desc = "Find References" })
-    vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Find definition" })
-    vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "Find implementation" })
-    -- vim.keymap.set("n", "gt", builtin.lsp_type_definitions, { desc = "Find type definition" })
-  end
+  vim.keymap.set("n", "gr", function()
+    builtin.lsp_references({ show_line = false })
+  end, { desc = "Find References" })
+  vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Find definition" })
+  vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "Find implementation" })
+  -- vim.keymap.set("n", "gt", builtin.lsp_type_definitions, { desc = "Find type definition" })
 end
 
 local function setup_format_keymap(opts)
@@ -69,7 +67,7 @@ local function setup_null_ls()
       null_ls.builtins.formatting.black,
       null_ls.builtins.formatting.gofumpt,
       null_ls.builtins.formatting.goimports,
-      null_ls.builtins.formatting.prettier,
+      null_ls.builtins.formatting.prettierd,
       null_ls.builtins.formatting.shfmt.with({
         args = { "-i", "2", "-ci" },
         filetypes = { "sh", "zsh" },
@@ -123,7 +121,7 @@ M.setup = function()
         },
       },
     },
-    on_attach = setup_lsp_keymap(),
+    on_attach = lsp_on_attach,
     capabilities = capabilities,
   })
 
@@ -174,27 +172,31 @@ M.setup = function()
         },
       },
     },
-    on_attach = setup_lsp_keymap(),
+    on_attach = function(client)
+      lsp_on_attach()
+      client.server_capabilities.documentFormattingProvider = false
+      client.server_capabilities.documentRangeFormattingProvider = false
+    end,
     capabilities = capabilities,
   })
 
   lspconfig.bashls.setup({
-    on_attach = setup_lsp_keymap(),
+    on_attach = lsp_on_attach,
     capabilities = capabilities,
   })
 
   lspconfig.gopls.setup({
-    on_attach = setup_lsp_keymap(),
+    on_attach = lsp_on_attach,
     capabilities = capabilities,
   })
 
   lspconfig.terraformls.setup({
-    on_attach = setup_lsp_keymap(),
+    on_attach = lsp_on_attach,
     capabilities = capabilities,
   })
 
   lspconfig.yamlls.setup({
-    on_attach = setup_lsp_keymap(),
+    on_attach = lsp_on_attach,
     capabilities = capabilities,
   })
 end
