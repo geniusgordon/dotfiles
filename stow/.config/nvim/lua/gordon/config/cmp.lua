@@ -31,7 +31,7 @@ cmp.setup({
     { name = "copilot" },
     { name = "nvim_lua" },
     { name = "nvim_lsp" },
-    { name = "nvim_lsp_signature_help" },
+    -- { name = "nvim_lsp_signature_help" },
     { name = "path" },
     { name = "buffer", keyword_length = 3 },
     { name = "crates" },
