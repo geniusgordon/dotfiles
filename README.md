@@ -1,14 +1,13 @@
 # My Dotfiles
 
-## Install
+## Installation
 
-```bash
-# run the install script to install all to dotfiles
-./install.sh
+Follow these steps to install the dotfiles using Ansible:
 
-# or specify which to install
-./install.sh vim
+**Run the Ansible playbook**:
 
-# use -l/--list to see available dotfiles
-./install.sh -l
+```sh
+ansible-playbook setup.yml --ask-become-pass
 ```
+
+The `--ask-become-pass` flag is used to prompt for the sudo password if any tasks require elevated privileges.
