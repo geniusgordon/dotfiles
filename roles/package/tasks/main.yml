@@ -2,20 +2,26 @@
   become: true
   ansible.builtin.apt:
     name:
+      - curl
       - fd-find
       - fzf
+      - gcc
       - git
       - jq
+      - lsd
+      - make
       - neovim
       - pass
+      - pass-extension-otp
       - stow
       - tmux
+      - tree-sitter-cli
       - webext-browserpass
+      - zsh
     state: present
   when: >
-    ansible_distribution == "Ubuntu" or
-    ansible_distribution == "Debian" or
-    ansible_distribution == "Pop!_OS"
+    ansible_distribution == "Ubuntu" or ansible_distribution == "Debian" or ansible_distribution == "Pop!_OS"
+
 - name: Install packages with brew
   community.general.homebrew:
     name:
