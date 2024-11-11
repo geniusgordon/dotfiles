@@ -1,17 +1,18 @@
 require("copilot").setup({
   suggestion = {
-    enabled = false,
-    panel = false,
-    -- auto_trigger = true,
-    -- debounce = 75,
-    -- keymap = {
-    --   accept = false,
-    --   accept_word = false,
-    --   accept_line = false,
-    --   next = "<C-j>",
-    --   prev = "<C-k>",
-    --   dismiss = "<C-l>",
-    -- },
+    -- enabled = false,
+    -- panel = false,
+    enabled = true,
+    auto_trigger = true,
+    debounce = 75,
+    keymap = {
+      accept = false,
+      accept_word = false,
+      accept_line = false,
+      next = "<C-j>",
+      prev = "<C-k>",
+      dismiss = "<C-l>",
+    },
   },
   filetypes = {
     yaml = false,
@@ -28,38 +29,38 @@ require("copilot").setup({
   server_opts_overrides = {},
 })
 
--- vim.keymap.set("i", "<Tab>", function()
---   if require("copilot.suggestion").is_visible() then
---     require("copilot.suggestion").accept()
---   else
---     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
---   end
--- end, {
---   silent = true,
--- })
---
--- vim.keymap.set("i", "<S-Tab>", function()
---   if require("copilot.suggestion").is_visible() then
---     require("copilot.suggestion").previous()
---   else
---     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<S-Tab>", true, false, true), "n", false)
---   end
--- end, {
---   silent = true,
--- })
---
--- vim.keymap.set("i", "<C-f>", function()
---   if require("copilot.suggestion").is_visible() then
---     require("copilot.suggestion").accept_word()
---   end
--- end, {
---   silent = true,
--- })
---
--- vim.keymap.set("i", "<C-g>", function()
---   if require("copilot.suggestion").is_visible() then
---     require("copilot.suggestion").accept_line()
---   end
--- end, {
---   silent = true,
--- })
+vim.keymap.set("i", "<Tab>", function()
+  if require("copilot.suggestion").is_visible() then
+    require("copilot.suggestion").accept()
+  else
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
+  end
+end, {
+  silent = true,
+})
+
+vim.keymap.set("i", "<S-Tab>", function()
+  if require("copilot.suggestion").is_visible() then
+    require("copilot.suggestion").previous()
+  else
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<S-Tab>", true, false, true), "n", false)
+  end
+end, {
+  silent = true,
+})
+
+vim.keymap.set("i", "<C-f>", function()
+  if require("copilot.suggestion").is_visible() then
+    require("copilot.suggestion").accept_word()
+  end
+end, {
+  silent = true,
+})
+
+vim.keymap.set("i", "<C-g>", function()
+  if require("copilot.suggestion").is_visible() then
+    require("copilot.suggestion").accept_line()
+  end
+end, {
+  silent = true,
+})
