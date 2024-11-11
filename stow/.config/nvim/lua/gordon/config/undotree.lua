@@ -1,5 +1,8 @@
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, {
-  noremap = true,
-  silent = true,
-  desc = "Toggle undotree",
+local wk = require("which-key")
+
+wk.add({
+  {
+    mode = { "n" },
+    { "<leader>u", ":UndotreeToggle<CR>", desc = "Toggle undotree" },
+  },
 })

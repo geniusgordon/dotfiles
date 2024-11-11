@@ -7,48 +7,90 @@ local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local function lsp_on_attach()
-  vim.keymap.set("n", "gh", function()
-    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-  end, { desc = "Toggle inlay hints" })
+  local wk = require("which-key")
 
-  vim.keymap.set("n", "<leader>ca", function()
-    vim.lsp.buf.code_action()
-  end, { desc = "Code action" })
-  vim.keymap.set("n", "<leader>rn", function()
-    vim.lsp.buf.rename()
-  end, { desc = "Rename" })
-
-  vim.keymap.set("n", "gq", function()
-    vim.diagnostic.setqflist()
-  end, { desc = "Show diagnostics in quickfix" })
-  vim.keymap.set("n", "<C-j>", function()
-    vim.diagnostic.goto_next()
-  end, {})
-  vim.keymap.set("n", "<C-k>", function()
-    vim.diagnostic.goto_prev()
-  end, {})
-  vim.keymap.set("n", "K", function()
-    vim.lsp.buf.hover()
-  end, {})
-  vim.keymap.set("n", "L", function()
-    vim.diagnostic.open_float({ focusable = true })
-  end, {})
-
-  vim.keymap.set("n", "gr", function()
-    builtin.lsp_references({ show_line = false })
-  end, { desc = "Find References" })
-  vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Find definition" })
-  vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "Find implementation" })
-  -- vim.keymap.set("n", "gt", builtin.lsp_type_definitions, { desc = "Find type definition" })
+  wk.add({
+    mode = { "n" },
+    {
+      "gh",
+      function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+      end,
+      desc = "Toggle inlay hints",
+    },
+    {
+      "<leader>ca",
+      function()
+        vim.lsp.buf.code_action()
+      end,
+      desc = "Code action",
+    },
+    {
+      "<leader>rn",
+      function()
+        vim.lsp.buf.rename()
+      end,
+      desc = "Rename",
+    },
+    {
+      "gq",
+      function()
+        vim.diagnostic.setqflist()
+      end,
+      desc = "Show diagnostics in quickfix",
+    },
+    {
+      "<C-j>",
+      function()
+        vim.diagnostic.goto_next()
+      end,
+    },
+    {
+      "<C-k>",
+      function()
+        vim.diagnostic.goto_prev()
+      end,
+    },
+    {
+      "K",
+      function()
+        vim.lsp.buf.hover()
+      end,
+    },
+    {
+      "L",
+      function()
+        vim.diagnostic.open_float({ focusable = true })
+      end,
+    },
+    {
+      "gr",
+      function()
+        builtin.lsp_references({ show_line = false })
+      end,
+      desc = "Find References",
+    },
+    { "gd", builtin.lsp_definitions, desc = "Find definition" },
+    { "gi", builtin.lsp_implementations, desc = "Find implementation" },
+    { "gt", builtin.lsp_type_definitions, desc = "Find type definition" },
+  })
 end
 
 local function setup_format_keymap(opts)
   return function(_, bufnr)
     local options = opts or {}
     local format = options.format or vim.lsp.buf.format
-    vim.keymap.set("n", "<leader>f", function()
-      format()
-    end, { desc = "Format", buffer = bufnr })
+    local wk = require("which-key")
+    wk.add({
+      mode = { "n" },
+      {
+        "<leader>F",
+        function()
+          format()
+        end,
+        desc = "Format",
+      },
+    })
 
     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
     vim.api.nvim_create_autocmd("BufWritePre", {
