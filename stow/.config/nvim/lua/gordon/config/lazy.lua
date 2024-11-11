@@ -38,6 +38,7 @@ require("lazy").setup({
   { "tpope/vim-fugitive" },
   { "sindrets/diffview.nvim" },
   { "lewis6991/gitsigns.nvim" },
+  { "akinsho/git-conflict.nvim" },
 
   { "folke/zen-mode.nvim" },
   { "mbbill/undotree" },
@@ -76,7 +77,6 @@ require("lazy").setup({
   { "hrsh7th/cmp-cmdline" },
   { "hrsh7th/cmp-nvim-lua" },
   { "hrsh7th/cmp-nvim-lsp" },
-  { "hrsh7th/cmp-nvim-lsp-signature-help" },
   { "L3MON4D3/LuaSnip" },
   { "onsails/lspkind.nvim" },
   { "saadparwaiz1/cmp_luasnip" },
@@ -85,8 +85,6 @@ require("lazy").setup({
     tag = "v0.3.0",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
-  -- { "zbirenbaum/copilot-cmp" },
-  { "f3fora/cmp-spell" },
   { "ray-x/cmp-treesitter" },
   { "kristijanhusak/vim-dadbod-completion" },
 

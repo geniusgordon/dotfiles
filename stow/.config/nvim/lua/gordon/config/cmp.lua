@@ -22,22 +22,10 @@ cmp.setup({
   sources = {
     { name = "nvim_lua" },
     { name = "nvim_lsp" },
-    -- { name = "nvim_lsp_signature_help" },
     { name = "path" },
     { name = "buffer", keyword_length = 3 },
     { name = "crates" },
     { name = "luasnip" },
-    -- {
-    --   name = "spell",
-    --   keyword_length = 3,
-    --   option = {
-    --     keep_all_entries = false,
-    --     enable_in_context = function()
-    --       return true
-    --     end,
-    --     preselect_correct_word = true,
-    --   },
-    -- },
   },
   window = {
     completion = cmp.config.window.bordered(),
