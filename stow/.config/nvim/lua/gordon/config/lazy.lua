@@ -85,7 +85,7 @@ require("lazy").setup({
     tag = "v0.3.0",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
-  { "zbirenbaum/copilot-cmp" },
+  -- { "zbirenbaum/copilot-cmp" },
   { "f3fora/cmp-spell" },
   { "ray-x/cmp-treesitter" },
   { "kristijanhusak/vim-dadbod-completion" },

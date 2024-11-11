@@ -2,14 +2,6 @@ local cmp = require("cmp")
 local lspkind = require("lspkind")
 local devicons = require("nvim-web-devicons")
 
-require("copilot_cmp").setup()
-
-lspkind.init({
-  symbol_map = {
-    Copilot = "",
-  },
-})
-
 cmp.setup({
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -28,7 +20,6 @@ cmp.setup({
     end,
   },
   sources = {
-    { name = "copilot" },
     { name = "nvim_lua" },
     { name = "nvim_lsp" },
     -- { name = "nvim_lsp_signature_help" },
@@ -69,7 +60,7 @@ cmp.setup({
 
       if entry.source.name == "vim-dadbod-completion" then
         item.kind = "󰆼 DB"
-        local documentation = entry.get_completion_item(entry).documentation
+        local documentation = entry.completion_item.documentation
         if documentation == "SQL reserved word" then
           local icon = lspkind.presets.default.Keyword
           item.kind = string.format("%s Keyword", icon)
@@ -101,7 +92,7 @@ cmp.setup({
       end
 
       if vim.tbl_contains({ "path" }, entry.source.name) then
-        local label = entry.get_completion_item(entry).label
+        local label = entry.completion_item.label
         local icon, hl_group = devicons.get_icon(label)
         if icon then
           item.kind = string.format("%s File", icon)
