@@ -2,6 +2,8 @@ vim.opt.mouse = ""
 vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20"
 vim.opt.cursorline = true
 
+vim.opt.laststatus = 3
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
