@@ -1,28 +1,17 @@
 local M = {}
 
 M.setup = function()
-  vim.keymap.set("n", "<leader>gs", vim.cmd.Git, {
-    noremap = true,
-    silent = true,
-    desc = "Git status",
-  })
+  local wk = require("which-key")
 
-  vim.keymap.set("n", "<leader>gd", vim.cmd.Gvdiffsplit, {
-    noremap = true,
-    silent = true,
-    desc = "Git diff split",
-  })
-
-  vim.keymap.set("n", "<leader>gf", ":DiffviewFileHistory %<CR>", {
-    noremap = true,
-    silent = true,
-    desc = "Git file history",
-  })
-
-  vim.keymap.set("n", "<leader>gc", ":DiffviewClose<CR>", {
-    noremap = true,
-    silent = true,
-    desc = "Git close diff",
+  wk.add({
+    { "<leader>g", group = "Git" },
+    {
+      mode = { "n" },
+      { "<leader>gs", ":Git<CR>", desc = "Git status" },
+      { "<leader>gd", ":DiffviewOpen<CR>", desc = "Git diff split" },
+      { "<leader>gf", ":DiffviewFileHistory %<CR>", desc = "Git file history" },
+      { "<leader>gc", ":DiffviewClose<CR>", desc = "Git close diff" },
+    },
   })
 end
 

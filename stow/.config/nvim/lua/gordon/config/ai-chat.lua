@@ -140,7 +140,8 @@ require("which-key").add({
   },
 })
 
-require("which-key").add({
+local wk = require("which-key")
+wk.add({
   { "<leader>a", group = "Avante" }, -- NOTE: add for avante.nvim
   {
     mode = { "v" },
