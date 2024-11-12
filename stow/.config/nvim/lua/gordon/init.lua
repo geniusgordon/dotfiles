@@ -1,10 +1,11 @@
 require("gordon.lazy")
 -- require("gordon.rocks")
 
+require("gordon.config.lazy")
+require("gordon.config.which-key")
 require("gordon.config.remap")
 require("gordon.config.set")
 require("gordon.config.autocmd")
-require("gordon.config.lazy")
 
 require("gordon.config.file-tree")
 require("gordon.config.telescope")
@@ -36,5 +37,3 @@ require("gordon.config.tint")
 require("gordon.config.lilypond")
 -- require("gordon.config.markview")
 require("gordon.config.colors")
-
-require("gordon.config.which-key")
