@@ -123,7 +123,7 @@ local function setup_null_ls()
       }),
       null_ls.builtins.formatting.terraform_fmt,
       null_ls.builtins.formatting.xmllint,
-      null_ls.builtins.formatting.yamlfmt,
+      -- null_ls.builtins.formatting.yamlfmt,
     },
     on_attach = setup_format_keymap(),
   })

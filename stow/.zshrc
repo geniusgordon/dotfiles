@@ -70,7 +70,7 @@ fi
 
 # check if $THEME is set
 if [ -z $THEME ]; then
-  export THEME=tokyonight
+  export THEME=catppuccin-mocha
 fi
 
 if [ $THEME = "tokyonight" ]; then
