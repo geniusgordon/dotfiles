@@ -33,6 +33,8 @@ vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Find git branc
 
 vim.keymap.set("n", "<leader>ph", builtin.highlights, { desc = "Find highlights" })
 
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
+
 vim.keymap.set("n", "<leader>ps", function()
   builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end, { desc = "Grep for string" })
