@@ -90,11 +90,13 @@ require("lazy").setup({
 
   -- lsp
   { "neovim/nvim-lspconfig" },
-  {
-    "williamboman/mason.nvim",
-    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
-  },
-  { "williamboman/mason-lspconfig.nvim" },
+  -- {
+  --   "williamboman/mason.nvim",
+  --   build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+  -- },
+  -- { "williamboman/mason-lspconfig.nvim" },
+  { "mason-org/mason.nvim", version = "^1.0.0" },
+  { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
   { "folke/neodev.nvim" },
 
   -- dap
@@ -126,8 +128,19 @@ require("lazy").setup({
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      "tpope/vim-dadbod",
+      { "tpope/vim-dadbod", lazy = true },
+      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true }, -- Optional
     },
+    cmd = {
+      "DBUI",
+      "DBUIToggle",
+      "DBUIAddConnection",
+      "DBUIFindBuffer",
+    },
+    init = function()
+      -- Your DBUI configuration
+      vim.g.db_ui_use_nerd_fonts = 1
+    end,
   },
 
   -- ai

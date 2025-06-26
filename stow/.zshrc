@@ -22,7 +22,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 export PATH="/opt/homebrew/opt/ffmpeg@4/bin:$PATH"
 
-export JAVA_HOME=/opt/homebrew/Cellar/openjdk/17.0.2
+export JAVA_HOME=/opt/homebrew/Cellar/openjdk/23.0.2
 
 alias glog='git log --oneline --decorate --graph --color | less'
 alias ls=lsd
@@ -105,3 +105,26 @@ function tmux_sessionizer() {
 zle -N tmux_sessionizer
 
 bindkey '^s' tmux_sessionizer
+
+# Set the history file path
+HISTFILE=~/.zsh_history
+# Number of commands to remember in the current session
+HISTSIZE=100000
+# Number of commands to save in the history file
+SAVEHIST=100000
+
+# Append history lines as soon as they are entered
+setopt INC_APPEND_HISTORY
+# Share history across all sessions
+setopt SHARE_HISTORY
+# Avoid duplicate entries
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+# Remove superfluous blanks
+setopt HIST_REDUCE_BLANKS
+# Record timestamp of each command
+setopt EXTENDED_HISTORY
+
+# Added by Windsurf
+export PATH="/Users/gordon/.codeium/windsurf/bin:$PATH"

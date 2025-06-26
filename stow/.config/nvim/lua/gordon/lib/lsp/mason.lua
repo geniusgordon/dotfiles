@@ -8,7 +8,7 @@ M.setup = function()
     },
   })
   require("mason-nvim-dap").setup({
-    automatic_setup = true,
+    -- automatic_setup = true,
     handlers = {},
   })
   -- require('mason-null-ls').setup({
