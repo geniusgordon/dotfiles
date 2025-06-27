@@ -241,6 +241,11 @@ M.setup = function()
     on_attach = lsp_on_attach,
     capabilities = capabilities,
   })
+
+  lspconfig.tailwindcss.setup({
+    on_attach = lsp_on_attach,
+    capabilities = capabilities,
+  })
 end
 
 M.setup_null_ls = setup_null_ls

@@ -89,6 +89,9 @@ cmp.setup({
         end
       end
 
+      -- Apply tailwind-tools formatting first
+      item = require("tailwind-tools.cmp").lspkind_format(entry, item)
+
       return lspkind.cmp_format({
         with_text = true,
         formatting = {

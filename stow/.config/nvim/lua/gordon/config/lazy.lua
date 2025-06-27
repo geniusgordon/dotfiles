@@ -110,6 +110,18 @@ require("lazy").setup({
   { "folke/trouble.nvim" },
   { "j-hui/fidget.nvim" },
 
+  -- tailwind
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim",
+      "neovim/nvim-lspconfig",
+    },
+  },
+
   { "folke/which-key.nvim" },
 
   { "kylechui/nvim-surround" },
