@@ -6,6 +6,8 @@ require("lazy").setup({
   { "folke/tokyonight.nvim" },
   { "rebelot/kanagawa.nvim" },
 
+  { "MunifTanjim/nui.nvim" },
+
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
