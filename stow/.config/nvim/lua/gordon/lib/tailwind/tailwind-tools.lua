@@ -9,8 +9,8 @@ function M.setup()
       debounce = 200,
     },
     conceal = {
-      enabled = true,
-      min_length = 60,
+      enabled = false,
+      min_length = nil,
       symbol = "󱏿",
       highlight = {
         fg = "#38BDF8",
