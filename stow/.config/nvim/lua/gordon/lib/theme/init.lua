@@ -59,6 +59,9 @@ end
 local function setup_highlights(colors)
   vim.api.nvim_set_hl(0, "Normal", { bg = colors.bg })
   -- vim.api.nvim_set_hl(0, "WinSeparator", { fg = colors.line_dark })
+  --
+  vim.api.nvim_set_hl(0, "Sidebar", { bg = colors.bg_light })
+  vim.api.nvim_set_hl(0, "BottomPanel", { bg = colors.bg_light })
 
   vim.api.nvim_set_hl(0, "LineNrAbove", { fg = colors.fg_light })
   vim.api.nvim_set_hl(0, "LineNr", { fg = colors.red })
@@ -86,7 +89,7 @@ local function setup_highlights(colors)
   vim.api.nvim_set_hl(0, "@ibl.scope.char.1", { fg = colors.line_dark })
 
   vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", { fg = colors.line })
-  vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = colors.bg_light })
+  vim.api.nvim_set_hl(0, "NvimTreeNormal", { link = "Sidebar" })
 
   vim.api.nvim_set_hl(0, "TelescopeBorder", { link = "FloatBorder" })
   vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = colors.bg })
@@ -104,6 +107,59 @@ local function setup_highlights(colors)
   vim.api.nvim_set_hl(0, "WhichKeyNormal", { link = "NvimTreeNormal" })
 
   vim.api.nvim_set_hl(0, "FoldedText", { link = "Visual" })
+
+  vim.api.nvim_set_hl(0, "TermNormal", { link = "BottomPanel" })
+  vim.api.nvim_create_autocmd("TermOpen", {
+    pattern = "*",
+    callback = function()
+      vim.opt_local.winhighlight = "Normal:TermNormal,SignColumn:TermNormal"
+    end,
+  })
+
+  local function apply_qf_highlight()
+    vim.api.nvim_set_hl(0, "QuickFixNormal", { link = "BottomPanel" }) -- background
+    -- vim.api.nvim_set_hl(0, "QuickFixBorder", {}) -- optional
+
+    -- Redirect highlights just for this window
+    vim.opt_local.winhighlight = table.concat({
+      "Normal:QuickFixNormal",
+      "NormalNC:QuickFixNormal",
+      "SignColumn:QuickFixNormal",
+      "EndOfBuffer:QuickFixNormal",
+      -- Uncomment if you drew borders with `set winblend` or a plugin:
+      -- "VertSplit:QuickFixBorder",
+    }, ",")
+  end
+
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = "qf",
+    callback = apply_qf_highlight,
+  })
+
+  vim.api.nvim_set_hl(0, "DBUISidebar", { link = "Sidebar" })
+  vim.api.nvim_set_hl(0, "DBUIResult", { link = "BottomPanel" })
+  local function apply_dbui_highlight(event)
+    if event.match == "dbui" then
+      vim.opt_local.winhighlight = table.concat({
+        "Normal:DBUISidebar",
+        "NormalNC:DBUISidebar",
+        "SignColumn:DBUISidebar",
+        "EndOfBuffer:DBUISidebar",
+      }, ",")
+    elseif event.match == "dbout" then
+      vim.opt_local.winhighlight = table.concat({
+        "Normal:DBUIResult",
+        "NormalNC:DBUIResult",
+        "SignColumn:DBUIResult",
+        "EndOfBuffer:DBUIResult",
+      }, ",")
+    end
+  end
+
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "dbui", "dbout" },
+    callback = apply_dbui_highlight,
+  })
 end
 
 local theme_env = vim.env.THEME or "tokyonight"
