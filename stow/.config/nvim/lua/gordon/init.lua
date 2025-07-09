@@ -7,6 +7,7 @@ require("gordon.config.remap")
 require("gordon.config.set")
 require("gordon.config.autocmd")
 
+require("gordon.config.devicon")
 require("gordon.config.file-tree")
 require("gordon.config.telescope")
 -- require("gordon.config.ai")
