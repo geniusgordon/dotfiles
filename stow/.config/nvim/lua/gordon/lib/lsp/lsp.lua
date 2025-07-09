@@ -114,7 +114,15 @@ local function setup_null_ls()
         args = { "-i", "2", "-ci" },
         filetypes = { "sh", "zsh" },
       }),
-      null_ls.builtins.formatting.sql_formatter,
+      -- null_ls.builtins.formatting.sql_formatter,
+      null_ls.builtins.formatting.sqlfluff.with({
+        filetypes = { "sql" },
+        extra_args = { "--dialect", "postgres" },
+      }),
+      null_ls.builtins.formatting.sqlfluff.with({
+        filetypes = { "mysql" },
+        extra_args = { "--dialect", "mysql" },
+      }),
       null_ls.builtins.formatting.stylua.with({
         extra_args = {
           "--indent-type=Spaces",

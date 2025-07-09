@@ -11,7 +11,7 @@ vim.keymap.set("n", "<leader>dg", ":tabnew | DBUIToggle<CR>", {
 
 -- DBUI-specific keymaps using autocommand
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "dbui", "sql" }, -- DBUI uses these filetypes
+  pattern = { "dbui", "sql", "mysql" }, -- DBUI uses these filetypes
   callback = function()
     -- Only set keymap in DBUI buffers
     vim.keymap.set("n", "<leader>S", sql_exec.execute_sql_at_cursor, {
