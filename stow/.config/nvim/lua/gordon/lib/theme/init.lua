@@ -160,6 +160,23 @@ local function setup_highlights(colors)
     pattern = { "dbui", "dbout" },
     callback = apply_dbui_highlight,
   })
+
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = "help",
+    callback = function()
+      -- Set help window background
+      vim.api.nvim_set_hl(0, "HelpNormal", { bg = colors.bg_light })
+      vim.api.nvim_set_hl(0, "HelpBorder", { fg = colors.line, bg = colors.bg_light })
+
+      -- Apply the custom highlighting to help windows
+      vim.opt_local.winhighlight = table.concat({
+        "Normal:HelpNormal",
+        "NormalNC:HelpNormal",
+        "SignColumn:HelpNormal",
+        "EndOfBuffer:HelpNormal",
+      }, ",")
+    end,
+  })
 end
 
 local theme_env = vim.env.THEME or "tokyonight"
