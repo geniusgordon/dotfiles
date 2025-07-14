@@ -110,7 +110,7 @@ local function setup_null_ls()
       null_ls.builtins.formatting.gofumpt,
       null_ls.builtins.formatting.goimports,
       null_ls.builtins.formatting.prettierd.with({
-        filetypes = { "json" },
+        filetypes = { "json", "html", "graphql" },
       }),
       null_ls.builtins.formatting.shfmt.with({
         args = { "-i", "2", "-ci" },
