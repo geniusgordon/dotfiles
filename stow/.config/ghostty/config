@@ -9,4 +9,4 @@ font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
 keybind = cmd+shift+r=reload_config
-theme = "catppuccin-mocha"
+theme = "Catppuccin Mocha"

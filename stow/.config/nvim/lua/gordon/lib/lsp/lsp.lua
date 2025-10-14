@@ -140,7 +140,7 @@ local function setup_null_ls()
 end
 
 M.setup = function()
-  local lspconfig = require("lspconfig")
+  -- local lspconfig = require("lspconfig")
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
   vim.diagnostic.config({
@@ -159,7 +159,7 @@ M.setup = function()
 
   setup_null_ls()
 
-  lspconfig.lua_ls.setup({
+  vim.lsp.config("lua_ls", {
     settings = {
       Lua = {
         diagnostics = {
@@ -177,7 +177,7 @@ M.setup = function()
     capabilities = capabilities,
   })
 
-  lspconfig.eslint.setup({
+  vim.lsp.config("eslint", {
     on_attach = setup_format_keymap({
       format = function()
         vim.api.nvim_command("EslintFixAll")
@@ -186,7 +186,7 @@ M.setup = function()
     capabilities = capabilities,
   })
 
-  lspconfig.ts_ls.setup({
+  vim.lsp.config("ts_ls", {
     init_options = {
       preferences = {
         importModuleSpecifierPreference = "relative",
@@ -232,30 +232,32 @@ M.setup = function()
     capabilities = capabilities,
   })
 
-  lspconfig.bashls.setup({
+  vim.lsp.config("bashls", {
     on_attach = lsp_on_attach,
     capabilities = capabilities,
   })
 
-  lspconfig.gopls.setup({
+  vim.lsp.config("gopls", {
     on_attach = lsp_on_attach,
     capabilities = capabilities,
   })
 
-  lspconfig.terraformls.setup({
+  vim.lsp.config("terraformls", {
     on_attach = lsp_on_attach,
     capabilities = capabilities,
   })
 
-  lspconfig.yamlls.setup({
+  vim.lsp.config("yamlls", {
     on_attach = lsp_on_attach,
     capabilities = capabilities,
   })
 
-  lspconfig.tailwindcss.setup({
+  vim.lsp.config("tailwindcss", {
     on_attach = lsp_on_attach,
     capabilities = capabilities,
   })
+
+  vim.lsp.enable({ "lua_ls", "eslint", "ts_ls", "bashls", "gopls", "terraformls", "yamlls", "tailwindcss" })
 end
 
 M.setup_null_ls = setup_null_ls
