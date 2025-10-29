@@ -1,66 +1,109 @@
+# =============================================================================
+# ZSH Configuration
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Plugin Management
+# -----------------------------------------------------------------------------
 source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
 antidote load
 
+# -----------------------------------------------------------------------------
+# Prompt
+# -----------------------------------------------------------------------------
 eval "$(starship init zsh)"
 
-# plugins=(git pass zsh-autosuggestions zsh-syntax-highlighting colored-man-pages)
-#
-# export ZSH_THEME="gordon"
-# export ZSH=${HOME}/.oh-my-zsh
-# source $ZSH/oh-my-zsh.sh
-
+# -----------------------------------------------------------------------------
+# Locale & Environment
+# -----------------------------------------------------------------------------
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-
 export EDITOR=nvim
 export GPG_TTY=$(tty)
 
+# -----------------------------------------------------------------------------
+# PATH Configuration
+# -----------------------------------------------------------------------------
 export PATH="$HOME/.local/bin:$PATH"
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="/opt/homebrew/opt/ffmpeg@4/bin:$PATH"
+
+# Go
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+
+# Java
 export JAVA_HOME="/opt/homebrew/Cellar/openjdk/23.0.2"
 
-alias glog='git log --oneline --decorate --graph --color | less'
+# Node.js
+export N_PREFIX=$HOME/.local
+
+# -----------------------------------------------------------------------------
+# Aliases
+# -----------------------------------------------------------------------------
+
+# General
 alias ls=lsd
+
+# Git
+alias glog='git log --oneline --decorate --graph --color | less'
+
+# Neovim
 alias vim=nvim
 alias vi=nvim
-
 alias diff='nvim -d'
 alias vimdiff='nvim -d'
 alias view='nvim -R'
 alias vimdb="nvim +DBUI"
+
+# Man pages
 export MANPAGER='nvim +Man!'
 export MANWIDTH=80
 
-export N_PREFIX=$HOME/.local
-
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then
-  . "$HOME/google-cloud-sdk/path.zsh.inc"
-fi
-if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then
-  . "$HOME/google-cloud-sdk/completion.zsh.inc"
-fi
-if [ -f "$HOME/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh" ]; then
-  . "$HOME/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh"
-fi
-
+# -----------------------------------------------------------------------------
+# Functions
+# -----------------------------------------------------------------------------
 function gi() {
   curl -L -s https://www.gitignore.io/api/$@
 }
 
+function tmux_sessionizer() {
+  exec </dev/tty
+  exec <&1
+  tmux-sessionizer
+}
+
+# -----------------------------------------------------------------------------
+# Key Bindings
+# -----------------------------------------------------------------------------
+zle -N tmux_sessionizer
+bindkey -e
+bindkey '^s' tmux_sessionizer
+
+# -----------------------------------------------------------------------------
+# History Configuration
+# -----------------------------------------------------------------------------
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt EXTENDED_HISTORY
+
+# -----------------------------------------------------------------------------
+# Tool Integrations
+# -----------------------------------------------------------------------------
+
+# FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd'
 
-eval "$(rbenv init - zsh)"
-eval "$(gh completion -s zsh)"
-
-if [ -f "$HOME/.gvm/scripts/gvm" ]; then
-  source $HOME/.gvm/scripts/gvm
-fi
-
-# check if $THEME is set
+# Theme-based FZF colors
 if [ -z $THEME ]; then
   export THEME=catppuccin-mocha
 fi
@@ -88,33 +131,21 @@ elif [ $THEME = "kanagawa-dragon" ]; then
     --color=marker:#87a987,spinner:#87a987,header:#87a987'
 fi
 
-function tmux_sessionizer() {
-  exec </dev/tty
-  exec <&1
-  tmux-sessionizer
-}
+# Ruby
+eval "$(rbenv init - zsh)"
 
-zle -N tmux_sessionizer
+# GitHub CLI
+eval "$(gh completion -s zsh)"
 
-bindkey -e
-bindkey '^s' tmux_sessionizer
+# Go Version Manager
+if [ -f "$HOME/.gvm/scripts/gvm" ]; then
+  source $HOME/.gvm/scripts/gvm
+fi
 
-# Set the history file path
-HISTFILE=~/.zsh_history
-# Number of commands to remember in the current session
-HISTSIZE=100000
-# Number of commands to save in the history file
-SAVEHIST=100000
-
-# Append history lines as soon as they are entered
-setopt INC_APPEND_HISTORY
-# Share history across all sessions
-setopt SHARE_HISTORY
-# Avoid duplicate entries
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_SAVE_NO_DUPS
-# Remove superfluous blanks
-setopt HIST_REDUCE_BLANKS
-# Record timestamp of each command
-setopt EXTENDED_HISTORY
+# Google Cloud SDK
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then
+  . "$HOME/google-cloud-sdk/path.zsh.inc"
+fi
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then
+  . "$HOME/google-cloud-sdk/completion.zsh.inc"
+fi
