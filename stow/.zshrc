@@ -1,8 +1,13 @@
-plugins=(git pass zsh-autosuggestions zsh-syntax-highlighting colored-man-pages)
+source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+antidote load
 
-export ZSH_THEME="gordon"
-export ZSH=${HOME}/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+eval "$(starship init zsh)"
+
+# plugins=(git pass zsh-autosuggestions zsh-syntax-highlighting colored-man-pages)
+#
+# export ZSH_THEME="gordon"
+# export ZSH=${HOME}/.oh-my-zsh
+# source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -10,27 +15,17 @@ export LC_ALL=en_US.UTF-8
 export EDITOR=nvim
 export GPG_TTY=$(tty)
 
-export PATH=$HOME/.local/bin:$PATH
-
-export ANDROID_HOME=$HOME/Library/Android/sdk
-
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
-
-export PATH="/Users/gordon/.local/share/solana/install/active_release/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
 export PATH="/opt/homebrew/opt/ffmpeg@4/bin:$PATH"
-
-export JAVA_HOME=/opt/homebrew/Cellar/openjdk/23.0.2
+export JAVA_HOME="/opt/homebrew/Cellar/openjdk/23.0.2"
 
 alias glog='git log --oneline --decorate --graph --color | less'
 alias ls=lsd
 alias vim=nvim
 alias vi=nvim
-alias vim-nvchad='NVIM_APPNAME=nvchad nvim'
-alias vim-lazy='NVIM_APPNAME=lazy-vim nvim'
-alias mutt=neomutt
 
 alias diff='nvim -d'
 alias vimdiff='nvim -d'
@@ -40,10 +35,6 @@ export MANPAGER='nvim +Man!'
 export MANWIDTH=80
 
 export N_PREFIX=$HOME/.local
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then
   . "$HOME/google-cloud-sdk/path.zsh.inc"
@@ -105,6 +96,7 @@ function tmux_sessionizer() {
 
 zle -N tmux_sessionizer
 
+bindkey -e
 bindkey '^s' tmux_sessionizer
 
 # Set the history file path
@@ -126,6 +118,3 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 # Record timestamp of each command
 setopt EXTENDED_HISTORY
-
-# Added by Windsurf
-export PATH="/Users/gordon/.codeium/windsurf/bin:$PATH"
