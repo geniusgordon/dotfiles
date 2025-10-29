@@ -30,7 +30,8 @@ wk.add({
     { "<leader>j", "<cmd>cnext<CR>zz", desc = "Next quickfix" },
     { "<leader>k", "<cmd>cprev<CR>zz", desc = "Previous quickfix" },
     { "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], desc = "Replace word under cursor" },
-    { "<leader>'", "vi[:s/\\(\\w\\+\\)/'\\1',/", desc = "Add quotes" },
+    { "<leader>['", "vi[:s/\\(\\w\\+\\)/'\\1',/", desc = "Add quotes around []" },
+    { "<leader>('", "vi(:s/\\(\\w\\+\\)/'\\1',/", desc = "Add quotes around ()" },
     { "<leader>/", ":set hlsearch! hlsearch?<CR>", desc = "Toggle search highlighting" },
     { "<leader>v", ":set paste! paste?<CR>", desc = "Toggle paste mode" },
     {

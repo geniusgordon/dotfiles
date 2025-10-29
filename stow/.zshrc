@@ -63,6 +63,7 @@ function gi() {
 export FZF_DEFAULT_COMMAND='fd'
 
 eval "$(rbenv init - zsh)"
+eval "$(gh completion -s zsh)"
 
 if [ -f "$HOME/.gvm/scripts/gvm" ]; then
   source $HOME/.gvm/scripts/gvm

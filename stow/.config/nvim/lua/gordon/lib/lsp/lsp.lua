@@ -179,9 +179,9 @@ M.setup = function()
 
   vim.lsp.config("eslint", {
     on_attach = setup_format_keymap({
-      format = function()
-        vim.api.nvim_command("EslintFixAll")
-      end,
+      -- format = function()
+      --   -- vim.api.nvim_command("EslintFixAll")
+      -- end,
     }),
     capabilities = capabilities,
   })
