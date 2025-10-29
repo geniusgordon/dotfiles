@@ -7,5 +7,31 @@ add_newline = true
 [aws]
 disabled = true
 
+[character]
+success_symbol = '[➜](bold green) '
+error_symbol = '[✗](bold red) '
+
 [gcloud]
 disabled = true
+
+[kubernetes]
+symbol = ''
+style = "blue"
+disabled = false
+
+# Using capture groups
+# Contexts from GKE, AWS and other cloud providers usually carry additional information, like the region/zone.
+# The following entry matches on the GKE format (`gke_projectname_zone_cluster-name`)
+# and renames every matching kube context into a more readable format (`gke-cluster-name`):
+# gke_firstory-709db_asia-east1-a_graphql-prisma-asia
+[[kubernetes.contexts]]
+context_pattern = "gke_.*_(?P<cluster>[\\w-]+)"
+context_alias = "gke:$cluster"
+
+# arn:aws:eks:ap-northeast-1:757713829801:cluster/firstory-backend-prod
+[[kubernetes.contexts]]
+context_pattern = "arn:aws:.*/(?P<cluster>[\\w-]+)"
+context_alias = "eks:$cluster"
+
+[sudo]
+disabled = false

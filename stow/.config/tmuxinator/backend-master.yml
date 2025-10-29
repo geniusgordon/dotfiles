@@ -1,0 +1,15 @@
+# /Users/gordon/.config/tmuxinator/backend-master.yml
+
+name: firstory-backend-master
+root: ~/Works/firstory/backend/firstory-backend-master/
+startup_window: hosting
+windows:
+  - blank:
+  - port-forward:
+      root: ~/Works/firstory/files/scripts/
+      panes:
+        - ./port-forward.sh prod mysql
+        - ./port-forward.sh prod postgres
+        - ./kubectl-port-forward.sh prod
+  - hosting: vim app/deploy/cronjob/src/main.ts
+  - command:

@@ -1,0 +1,10 @@
+# /Users/gordon/.config/tmuxinator/studio.yml
+
+name: studio
+root: ~/Works/firstory/frontend/firstory-studio/
+
+startup_window: editor
+
+windows:
+  - dev: yarn && yarn dev
+  - editor: vim .

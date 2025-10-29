@@ -1,0 +1,10 @@
+# /Users/gordon/.config/tmuxinator/webplayer.yml
+
+name: webplayer
+root: ~/Works/firstory/frontend/firstory-web-player/
+
+startup_window: editor
+
+windows:
+  - dev: export PORT=8888 && yarn && yarn dev
+  - editor: vim .
