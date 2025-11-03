@@ -8,11 +8,17 @@ add_newline = true
 disabled = true
 
 [character]
-success_symbol = '[➜](bold green) '
-error_symbol = '[✗](bold red) '
+success_symbol = '[➜](bold green)'
+error_symbol = '[✗](bold red)'
+
+[docker_context]
+disabled = true
 
 [gcloud]
 disabled = true
+
+[git_branch]
+style = 'bold red'
 
 [kubernetes]
 symbol = ''
