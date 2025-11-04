@@ -29,6 +29,19 @@ wk.add({
     { "<leader>X", [["_d]], desc = "Delete to black hole" },
     { "<leader>j", "<cmd>cnext<CR>zz", desc = "Next quickfix" },
     { "<leader>k", "<cmd>cprev<CR>zz", desc = "Previous quickfix" },
+    {
+      "<leader>cp",
+      function()
+        local path = vim.fn.expand("%")
+        if path == "" then
+          vim.notify("No file path to copy", vim.log.levels.WARN)
+          return
+        end
+        vim.fn.setreg("+", path)
+        vim.notify("Copied relative file path to clipboard", vim.log.levels.INFO)
+      end,
+      desc = "Copy relative file path to clipboard",
+    },
     { "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], desc = "Replace word under cursor" },
     { "<leader>['", "vi[:s/\\(\\w\\+\\)/'\\1',/", desc = "Add quotes around []" },
     { "<leader>('", "vi(:s/\\(\\w\\+\\)/'\\1',/", desc = "Add quotes around ()" },
