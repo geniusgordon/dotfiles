@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
-# Get list, choose one
-entry=$(pass ls | fzf --prompt="Select password: ") || exit 1
+PASSWORD_STORE_DIR="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
 
-# Copy to clipboard
+# Get list of entries (no color, no tree)
+entry=$(
+  find "$PASSWORD_STORE_DIR" -type f -name "*.gpg" |
+    sed "s|$PASSWORD_STORE_DIR/||; s|\.gpg$||" |
+    fzf --prompt="Select password: " --height=40% --reverse
+) || exit 1
+
+# Copy selected password to clipboard
 pass -c "$entry"
 echo "Copied: $entry"
