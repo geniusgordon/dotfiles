@@ -7,6 +7,12 @@ M.setup = function()
   vim.keymap.set("i", "<c-k>", function()
     return vim.fn["codeium#CycleCompletions"](-1)
   end, { expr = true, silent = true })
+  vim.keymap.set("i", "<c-w>", function()
+    return vim.fn["codeium#AcceptNextWord"]()
+  end, { expr = true, silent = true })
+  vim.keymap.set("i", "<c-l>", function()
+    return vim.fn["codeium#AcceptNextLine"]()
+  end, { expr = true, silent = true })
 end
 
 return M
