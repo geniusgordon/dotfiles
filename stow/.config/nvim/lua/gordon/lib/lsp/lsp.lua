@@ -257,7 +257,53 @@ M.setup = function()
     capabilities = capabilities,
   })
 
-  vim.lsp.enable({ "lua_ls", "eslint", "ts_ls", "bashls", "gopls", "terraformls", "yamlls", "tailwindcss" })
+  vim.lsp.config("vtsls", {
+    init_options = {
+      preferences = {
+        importModuleSpecifierPreference = "relative",
+      },
+    },
+    settings = {
+      typescript = {
+        preferences = {
+          importModuleSpecifier = "relative",
+        },
+        inlayHints = {
+          includeInlayParameterNameHints = "literals",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        },
+      },
+      javascript = {
+        preferences = {
+          importModuleSpecifier = "relative",
+        },
+        inlayHints = {
+          includeInlayParameterNameHints = "literals",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        },
+      },
+    },
+    on_attach = function(client)
+      lsp_on_attach()
+      client.server_capabilities.documentFormattingProvider = false
+      client.server_capabilities.documentRangeFormattingProvider = false
+    end,
+    capabilities = capabilities,
+  })
+
+  vim.lsp.enable({ "lua_ls", "eslint", "bashls", "gopls", "terraformls", "yamlls", "tailwindcss", "vtsls" })
 end
 
 M.setup_null_ls = setup_null_ls
