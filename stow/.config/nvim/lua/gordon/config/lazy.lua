@@ -27,6 +27,7 @@ require("lazy").setup({
   { "nvim-telescope/telescope-dap.nvim" },
   { "camgraff/telescope-tmux.nvim" },
   { "FeiyouG/commander.nvim" },
+  -- { "mrjones2014/smart-splits.nvim" },
 
   -- treesitter
   {
