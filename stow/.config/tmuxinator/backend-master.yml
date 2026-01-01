@@ -8,8 +8,6 @@ windows:
   - port-forward:
       root: ~/Works/firstory/files/scripts/
       panes:
-        - ./port-forward.sh prod mysql
-        - ./port-forward.sh prod postgres
-        - ./kubectl-port-forward.sh prod
+        - ./dev-tunnel.sh prod
   - hosting: vim app/deploy/cronjob/src/main.ts
   - command:

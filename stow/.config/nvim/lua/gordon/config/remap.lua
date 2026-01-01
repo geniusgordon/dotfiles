@@ -32,13 +32,16 @@ wk.add({
     {
       "<leader>cp",
       function()
-        local path = vim.fn.expand("%")
+        -- :.  makes the path relative to the current working directory
+        local path = vim.fn.expand("%:.")
+
         if path == "" then
           vim.notify("No file path to copy", vim.log.levels.WARN)
           return
         end
+
         vim.fn.setreg("+", path)
-        vim.notify("Copied relative file path to clipboard", vim.log.levels.INFO)
+        vim.notify("Copied: " .. path, vim.log.levels.INFO)
       end,
       desc = "Copy relative file path to clipboard",
     },
