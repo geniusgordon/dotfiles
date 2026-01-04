@@ -23,7 +23,7 @@ style = 'bold red'
 [kubernetes]
 symbol = ''
 style = "blue"
-disabled = false
+disabled = true
 
 # Using capture groups
 # Contexts from GKE, AWS and other cloud providers usually carry additional information, like the region/zone.

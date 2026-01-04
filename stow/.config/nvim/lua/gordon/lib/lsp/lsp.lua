@@ -255,6 +255,18 @@ M.setup = function()
   vim.lsp.config("tailwindcss", {
     on_attach = lsp_on_attach,
     capabilities = capabilities,
+    settings = {
+      tailwindCSS = {
+        experimental = {
+          classRegex = {
+            "cn\\(([^)]*)\\)",
+            "clsx\\(([^)]*)\\)",
+            "cva\\(([^)]*)\\)",
+            "twMerge\\(([^)]*)\\)",
+          },
+        },
+      },
+    },
   })
 
   vim.lsp.config("vtsls", {
