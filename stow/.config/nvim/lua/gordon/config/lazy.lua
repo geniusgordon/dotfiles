@@ -124,6 +124,7 @@ require("lazy").setup({
       "neovim/nvim-lspconfig",
     },
   },
+  { "brenoprata10/nvim-highlight-colors" },
 
   { "folke/which-key.nvim" },
 
