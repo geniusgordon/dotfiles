@@ -39,6 +39,10 @@ export JAVA_HOME="/opt/homebrew/Cellar/openjdk/23.0.2"
 # Node.js
 export N_PREFIX=$HOME/.local
 
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 # -----------------------------------------------------------------------------
 # Aliases
 # -----------------------------------------------------------------------------
@@ -56,6 +60,13 @@ alias diff='nvim -d'
 alias vimdiff='nvim -d'
 alias view='nvim -R'
 alias vimdb="nvim +DBUI"
+
+# Claude Code
+alias cc='claude'
+export CLAUDE_PLAN="max20x"
+
+# OpenCode
+alias oc='opencode'
 
 # Man pages
 export MANPAGER='nvim +Man!'
@@ -150,3 +161,10 @@ fi
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then
   . "$HOME/google-cloud-sdk/completion.zsh.inc"
 fi
+
+# bun completions
+[ -s "/Users/gordon/.bun/_bun" ] && source "/Users/gordon/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
