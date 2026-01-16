@@ -3,22 +3,46 @@
   "google_auth": false,
   "agents": {
     "Sisyphus": {
-      "model": "google/antigravity-claude-opus-4-5-thinking"
+      "model": "google/antigravity-claude-opus-4-5-thinking",
+      "temperature": 0.3
+    },
+    "Sisyphus-Junior": {
+      "model": "google/antigravity-claude-sonnet-4-5-thinking",
+      "temperature": 0.2
+    },
+    "oracle": {
+      "model": "openai/gpt-5.2",
+      "temperature": 0.1
+    },
+    "frontend-ui-ux-engineer": {
+      "model": "google/antigravity-gemini-3-pro",
+      "temperature": 0.7
     },
     "librarian": {
       "model": "opencode/glm-4.7-free"
     },
     "explore": {
-      "model": "google/antigravity-gemini-3-flash"
-    },
-    "frontend-ui-ux-engineer": {
-      "model": "google/antigravity-gemini-3-pro-high"
+      "model": "opencode/grok-code"
     },
     "document-writer": {
-      "model": "google/antigravity-gemini-3-flash"
+      "model": "google/antigravity-gemini-3-flash",
+      "temperature": 0.5
     },
     "multimodal-looker": {
       "model": "google/antigravity-gemini-3-flash"
+    },
+    "Prometheus (Planner)": {
+      "model": "google/antigravity-claude-opus-4-5-thinking",
+      "temperature": 0.3
+    },
+    "Metis (Plan Consultant)": {
+      "model": "google/antigravity-claude-opus-4-5-thinking"
+    },
+    "Momus": {
+      "model": "openai/gpt-5.2"
     }
+  },
+  "claude_code": {
+    "hooks": false
   }
 }
