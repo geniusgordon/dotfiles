@@ -3,19 +3,23 @@
   "google_auth": false,
   "agents": {
     "Sisyphus": {
-      "model": "openai/gpt-5.2"
+      "model": "google/antigravity-claude-opus-4-5-thinking",
+      "temperature": 0.3
     },
     "orchestrator-sisyphus": {
-      "model": "openai/gpt-5.2"
+      "model": "google/antigravity-claude-opus-4-5-thinking"
     },
     "Sisyphus-Junior": {
-      "model": "google/antigravity-gemini-3-pro"
+      "model": "google/antigravity-claude-sonnet-4-5-thinking",
+      "temperature": 0.2
     },
     "oracle": {
-      "model": "openai/gpt-5.2"
+      "model": "openai/gpt-5.2",
+      "temperature": 0.1
     },
     "frontend-ui-ux-engineer": {
-      "model": "google/antigravity-gemini-3-pro"
+      "model": "google/antigravity-gemini-3-pro",
+      "temperature": 0.7
     },
     "librarian": {
       "model": "opencode/glm-4.7-free"
@@ -24,16 +28,18 @@
       "model": "opencode/grok-code"
     },
     "document-writer": {
-      "model": "google/antigravity-gemini-3-flash"
+      "model": "google/antigravity-gemini-3-flash",
+      "temperature": 0.5
     },
     "multimodal-looker": {
       "model": "google/antigravity-gemini-3-flash"
     },
     "Prometheus (Planner)": {
-      "model": "openai/gpt-5.2"
+      "model": "google/antigravity-claude-opus-4-5-thinking",
+      "temperature": 0.3
     },
     "Metis (Plan Consultant)": {
-      "model": "openai/gpt-5.2"
+      "model": "google/antigravity-claude-opus-4-5-thinking"
     },
     "Momus": {
       "model": "openai/gpt-5.2"

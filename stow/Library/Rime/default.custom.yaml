@@ -1,0 +1,5 @@
+patch:
+  schema_list:
+    - schema: bopomofo
+    - schema: cangjie5
+    - schema: japanese
