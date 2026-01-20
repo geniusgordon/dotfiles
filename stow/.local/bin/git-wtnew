@@ -1,0 +1,176 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage:
+  git wtnew <dir> <branch> [--base <start-point>] [--copy|--link] [--no-env] [--pm auto|pnpm|npm] [--force] [--no-install]
+
+What it does:
+  - Adds a worktree at <dir> for <branch>
+  - Creates <branch> if it doesn't exist (from --base, default: HEAD)
+  - Copies or symlinks .env from the bare repo root (git common dir) into the worktree (unless --no-env)
+  - Runs pnpm/npm install based on lockfiles (or --pm), unless --no-install
+
+Examples:
+  git wtnew ../wt/feature-x feature/x
+  git wtnew ../wt/feature-x feature/x --base origin/main --link
+  git wtnew ../wt/feature-x feature/x --no-env
+  git wtnew ../wt/bugfix-y bugfix/y --copy --pm npm --force
+EOF
+}
+
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+  usage
+  exit 0
+fi
+
+if [[ $# -lt 2 ]]; then
+  usage
+  exit 2
+fi
+
+DIR="$1"
+BRANCH="$2"
+shift 2
+
+BASE="HEAD"
+ENV_MODE="link" # link|copy
+SKIP_ENV="0"    # 0|1
+PM_MODE="auto"  # auto|pnpm|npm
+FORCE="0"
+DO_INSTALL="1"
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+  --base)
+    BASE="${2:?missing value for --base}"
+    shift 2
+    ;;
+  --copy)
+    ENV_MODE="copy"
+    shift
+    ;;
+  --link)
+    ENV_MODE="link"
+    shift
+    ;;
+  --no-env)
+    SKIP_ENV="1"
+    shift
+    ;;
+  --pm)
+    PM_MODE="${2:?missing value for --pm}"
+    shift 2
+    ;;
+  --force)
+    FORCE="1"
+    shift
+    ;;
+  --no-install)
+    DO_INSTALL="0"
+    shift
+    ;;
+  *)
+    echo "Unknown arg: $1" >&2
+    usage
+    exit 2
+    ;;
+  esac
+done
+
+# Ensure we're inside a git repo/worktree context
+git rev-parse --git-dir >/dev/null 2>&1 || {
+  echo "ERROR: Not inside a git repository." >&2
+  exit 1
+}
+
+# Ensure branch exists; if not, create it from BASE
+if git show-ref --verify --quiet "refs/heads/$BRANCH"; then
+  BR_EXISTS="1"
+else
+  BR_EXISTS="0"
+fi
+
+mkdir -p "$(dirname "$DIR")"
+
+if [[ "$BR_EXISTS" == "0" ]]; then
+  echo "Creating branch '$BRANCH' from '$BASE'..."
+  git branch "$BRANCH" "$BASE"
+fi
+
+echo "Adding worktree at '$DIR' for branch '$BRANCH'..."
+git worktree add "$DIR" "$BRANCH" >/dev/null
+
+# Handle .env from bare/common git dir unless skipped
+if [[ "$SKIP_ENV" != "1" ]]; then
+  GIT_COMMON_DIR="$(git rev-parse --git-common-dir)"
+  ENV_SRC="${GIT_COMMON_DIR%/}/.env"
+
+  if [[ ! -f "$ENV_SRC" ]]; then
+    echo "ERROR: .env not found at: $ENV_SRC" >&2
+    echo "This script expects .env in the *bare repo root* (git common dir)." >&2
+    exit 1
+  fi
+
+  ENV_DST="$DIR/.env"
+
+  if [[ -e "$ENV_DST" && "$FORCE" != "1" ]]; then
+    echo "NOTE: $ENV_DST already exists; leaving it (use --force to overwrite)."
+  else
+    rm -f "$ENV_DST" 2>/dev/null || true
+    if [[ "$ENV_MODE" == "copy" ]]; then
+      echo "Copying .env -> $ENV_DST"
+      cp "$ENV_SRC" "$ENV_DST"
+    else
+      echo "Linking .env -> $ENV_DST"
+      ln -s "$ENV_SRC" "$ENV_DST"
+    fi
+  fi
+else
+  echo "Skipping .env setup (--no-env)"
+fi
+
+# Detect package manager & install
+if [[ "$DO_INSTALL" == "1" ]]; then
+  cd "$DIR"
+
+  PM="$PM_MODE"
+  if [[ "$PM_MODE" == "auto" ]]; then
+    if [[ -f "pnpm-lock.yaml" ]]; then
+      PM="pnpm"
+    else
+      PM="npm"
+    fi
+  fi
+
+  if [[ "$PM" == "pnpm" ]]; then
+    if command -v pnpm >/dev/null 2>&1; then
+      echo "Running: pnpm install"
+      pnpm install
+    else
+      echo "ERROR: pnpm selected but not found in PATH" >&2
+      exit 1
+    fi
+  elif [[ "$PM" == "npm" ]]; then
+    if command -v npm >/dev/null 2>&1; then
+      if [[ -f "package-lock.json" ]]; then
+        echo "Running: npm ci"
+        npm ci
+      else
+        echo "Running: npm install"
+        npm install
+      fi
+    else
+      echo "ERROR: npm not found in PATH" >&2
+      exit 1
+    fi
+  else
+    echo "ERROR: unknown --pm value: $PM_MODE" >&2
+    exit 2
+  fi
+fi
+
+echo "Done."
+echo "Worktree: $DIR"
+echo "Branch:   $BRANCH"

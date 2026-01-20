@@ -1,12 +1,68 @@
+# zmodload zsh/zprof
+
 # =============================================================================
 # ZSH Configuration
 # =============================================================================
 
+# Completion search path (custom completions)
+fpath=(~/.config/zsh/completions $fpath)
+
 # -----------------------------------------------------------------------------
 # Plugin Management
 # -----------------------------------------------------------------------------
-source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
-antidote load
+if [[ -f /opt/homebrew/opt/antidote/share/antidote/antidote.zsh ]]; then
+  source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+
+  antidote_plugins_txt=${ZDOTDIR:-$HOME}/.zsh_plugins.txt
+  antidote_plugins_zsh=${ZDOTDIR:-$HOME}/.zsh_plugins.zsh
+
+  if [[ -f "$antidote_plugins_txt" ]]; then
+    if [[ ! -f "$antidote_plugins_zsh" || "$antidote_plugins_txt" -nt "$antidote_plugins_zsh" ]]; then
+      antidote bundle <"$antidote_plugins_txt" >|"$antidote_plugins_zsh"
+    fi
+
+    source "$antidote_plugins_zsh"
+  fi
+fi
+
+# Completion init (after plugins so their `fpath` is included)
+autoload -Uz compinit
+compinit -C
+
+__ensure_completion() {
+  local completion_file=$1
+  shift
+
+  local -a completion_command=("$@")
+  local completion_command_name=$completion_command[1]
+
+  if [[ -f $completion_file ]]; then
+    return 0
+  fi
+
+  if ! command -v "$completion_command_name" >/dev/null 2>&1; then
+    return 0
+  fi
+
+  command mkdir -p "${completion_file:h}" 2>/dev/null
+
+  local completion_output
+  completion_output="$("${completion_command[@]}")" || return 0
+
+  if [[ -z $completion_output ]]; then
+    return 0
+  fi
+
+  print -r -- "$completion_output" >| "$completion_file"
+  eval "$completion_output"
+}
+
+# CLI completions
+# Prefer pre-generated files in `~/.config/zsh/completions/`.
+# If missing, generate + save, then load for this session.
+__ensure_completion ~/.config/zsh/completions/_gh gh completion -s zsh
+__ensure_completion ~/.config/zsh/completions/_pnpm pnpm completion zsh
+__ensure_completion ~/.config/zsh/completions/_npm npm completion
 
 # -----------------------------------------------------------------------------
 # Prompt
@@ -19,7 +75,9 @@ eval "$(starship init zsh)"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR=nvim
-export GPG_TTY=$(tty)
+if [[ -n ${TTY-} ]]; then
+  export GPG_TTY=$TTY
+fi
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 
 # -----------------------------------------------------------------------------
@@ -144,10 +202,14 @@ elif [ $THEME = "kanagawa-dragon" ]; then
 fi
 
 # Ruby
-eval "$(rbenv init - zsh)"
+export RBENV_ROOT="${RBENV_ROOT:-$HOME/.rbenv}"
+export PATH="$RBENV_ROOT/shims:$PATH"
 
-# GitHub CLI
-eval "$(gh completion -s zsh)"
+rbenv() {
+  unset -f rbenv
+  eval "$(command rbenv init - zsh)"
+  rbenv "$@"
+}
 
 # Go Version Manager
 if [ -f "$HOME/.gvm/scripts/gvm" ]; then
@@ -158,13 +220,34 @@ fi
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then
   . "$HOME/google-cloud-sdk/path.zsh.inc"
 fi
+
+# Lazy-load gcloud completions.
+# Load once on first ZLE line init so completions are ready
+# when you hit <tab>, without blocking shell startup.
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then
-  . "$HOME/google-cloud-sdk/completion.zsh.inc"
+  __gcloud_completions_loaded=0
+
+  __load_gcloud_completions_once() {
+    if (( __gcloud_completions_loaded == 0 )); then
+      . "$HOME/google-cloud-sdk/completion.zsh.inc"
+      __gcloud_completions_loaded=1
+      add-zle-hook-widget -d line-init __load_gcloud_completions_once 2>/dev/null
+    fi
+  }
+
+  autoload -Uz add-zle-hook-widget
+  add-zle-hook-widget line-init __load_gcloud_completions_once
 fi
 
-# bun completions
-[ -s "/Users/gordon/.bun/_bun" ] && source "/Users/gordon/.bun/_bun"
+# Lazy-load bun completions.
+# Define a stub completion function that loads the real one on first use.
+if [ -s "$HOME/.bun/_bun" ]; then
+  _bun() {
+    source "$HOME/.bun/_bun"
+    _bun "$@"
+  }
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+  compdef _bun bun
+fi
+
+# zprof
