@@ -16,3 +16,9 @@ stow/Library/Rime/trash/
 node_modules/
 antigravity-accounts.json*
 .sisyphus
+
+# OpenCode: only track opencode.json and oh-my-opencode.json
+stow/.config/opencode/*
+!stow/.config/opencode/package.json
+!stow/.config/opencode/opencode.json
+!stow/.config/opencode/oh-my-opencode.json

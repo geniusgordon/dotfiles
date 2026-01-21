@@ -6,10 +6,10 @@
       "model": "openai/gpt-5.2-codex"
     },
     "orchestrator-sisyphus": {
-      "model": "openai/gpt-5.2-codex"
+      "model": "google/antigravity-claude-sonnet-4-5-thinking"
     },
     "Sisyphus-Junior": {
-      "model": "openai/gpt-5.2-codex"
+      "model": "google/antigravity-claude-sonnet-4-5-thinking"
     },
     "oracle": {
       "model": "openai/gpt-5.2-codex"
@@ -21,22 +21,19 @@
       "model": "opencode/grok-code"
     },
     "frontend-ui-ux-engineer": {
-      "model": "google/antigravity-gemini-3-pro",
-      "variant": "high"
+      "model": "google/antigravity-gemini-3-pro"
     },
     "document-writer": {
-      "model": "google/antigravity-gemini-3-flash",
-      "variant": "medium"
+      "model": "google/antigravity-gemini-3-flash"
     },
     "multimodal-looker": {
-      "model": "google/antigravity-gemini-3-flash",
-      "variant": "medium"
+      "model": "google/antigravity-gemini-3-flash"
     },
     "Prometheus (Planner)": {
       "model": "openai/gpt-5.2-codex"
     },
     "Metis (Plan Consultant)": {
-      "model": "openai/gpt-5.2-codex"
+      "model": "google/antigravity-claude-opus-4-5-thinking"
     },
     "Momus (Plan Reviewer)": {
       "model": "openai/gpt-5.2-codex"

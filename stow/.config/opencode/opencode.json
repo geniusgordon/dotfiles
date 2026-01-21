@@ -2,9 +2,27 @@
   "$schema": "https://opencode.ai/config.json",
   "plugin": [
     "opencode-antigravity-auth@beta",
-    "oh-my-opencode@3.0.0-beta.11",
-    "opencode-openai-codex-auth"
+    "opencode-openai-codex-auth",
+    "opencode-mystatus"
   ],
+  "keybinds": {
+    "input_move_up": "ctrl+p",
+    "input_move_down": "ctrl+n",
+    "history_previous": "ctrl+p",
+    "history_next": "ctrl+n",
+    "command_list": "ctrl+o",
+    "app_exit": "ctrl+q",
+    "messages_next": "ctrl+j",
+    "messages_previous": "ctrl+k",
+    "messages_page_up": "ctrl+u,pageup,ctrl+alt+b",
+    "messages_page_down": "ctrl+d,pagedown,ctrl+alt+f"
+  },
+  "command": {
+    "mystatus": {
+      "description": "Query quota usage for all AI accounts",
+      "template": "Use the mystatus tool to query quota usage. Return the result as-is without modification."
+    }
+  },
   "provider": {
     "google": {
       "models": {
