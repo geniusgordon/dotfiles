@@ -17,6 +17,10 @@ node_modules/
 antigravity-accounts.json*
 .sisyphus
 
+# Claude: only track settings.json
+stow/.claude/*
+!stow/.claude/settings.json
+
 # OpenCode: only track opencode.json and oh-my-opencode.json
 stow/.config/opencode/*
 !stow/.config/opencode/package.json

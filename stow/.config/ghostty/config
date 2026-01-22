@@ -1,4 +1,5 @@
 shell-integration-features = sudo
+macos-option-as-alt = true
 background = #111111
 # palette = 0=#000000
 cursor-style = block
