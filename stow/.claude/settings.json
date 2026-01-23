@@ -77,13 +77,27 @@
     "command": "bash -c '\"/Users/gordon/.bun/bin/bun\" \"$(ls -td ~/.claude/plugins/cache/claude-hud/claude-hud/*/ 2>/dev/null | head -1)src/index.ts\"'"
   },
   "enabledPlugins": {
+    "claude-code-setup@claude-plugins-official": true,
+    "claude-hud@claude-hud": true,
+    "claude-md-management@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true,
     "document-skills@anthropic-agent-skills": true,
+    "explanatory-output-style@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "hookify@claude-plugins-official": true,
+    "learning-output-style@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true,
     "playwright@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "stripe@claude-plugins-official": true,
     "superpowers-lab@superpowers-marketplace": true,
-    "claude-hud@claude-hud": true,
-    "figma@claude-plugins-official": true
+    "superpowers@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
   }
 }
