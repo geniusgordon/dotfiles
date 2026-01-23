@@ -11,4 +11,5 @@ font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
 keybind = cmd+shift+r=reload_config
+keybind = shift+enter=text:\x1b\r
 theme = "Catppuccin Mocha"

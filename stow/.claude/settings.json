@@ -1,5 +1,64 @@
 {
-  "model": "sonnet",
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(ls:*)",
+      "Bash(tree:*)",
+      "Bash(wc:*)",
+      "Bash(diff:*)",
+      "Bash(file:*)",
+      "Bash(rg:*)",
+      "Bash(fd:*)",
+      "Bash(jq:*)",
+      "Bash(which:*)",
+      "Bash(du:*)",
+      "Bash(stat:*)",
+      "Bash(tsc:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npx prettier:*)",
+      "Bash(npx jest:*)",
+      "Bash(npx vitest:*)",
+      "Bash(npx tsx:*)",
+      "Bash(eslint:*)",
+      "Bash(prettier:*)",
+      "Bash(jest:*)",
+      "Bash(vitest:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run test:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npm run typecheck:*)",
+      "Bash(npm run format:*)",
+      "Bash(npm run tsc:*)",
+      "Bash(npm test:*)",
+      "Bash(yarn build:*)",
+      "Bash(yarn lint:*)",
+      "Bash(yarn test:*)",
+      "Bash(yarn type-check:*)",
+      "Bash(yarn typecheck:*)",
+      "Bash(yarn format:*)",
+      "Bash(yarn tsc:*)",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm test:*)",
+      "Bash(pnpm type-check:*)",
+      "Bash(pnpm typecheck:*)",
+      "Bash(pnpm format:*)",
+      "Bash(pnpm tsc:*)",
+      "Bash(bun run build:*)",
+      "Bash(bun run lint:*)",
+      "Bash(bun run test:*)",
+      "Bash(bun run type-check:*)",
+      "Bash(bun run typecheck:*)",
+      "Bash(bun run format:*)",
+      "Bash(bun test:*)"
+    ]
+  },
   "hooks": {
     "Stop": [
       {
@@ -24,9 +83,7 @@
     "playwright@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
     "superpowers-lab@superpowers-marketplace": true,
-    "claude-hud@claude-hud": true
-  },
-  "permissions": {
-    "allow": []
+    "claude-hud@claude-hud": true,
+    "figma@claude-plugins-official": true
   }
 }
