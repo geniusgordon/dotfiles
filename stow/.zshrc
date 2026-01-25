@@ -4,14 +4,39 @@
 # ZSH Configuration
 # =============================================================================
 
+# -----------------------------------------------------------------------------
+# OS Detection
+# -----------------------------------------------------------------------------
+case "$(uname -s)" in
+  Darwin) __OS="macos" ;;
+  Linux)  __OS="linux" ;;
+  *)      __OS="unknown" ;;
+esac
+
+# Homebrew prefix detection (works on macOS Intel, Apple Silicon, and Linux)
+if [[ -d /opt/homebrew ]]; then
+  HOMEBREW_PREFIX="/opt/homebrew"
+elif [[ -d /usr/local/Homebrew ]]; then
+  HOMEBREW_PREFIX="/usr/local"
+elif [[ -d /home/linuxbrew/.linuxbrew ]]; then
+  HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+fi
+
 # Completion search path (custom completions)
 fpath=(~/.config/zsh/completions $fpath)
 
 # -----------------------------------------------------------------------------
-# Plugin Management
+# Plugin Management (Antidote)
 # -----------------------------------------------------------------------------
-if [[ -f /opt/homebrew/opt/antidote/share/antidote/antidote.zsh ]]; then
-  source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+# Antidote locations: Homebrew install or git clone to ~/.antidote
+if [[ -n "$HOMEBREW_PREFIX" && -f "$HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh" ]]; then
+  __antidote_path="$HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh"
+elif [[ -f "$HOME/.antidote/antidote.zsh" ]]; then
+  __antidote_path="$HOME/.antidote/antidote.zsh"
+fi
+
+if [[ -n "$__antidote_path" ]]; then
+  source "$__antidote_path"
 
   antidote_plugins_txt=${ZDOTDIR:-$HOME}/.zsh_plugins.txt
   antidote_plugins_zsh=${ZDOTDIR:-$HOME}/.zsh_plugins.zsh
@@ -24,6 +49,7 @@ if [[ -f /opt/homebrew/opt/antidote/share/antidote/antidote.zsh ]]; then
     source "$antidote_plugins_zsh"
   fi
 fi
+unset __antidote_path
 
 # Completion init (after plugins so their `fpath` is included)
 autoload -Uz compinit
@@ -85,14 +111,38 @@ export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 # -----------------------------------------------------------------------------
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export PATH="/opt/homebrew/opt/ffmpeg@4/bin:$PATH"
+
+# Homebrew binaries (if available)
+if [[ -n "$HOMEBREW_PREFIX" ]]; then
+  export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
+  # Homebrew ffmpeg@4 (if installed)
+  [[ -d "$HOMEBREW_PREFIX/opt/ffmpeg@4/bin" ]] && export PATH="$HOMEBREW_PREFIX/opt/ffmpeg@4/bin:$PATH"
+fi
 
 # Go
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 
-# Java
-export JAVA_HOME="/opt/homebrew/Cellar/openjdk/23.0.2"
+# Java - detect JAVA_HOME based on OS/installation
+if [[ -z "$JAVA_HOME" ]]; then
+  if [[ "$__OS" == "macos" ]]; then
+    # macOS: prefer Homebrew, then system Java
+    if [[ -n "$HOMEBREW_PREFIX" && -d "$HOMEBREW_PREFIX/opt/openjdk" ]]; then
+      export JAVA_HOME="$HOMEBREW_PREFIX/opt/openjdk"
+    elif [[ -x /usr/libexec/java_home ]]; then
+      export JAVA_HOME="$(/usr/libexec/java_home 2>/dev/null)" || true
+    fi
+  elif [[ "$__OS" == "linux" ]]; then
+    # Linux: check common locations
+    if [[ -d /usr/lib/jvm/default ]]; then
+      export JAVA_HOME="/usr/lib/jvm/default"  # Arch
+    elif [[ -d /usr/lib/jvm/java-21-openjdk-amd64 ]]; then
+      export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"  # Debian/Ubuntu
+    elif [[ -d /usr/lib/jvm/java-21-openjdk ]]; then
+      export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"  # Fedora/RHEL
+    fi
+  fi
+fi
 
 # Node.js
 export N_PREFIX=$HOME/.local
