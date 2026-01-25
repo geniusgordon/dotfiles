@@ -21,7 +21,11 @@ project/
 
 | Task | Command |
 |------|---------|
-| Create new project | `init-bare-repo.sh myproject git@github.com:org/repo.git` |
+| Clone repo (auto-named) | `init-bare-repo.sh git@github.com:org/repo.git` |
+| Clone with custom name | `init-bare-repo.sh git@github.com:org/repo.git myproject` |
+| Clone (explicit name) | `init-bare-repo.sh myproject git@github.com:org/repo.git` |
+| Create empty repo | `init-bare-repo.sh myproject` |
+| Convert existing bare clone | `convert-bare-repo.sh /path/to/repo.git` |
 | Add worktree | `add-worktree.sh feature-name` |
 | Add worktree from base | `add-worktree.sh feature-name main` |
 | List worktrees | `list-worktrees.sh` |
@@ -38,15 +42,36 @@ All scripts auto-detect the bare repo from any location within the project.
 
 ### init-bare-repo.sh
 
-Create a new bare repo with worktree structure.
+Initialize or clone a repository into worktree-friendly structure. Automatically detects whether you're cloning from a URL or creating a new repo.
 
 ```bash
-# Clone existing repo
+# Clone with auto-derived name (creates 'repo/' directory)
+init-bare-repo.sh git@github.com:org/repo.git
+
+# Clone with custom name (URL detected automatically)
+init-bare-repo.sh git@github.com:org/repo.git myproject
+
+# Clone with explicit name (traditional syntax)
 init-bare-repo.sh myproject git@github.com:org/repo.git
 
 # Create new empty repo
 init-bare-repo.sh myproject
 ```
+
+### convert-bare-repo.sh
+
+Convert an existing `git clone --bare` repository to worktree layout.
+
+```bash
+# Convert from inside the bare repo
+cd /path/to/repo.git
+convert-bare-repo.sh
+
+# Or specify the path
+convert-bare-repo.sh /path/to/repo.git
+```
+
+This is useful when you've already cloned with `git clone --bare` and want to adopt the worktree workflow.
 
 ### add-worktree.sh
 
