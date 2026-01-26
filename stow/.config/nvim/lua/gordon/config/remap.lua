@@ -40,9 +40,33 @@ wk.add({
           return
         end
 
-        vim.fn.setreg("+", path)
-        vim.notify("Copied: " .. path, vim.log.levels.INFO)
+        local result = path
+        local mode = vim.fn.mode()
+
+        -- Check if we're in visual mode
+        local in_visual = mode == "v" or mode == "V" or mode == "\22"
+        if in_visual then
+          -- Get selection bounds while still in visual mode
+          local line1 = vim.fn.line("v")
+          local line2 = vim.fn.line(".")
+          local start_line = math.min(line1, line2)
+          local end_line = math.max(line1, line2)
+
+          if start_line == end_line then
+            result = path .. ":" .. start_line
+          else
+            result = path .. ":" .. start_line .. "-" .. end_line
+          end
+        end
+
+        vim.fn.setreg("+", result)
+        vim.notify("Copied: " .. result, vim.log.levels.INFO)
+
+        if in_visual then
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+        end
       end,
+      mode = { "n", "v" },
       desc = "Copy relative file path to clipboard",
     },
     { "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], desc = "Replace word under cursor" },
