@@ -180,6 +180,10 @@ alias oc='opencode'
 export MANPAGER='nvim +Man!'
 export MANWIDTH=80
 
+# Clipboard
+alias pbcopy='wl-copy'
+alias pbpaste='wl-paste'
+
 # -----------------------------------------------------------------------------
 # Functions
 # -----------------------------------------------------------------------------
@@ -301,3 +305,11 @@ if [ -s "$HOME/.bun/_bun" ]; then
 fi
 
 # zprof
+
+# pnpm
+export PNPM_HOME="/home/gordon/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

@@ -3,7 +3,7 @@ macos-option-as-alt = true
 background = #111111
 # palette = 0=#000000
 cursor-style = block
-font-family = "Google Sans Code"
+font-family = "Google Sans Code NF"
 font-family = "Noto Sans TC"
 # font-family = "JetBrainsMono Nerd Font"
 font-size = 20.0
