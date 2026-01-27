@@ -1,0 +1,36 @@
+// -*- mode: jsonc -*-
+{
+  "layer": "top",
+  "height": 34,
+  "spacing": 8,
+  "margin-top": 6,
+  "margin-left": 10,
+  "margin-right": 10,
+
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": ["tray", "clock"],
+
+  // Workspaces - FontAwesome icons
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+      "default": "",
+    },
+  },
+
+  // Window title
+  "hyprland/window": {
+    "max-length": 50,
+    "separate-outputs": true,
+  },
+
+  // Clock - macOS style format
+  "clock": {
+    "format": "{:%a %b %d  %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
+  },
+}

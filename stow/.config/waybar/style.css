@@ -1,0 +1,79 @@
+* {
+  font-family:
+    FontAwesome,
+    "Inter" sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+window#waybar {
+  background: transparent;
+  color: #ffffff;
+}
+
+button {
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+}
+
+button:hover {
+  background: inherit;
+}
+
+#workspaces,
+#window,
+#custom-fcitx5,
+#clock {
+  background-color: #2d2d2d;
+  border-radius: 20px;
+  padding: 4px 16px;
+  margin: 4px 2px;
+}
+
+#workspaces {
+  padding: 4px 8px;
+}
+
+#workspaces button {
+  color: #888888;
+  padding: 0 4px;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+  color: #cccccc;
+}
+
+#workspaces button.active {
+  color: #ffffff;
+}
+
+#workspaces button.urgent {
+  color: #ff6b6b;
+}
+
+#window {
+  color: #cccccc;
+}
+
+window#waybar.empty #window {
+  background: transparent;
+  padding: 0;
+}
+
+#clock {
+  color: #ffffff;
+}
+
+tooltip {
+  background-color: #2d2d2d;
+  border-radius: 10px;
+  border: 1px solid #444444;
+}
+
+tooltip label {
+  color: #ffffff;
+  padding: 8px;
+}
