@@ -7,6 +7,23 @@ description: Manage git bare repos with worktrees for parallel feature developme
 
 Manage bare git repositories with multiple worktrees for parallel development.
 
+## Script Location
+
+**IMPORTANT:** All scripts are located in the `scripts/` subdirectory of this skill:
+```
+<skill-directory>/scripts/
+```
+
+When invoking scripts, use the full path from the skill directory. For example:
+```bash
+/path/to/skill/scripts/init-bare-repo.sh <args>
+```
+
+Or if you're in the skill directory:
+```bash
+./scripts/init-bare-repo.sh <args>
+```
+
 ## Directory Layout
 
 ```
@@ -19,113 +36,115 @@ project/
 
 ## Quick Reference
 
+All commands assume `$SKILL` is the path to this skill directory.
+
 | Task | Command |
 |------|---------|
-| Clone repo (auto-named) | `init-bare-repo.sh git@github.com:org/repo.git` |
-| Clone with custom name | `init-bare-repo.sh git@github.com:org/repo.git myproject` |
-| Clone (explicit name) | `init-bare-repo.sh myproject git@github.com:org/repo.git` |
-| Create empty repo | `init-bare-repo.sh myproject` |
-| Convert existing bare clone | `convert-bare-repo.sh /path/to/repo.git` |
-| Add worktree | `add-worktree.sh feature-name` |
-| Add worktree from base | `add-worktree.sh feature-name main` |
-| List worktrees | `list-worktrees.sh` |
-| Remove worktree | `remove-worktree.sh feature-name` |
-| Remove + delete branch | `remove-worktree.sh feature-name -d` |
-| Checkout PR for review | `checkout-pr.sh 123` |
-| Checkout PR merged state | `checkout-pr.sh 123 --merged` |
-| Sync all remotes | `sync.sh` |
-| Cleanup stale refs | `cleanup.sh` |
+| Clone repo (auto-named) | `$SKILL/scripts/init-bare-repo.sh git@github.com:org/repo.git` |
+| Clone with custom name | `$SKILL/scripts/init-bare-repo.sh git@github.com:org/repo.git myproject` |
+| Clone (explicit name) | `$SKILL/scripts/init-bare-repo.sh myproject git@github.com:org/repo.git` |
+| Create empty repo | `$SKILL/scripts/init-bare-repo.sh myproject` |
+| Convert existing bare clone | `$SKILL/scripts/convert-bare-repo.sh /path/to/repo.git` |
+| Add worktree | `$SKILL/scripts/add-worktree.sh feature-name` |
+| Add worktree from base | `$SKILL/scripts/add-worktree.sh feature-name main` |
+| List worktrees | `$SKILL/scripts/list-worktrees.sh` |
+| Remove worktree | `$SKILL/scripts/remove-worktree.sh feature-name` |
+| Remove + delete branch | `$SKILL/scripts/remove-worktree.sh feature-name -d` |
+| Checkout PR for review | `$SKILL/scripts/checkout-pr.sh 123` |
+| Checkout PR merged state | `$SKILL/scripts/checkout-pr.sh 123 --merged` |
+| Sync all remotes | `$SKILL/scripts/sync.sh` |
+| Cleanup stale refs | `$SKILL/scripts/cleanup.sh` |
 
 ## Scripts
 
-All scripts auto-detect the bare repo from any location within the project.
+All scripts are in `scripts/` subdirectory and auto-detect the bare repo from any location within the project.
 
-### init-bare-repo.sh
+### scripts/init-bare-repo.sh
 
 Initialize or clone a repository into worktree-friendly structure. Automatically detects whether you're cloning from a URL or creating a new repo.
 
 ```bash
 # Clone with auto-derived name (creates 'repo/' directory)
-init-bare-repo.sh git@github.com:org/repo.git
+$SKILL/scripts/init-bare-repo.sh git@github.com:org/repo.git
 
 # Clone with custom name (URL detected automatically)
-init-bare-repo.sh git@github.com:org/repo.git myproject
+$SKILL/scripts/init-bare-repo.sh git@github.com:org/repo.git myproject
 
 # Clone with explicit name (traditional syntax)
-init-bare-repo.sh myproject git@github.com:org/repo.git
+$SKILL/scripts/init-bare-repo.sh myproject git@github.com:org/repo.git
 
 # Create new empty repo
-init-bare-repo.sh myproject
+$SKILL/scripts/init-bare-repo.sh myproject
 ```
 
-### convert-bare-repo.sh
+### scripts/convert-bare-repo.sh
 
 Convert an existing `git clone --bare` repository to worktree layout.
 
 ```bash
 # Convert from inside the bare repo
 cd /path/to/repo.git
-convert-bare-repo.sh
+$SKILL/scripts/convert-bare-repo.sh
 
 # Or specify the path
-convert-bare-repo.sh /path/to/repo.git
+$SKILL/scripts/convert-bare-repo.sh /path/to/repo.git
 ```
 
 This is useful when you've already cloned with `git clone --bare` and want to adopt the worktree workflow.
 
-### add-worktree.sh
+### scripts/add-worktree.sh
 
 Add worktree for new or existing branch. Automatically sets up remote tracking.
 
 ```bash
 # Create new branch from main (tracks origin/feature-auth)
-add-worktree.sh feature-auth
+$SKILL/scripts/add-worktree.sh feature-auth
 
 # Create from specific base
-add-worktree.sh hotfix-login main
+$SKILL/scripts/add-worktree.sh hotfix-login main
 
 # Checkout existing remote branch (tracks origin/existing-feature)
-add-worktree.sh existing-feature
+$SKILL/scripts/add-worktree.sh existing-feature
 ```
 
-### remove-worktree.sh
+### scripts/remove-worktree.sh
 
 Remove worktree, optionally deleting the branch.
 
 ```bash
 # Remove worktree only (keeps branch)
-remove-worktree.sh feature-auth
+$SKILL/scripts/remove-worktree.sh feature-auth
 
 # Remove worktree and delete branch
-remove-worktree.sh feature-auth -d
+$SKILL/scripts/remove-worktree.sh feature-auth -d
 ```
 
-### checkout-pr.sh
+### scripts/checkout-pr.sh
 
 Fetch GitHub PR into worktree for review. Requires `gh` CLI.
 
 ```bash
 # Checkout PR branch
-checkout-pr.sh 456
+$SKILL/scripts/checkout-pr.sh 456
 # Creates pr-456/ worktree
 
 # Checkout merged state (what happens after merge)
-checkout-pr.sh 456 --merged
+$SKILL/scripts/checkout-pr.sh 456 --merged
 # Creates pr-456-merged/ worktree
 # This is what CI tests against - catches conflicts with recent base changes
 # Fails with helpful error if PR has merge conflicts
 ```
 
-### cleanup.sh
+### scripts/cleanup.sh
 
 Prune stale references and remove gone branches.
 
 ```bash
 # Preview changes
-cleanup.sh --dry-run
+$SKILL/scripts/cleanup.sh --dry-run
 
 # Execute cleanup
-cleanup.sh
+$SKILL/scripts/cleanup.sh
 ```
 
 ## Workflows
@@ -134,24 +153,24 @@ cleanup.sh
 
 ```bash
 # Start new feature (tracking auto-configured)
-add-worktree.sh feature-auth
+$SKILL/scripts/add-worktree.sh feature-auth
 cd ../feature-auth
 # ... work on feature ...
 git push  # tracking already set up
 
 # Switch to another task without stashing
 cd ../main
-add-worktree.sh hotfix-urgent
+$SKILL/scripts/add-worktree.sh hotfix-urgent
 ```
 
 ### Code Review
 
 ```bash
 # Review a PR
-checkout-pr.sh 123
+$SKILL/scripts/checkout-pr.sh 123
 cd ../pr-123
 # ... review, test, comment ...
 
 # Clean up after merge
-remove-worktree.sh pr-123 -d
+$SKILL/scripts/remove-worktree.sh pr-123 -d
 ```
