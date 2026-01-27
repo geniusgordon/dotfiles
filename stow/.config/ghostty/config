@@ -10,6 +10,8 @@ font-size = 20.0
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
-keybind = cmd+shift+r=reload_config
+keybind = ctrl+shift+r=reload_config
 keybind = shift+enter=text:\x1b\r
 theme = "Catppuccin Mocha"
+window-padding-x = 12
+window-padding-y = 12,4
