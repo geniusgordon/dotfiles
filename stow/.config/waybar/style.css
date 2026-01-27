@@ -1,13 +1,11 @@
 * {
-  font-family:
-    FontAwesome,
-    "Inter" sans-serif;
+  font-family: "Symbols Nerd Font", FontAwesome, "Inter", sans-serif;
   font-size: 14px;
   font-weight: 500;
 }
 
 window#waybar {
-  background: transparent;
+  background-color: transparent;
   color: #ffffff;
 }
 
@@ -21,29 +19,33 @@ button:hover {
   background: inherit;
 }
 
-#workspaces,
-#window,
-#custom-fcitx5,
-#clock {
-  background-color: #2d2d2d;
-  border-radius: 20px;
-  padding: 4px 16px;
-  margin: 4px 2px;
+/* Arch logo - leftmost menu item */
+#custom-arch {
+  color: #1793d1;
+  font-size: 20px;
+  padding: 4px 16px 4px 18px;
+}
+
+#custom-arch:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 #workspaces {
-  padding: 4px 8px;
+  padding: 0 4px;
 }
 
 #workspaces button {
   color: #888888;
-  padding: 0 4px;
+  padding-left: 8px;
+  padding-right: 10px;
+  margin: 0 2px;
   background: transparent;
   transition: all 0.2s ease;
 }
 
 #workspaces button:hover {
   color: #cccccc;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 #workspaces button.active {
@@ -55,22 +57,39 @@ button:hover {
 }
 
 #window {
-  color: #cccccc;
+  color: #999999;
+  padding: 0 16px;
 }
 
 window#waybar.empty #window {
-  background: transparent;
   padding: 0;
+}
+
+#tray {
+  padding: 0 8px;
+}
+
+#tray > * {
+  margin: 0 8px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
 }
 
 #clock {
   color: #ffffff;
+  padding: 0 14px 0 12px;
 }
 
 tooltip {
-  background-color: #2d2d2d;
-  border-radius: 10px;
-  border: 1px solid #444444;
+  background-color: rgba(30, 30, 30, 0.95);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 tooltip label {
