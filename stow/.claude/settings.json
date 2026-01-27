@@ -62,7 +62,34 @@
   "hooks": {
     "Notification": [
       {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "claude-tmux-notify.sh"
+          }
+        ]
+      },
+      {
         "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "claude-tmux-notify.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "auth_success",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "claude-tmux-notify.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "elicitation_dialog",
         "hooks": [
           {
             "type": "command",
