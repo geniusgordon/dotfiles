@@ -1,5 +1,11 @@
 local autocmd = vim.api.nvim_create_autocmd
 
+vim.filetype.add({
+  extension = {
+    conf = "ini", -- 將 .conf 檔當作 ini 處理
+  },
+})
+
 autocmd("FileType", {
   pattern = "make",
   command = "setlocal noexpandtab",
