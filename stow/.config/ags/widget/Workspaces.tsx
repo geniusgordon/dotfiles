@@ -16,7 +16,7 @@ export default function Workspaces() {
 
   return (
     <box spacing={6} class="workspaces">
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
+      {[1, 2, 3, 4, 5].map((i) => (
         <button
           class={workspaceState((state) => {
             const isActive = state.activeId === i

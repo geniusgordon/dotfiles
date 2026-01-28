@@ -1,5 +1,5 @@
-import { Gtk } from "ags/gtk4"
 import { createPoll } from "ags/time"
+import ControlCenter from "./ControlCenter"
 
 export default function Clock() {
   const time = createPoll("", 1000, () => {
@@ -16,10 +16,10 @@ export default function Clock() {
   })
 
   return (
-    <menubutton class="clock">
+    <menubutton>
       <label label={time} />
       <popover>
-        <Gtk.Calendar />
+        <ControlCenter />
       </popover>
     </menubutton>
   )

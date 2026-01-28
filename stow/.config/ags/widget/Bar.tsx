@@ -2,6 +2,8 @@ import app from "ags/gtk4/app"
 import { Astal, Gtk, Gdk } from "ags/gtk4"
 import ArchIcon from "./ArchIcon"
 import Workspaces from "./Workspaces"
+import ActiveWindow from "./ActiveWindow"
+import Fcitx5 from "./Fcitx5"
 import Clock from "./Clock"
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
@@ -22,8 +24,11 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
           <ArchIcon />
           <Workspaces />
         </box>
-        <box $type="center" />
-        <box $type="end" halign={Gtk.Align.END}>
+        <box $type="center" halign={Gtk.Align.CENTER}>
+          <ActiveWindow />
+        </box>
+        <box $type="end" spacing={8} halign={Gtk.Align.END}>
+          <Fcitx5 />
           <Clock />
         </box>
       </centerbox>

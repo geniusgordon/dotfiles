@@ -8,7 +8,8 @@ window.Bar {
   background: transparent;
   color: $fg-color;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 14px;
+  font-family: "Inter", "jf-openhuninn-2.1", sans-serif;
 
   > centerbox {
     background: $bg-color;
@@ -35,16 +36,17 @@ window.Bar {
     margin: 0 4px;
   }
 
-  // Workspaces
+  // Workspaces - styled like a menubutton
   .workspaces {
-    margin: 0 8px;
+    padding: 4px 6px;
+    margin: 0 4px;
 
     button.workspace {
       min-width: 28px;
       min-height: 28px;
       padding: 4px 8px;
-      margin: 0 2px;
-      border-radius: 6px;
+      margin: 0 1px;
+      border-radius: 5px;
       background: transparent;
       transition: all 200ms ease;
 
@@ -72,13 +74,97 @@ window.Bar {
     }
   }
 
-  // Clock
-  .clock {
-    padding: 4px 12px;
-    margin-right: 4px;
+  // Active Window Title
+  .active-window {
+    padding: 4px 16px;
 
     label {
       font-size: 13px;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: normal;
+    }
+  }
+
+  // Control Center (macOS-style popup)
+  .control-center {
+    padding: 16px;
+    min-width: 320px;
+    background: rgba(30, 35, 45, 0.95);
+    border-radius: 12px;
+
+    .quick-settings {
+      button.quick-setting {
+        min-width: 140px;
+        min-height: 45px;
+        padding: 10px 14px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        transition: all 200ms ease;
+
+        box {
+          .quick-setting-icon {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+          }
+
+          .quick-setting-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+          }
+        }
+
+        &.active {
+          background: $blue;
+
+          .quick-setting-icon,
+          .quick-setting-label {
+            color: white;
+          }
+        }
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.15);
+
+          &.active {
+            background: rgba(23, 147, 209, 0.9);
+          }
+        }
+      }
+    }
+
+    .slider-row {
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+
+      .slider-icon {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      scale {
+        min-height: 10px;
+
+        trough {
+          min-height: 6px;
+          border-radius: 3px;
+          background: rgba(255, 255, 255, 0.15);
+        }
+
+        highlight {
+          background: $blue;
+          border-radius: 3px;
+        }
+
+        slider {
+          min-width: 18px;
+          min-height: 18px;
+          border-radius: 9px;
+          background: white;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+      }
     }
   }
 }
