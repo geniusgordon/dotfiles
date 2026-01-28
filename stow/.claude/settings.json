@@ -126,5 +126,6 @@
     "superpowers-lab@superpowers-marketplace": true,
     "superpowers@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
-  }
+  },
+  "model": "sonnet"
 }
