@@ -1,6 +1,8 @@
 import { Gtk } from "ags/gtk4"
 import { exec } from "ags/process"
 import { createPoll } from "ags/time"
+import { notificationService } from "../service/Notifications"
+import NotificationList from "./NotificationList"
 
 function QuickSettingButton({ icon, label, active = false, onClick }: any) {
   return (
@@ -43,6 +45,11 @@ export default function ControlCenter() {
     } catch (e) {
       return { volume: 50, muted: false }
     }
+  })
+
+  const hasNotifications = createPoll(false, 500, () => {
+    const notifd = notificationService.getNotifd()
+    return notifd.get_notifications().length > 0
   })
 
   const volumeAdjustment = new Gtk.Adjustment({ lower: 0, upper: 100, value: 50 })
@@ -99,6 +106,31 @@ export default function ControlCenter() {
             return false
           }}
         />
+      </box>
+
+      {/* Notification Section */}
+      <box
+        orientation={Gtk.Orientation.VERTICAL}
+        spacing={8}
+        class="notification-section"
+        visible={hasNotifications}
+      >
+        <box spacing={8} class="notification-header">
+          <label
+            label="Notifications"
+            class="notification-section-title"
+            hexpand
+            halign={Gtk.Align.START}
+          />
+          <button
+            class="clear-all-button"
+            onClicked={() => notificationService.clearAll()}
+            halign={Gtk.Align.END}
+          >
+            <label label="Clear All" />
+          </button>
+        </box>
+        <NotificationList />
       </box>
     </box>
   )
