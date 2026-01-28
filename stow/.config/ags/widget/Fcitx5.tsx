@@ -30,6 +30,7 @@ export default function Fcitx5() {
 
   return (
     <button
+      class="fcitx5"
       onClicked={() => {
         try {
           exec("fcitx5-remote -t")

@@ -9,7 +9,7 @@ window.Bar {
   color: $fg-color;
   font-weight: bold;
   font-size: 14px;
-  font-family: "Inter", "jf-openhuninn-2.1", sans-serif;
+  font-family: "Inter", "jf-openhuninn-2.1", "JetBrainsMono Nerd Font", sans-serif;
 
   > centerbox {
     background: $bg-color;
@@ -85,6 +85,10 @@ window.Bar {
     }
   }
 
+  .fcitx5 {
+    background: transparent;
+  }
+
   // Control Center (macOS-style popup)
   .control-center {
     padding: 16px;
@@ -102,9 +106,17 @@ window.Bar {
         transition: all 200ms ease;
 
         box {
-          .quick-setting-icon {
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.8);
+          .icon-circle {
+            min-width: 40px;
+            min-height: 36px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            transition: all 200ms ease;
+
+            label.quick-setting-icon {
+              font-size: 18px;
+              color: rgba(255, 255, 255, 0.9);
+            }
           }
 
           .quick-setting-label {
@@ -117,7 +129,14 @@ window.Bar {
         &.active {
           background: $blue;
 
-          .quick-setting-icon,
+          .icon-circle {
+            background: rgba(255, 255, 255, 0.25);
+
+            label.quick-setting-icon {
+              color: white;
+            }
+          }
+
           .quick-setting-label {
             color: white;
           }
@@ -138,9 +157,23 @@ window.Bar {
       background: rgba(255, 255, 255, 0.08);
       border-radius: 10px;
 
-      .slider-icon {
-        font-size: 18px;
-        color: rgba(255, 255, 255, 0.8);
+      button.volume-icon-button {
+        min-width: 32px;
+        min-height: 32px;
+        padding: 0;
+        margin: 0;
+        border-radius: 6px;
+        background: transparent;
+        transition: all 200ms ease;
+
+        .slider-icon {
+          font-size: 18px;
+          color: rgba(255, 255, 255, 0.8);
+        }
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
       }
 
       scale {
