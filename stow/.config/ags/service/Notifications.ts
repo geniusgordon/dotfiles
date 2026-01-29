@@ -1,4 +1,3 @@
-import { Notifd } from "gi://AstalNotifd"
 import AstalNotifd from "gi://AstalNotifd"
 
 // Utility functions
@@ -43,17 +42,17 @@ export function truncate(text: string, maxLength: number): string {
   return text.substring(0, maxLength) + "..."
 }
 
-interface NotificationGroup {
+export interface NotificationGroup {
   appName: string
   appIcon: string
   notifications: AstalNotifd.Notification[]
 }
 
 class NotificationService {
-  private notifd: Notifd
+  private notifd: AstalNotifd.Notifd
 
   constructor() {
-    this.notifd = Notifd.get_default()
+    this.notifd = AstalNotifd.get_default()
   }
 
   getNotifd() {

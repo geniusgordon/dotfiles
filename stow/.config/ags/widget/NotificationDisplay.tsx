@@ -1,58 +1,19 @@
 import { Gtk } from "ags/gtk4"
 import { createPoll } from "ags/time"
-import AstalNotifd from "gi://AstalNotifd"
 import {
   notificationService,
+  type NotificationGroup,
   getAppIcon,
   formatTime,
   truncate,
 } from "../service/Notifications"
+import { NotificationItem } from "./notification"
 
-// Fixed notification slot that displays one notification
-function NotificationItem({ notification }: { notification: AstalNotifd.Notification }) {
-  const appIcon = getAppIcon(notification.app_name || "", notification.app_icon || "")
+const MAX_GROUPS = 3
+const MAX_PER_GROUP = 3
 
-  return (
-    <box class="notification-card" spacing={10}>
-      <box class="notification-icon" valign={Gtk.Align.START}>
-        <label label={appIcon} />
-      </box>
-      <box orientation={Gtk.Orientation.VERTICAL} hexpand spacing={4}>
-        <box spacing={8} halign={Gtk.Align.START}>
-          <label
-            label={notification.summary || ""}
-            class="notification-title"
-            hexpand
-            halign={Gtk.Align.START}
-            wrap
-          />
-          <label
-            label={formatTime(notification.time)}
-            class="notification-time"
-            halign={Gtk.Align.END}
-          />
-        </box>
-        <label
-          label={truncate(notification.body || "", 100)}
-          class="notification-body"
-          halign={Gtk.Align.START}
-          wrap
-        />
-      </box>
-      <button
-        class="notification-dismiss"
-        onClicked={() => notification.dismiss()}
-        valign={Gtk.Align.START}
-      >
-        <label label="×" />
-      </button>
-    </box>
-  )
-}
-
-// Notification group display
 function NotificationGroupDisplay({ index }: { index: number }) {
-  const groups = createPoll([], 500, () => notificationService.getGrouped())
+  const groups = createPoll([] as NotificationGroup[], 500, () => notificationService.getGrouped())
 
   return (
     <box
@@ -63,7 +24,15 @@ function NotificationGroupDisplay({ index }: { index: number }) {
     >
       {/* Group header */}
       <box spacing={8} class="notification-group-header">
-        <label label={groups((g) => g[index]?.appIcon || "")} class="group-icon" />
+        <box class="group-icon" hexpand vexpand>
+          <label
+            label={groups((g) => g[index]?.appIcon || "")}
+            halign={Gtk.Align.CENTER}
+            valign={Gtk.Align.CENTER}
+            hexpand
+            vexpand
+          />
+        </box>
         <label
           label={groups((g) => g[index]?.appName || "")}
           class="group-name"
@@ -77,17 +46,35 @@ function NotificationGroupDisplay({ index }: { index: number }) {
         />
       </box>
 
-      {/* Notifications - using label as a workaround for accessor issues */}
+      {/* Notification slots */}
       <box orientation={Gtk.Orientation.VERTICAL} spacing={6}>
-        <label
-          label={groups((g) => {
-            const group = g[index]
-            if (!group) return ""
-            // Just return count for now as placeholder
-            return `${Math.min(3, group.notifications.length)} notifications`
-          })}
-          visible={false}
-        />
+        {Array.from({ length: MAX_PER_GROUP }, (_, i) => (
+          <NotificationItem
+            visible={groups((g) => {
+              const group = g[index]
+              return group ? i < group.notifications.length : false
+            })}
+            appIcon={groups((g) => {
+              const n = g[index]?.notifications[i]
+              return n ? getAppIcon(n.app_name || "", n.app_icon || "") : ""
+            })}
+            summary={groups((g) => g[index]?.notifications[i]?.summary || "")}
+            time={groups((g) => {
+              const n = g[index]?.notifications[i]
+              return n ? formatTime(n.time) : ""
+            })}
+            body={groups((g) => {
+              const n = g[index]?.notifications[i]
+              return n ? truncate(n.body || "", 100) : ""
+            })}
+            onDismiss={() => {
+              const g = groups()
+              const n = g[index]?.notifications[i]
+              if (n) n.dismiss()
+            }}
+            className="notification-group-item"
+          />
+        ))}
       </box>
 
       {/* "X more" indicator */}
@@ -95,26 +82,26 @@ function NotificationGroupDisplay({ index }: { index: number }) {
         label={groups((g) => {
           const group = g[index]
           if (!group) return ""
-          const remaining = group.notifications.length - 3
+          const remaining = group.notifications.length - MAX_PER_GROUP
           return remaining > 0 ? `+${remaining} more` : ""
         })}
         class="notification-more"
         halign={Gtk.Align.CENTER}
         visible={groups((g) => {
           const group = g[index]
-          return group ? group.notifications.length > 3 : false
+          return group ? group.notifications.length > MAX_PER_GROUP : false
         })}
       />
     </box>
   )
 }
 
-export default function NotificationDisplayNotifd() {
+export default function NotificationDisplay() {
   return (
     <box orientation={Gtk.Orientation.VERTICAL} spacing={8}>
-      <NotificationGroupDisplay index={0} />
-      <NotificationGroupDisplay index={1} />
-      <NotificationGroupDisplay index={2} />
+      {Array.from({ length: MAX_GROUPS }, (_, i) => (
+        <NotificationGroupDisplay index={i} />
+      ))}
     </box>
   )
 }

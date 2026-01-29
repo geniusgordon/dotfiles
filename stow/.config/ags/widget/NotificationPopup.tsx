@@ -1,31 +1,7 @@
 import { Astal, Gtk } from "ags/gtk4"
-import AstalNotifd from "gi://AstalNotifd"
 import app from "ags/gtk4/app"
 import { notificationService, getAppIcon } from "../service/Notifications"
-
-function NotificationPopupItem({ notification }: { notification: AstalNotifd.Notification }) {
-  const appIcon = getAppIcon(notification.app_name || "", notification.app_icon || "")
-
-  return (
-    <box class="popup-content" spacing={12}>
-      <box class="popup-icon" valign={Gtk.Align.START}>
-        <label label={appIcon} />
-      </box>
-      <box orientation={Gtk.Orientation.VERTICAL} spacing={4} hexpand valign={Gtk.Align.START}>
-        <label
-          label={notification.summary || ""}
-          class="popup-title"
-          halign={Gtk.Align.START}
-          wrap
-        />
-        <label label={notification.body || ""} class="popup-body" halign={Gtk.Align.START} wrap />
-      </box>
-      <button class="popup-close" onClicked={() => notification.dismiss()}>
-        <label label="×" />
-      </button>
-    </box>
-  )
-}
+import { NotificationItem } from "./notification"
 
 export default function NotificationPopup() {
   const notifd = notificationService.getNotifd()
@@ -41,8 +17,15 @@ export default function NotificationPopup() {
       visible={false}
     >
       <box orientation={Gtk.Orientation.VERTICAL} spacing={8}>
-        {notifd.get_notifications().map((notif) => (
-          <NotificationPopupItem notification={notif} />
+        {notifd.get_notifications().map((notif: any) => (
+          <NotificationItem
+            appIcon={getAppIcon(notif.app_name || "", notif.app_icon || "")}
+            summary={notif.summary || ""}
+            time=""
+            body={notif.body || ""}
+            onDismiss={() => notif.dismiss()}
+            className="popup-content"
+          />
         ))}
       </box>
     </window>
