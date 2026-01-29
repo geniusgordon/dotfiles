@@ -12,13 +12,12 @@ export default function NotificationItem({
 }: NotificationItemProps) {
   return (
     <box visible={visible} >
-      <box spacing={10} halign={Gtk.Align.START} class={className}>
-        <box class="notification-icon" hexpand vexpand>
+      <box spacing={10} hexpand class={className}>
+        <box class="notification-icon" vexpand>
           <label
             label={appIcon}
             halign={Gtk.Align.CENTER}
             valign={Gtk.Align.CENTER}
-            hexpand
             vexpand
           />
         </box>
