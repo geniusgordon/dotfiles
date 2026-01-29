@@ -9,8 +9,8 @@
 # -----------------------------------------------------------------------------
 case "$(uname -s)" in
   Darwin) __OS="macos" ;;
-  Linux)  __OS="linux" ;;
-  *)      __OS="unknown" ;;
+  Linux) __OS="linux" ;;
+  *) __OS="unknown" ;;
 esac
 
 # Homebrew prefix detection (works on macOS Intel, Apple Silicon, and Linux)
@@ -79,7 +79,7 @@ __ensure_completion() {
     return 0
   fi
 
-  print -r -- "$completion_output" >| "$completion_file"
+  print -r -- "$completion_output" >|"$completion_file"
   eval "$completion_output"
 }
 
@@ -135,11 +135,11 @@ if [[ -z "$JAVA_HOME" ]]; then
   elif [[ "$__OS" == "linux" ]]; then
     # Linux: check common locations
     if [[ -d /usr/lib/jvm/default ]]; then
-      export JAVA_HOME="/usr/lib/jvm/default"  # Arch
+      export JAVA_HOME="/usr/lib/jvm/default" # Arch
     elif [[ -d /usr/lib/jvm/java-21-openjdk-amd64 ]]; then
-      export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"  # Debian/Ubuntu
+      export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64" # Debian/Ubuntu
     elif [[ -d /usr/lib/jvm/java-21-openjdk ]]; then
-      export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"  # Fedora/RHEL
+      export JAVA_HOME="/usr/lib/jvm/java-21-openjdk" # Fedora/RHEL
     fi
   fi
 fi
@@ -183,6 +183,9 @@ export MANWIDTH=80
 # Clipboard
 alias pbcopy='wl-copy'
 alias pbpaste='wl-paste'
+
+# Clawdbot tmux shortcut
+alias ctmux="tmux -S /tmp/clawdbot-tmux-sockets/clawdbot.sock"
 
 # -----------------------------------------------------------------------------
 # Functions
@@ -282,7 +285,7 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then
   __gcloud_completions_loaded=0
 
   __load_gcloud_completions_once() {
-    if (( __gcloud_completions_loaded == 0 )); then
+    if ((__gcloud_completions_loaded == 0)); then
       . "$HOME/google-cloud-sdk/completion.zsh.inc"
       __gcloud_completions_loaded=1
       add-zle-hook-widget -d line-init __load_gcloud_completions_once 2>/dev/null

@@ -81,7 +81,8 @@
       "Bash(git merge-base:*)",
       "Bash(git count-objects:*)",
       "Bash(git verify-commit:*)",
-      "Bash(git verify-tag:*)"
+      "Bash(git verify-tag:*)",
+      "Bash(go build:*)"
     ]
   },
   "model": "opus",
