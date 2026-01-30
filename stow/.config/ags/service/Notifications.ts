@@ -62,12 +62,12 @@ class NotificationService {
   clearAll() {
     const notifications = this.notifd.get_notifications()
     notifications.forEach((notification) => {
-      this.notifd.delete_notification(notification.id)
+      notification.dismiss()
     })
   }
 
-  dismiss(id: number) {
-    this.notifd.delete_notification(id)
+  dismiss(notification: AstalNotifd.Notification) {
+    notification.dismiss()
   }
 
   getGrouped(): NotificationGroup[] {
