@@ -315,7 +315,7 @@ M.setup = function()
     capabilities = capabilities,
   })
 
-  vim.lsp.enable({ "lua_ls", "eslint", "bashls", "gopls", "terraformls", "yamlls", "tailwindcss", "ts_ls" })
+  vim.lsp.enable({ "lua_ls", "eslint", "bashls", "gopls", "terraformls", "yamlls", "tailwindcss", "vtsls" })
 end
 
 M.setup_null_ls = setup_null_ls
