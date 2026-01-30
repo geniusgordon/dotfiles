@@ -11,6 +11,7 @@ M.setup = function()
       { "<leader>gd", ":DiffviewOpen<CR>", desc = "Git diff split" },
       { "<leader>gf", ":DiffviewFileHistory %<CR>", desc = "Git file history" },
       { "<leader>gc", ":DiffviewClose<CR>", desc = "Git close diff" },
+      { "<leader>gl", ":vertical Git log --oneline<CR>", desc = "Git log" },
     },
   })
 end
