@@ -180,9 +180,11 @@ alias oc='opencode'
 export MANPAGER='nvim +Man!'
 export MANWIDTH=80
 
-# Clipboard
-alias pbcopy='wl-copy'
-alias pbpaste='wl-paste'
+# Clipboard (Wayland)
+if command -v wl-copy &>/dev/null; then
+  alias pbcopy='wl-copy'
+  alias pbpaste='wl-paste'
+fi
 
 # Clawdbot tmux shortcut
 alias ctmux="tmux -S /tmp/clawdbot-tmux-sockets/clawdbot.sock"
