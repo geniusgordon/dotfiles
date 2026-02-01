@@ -16,6 +16,7 @@
       }
    },
    "favorites": [
+      "applications:discord",
       "applications:google-chrome",
       "applications:org.telegram",
       "clipboard:history"
