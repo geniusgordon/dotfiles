@@ -3,11 +3,15 @@ require("rest-nvim").setup()
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "http",
   callback = function(event)
-    vim.keymap.set("n", "<leader>S", ":Rest run<CR>", {
-      noremap = true,
-      silent = true,
-      desc = "RestNvim",
-      buf = event.buffer,
+    local wk = require("which-key")
+    wk.add({
+      mode = { "n" },
+      {
+        "<leader>S",
+        ":Rest run<CR>",
+        desc = "RestNvim",
+        buffer = event.buf,
+      },
     })
   end,
 })
@@ -29,18 +33,21 @@ local open_saved_request = function(p)
   api.tree.change_root(path)
 end
 
-vim.keymap.set("n", "<leader>rs", function()
-  open_saved_request(saved_rest_path)
-end, {
-  noremap = true,
-  silent = true,
-  desc = "Open saved rest requests",
-})
-
-vim.keymap.set("n", "<leader>rg", function()
-  open_saved_request(saved_graphql_path)
-end, {
-  noremap = true,
-  silent = true,
-  desc = "Open saved GraphQL requests",
+local wk = require("which-key")
+wk.add({
+  mode = { "n" },
+  {
+    "<leader>rs",
+    function()
+      open_saved_request(saved_rest_path)
+    end,
+    desc = "Open saved rest requests",
+  },
+  {
+    "<leader>rg",
+    function()
+      open_saved_request(saved_graphql_path)
+    end,
+    desc = "Open saved GraphQL requests",
+  },
 })

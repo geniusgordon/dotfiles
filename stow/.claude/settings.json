@@ -85,7 +85,10 @@
       "Bash(git count-objects:*)",
       "Bash(git verify-commit:*)",
       "Bash(git verify-tag:*)",
-      "Bash(go build:*)"
+      "Bash(go build:*)",
+      "Read(*)",
+      "Write(/home/gordon/Works/firstory/**)",
+      "Edit(/home/gordon/Works/firstory/**)"
     ]
   },
   "model": "opus",
@@ -155,6 +158,7 @@
     "stripe@claude-plugins-official": true,
     "superpowers-lab@superpowers-marketplace": true,
     "superpowers@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
+    "typescript-lsp@claude-plugins-official": true,
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true
   }
 }

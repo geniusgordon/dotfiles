@@ -116,7 +116,6 @@ local function setup_null_ls()
         args = { "-i", "2", "-ci" },
         filetypes = { "sh", "zsh" },
       }),
-      -- null_ls.builtins.formatting.sql_formatter,
       null_ls.builtins.formatting.sqlfluff.with({
         filetypes = { "sql" },
         extra_args = { "--dialect", "postgres" },
@@ -133,14 +132,12 @@ local function setup_null_ls()
       }),
       null_ls.builtins.formatting.terraform_fmt,
       null_ls.builtins.formatting.xmllint,
-      -- null_ls.builtins.formatting.yamlfmt,
     },
     on_attach = setup_format_keymap(),
   })
 end
 
 M.setup = function()
-  -- local lspconfig = require("lspconfig")
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
   vim.diagnostic.config({
@@ -178,79 +175,16 @@ M.setup = function()
   })
 
   vim.lsp.config("eslint", {
-    on_attach = setup_format_keymap({
-      -- format = function()
-      --   -- vim.api.nvim_command("EslintFixAll")
-      -- end,
-    }),
+    on_attach = setup_format_keymap({}),
     capabilities = capabilities,
   })
 
-  vim.lsp.config("ts_ls", {
-    init_options = {
-      preferences = {
-        importModuleSpecifierPreference = "relative",
-      },
-    },
-    settings = {
-      typescript = {
-        preferences = {
-          importModuleSpecifier = "relative",
-        },
-        inlayHints = {
-          includeInlayParameterNameHints = "literals",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
-          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        },
-      },
-      javascript = {
-        preferences = {
-          importModuleSpecifier = "relative",
-        },
-        inlayHints = {
-          includeInlayParameterNameHints = "literals",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
-          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        },
-      },
-    },
-    on_attach = function(client)
-      lsp_on_attach()
-      client.server_capabilities.documentFormattingProvider = false
-      client.server_capabilities.documentRangeFormattingProvider = false
-    end,
-    capabilities = capabilities,
-  })
-
-  vim.lsp.config("bashls", {
-    on_attach = lsp_on_attach,
-    capabilities = capabilities,
-  })
-
-  vim.lsp.config("gopls", {
-    on_attach = lsp_on_attach,
-    capabilities = capabilities,
-  })
-
-  vim.lsp.config("terraformls", {
-    on_attach = lsp_on_attach,
-    capabilities = capabilities,
-  })
-
-  vim.lsp.config("yamlls", {
-    on_attach = lsp_on_attach,
-    capabilities = capabilities,
-  })
+  for _, server in ipairs({ "bashls", "gopls", "terraformls", "yamlls" }) do
+    vim.lsp.config(server, {
+      on_attach = lsp_on_attach,
+      capabilities = capabilities,
+    })
+  end
 
   vim.lsp.config("tailwindcss", {
     on_attach = lsp_on_attach,
@@ -269,43 +203,27 @@ M.setup = function()
     },
   })
 
+  local ts_lang_settings = {
+    preferences = { importModuleSpecifier = "relative" },
+    inlayHints = {
+      includeInlayParameterNameHints = "literals",
+      includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+      includeInlayFunctionParameterTypeHints = true,
+      includeInlayVariableTypeHints = true,
+      includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+      includeInlayPropertyDeclarationTypeHints = true,
+      includeInlayFunctionLikeReturnTypeHints = true,
+      includeInlayEnumMemberValueHints = true,
+    },
+  }
+
   vim.lsp.config("vtsls", {
     init_options = {
-      preferences = {
-        importModuleSpecifierPreference = "relative",
-      },
+      preferences = { importModuleSpecifierPreference = "relative" },
     },
     settings = {
-      typescript = {
-        preferences = {
-          importModuleSpecifier = "relative",
-        },
-        inlayHints = {
-          includeInlayParameterNameHints = "literals",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
-          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        },
-      },
-      javascript = {
-        preferences = {
-          importModuleSpecifier = "relative",
-        },
-        inlayHints = {
-          includeInlayParameterNameHints = "literals",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
-          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        },
-      },
+      typescript = ts_lang_settings,
+      javascript = ts_lang_settings,
     },
     on_attach = function(client)
       lsp_on_attach()
@@ -315,7 +233,7 @@ M.setup = function()
     capabilities = capabilities,
   })
 
-  vim.lsp.enable({ "lua_ls", "eslint", "bashls", "gopls", "terraformls", "yamlls", "tailwindcss", "vtsls" })
+  vim.lsp.enable({ "lua_ls", "eslint", "vtsls", "bashls", "gopls", "terraformls", "yamlls", "tailwindcss" })
 end
 
 M.setup_null_ls = setup_null_ls

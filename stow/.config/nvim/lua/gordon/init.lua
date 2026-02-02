@@ -1,5 +1,4 @@
 require("gordon.lazy")
--- require("gordon.rocks")
 
 require("gordon.config.lazy")
 require("gordon.config.which-key")
@@ -36,7 +35,5 @@ require("gordon.config.tint")
 require("gordon.config.lilypond")
 require("gordon.config.colors")
 require("gordon.config.tailwind")
--- require("gordon.config.split")
--- require("gordon.config.markview")
 
 require("gordon.config.lsp")

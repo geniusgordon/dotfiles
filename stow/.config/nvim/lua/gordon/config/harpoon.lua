@@ -3,27 +3,50 @@ local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local conf = require("telescope.config").values
 local action_state = require("telescope.actions.state")
+local wk = require("which-key")
 
 -- REQUIRED
 harpoon:setup()
 
-vim.keymap.set("n", "<leader>h", function()
-  harpoon:list():add()
-  print("Added to Harpoon list: " .. vim.fn.expand("%:p:."))
-end, { desc = "Add current file to Harpoon list", silent = false })
-
-vim.keymap.set("n", "<M-q>", function()
-  harpoon:list():select(1)
-end, { desc = "Select Harpoon list item 1" })
-vim.keymap.set("n", "<M-w>", function()
-  harpoon:list():select(2)
-end, { desc = "Select Harpoon list item 2" })
-vim.keymap.set("n", "<M-e>", function()
-  harpoon:list():select(3)
-end, { desc = "Select Hampoon list item 3" })
-vim.keymap.set("n", "<M-r>", function()
-  harpoon:list():select(4)
-end, { desc = "Select Hampoon list item 4" })
+wk.add({
+  mode = { "n" },
+  {
+    "<leader>h",
+    function()
+      harpoon:list():add()
+      print("Added to Harpoon list: " .. vim.fn.expand("%:p:."))
+    end,
+    desc = "Add current file to Harpoon list",
+  },
+  {
+    "<M-q>",
+    function()
+      harpoon:list():select(1)
+    end,
+    desc = "Select Harpoon list item 1",
+  },
+  {
+    "<M-w>",
+    function()
+      harpoon:list():select(2)
+    end,
+    desc = "Select Harpoon list item 2",
+  },
+  {
+    "<M-e>",
+    function()
+      harpoon:list():select(3)
+    end,
+    desc = "Select Harpoon list item 3",
+  },
+  {
+    "<M-r>",
+    function()
+      harpoon:list():select(4)
+    end,
+    desc = "Select Harpoon list item 4",
+  },
+})
 
 -- basic telescope configuration
 local function toggle_telescope(harpoon_files)
@@ -80,6 +103,13 @@ local function toggle_telescope(harpoon_files)
     :find()
 end
 
-vim.keymap.set("n", "<C-e>", function()
-  toggle_telescope(harpoon:list())
-end, { desc = "Open harpoon window" })
+wk.add({
+  mode = { "n" },
+  {
+    "<C-e>",
+    function()
+      toggle_telescope(harpoon:list())
+    end,
+    desc = "Open harpoon window",
+  },
+})
