@@ -86,6 +86,9 @@
       "Bash(git verify-commit:*)",
       "Bash(git verify-tag:*)",
       "Bash(go build:*)",
+      "Skill(superpowers:*)",
+      "Skill(git-worktree:*)",
+      "Skill(ui-ux-pro-max:*)",
       "Read(*)",
       "Write(/home/gordon/Works/firstory/**)",
       "Edit(/home/gordon/Works/firstory/**)"
@@ -145,13 +148,11 @@
     "commit-commands@claude-plugins-official": true,
     "document-skills@anthropic-agent-skills": true,
     "explanatory-output-style@claude-plugins-official": true,
-    "figma@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "hookify@claude-plugins-official": true,
     "learning-output-style@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true,
-    "playwright@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
@@ -159,6 +160,7 @@
     "superpowers-lab@superpowers-marketplace": true,
     "superpowers@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "ui-ux-pro-max@ui-ux-pro-max-skill": true
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true,
+    "playwright@claude-plugins-official": true
   }
 }
