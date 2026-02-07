@@ -8,7 +8,7 @@
 #
 # Creates:
 #   <name>/
-#     .bare/     - The bare git repository
+#     .git/      - The bare git repository
 #     main/      - Worktree for main branch
 
 set -e
@@ -54,28 +54,25 @@ cd "$NAME"
 
 if [[ -n "$REMOTE" ]]; then
     # Clone as bare repo
-    git clone --bare "$REMOTE" .bare
+    git clone --bare "$REMOTE" .git
 
     # Configure remote fetch refs for proper tracking
     # By default, bare clones don't fetch remote tracking branches
-    git -C .bare config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
-    git -C .bare fetch origin
+    git -C .git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+    git -C .git fetch origin
 else
     # Initialize new bare repo
-    git init --bare .bare
+    git init --bare .git
 fi
-
-# Set up gitdir file for worktrees to find the bare repo
-echo "gitdir: $(pwd)/.bare" > .bare/gitdir
 
 # Determine main branch name
 if [[ -n "$REMOTE" ]]; then
     # For cloned repos, try to detect default branch from remote
-    if git -C .bare symbolic-ref refs/remotes/origin/HEAD &>/dev/null; then
-        MAIN_BRANCH=$(git -C .bare symbolic-ref refs/remotes/origin/HEAD | sed 's@refs/remotes/origin/@@')
-    elif git -C .bare rev-parse --verify main &>/dev/null; then
+    if git -C .git symbolic-ref refs/remotes/origin/HEAD &>/dev/null; then
+        MAIN_BRANCH=$(git -C .git symbolic-ref refs/remotes/origin/HEAD | sed 's@refs/remotes/origin/@@')
+    elif git -C .git rev-parse --verify main &>/dev/null; then
         MAIN_BRANCH="main"
-    elif git -C .bare rev-parse --verify master &>/dev/null; then
+    elif git -C .git rev-parse --verify master &>/dev/null; then
         MAIN_BRANCH="master"
     else
         MAIN_BRANCH="main"
@@ -87,17 +84,17 @@ fi
 
 # Create worktree for main branch
 if [[ -n "$REMOTE" ]]; then
-    git -C .bare worktree add "../$MAIN_BRANCH" "$MAIN_BRANCH"
+    git -C .git worktree add "../$MAIN_BRANCH" "$MAIN_BRANCH"
     # Set up tracking for main branch
     git -C "$MAIN_BRANCH" branch --set-upstream-to="origin/$MAIN_BRANCH"
 else
     # For new repos, create initial orphan branch
-    git -C .bare worktree add --orphan -b "$MAIN_BRANCH" "../$MAIN_BRANCH"
+    git -C .git worktree add --orphan -b "$MAIN_BRANCH" "../$MAIN_BRANCH"
 fi
 
 echo ""
 echo "Created bare repo layout at '$NAME/'"
-echo "  .bare/          - Bare repository"
+echo "  .git/           - Bare repository"
 echo "  $MAIN_BRANCH/            - Worktree for '$MAIN_BRANCH' branch"
 echo ""
 echo "To add more worktrees: cd $NAME && add-worktree.sh <branch-name>"

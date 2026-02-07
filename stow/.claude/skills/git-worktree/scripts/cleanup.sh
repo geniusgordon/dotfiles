@@ -20,7 +20,8 @@ fi
 find_bare_repo() {
     local dir="$PWD"
     while [[ "$dir" != "/" ]]; do
-        if [[ -d "$dir/.bare" ]]; then
+        if [[ -d "$dir/.git" ]] && \
+           [[ "$(git -C "$dir" rev-parse --is-bare-repository 2>/dev/null)" == "true" ]]; then
             echo "$dir"
             return 0
         fi
@@ -34,7 +35,7 @@ ROOT=$(find_bare_repo) || {
     exit 1
 }
 
-BARE="$ROOT/.bare"
+BARE="$ROOT/.git"
 
 echo "=== Pruning stale worktree references ==="
 if [[ "$DRY_RUN" == true ]]; then

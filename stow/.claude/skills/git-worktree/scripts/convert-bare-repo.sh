@@ -10,7 +10,7 @@
 #
 # After:
 #   repo/
-#     .bare/           # Moved bare repository
+#     .git/            # Bare repository
 #     main/            # Worktree for main branch
 
 set -e
@@ -30,13 +30,6 @@ if [[ "$IS_BARE" != "true" ]]; then
     echo "Error: '$BARE_PATH' is not a bare repository" >&2
     echo "This script is for converting 'git clone --bare' repos." >&2
     echo "For regular repos, use init-bare-repo.sh with a remote URL." >&2
-    exit 1
-fi
-
-# Check if already converted (has .bare subdirectory)
-if [[ -d "$BARE_PATH/.bare" ]]; then
-    echo "Error: '$BARE_PATH' already has a .bare/ directory" >&2
-    echo "It appears to already be in worktree layout." >&2
     exit 1
 fi
 
@@ -88,30 +81,27 @@ else
     true
 fi
 
-# Move bare repo into .bare/
-mkdir -p "$NEW_PATH/.bare"
-mv "$TEMP_BARE"/* "$NEW_PATH/.bare/" 2>/dev/null || true
-mv "$TEMP_BARE"/.* "$NEW_PATH/.bare/" 2>/dev/null || true
+# Move bare repo into .git/
+mkdir -p "$NEW_PATH/.git"
+mv "$TEMP_BARE"/* "$NEW_PATH/.git/" 2>/dev/null || true
+mv "$TEMP_BARE"/.* "$NEW_PATH/.git/" 2>/dev/null || true
 
 # Configure remote fetch refs (bare clones often miss this)
-if git -C "$NEW_PATH/.bare" remote get-url origin &>/dev/null; then
-    git -C "$NEW_PATH/.bare" config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
-    git -C "$NEW_PATH/.bare" fetch origin 2>/dev/null || echo "  Warning: Could not fetch from origin"
+if git -C "$NEW_PATH/.git" remote get-url origin &>/dev/null; then
+    git -C "$NEW_PATH/.git" config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+    git -C "$NEW_PATH/.git" fetch origin 2>/dev/null || echo "  Warning: Could not fetch from origin"
 fi
 
-# Set up gitdir file
-echo "gitdir: $NEW_PATH/.bare" > "$NEW_PATH/.bare/gitdir"
-
 # Determine main branch name
-if git -C "$NEW_PATH/.bare" symbolic-ref refs/remotes/origin/HEAD &>/dev/null; then
-    MAIN_BRANCH=$(git -C "$NEW_PATH/.bare" symbolic-ref refs/remotes/origin/HEAD | sed 's@refs/remotes/origin/@@')
-elif git -C "$NEW_PATH/.bare" rev-parse --verify main &>/dev/null; then
+if git -C "$NEW_PATH/.git" symbolic-ref refs/remotes/origin/HEAD &>/dev/null; then
+    MAIN_BRANCH=$(git -C "$NEW_PATH/.git" symbolic-ref refs/remotes/origin/HEAD | sed 's@refs/remotes/origin/@@')
+elif git -C "$NEW_PATH/.git" rev-parse --verify main &>/dev/null; then
     MAIN_BRANCH="main"
-elif git -C "$NEW_PATH/.bare" rev-parse --verify master &>/dev/null; then
+elif git -C "$NEW_PATH/.git" rev-parse --verify master &>/dev/null; then
     MAIN_BRANCH="master"
 else
     # Fallback: use the first branch found
-    MAIN_BRANCH=$(git -C "$NEW_PATH/.bare" branch --list | head -1 | tr -d '* ')
+    MAIN_BRANCH=$(git -C "$NEW_PATH/.git" branch --list | head -1 | tr -d '* ')
     if [[ -z "$MAIN_BRANCH" ]]; then
         echo "Error: Could not determine main branch" >&2
         exit 1
@@ -120,10 +110,10 @@ fi
 
 # Create worktree for main branch
 echo "  Creating main worktree..."
-git -C "$NEW_PATH/.bare" worktree add "$NEW_PATH/$MAIN_BRANCH" "$MAIN_BRANCH"
+git -C "$NEW_PATH/.git" worktree add "$NEW_PATH/$MAIN_BRANCH" "$MAIN_BRANCH"
 
 # Set up tracking for main branch if remote exists
-if git -C "$NEW_PATH/.bare" rev-parse --verify "origin/$MAIN_BRANCH" &>/dev/null; then
+if git -C "$NEW_PATH/.git" rev-parse --verify "origin/$MAIN_BRANCH" &>/dev/null; then
     git -C "$NEW_PATH/$MAIN_BRANCH" branch --set-upstream-to="origin/$MAIN_BRANCH"
 fi
 
@@ -134,7 +124,7 @@ rm -rf "$TEMP_BARE"
 echo ""
 echo "Conversion complete!"
 echo "  New layout: $NEW_PATH/"
-echo "    .bare/        - Bare repository"
+echo "    .git/         - Bare repository"
 echo "    $MAIN_BRANCH/          - Worktree for '$MAIN_BRANCH' branch"
 echo ""
 echo "To add more worktrees: cd $NEW_PATH && add-worktree.sh <branch-name>"

@@ -1,7 +1,5 @@
 {
-  "env": {
-    "DISABLE_AUTOUPDATER": "1"
-  },
+  "env": {},
   "permissions": {
     "allow": [
       "Bash(find:*)",
@@ -160,7 +158,6 @@
     "superpowers-lab@superpowers-marketplace": true,
     "superpowers@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "ui-ux-pro-max@ui-ux-pro-max-skill": true,
     "playwright@claude-plugins-official": true
   }
 }

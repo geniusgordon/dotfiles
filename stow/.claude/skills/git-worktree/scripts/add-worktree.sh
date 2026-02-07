@@ -15,7 +15,8 @@ TRACKING_INFO=""
 find_bare_repo() {
     local dir="$PWD"
     while [[ "$dir" != "/" ]]; do
-        if [[ -d "$dir/.bare" ]]; then
+        if [[ -d "$dir/.git" ]] && \
+           [[ "$(git -C "$dir" rev-parse --is-bare-repository 2>/dev/null)" == "true" ]]; then
             echo "$dir"
             return 0
         fi
@@ -26,11 +27,10 @@ find_bare_repo() {
 
 ROOT=$(find_bare_repo) || {
     echo "Error: Not inside a bare repo worktree structure" >&2
-    echo "Run this from within a project that has a .bare/ directory" >&2
     exit 1
 }
 
-BARE="$ROOT/.bare"
+BARE="$ROOT/.git"
 WORKTREE_PATH="$ROOT/$NAME"
 
 if [[ -e "$WORKTREE_PATH" ]]; then

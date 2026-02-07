@@ -28,11 +28,13 @@ Or if you're in the skill directory:
 
 ```
 project/
-├── .bare/           # Bare git repository
+├── .git/            # Bare git repository (core.bare=true)
 ├── main/            # Worktree for main branch
 ├── feature-x/       # Worktree for feature-x branch
 └── pr-123/          # Worktree for PR review
 ```
+
+Git natively finds `.git/` so `git log`, `git branch`, `git fetch`, `git worktree list` etc. work directly from the project root. Working tree operations (`git status`, `git add`) are done inside worktree directories.
 
 ## Quick Reference
 
@@ -45,6 +47,7 @@ All commands assume `$SKILL` is the path to this skill directory.
 | Clone (explicit name) | `$SKILL/scripts/init-bare-repo.sh myproject git@github.com:org/repo.git` |
 | Create empty repo | `$SKILL/scripts/init-bare-repo.sh myproject` |
 | Convert existing bare clone | `$SKILL/scripts/convert-bare-repo.sh /path/to/repo.git` |
+| Migrate old .bare/ layout | `$SKILL/scripts/migrate-to-git.sh` |
 | Add worktree | `$SKILL/scripts/add-worktree.sh feature-name` |
 | Add worktree from base | `$SKILL/scripts/add-worktree.sh feature-name main` |
 | List worktrees | `$SKILL/scripts/list-worktrees.sh` |
@@ -91,6 +94,18 @@ $SKILL/scripts/convert-bare-repo.sh /path/to/repo.git
 ```
 
 This is useful when you've already cloned with `git clone --bare` and want to adopt the worktree workflow.
+
+### scripts/migrate-to-git.sh
+
+Migrate an existing project from the old `.bare/` layout to the current `.git/` layout. Renames `.bare/` to `.git/` and updates all worktree references.
+
+```bash
+# From the project root
+$SKILL/scripts/migrate-to-git.sh
+
+# Or specify the path
+$SKILL/scripts/migrate-to-git.sh /path/to/project
+```
 
 ### scripts/add-worktree.sh
 
