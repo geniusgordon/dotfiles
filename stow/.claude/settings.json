@@ -92,6 +92,7 @@
       "Edit(/home/gordon/Works/firstory/**)"
     ]
   },
+  "model": "sonnet",
   "hooks": {
     "Notification": [
       {
@@ -156,7 +157,9 @@
     "stripe@claude-plugins-official": false,
     "superpowers@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "playwright@claude-plugins-official": false
+    "playwright@claude-plugins-official": false,
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true
   },
+  "skipDangerousModePermissionPrompt": true,
   "effortLevel": "medium"
 }
