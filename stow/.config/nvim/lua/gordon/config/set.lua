@@ -61,6 +61,7 @@ vim.opt.splitbelow = true
 vim.opt.fillchars = {
   diff = " ",
   fold = " ",
+  eob = " ",
 }
 
 vim.opt.listchars = {
