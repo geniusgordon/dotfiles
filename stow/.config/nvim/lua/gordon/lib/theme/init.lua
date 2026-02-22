@@ -58,8 +58,7 @@ end
 ---@param colors ColorPalette
 local function setup_highlights(colors)
   vim.api.nvim_set_hl(0, "Normal", { bg = colors.bg })
-  -- vim.api.nvim_set_hl(0, "WinSeparator", { fg = colors.line_dark })
-  --
+  vim.api.nvim_set_hl(0, "WinSeparator", { fg = colors.line_dark })
   vim.api.nvim_set_hl(0, "Sidebar", { bg = colors.bg_light })
   vim.api.nvim_set_hl(0, "BottomPanel", { bg = colors.bg_light })
 
