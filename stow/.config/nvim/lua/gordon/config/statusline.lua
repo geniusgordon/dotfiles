@@ -27,7 +27,6 @@ require("lualine").setup({
     lualine_c = {
       "filename",
       "location",
-      "progress",
     },
     lualine_x = {
       {
@@ -44,7 +43,14 @@ require("lualine").setup({
         icon = { align = "left" },
       },
     },
-    lualine_y = { "encoding" },
+    lualine_y = {
+      {
+        "encoding",
+        cond = function()
+          return (vim.bo.fileencoding or vim.o.encoding) ~= "utf-8"
+        end,
+      },
+    },
     lualine_z = {
       function()
         local client_names = {}
