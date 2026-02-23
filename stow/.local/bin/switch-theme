@@ -54,5 +54,16 @@ if tmux info &>/dev/null 2>&1; then
   tmux source-file "$HOME/.config/tmux/active.tmuxtheme"
 fi
 
+# 5. Claude Code theme
+if [[ -f "$HOME/.claude/settings.json" ]] && command -v jq &>/dev/null; then
+  if [[ "$theme" == *light* ]]; then
+    claude_theme="light"
+  else
+    claude_theme="dark"
+  fi
+  jq --arg t "$claude_theme" '.theme = $t' "$HOME/.claude/settings.json" > /tmp/claude-settings.json \
+    && mv /tmp/claude-settings.json "$HOME/.claude/settings.json"
+fi
+
 echo "✓ Switched to: $theme"
-echo "  Ghostty + tmux: updated. Open a new shell for fzf colors."
+echo "  Ghostty + tmux + Claude Code: updated. Open a new shell for fzf colors."
