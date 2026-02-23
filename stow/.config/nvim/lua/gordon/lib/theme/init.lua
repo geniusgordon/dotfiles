@@ -178,7 +178,7 @@ local function setup_highlights(colors)
   })
 end
 
-local theme_env = vim.env.THEME or "tokyonight"
+local theme_env = vim.env.THEME or "catppuccin-mocha"
 local theme = setup_theme(theme_env)
 
 local setup = function()

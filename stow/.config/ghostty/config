@@ -10,6 +10,6 @@ font-feature = -liga
 font-feature = -dlig
 keybind = ctrl+shift+r=reload_config
 keybind = shift+enter=text:\x1b\r
-theme = "Catppuccin Mocha"
+config-file = ~/.config/ghostty/theme.conf
 window-padding-x = 12
 window-padding-y = 12,4
