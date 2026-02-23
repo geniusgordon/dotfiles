@@ -325,4 +325,4 @@ esac
 [ -s "/home/gordon/.bun/_bun" ] && source "/home/gordon/.bun/_bun"
 
 # OpenClaw Completion
-source "/Users/gordon/.openclaw/completions/openclaw.zsh"
+[[ -f "/Users/gordon/.openclaw/completions/openclaw.zsh" ]] && source "/Users/gordon/.openclaw/completions/openclaw.zsh"
