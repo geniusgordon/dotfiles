@@ -28,6 +28,24 @@ Personal dotfiles repository managed with Ansible and GNU Stow. Bootstraps macOS
 | **Neovim Config** | `stow/.config/nvim/` | Lua-based, lazy.nvim manager. |
 | **Scripts** | `stow/.local/bin/` | Custom executables. |
 | **Input Method** | `stow/Library/Rime/` | Rime/Squirrel configuration. |
+| **Theme Registry** | `stow/.config/themes/` | One `.sh` per theme; `example.sh` is the template. |
+| **Switch Theme** | `switch-theme <name>` | Updates Ghostty, tmux (live), persists state. |
+
+## THEME SYSTEM
+
+Active theme stored in `~/.local/state/theme`. On shell start, `.zshrc` reads it, sources the palette `.sh`, and bootstraps generated files if missing.
+
+**Generated files (not stowed):**
+- `~/.config/ghostty/theme.conf` — `theme = "..."` for Ghostty
+- `~/.config/tmux/active.tmuxtheme` — tmux set-option lines sourced by tmux.conf
+
+**Supported themes:** `catppuccin-mocha`, `tokyonight`, `kanagawa-dragon`
+
+**Adding a new theme (2 files):**
+1. Copy `stow/.config/themes/example.sh` → `stow/.config/themes/<name>.sh` — fill palette + `THEME_GHOSTTY_NAME` (verify with `ghostty +list-themes`)
+2. Copy `stow/.config/nvim/lua/gordon/lib/theme/example.lua` → `…/theme/<name>.lua` — fill Neovim `ColorPalette`
+3. Add `setup_<name>()` and wire into `setup_theme()` in `stow/.config/nvim/lua/gordon/lib/theme/init.lua`
+4. Run `switch-theme <name>`
 
 ## CONVENTIONS
 - **Stow Strategy**: Monolithic `stow/` directory. All files inside map 1:1 to `$HOME`.
