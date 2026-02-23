@@ -49,6 +49,13 @@ local function setup_github_dark()
 end
 
 local function setup_github_light()
+  require("github-theme").setup({
+    palettes = {
+      github_light = {
+        canvas = { default = "#e1e2e7" },
+      },
+    },
+  })
   local colors = require("gordon.lib.theme.github-light").colors
   return {
     colorscheme = "github_light",
