@@ -1,0 +1,10 @@
+#compdef switch-theme
+
+_switch-theme() {
+  local themes_dir="$HOME/.config/themes"
+  local -a themes
+  themes=( ${themes_dir}/*.sh(N:t:r) )
+  _describe 'theme' themes
+}
+
+_switch-theme "$@"

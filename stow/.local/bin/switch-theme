@@ -22,7 +22,11 @@ echo "$theme" > "$STATE_FILE"
 
 # 2. Ghostty
 mkdir -p "$HOME/.config/ghostty"
-echo "theme = \"${THEME_GHOSTTY_NAME}\"" > "$HOME/.config/ghostty/theme.conf"
+cat > "$HOME/.config/ghostty/theme.conf" << EOF
+theme = "${THEME_GHOSTTY_NAME}"
+background = ${THEME_BG}
+foreground = ${THEME_FG}
+EOF
 
 # 3. Tmux active theme (generated from palette vars)
 mkdir -p "$HOME/.config/tmux"

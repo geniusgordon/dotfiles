@@ -40,17 +40,37 @@ local function setup_kanagawa_dragon()
   }
 end
 
+local function setup_github_dark()
+  local colors = require("gordon.lib.theme.github-dark").colors
+  return {
+    colorscheme = "github_dark",
+    colors = colors,
+  }
+end
+
+local function setup_github_light()
+  local colors = require("gordon.lib.theme.github-light").colors
+  return {
+    colorscheme = "github_light",
+    colors = colors,
+  }
+end
+
 ---@class Theme
 ---@field colorscheme string
 ---@field colors ColorPalette
 ---@field override function | nil
----@param theme "tokyonight" | "catppuccin-mocha" | "kanagawa-dragon"
+---@param theme "tokyonight" | "catppuccin-mocha" | "kanagawa-dragon" | "github-dark" | "github-light"
 ---@return Theme
 local function setup_theme(theme)
   if theme == "tokyonight" then
     return setup_tokyonight()
   elseif theme == "kanagawa-dragon" then
     return setup_kanagawa_dragon()
+  elseif theme == "github-dark" then
+    return setup_github_dark()
+  elseif theme == "github-light" then
+    return setup_github_light()
   end
   return setup_catppuccin_mocha()
 end

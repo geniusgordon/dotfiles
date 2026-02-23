@@ -5,6 +5,7 @@ require("lazy").setup({
   },
   { "folke/tokyonight.nvim" },
   { "rebelot/kanagawa.nvim" },
+  { "projekt0n/github-nvim-theme" },
 
   { "MunifTanjim/nui.nvim" },
 
