@@ -3,6 +3,8 @@ stow/.config/nvim/plugin/packer_compiled.lua
 stow/.vim/.netrwhist
 stow/.vim/undodir/
 stow/.config/tmux/plugins/
+stow/.config/tmux/active.tmuxtheme
+stow/.config/ghostty/theme.conf
 stow/Library/Rime/*.userdb
 stow/Library/Rime/build/
 stow/Library/Rime/installation.yaml
