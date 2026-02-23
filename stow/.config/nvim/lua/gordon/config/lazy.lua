@@ -5,7 +5,7 @@ require("lazy").setup({
   },
   { "folke/tokyonight.nvim" },
   { "rebelot/kanagawa.nvim" },
-  { "projekt0n/github-nvim-theme" },
+  -- { "projekt0n/github-nvim-theme" },
 
   { "MunifTanjim/nui.nvim" },
 
@@ -136,17 +136,17 @@ require("lazy").setup({
 
   { "kylechui/nvim-surround" },
 
---  {
---    "vhyrro/luarocks.nvim",
---    priority = 1000,
---    config = true,
---    opts = {
---      rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" },
---    },
---  },
---  {
---    "rest-nvim/rest.nvim",
---  },
+  --  {
+  --    "vhyrro/luarocks.nvim",
+  --    priority = 1000,
+  --    config = true,
+  --    opts = {
+  --      rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" },
+  --    },
+  --  },
+  --  {
+  --    "rest-nvim/rest.nvim",
+  --  },
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {

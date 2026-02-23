@@ -1,6 +1,6 @@
 THEME_NAME="github-light"
 THEME_GHOSTTY_NAME="GitHub Light Default"
-THEME_BG="#f6f8fa"
+THEME_BG="#e1e2e7"
 THEME_FG="#1f2328"
 THEME_RED="#cf222e"
 THEME_GREEN="#116329"

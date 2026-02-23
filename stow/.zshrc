@@ -234,13 +234,11 @@ setopt EXTENDED_HISTORY
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd'
 
-# Theme — read from state file, source palette vars
-if [ -z "$THEME" ]; then
-  if [ -f "$HOME/.local/state/theme" ]; then
-    export THEME=$(cat "$HOME/.local/state/theme")
-  else
-    export THEME=catppuccin-mocha
-  fi
+# Theme — always read from state file (source of truth)
+if [ -f "$HOME/.local/state/theme" ]; then
+  export THEME=$(cat "$HOME/.local/state/theme")
+else
+  export THEME=catppuccin-mocha
 fi
 
 if [ -f "$HOME/.config/themes/${THEME}.sh" ]; then

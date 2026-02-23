@@ -102,10 +102,10 @@ local function setup_highlights(colors)
   vim.api.nvim_set_hl(0, "GitSignsChangedelete", { fg = colors.red })
   vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = colors.red })
 
-  vim.api.nvim_set_hl(0, "IblIndent", { fg = colors.line })
-  vim.api.nvim_set_hl(0, "IblWhitespace", { fg = colors.line })
+  vim.api.nvim_set_hl(0, "IblIndent", { fg = colors.line_dark })
+  vim.api.nvim_set_hl(0, "IblWhitespace", { fg = colors.line_dark })
   vim.api.nvim_set_hl(0, "IblScope", { fg = colors.line })
-  vim.api.nvim_set_hl(0, "@ibl.scope.char.1", { fg = colors.line_dark })
+  vim.api.nvim_set_hl(0, "@ibl.scope.char.1", { fg = colors.line })
 
   vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", { fg = colors.line })
   vim.api.nvim_set_hl(0, "NvimTreeNormal", { link = "Sidebar" })
