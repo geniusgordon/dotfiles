@@ -1,5 +1,5 @@
 THEME_NAME="tokyonight"
-THEME_GHOSTTY_NAME="Tokyo Night"
+THEME_GHOSTTY_NAME="TokyoNight"
 THEME_BG="#1a1b26"
 THEME_FG="#c0caf5"
 THEME_RED="#f7768e"
