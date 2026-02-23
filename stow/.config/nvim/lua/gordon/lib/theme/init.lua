@@ -99,8 +99,9 @@ local function setup_highlights(colors)
   vim.api.nvim_set_hl(0, "ColorColumn", { bg = colors.bg_light })
   vim.api.nvim_set_hl(0, "qfLineNr", { fg = colors.red })
 
-  vim.api.nvim_set_hl(0, "NormalFloat", { bg = colors.bg })
-  vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.line, bg = colors.bg })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = colors.bg_light })
+  vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.line, bg = colors.bg_light })
+  vim.api.nvim_set_hl(0, "DiagnosticFloatBorder", { fg = colors.fg_light, bg = colors.bg_light })
   vim.api.nvim_set_hl(0, "CmpItemMenu", { link = "CmpItemAbbr", italic = true })
   vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = colors.green })
 

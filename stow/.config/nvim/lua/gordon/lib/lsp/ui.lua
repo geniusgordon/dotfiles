@@ -2,14 +2,14 @@ local M = {}
 
 M.setup = function()
   local border = {
-    { "╭", "FloatBorder" },
-    { "─", "FloatBorder" },
-    { "╮", "FloatBorder" },
-    { "│", "FloatBorder" },
-    { "╯", "FloatBorder" },
-    { "─", "FloatBorder" },
-    { "╰", "FloatBorder" },
-    { "│", "FloatBorder" },
+    { "╭", "DiagnosticFloatBorder" },
+    { "─", "DiagnosticFloatBorder" },
+    { "╮", "DiagnosticFloatBorder" },
+    { "│", "DiagnosticFloatBorder" },
+    { "╯", "DiagnosticFloatBorder" },
+    { "─", "DiagnosticFloatBorder" },
+    { "╰", "DiagnosticFloatBorder" },
+    { "│", "DiagnosticFloatBorder" },
   }
 
   vim.fn.sign_define(
