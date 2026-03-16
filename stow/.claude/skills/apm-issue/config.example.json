@@ -1,0 +1,7 @@
+{
+  "service_repo_map": {
+    "my-api-server": "MyOrg/my-backend",
+    "my-worker": "MyOrg/my-backend",
+    "my-other-service": "MyOrg/my-other-repo"
+  }
+}

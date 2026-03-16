@@ -324,3 +324,8 @@ esac
 
 # OpenClaw Completion
 [[ -f "/Users/gordon/.openclaw/completions/openclaw.zsh" ]] && source "/Users/gordon/.openclaw/completions/openclaw.zsh"
+
+# Added by Spectra
+if [[ -z ${path[(r)$HOME/.local/bin]} ]]; then
+  path=("$HOME/.local/bin" $path)
+fi

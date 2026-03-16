@@ -1,0 +1,85 @@
+{
+  "skill_name": "apm-issue",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "check errors from the last 24h",
+      "expected_output": "A triage table showing APM error groups across services, organized by priority (P1 unhandled first, then by frequency), with a prompt asking which ones to create GitHub issues for",
+      "files": [],
+      "assertions": [
+        {
+          "name": "fetches_multiple_services",
+          "description": "Output references errors from more than one APM service"
+        },
+        {
+          "name": "shows_priority_triage",
+          "description": "Output contains P1/P2/P3/P4 priority labels or equivalent tiering"
+        },
+        {
+          "name": "unhandled_highlighted",
+          "description": "Unhandled exceptions (handled: false) are called out distinctly from handled errors"
+        },
+        {
+          "name": "includes_occurrence_count",
+          "description": "Each error entry shows the occurrence count"
+        },
+        {
+          "name": "asks_user_to_select",
+          "description": "Output ends by asking the user which errors to create GitHub issues for"
+        },
+        {
+          "name": "filters_spam_noise",
+          "description": "Spam-detection or obvious-noise errors are skipped or noted separately"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "what's breaking in firstory-hosting-server right now? show me the top errors",
+      "expected_output": "Fetches error groups for firstory-hosting-server service specifically, shows prioritized list with occurrences and culprit info",
+      "files": [],
+      "assertions": [
+        {
+          "name": "correct_service_targeted",
+          "description": "API call or output explicitly targets firstory-hosting-server (not all services)"
+        },
+        {
+          "name": "shows_culprit_and_timestamp",
+          "description": "Each error includes the culprit file/location and last occurrence timestamp"
+        },
+        {
+          "name": "priority_ordering",
+          "description": "Errors are ordered or labeled by priority (unhandled first, then by frequency)"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "create github issues for the top APM errors in firstory-membership-server",
+      "expected_output": "Fetches errors for firstory-membership-server, shows triage summary, asks which repo to file against, then shows gh commands with proper title/body format including APM link, priority label, occurrence count",
+      "files": [],
+      "assertions": [
+        {
+          "name": "triage_shown_before_issues",
+          "description": "Shows error triage summary BEFORE asking about or creating GitHub issues"
+        },
+        {
+          "name": "asks_for_repo",
+          "description": "Asks which GitHub repo to file issues against"
+        },
+        {
+          "name": "gh_command_has_apm_link",
+          "description": "Proposed gh issue command body includes an APM deep link URL for the error group"
+        },
+        {
+          "name": "gh_command_has_priority",
+          "description": "Proposed gh issue command includes priority level (P1/P2/P3/P4)"
+        },
+        {
+          "name": "gh_command_structured_body",
+          "description": "Issue body uses a structured format (table or labeled fields) not a wall of text"
+        }
+      ]
+    }
+  ]
+}

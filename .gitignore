@@ -23,6 +23,8 @@ antigravity-accounts.json*
 stow/.claude/*
 !stow/.claude/settings.json
 !stow/.claude/skills/
+stow/.claude/skills/**/config.json
+stow/.claude/settings.local.json
 
 # OpenCode: only track opencode.json and oh-my-opencode.json
 stow/.config/opencode/*
@@ -30,4 +32,4 @@ stow/.config/opencode/*
 !stow/.config/opencode/opencode.json
 !stow/.config/opencode/oh-my-opencode.json
 
-.claude/
+/.claude/
