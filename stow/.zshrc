@@ -329,3 +329,6 @@ esac
 if [[ -z ${path[(r)$HOME/.local/bin]} ]]; then
   path=("$HOME/.local/bin" $path)
 fi
+
+export FIRSTORY_PROJECTS_ROOT="$HOME/Works/firstory/projects"
+export PATH="$HOME/Works/firstory/projects/firstory-tools/bin:$PATH"
