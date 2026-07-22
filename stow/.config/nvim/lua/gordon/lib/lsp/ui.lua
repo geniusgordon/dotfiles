@@ -12,22 +12,30 @@ M.setup = function()
     { "│", "DiagnosticFloatBorder" },
   }
 
-  vim.fn.sign_define(
-    "DiagnosticSignError",
-    { text = "", texthl = "DiagnosticSignError", numhl = "DiagnosticVirtualTextError" }
-  )
-  vim.fn.sign_define(
-    "DiagnosticSignWarn",
-    { text = "", texthl = "DiagnosticSignWarn", numhl = "DiagnosticVirtualTextWarn" }
-  )
-  vim.fn.sign_define(
-    "DiagnosticSignInfo",
-    { text = "", texthl = "DiagnosticSignInfo", numhl = "DiagnosticVirtualTextInfo" }
-  )
-  vim.fn.sign_define(
-    "DiagnosticSignHint",
-    { text = "", texthl = "DiagnosticSignHint", numhl = "DiagnosticVirtualTextHint" }
-  )
+  local severity = vim.diagnostic.severity
+
+  vim.diagnostic.config({
+    signs = {
+      text = {
+        [severity.ERROR] = "",
+        [severity.WARN] = "",
+        [severity.INFO] = "",
+        [severity.HINT] = "",
+      },
+      texthl = {
+        [severity.ERROR] = "DiagnosticSignError",
+        [severity.WARN] = "DiagnosticSignWarn",
+        [severity.INFO] = "DiagnosticSignInfo",
+        [severity.HINT] = "DiagnosticSignHint",
+      },
+      numhl = {
+        [severity.ERROR] = "DiagnosticVirtualTextError",
+        [severity.WARN] = "DiagnosticVirtualTextWarn",
+        [severity.INFO] = "DiagnosticVirtualTextInfo",
+        [severity.HINT] = "DiagnosticVirtualTextHint",
+      },
+    },
+  })
 
   local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
   function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
