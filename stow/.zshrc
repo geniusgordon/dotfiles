@@ -166,7 +166,6 @@ alias glog='git log --oneline --decorate --graph --color | less'
 # Neovim
 alias vim=nvim
 alias vi=nvim
-alias diff='nvim -d'
 alias vimdiff='nvim -d'
 alias view='nvim -R'
 alias vimdb="nvim +DBUI"
