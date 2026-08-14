@@ -1,0 +1,34 @@
+# herdr configuration
+# Defaults: `herdr --default-config`. Validate: `herdr config check`.
+
+[ui]
+agent_panel_sort = "spaces"
+
+[keys]
+# Match the old tmux prefix. herdr takes ctrl+s in every pane, so the zsh
+# `herdr_workspacizer` widget only fires outside herdr. Use prefix+ctrl+s inside.
+prefix = "ctrl+s"
+
+# Splits, to match the old tmux bindings.
+split_vertical = "prefix+|"
+split_horizontal = "prefix+minus"
+
+# Pane focus, vim direction keys.
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+# Tab motion. herdr has no move-tab action, so this is order navigation only.
+previous_tab = "prefix+p"
+next_tab = "prefix+n"
+
+# Project picker, the old tmux `bind C-s display-popup "tmux-sessionizer"`.
+# herdr reserves prefix+prefix to send a literal prefix, so this uses prefix+f.
+# HERDR_NO_ATTACH stops the script from starting a second TUI inside the popup.
+[[keys.command]]
+key = "prefix+f"
+type = "popup"
+command = "HERDR_NO_ATTACH=1 herdr-workspacizer"
+width = "80%"
+height = "80%"

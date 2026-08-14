@@ -197,18 +197,18 @@ function gi() {
   curl -L -s https://www.gitignore.io/api/$@
 }
 
-function tmux_sessionizer() {
+function herdr_workspacizer() {
   exec </dev/tty
   exec <&1
-  tmux-sessionizer
+  herdr-workspacizer
 }
 
 # -----------------------------------------------------------------------------
 # Key Bindings
 # -----------------------------------------------------------------------------
-zle -N tmux_sessionizer
+zle -N herdr_workspacizer
 bindkey -e
-bindkey '^s' tmux_sessionizer
+bindkey '^s' herdr_workspacizer
 
 # -----------------------------------------------------------------------------
 # History Configuration

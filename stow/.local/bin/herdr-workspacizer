@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# Open a project directory as a herdr workspace.
+# If a workspace with the same label exists, focus it. If not, create it.
+# The script starts the server and attaches the TUI when necessary.
+
+if [[ $# -eq 1 ]]; then
+  selected=$1
+else
+  selected=$(find ~/Works/firstory/projects ~/Works/firstory/projects/workspaces ~/Playground ~/Documents ~ -mindepth 1 -maxdepth 1 -type d | fzf)
+fi
+
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+selected_name=$(basename "$selected")
+
+# Start the headless server if the socket is dead. It restores saved workspaces.
+if ! herdr workspace list >/dev/null 2>&1; then
+  nohup herdr server >/dev/null 2>&1 &
+  disown
+  for _ in $(seq 1 50); do
+    if herdr workspace list >/dev/null 2>&1; then
+      break
+    fi
+    sleep 0.1
+  done
+fi
+
+if ! herdr workspace list >/dev/null 2>&1; then
+  echo "herdr-workspacizer: the herdr server did not start" >&2
+  exit 1
+fi
+
+existing=$(herdr workspace list 2>/dev/null |
+  jq -r --arg name "$selected_name" \
+    '.result.workspaces[]? | select(.label == $name) | .workspace_id' |
+  head -n 1)
+
+if [[ -n $existing ]]; then
+  herdr workspace focus "$existing" >/dev/null
+else
+  herdr workspace create --cwd "$selected" --label "$selected_name" --focus >/dev/null
+fi
+
+# Outside a managed pane, attach the TUI. Inside one, the focus above is enough.
+# HERDR_NO_ATTACH lets a herdr popup binding force the no-attach path.
+if [[ ${HERDR_ENV:-} != 1 && ${HERDR_NO_ATTACH:-} != 1 ]]; then
+  exec herdr
+fi
