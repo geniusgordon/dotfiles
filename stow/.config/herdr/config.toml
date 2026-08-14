@@ -4,6 +4,9 @@
 [ui]
 agent_panel_sort = "spaces"
 
+# Create a tab at once, like tmux. Rename it later with prefix+shift+t.
+prompt_new_tab_name = false
+
 [keys]
 # Match the old tmux prefix. herdr takes ctrl+s in every pane, so the zsh
 # `herdr_workspacizer` widget only fires outside herdr. Use prefix+ctrl+s inside.
