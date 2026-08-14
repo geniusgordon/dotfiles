@@ -9,6 +9,9 @@ agent_panel_sort = "spaces"
 # `herdr_workspacizer` widget only fires outside herdr. Use prefix+ctrl+s inside.
 prefix = "ctrl+s"
 
+# Detach, to match tmux. This replaces the herdr default of prefix+q.
+detach = "prefix+d"
+
 # Splits, to match the old tmux bindings.
 split_vertical = "prefix+|"
 split_horizontal = "prefix+minus"
