@@ -177,6 +177,9 @@ export CLAUDE_PLAN="max20x"
 # OpenCode
 alias oc='opencode'
 
+# Herdr
+alias hr='herdr'
+
 # Man pages
 export MANPAGER='nvim +Man!'
 export MANWIDTH=80
