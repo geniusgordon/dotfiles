@@ -32,6 +32,21 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
+-- In an SSH session, send a yank to the local clipboard with OSC 52.
+-- A paste reads the local register, because most terminals block an OSC 52 read.
+if vim.env.SSH_TTY then
+  local osc52 = require("vim.ui.clipboard.osc52")
+  local function paste()
+    return vim.split(vim.fn.getreg(""), "\n")
+  end
+
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = { ["+"] = osc52.copy("+"), ["*"] = osc52.copy("*") },
+    paste = { ["+"] = paste, ["*"] = paste },
+  }
+end
+
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
