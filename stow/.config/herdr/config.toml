@@ -13,6 +13,11 @@ prompt_new_tab_name = false
 # `herdr_workspacizer` widget only fires outside herdr. Use prefix+ctrl+s inside.
 prefix = "ctrl+s"
 
+# Workspace picker, the old tmux `bind s` session popup. This replaces the
+# herdr default of prefix+w, and moves settings off prefix+s.
+workspace_picker = "prefix+s"
+settings = "prefix+shift+s"
+
 # Detach, to match tmux. This replaces the herdr default of prefix+q.
 detach = "prefix+d"
 
