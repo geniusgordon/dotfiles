@@ -31,6 +31,11 @@ focus_pane_down = "prefix+j"
 focus_pane_up = "prefix+k"
 focus_pane_right = "prefix+l"
 
+# Workspace order navigation. The ctrl variant means the workspace level,
+# to match prefix+s and prefix+ctrl+s.
+previous_workspace = "prefix+ctrl+p"
+next_workspace = "prefix+ctrl+n"
+
 # Tab motion. herdr has no move-tab action, so this is order navigation only.
 previous_tab = "prefix+p"
 next_tab = "prefix+n"
