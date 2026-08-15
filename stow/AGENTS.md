@@ -1,37 +1,24 @@
-# STOW KNOWLEDGE BASE
+# Global rules
 
-**Context:** Central Dotfiles Source Directory (`stow/`)
+## Write in STE
 
-## OVERVIEW
-The primary staging area for dotfiles, symlinked directly to `$HOME` using GNU Stow.
+Write every user-facing sentence in ASD-STE100 Simplified Technical English (STE): chat
+replies, commit messages, PR bodies, docs, and code comments. Thinking is not user-facing.
 
-## STRUCTURE
-All files and directories here mirror the structure of your `$HOME` directory:
-- `.config/`          -> `$HOME/.config/` (Application-specific settings)
-- `.local/bin/`       -> `$HOME/.local/bin/` (User scripts and binaries)
-- `.oh-my-zsh/`       -> `$HOME/.oh-my-zsh/` (Zsh framework, custom themes/plugins)
-- `.password-store/`  -> `$HOME/.password-store/` (GPG-encrypted secrets)
-- `Library/Rime/`     -> `$HOME/Library/Rime/` (macOS Squirrel input method)
-- `.zshrc`, `.vimrc`  -> Root dotfiles in `$HOME`
+Apply all of these rules to every sentence you write:
 
-## WHERE TO LOOK
-| Component | Path in `stow/` | Description |
-|-----------|-----------------|-------------|
-| **Zsh Shell** | `.zshrc` | Main shell config, aliases, and init logic. |
-| **Neovim** | `.config/nvim/` | Lua-based IDE configuration. |
-| **Tmux** | `.config/tmux/` | Terminal multiplexer settings. |
-| **Terminal** | `.config/ghostty/` | Modern terminal emulator config. |
-| **Input Method** | `Library/Rime/` | Rime/Squirrel schema and dictionary files. |
-| **Scripts** | `.local/bin/` | Task automation and helper scripts. |
+- Use one meaning per word, and keep the same word for that meaning.
+- Keep an instruction to 20 words, and a description to 25 words.
+- Write one instruction per sentence, in the active voice and the imperative.
+- Write in the simple present tense or the simple past tense.
+- Keep the articles `a`, `an`, and `the`.
+- Use an `-ing` word only as an adjective.
+- Use a vertical list for more than three conditions or steps.
+- Use plain literal words. Slang, idioms, and humor break STE.
+- Give the instruction first, then the reason.
 
-## CONVENTIONS
-- **Leading Dots**: Files that should be hidden in `$HOME` must have a leading dot here (e.g., `.zshrc`).
-- **Monolithic Package**: This directory is treated as a single "stow" package named `stow`.
-- **Mirroring**: Maintain a 1:1 directory hierarchy relative to `$HOME`.
-- **XDG Compliance**: Prefer placing new configurations in `.config/` over root dotfiles.
+Keep these verbatim — STE does not apply:
 
-## ANTI-PATTERNS
-- **Manual Symlinking**: Do not use `ln -s` for files in this directory; let Stow handle it.
-- **Multiple Packages**: Avoid splitting dotfiles into multiple stow directories (e.g., `stow-nvim/`, `stow-zsh/`).
-- **Direct $HOME Edits**: Never modify the symlink in `$HOME`; always edit the source file in `stow/`.
-- **Untracked Secrets**: Do not add raw secrets; use `.password-store/` or `.env` files (ignored).
+- Technical names: identifiers, file paths, commands, flags, error strings, API names.
+- Quoted text: log output, user text, third-party docs.
+- Text the user asks for in another style or another language.

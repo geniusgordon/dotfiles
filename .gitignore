@@ -19,8 +19,9 @@ node_modules/
 antigravity-accounts.json*
 .sisyphus
 
-# Claude: only track settings.json
+# Claude: only track settings.json, CLAUDE.md
 stow/.claude/*
+!stow/.claude/CLAUDE.md
 !stow/.claude/settings.json
 !stow/.claude/skills/
 stow/.claude/skills/**/config.json
