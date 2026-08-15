@@ -10,12 +10,11 @@ prompt_new_tab_name = false
 
 [keys]
 # Match the old tmux prefix. herdr takes ctrl+s in every pane, so the zsh
-# `herdr_workspacizer` widget only fires outside herdr. Use prefix+ctrl+s inside.
+# `herdr_workspacizer` widget only fires outside herdr. Use prefix+f inside.
 prefix = "ctrl+s"
 
-# Workspace picker, the old tmux `bind s` session popup. This replaces the
-# herdr default of prefix+w, and moves settings off prefix+s.
-workspace_picker = "prefix+s"
+# Workspace picker. prefix+s runs the fzf popup below, so the native picker
+# keeps the herdr default of prefix+w. Settings moves off prefix+s.
 settings = "prefix+shift+s"
 
 # Detach, to match tmux. This replaces the herdr default of prefix+q.
@@ -32,13 +31,22 @@ focus_pane_up = "prefix+k"
 focus_pane_right = "prefix+l"
 
 # Workspace order navigation. The ctrl variant means the workspace level,
-# to match prefix+s and prefix+ctrl+s.
+# to match prefix+p and prefix+n for tabs.
 previous_workspace = "prefix+ctrl+p"
 next_workspace = "prefix+ctrl+n"
 
 # Tab motion. herdr has no move-tab action, so this is order navigation only.
 previous_tab = "prefix+p"
 next_tab = "prefix+n"
+
+# Workspace picker, the old tmux `bind s` fzf popup. It lists the open
+# workspaces and focuses the selected one.
+[[keys.command]]
+key = "prefix+s"
+type = "popup"
+command = "herdr-workspace-picker"
+width = "60%"
+height = "50%"
 
 # Project picker, the old tmux `bind C-s display-popup "tmux-sessionizer"`.
 # herdr reserves prefix+prefix to send a literal prefix, so this uses prefix+f.

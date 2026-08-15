@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Pick an existing herdr workspace with fzf and focus it.
+# This is the old tmux `bind s` session popup, on herdr workspaces.
+
+set -uo pipefail
+
+if ! rows=$(herdr workspace list 2>/dev/null); then
+  echo "herdr-workspace-picker: the herdr server is not running" >&2
+  exit 1
+fi
+
+selected=$(
+  printf '%s' "$rows" |
+    jq -r '.result.workspaces[]?
+      | [(.number | tostring), .workspace_id, .label, .agent_status,
+         "\(.tab_count) tabs", "\(.pane_count) panes"]
+      | @tsv' |
+    sort -n |
+    column -t -s $'\t' |
+    fzf --reverse --no-multi --prompt='workspace> ' --header='focus a workspace'
+)
+
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+workspace_id=$(awk '{print $2}' <<<"$selected")
+herdr workspace focus "$workspace_id" >/dev/null
