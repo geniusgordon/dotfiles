@@ -334,3 +334,30 @@ fi
 
 export FIRSTORY_PROJECTS_ROOT="$HOME/Works/firstory/projects"
 export PATH="$HOME/Works/firstory/projects/firstory-tools/bin:$PATH"
+
+# Manual terminal-state reset.
+# A dropped SSH session leaves a remote TUI's modes on, so the local shell
+# prints input reports as junk. Run fixterm to clear them.
+fixterm() {
+  # mouse reporting off (1000/1002/1003), extended coords off (1005/1006/1015)
+  printf '\033[?1000l\033[?1002l\033[?1003l\033[?1005l\033[?1006l\033[?1015l'
+  # kitty keyboard protocol: pop pushed flags, then force flags to 0
+  printf '\033[<1u\033[<1u\033[<1u\033[=0;1u'
+  # xterm modifyOtherKeys off
+  printf '\033[>4;0m'
+  # layout modes: insert off, autowrap on, full scroll region, ASCII charset
+  printf '\033[4l\033[?7h\033[r\033(B\017'
+  # cursor visible, focus reports off
+  printf '\033[?25h\033[?1004l'
+  stty sane
+}
+
+# Reset the terminal after every ssh session.
+# A dropped connection skips the remote TUI's own cleanup, so run fixterm on
+# exit for any reason.
+ssh() {
+  command ssh "$@"
+  local ret=$?
+  fixterm
+  return $ret
+}
