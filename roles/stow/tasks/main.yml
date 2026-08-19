@@ -1,5 +1,5 @@
 # --restow removes the stale links first, so a moved file does not leave one.
-# The LINK: pattern also matches UNLINK:, so both count as a change.
+# It relinks every file on each run, so the task cannot report a real change.
 - name: Run stow
   ansible.builtin.command:
     argv:
@@ -9,5 +9,4 @@
       - --verbose=2
       - stow
     chdir: "{{ playbook_dir }}"
-  register: stow_result
-  changed_when: 'stow_result.stderr is search("LINK: ")'
+  changed_when: false
