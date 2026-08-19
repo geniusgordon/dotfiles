@@ -1,3 +1,43 @@
+patch:
+  # 這三個碼表不存在：terra_pinyin.extended、hangyl、hannomPS。
+  # 拼音反查改用 luna_pinyin，韓文漢字反查改用 hangugeo，越南喃字反查移除。
+  schema/dependencies:
+    - luna_pinyin
+    - hangugeo
+    - stroke
+
+  engine/segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - affix_segmentor@putonghua_to_kanji_lookup
+    - affix_segmentor@hanja_lookup
+    - punct_segmentor
+    - fallback_segmentor
+  engine/translators:
+    - punct_translator
+    - script_translator
+    - reverse_lookup_translator
+    - script_translator@putonghua_to_kanji_lookup
+    - script_translator@hanja_lookup
+  engine/filters:
+    - simplifier
+    - uniquifier
+    - reverse_lookup_filter@putonghua_to_kanji_reverse_lookup
+    - reverse_lookup_filter@hanja_reverse_lookup
+
+  # 拼音反查漢字：`拼音`  例如 `qun`
+  putonghua_to_kanji_lookup/dictionary: luna_pinyin
+  putonghua_to_kanji_lookup/prism: luna_pinyin
+  putonghua_to_kanji_lookup/preedit_format: []
+
+  # 韓文漢字反查：`K羅馬字`  例如 `Kgun`
+  hanja_lookup/dictionary: hangugeo
+  hanja_lookup/prism: hangugeo_stdkey
+  hanja_lookup/preedit_format: []
+  hanja_reverse_lookup/dictionary: hangugeo
+  hanja_reverse_lookup/comment_format: []
+
 __patch:
 # Rx: emoji:customize:schema=japanese {
   - patch/+:
