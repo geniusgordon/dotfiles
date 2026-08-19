@@ -4,11 +4,18 @@
       - n
     state: present
   when: ansible_distribution == "MacOSX"
+
+# n-install writes n to ~/n, because Linux has no Homebrew package.
 - name: Install n on Linux
-  shell: "curl -L https://bit.ly/n-install | bash"
-  when: >
-    ansible_distribution == "Ubuntu" or
-    ansible_distribution == "Debian" or
-    ansible_distribution == "Pop!_OS"
-- name: Install nodejs lts
-  shell: n lts
+  ansible.builtin.shell: "curl -L https://bit.ly/n-install | bash -s -- -y"
+  args:
+    creates: "{{ ansible_env.HOME }}/n/bin/n"
+  when: ansible_distribution != "MacOSX"
+
+- name: Install the nodejs lts
+  ansible.builtin.command:
+    argv:
+      - n
+      - lts
+  register: n_result
+  changed_when: n_result.stdout is search("installed")

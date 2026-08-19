@@ -9,10 +9,10 @@ Task-based roles that implement the modular logic of the dotfiles environment. E
 ## STRUCTURE
 | Role | Responsibility |
 |------|----------------|
-| **package** | System-level package installation (APT/Homebrew). |
-| **nvim** | Neovim plugin manager (Packer) and initial sync. |
-| **zsh** | Zsh shell environment and antidote plugin manager. |
-| **tmux** | Tmux configuration and session management. |
+| **package** | System-level package installation (APT/Homebrew formulae and casks). |
+| **nvim** | Headless lazy.nvim plugin sync. |
+| **zsh** | Clones antidote on Linux, where Homebrew is absent. |
+| **tmux** | Installs tpm, the tmux plugin manager. |
 | **stow** | GNU Stow execution for symlinking dotfiles. |
 | **nodejs** | Node.js installation using the `n` manager. |
 | **pass** | Password-store setup and browser extension links. |

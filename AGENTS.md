@@ -11,6 +11,7 @@ Personal dotfiles repository managed with Ansible and GNU Stow. Bootstraps macOS
 ```
 .
 ├── bootstrap.yml       # ENTRY POINT: Main Ansible playbook
+├── requirements.yml    # Ansible collections that bootstrap.yml needs
 ├── roles/              # Ansible roles (minimalist structure)
 ├── stow/               # Dotfiles source (symlinked to $HOME)
 │   ├── .config/        # XDG configs (nvim, etc)
@@ -60,6 +61,9 @@ Active theme stored in `~/.local/state/theme`. On shell start, `.zshrc` reads it
 
 ## COMMANDS
 ```bash
+# Install the Ansible dependencies first
+ansible-galaxy install -r requirements.yml
+
 # Full Bootstrap
 ansible-playbook bootstrap.yml --ask-become-pass
 

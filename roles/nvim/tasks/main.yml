@@ -1,7 +1,10 @@
-- name: Install packer
-  ansible.builtin.git:
-    repo: https://github.com/wbthomason/packer.nvim
-    dest: "{{ ansible_env.HOME }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
-    depth: 1
-- name: Install nvim package
-  ansible.builtin.shell: "nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
+# lazy.nvim clones itself on the first start, see lua/gordon/lazy.lua.
+# Run one headless sync, so a new machine gets every plugin at once.
+- name: Sync the nvim plugins
+  ansible.builtin.command:
+    argv:
+      - nvim
+      - --headless
+      - "+Lazy! sync"
+      - +qa
+  changed_when: true

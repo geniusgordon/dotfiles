@@ -7,6 +7,7 @@ Follow these steps to install the dotfiles using Ansible:
 **Run the Ansible playbook**:
 
 ```sh
+ansible-galaxy install -r requirements.yml
 ansible-playbook ./bootstrap.yml --ask-become-pass
 ```
 

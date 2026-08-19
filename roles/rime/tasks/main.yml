@@ -9,6 +9,8 @@
     url: "https://raw.githubusercontent.com/gkovacs/rime-japanese/{{ rime_japanese_commit }}/{{ item }}"
     dest: "{{ rime_dir }}/{{ item }}"
     mode: "0644"
+    # japanese.mozc.dict.yaml is 31 MB, so the default 10 s timeout is too short.
+    timeout: 120
   loop:
     - japanese.mozc.dict.yaml
     - japanese.jmdict.dict.yaml

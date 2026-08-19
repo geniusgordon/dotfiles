@@ -13,6 +13,7 @@
       - neovim
       - pass
       - pass-extension-otp
+      - ripgrep
       - stow
       - tmux
       - tree-sitter-cli
@@ -25,6 +26,7 @@
 - name: Install packages with brew
   community.general.homebrew:
     name:
+      - antidote
       - awscli
       - browserpass
       - fd
@@ -36,12 +38,23 @@
       - iperf3
       - jq
       - kubernetes-cli
+      - lsd
       - mitmproxy
       - neovim
       - opencc
       - pass
       - pinentry-mac
+      - ripgrep
+      - starship
       - stow
       - tmux
+    state: present
+  when: ansible_distribution == "MacOSX"
+
+- name: Install casks with brew
+  community.general.homebrew_cask:
+    name:
+      - ghostty
+      - squirrel
     state: present
   when: ansible_distribution == "MacOSX"
