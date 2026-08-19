@@ -1,0 +1,26 @@
+{
+  "name": "Traditional Chinese to Taiwan standard, plus personal variants",
+  "segmentation": {
+    "type": "mmseg",
+    "dict": {
+      "type": "group",
+      "match_policy": "union",
+      "dicts": [
+        { "type": "text", "file": "tw_variants_custom.txt" },
+        { "type": "text", "file": "tw_variants_upstream.txt" }
+      ]
+    }
+  },
+  "conversion_chain": [
+    {
+      "dict": {
+        "type": "group",
+        "match_policy": "short_circuit",
+        "dicts": [
+          { "type": "text", "file": "tw_variants_custom.txt" },
+          { "type": "text", "file": "tw_variants_upstream.txt" }
+        ]
+      }
+    }
+  ]
+}

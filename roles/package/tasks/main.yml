@@ -38,6 +38,7 @@
       - kubernetes-cli
       - mitmproxy
       - neovim
+      - opencc
       - pass
       - pinentry-mac
       - stow

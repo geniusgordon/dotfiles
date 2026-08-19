@@ -1,0 +1,11 @@
+# Rime table
+# coding: utf-8
+#@/db_name	custom_phrase.txt
+#@/db_type	tabledb
+#
+# 用戶自定義短語
+# 格式：文字<TAB>編碼<TAB>權重
+# 編碼是注音鍵盤的英數鍵，不是注音符號。
+# ㄗ=y ㄐ=r ㄍ=e ㄧ=u ㄕ=g
+
+/IA9PASR	yr	100

@@ -1,6 +1,9 @@
 patch:
   speller/initials: "1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/-6347"
   translator/dictionary: bopomofo.extended
+  # 用臺灣字形：羣→群、裏→裡、峯→峰（OpenCC t2tw）
+  switches/@2/reset: 2
+  zh_hant_tw/opencc_config: t2tw_custom.json
   punctuator/full_shape/~: {commit: "～"}
 __patch:
 # Rx: emoji:customize:schema=bopomofo {
