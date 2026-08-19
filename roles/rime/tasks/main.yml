@@ -1,0 +1,39 @@
+# Rime needs large third-party dictionaries that the repo does not track.
+# Download them, because git must not hold 37 MB of generated data.
+- name: Set the Rime directory
+  ansible.builtin.set_fact:
+    rime_dir: "{{ ansible_env.HOME }}/Library/Rime"
+
+- name: Download the japanese dictionaries
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/gkovacs/rime-japanese/{{ rime_japanese_commit }}/{{ item }}"
+    dest: "{{ rime_dir }}/{{ item }}"
+    mode: "0644"
+  loop:
+    - japanese.mozc.dict.yaml
+    - japanese.jmdict.dict.yaml
+    - japanese.kana.dict.yaml
+  vars:
+    rime_japanese_commit: 4c1e65135459175136f380e90ba52acb40fdfb2d
+  when: ansible_distribution == "MacOSX"
+
+- name: Download the emoji tables
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/rime/rime-emoji/{{ rime_emoji_commit }}/opencc/{{ item }}"
+    dest: "{{ rime_dir }}/opencc/{{ item }}"
+    mode: "0644"
+  loop:
+    - emoji.json
+    - emoji_category.txt
+    - emoji_word.txt
+  vars:
+    rime_emoji_commit: d1dbb424124fc50452a179300c7f287dbcc0db64
+  when: ansible_distribution == "MacOSX"
+
+- name: Deploy Rime
+  ansible.builtin.command:
+    argv:
+      - "/Library/Input Methods/Squirrel.app/Contents/MacOS/Squirrel"
+      - --reload
+  changed_when: true
+  when: ansible_distribution == "MacOSX"
