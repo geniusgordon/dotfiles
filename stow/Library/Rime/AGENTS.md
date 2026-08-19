@@ -28,11 +28,30 @@ Rime (Squirrel) configuration managed via Ansible/Stow. Handles input methods (B
 | **Active Schemas** | `user.yaml` | See `var.schema_access_time` for usage history. |
 | **Device ID** | `installation.yaml` | Required for sync. |
 | **OpenCC** | `opencc/` | Character conversion configs. |
+| **Custom phrases** | `custom_phrase.txt` | Code is the Bopomofo keyboard letters, not the ㄅㄆㄇ symbols. |
+| **Taiwan variants** | `opencc/tw_variants_*.txt` | 羣→群 etc. Chained by `opencc/t2tw_custom.json`. |
+| **Large dictionaries** | `roles/rime/tasks/main.yml` | 37 MB. Not tracked. Bootstrap downloads them. |
 
 ## CONVENTIONS
 - **Patching**: ALWAYS use `*.custom.yaml` files. NEVER edit distribution files directly.
 - **Theme**: Custom themes defined in `squirrel.custom.yaml` under `preset_color_schemes`.
 - **Sync**: User data syncs to `sync/{installation_id}/`.
+
+## TAIWAN VARIANT CHARACTERS
+
+The `zh_hant_tw` switch converts the variant characters that Rime prefers to the
+Taiwan standard. `bopomofo.custom.yaml` turns the switch on with `switches/@2/reset: 2`.
+
+Two tables feed it, and `tw_variants_custom.txt` wins:
+
+- `opencc/tw_variants_upstream.txt` - the 42 OpenCC entries, as plain text
+- `opencc/tw_variants_custom.txt` - personal entries
+
+Check a conversion from the command line:
+
+```bash
+echo '羣組裏面擡頭' | opencc -c ~/Library/Rime/opencc/t2tw_custom.json
+```
 
 ## ANTI-PATTERNS (THIS PROJECT)
 - **Direct Edits**: Do not edit files in `build/`. They are overwritten on deploy.
@@ -47,5 +66,7 @@ Rime (Squirrel) configuration managed via Ansible/Stow. Handles input methods (B
 ```
 
 ## NOTES
+- **Shipped data**: Squirrel supplies `essay.txt`, `symbols.yaml`, `terra_pinyin.dict.yaml`,
+  and the cangjie5 files. Do not copy them here. A local copy hides the newer shipped file.
 - **Fonts**: Requires `jf-openhuninn-2.0` installed for correct rendering.
 - **Large Files**: `*.userdb` and `*.dict.yaml` can be massive; managed by git (mostly).
