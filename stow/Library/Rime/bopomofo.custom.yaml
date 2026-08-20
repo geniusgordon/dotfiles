@@ -10,3 +10,7 @@ __patch:
   - patch/+:
       __include: emoji_suggestion:/patch
 # }
+# Kaomoji: 自訂顏文字 {
+  - patch/+:
+      __include: kaomoji_suggestion:/patch
+# }

@@ -18,6 +18,8 @@ stow/Library/Rime/opencc/*
 !stow/Library/Rime/opencc/t2tw_custom.json
 !stow/Library/Rime/opencc/tw_variants_custom.txt
 !stow/Library/Rime/opencc/tw_variants_upstream.txt
+!stow/Library/Rime/opencc/kaomoji.json
+!stow/Library/Rime/opencc/kaomoji.txt
 stow/Library/Rime/sync/
 stow/Library/Rime/trash/
 node_modules/

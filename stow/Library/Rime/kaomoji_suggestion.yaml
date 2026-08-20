@@ -1,0 +1,16 @@
+# encoding: utf-8
+# 顏文字候選：自訂 OpenCC 濾鏡，不受 plum 更新影響。
+# 字典：opencc/kaomoji.txt（顏文字內的空白是 U+00A0，因為 OpenCC 用空白分隔候選）
+
+patch:
+  switches/@after last:
+    name: kaomoji_suggestion
+    reset: 1
+    states: [ "(-_-)", "(^_^)" ]
+  'engine/filters/@after 0':
+    simplifier@kaomoji_suggestion
+  kaomoji_suggestion:
+    opencc_config: kaomoji.json
+    option_name: kaomoji_suggestion
+    tips: none
+    inherit_comment: false
