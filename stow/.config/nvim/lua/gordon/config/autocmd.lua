@@ -55,3 +55,20 @@ autocmd({ "BufRead", "BufNewFile" }, {
   pattern = ".env*",
   command = "setlocal filetype=config",
 })
+
+-- 散文類 filetype 才換行，程式碼保持 nowrap
+autocmd("FileType", {
+  pattern = { "markdown", "text", "gitcommit", "help" },
+  callback = function(args)
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true -- 在單字邊界斷行，不切斷單字
+    vim.opt_local.breakindent = true -- 續行對齊原本的縮排
+    vim.opt_local.showbreak = "↪ "
+    -- j/k 走視覺行，不是實際行
+    for _, key in ipairs({ "j", "k" }) do
+      vim.keymap.set("n", key, function()
+        return vim.v.count == 0 and ("g" .. key) or key
+      end, { buffer = args.buf, expr = true })
+    end
+  end,
+})
