@@ -3,7 +3,8 @@
 
 THEME_NAME="example"
 THEME_GHOSTTY_NAME="Example Theme"
-THEME_BG="#000000"        # terminal background (also fzf gutter)
+THEME_BG="#000000"        # fzf background and gutter, tmux status-left text
+                          # Match the Ghostty theme background. Ghostty sets its own.
 THEME_FG="#ffffff"        # foreground text
 THEME_RED="#ff0000"       # errors, diff deleted
 THEME_GREEN="#00ff00"     # strings, diff inserted

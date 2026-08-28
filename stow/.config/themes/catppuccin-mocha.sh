@@ -1,6 +1,6 @@
 THEME_NAME="catppuccin-mocha"
 THEME_GHOSTTY_NAME="Catppuccin Mocha"
-THEME_BG="#000000"
+THEME_BG="#1e1e2e"
 THEME_FG="#cdd6f4"
 THEME_RED="#f38ba8"
 THEME_GREEN="#a6e3a1"

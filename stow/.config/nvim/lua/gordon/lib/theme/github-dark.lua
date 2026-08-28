@@ -4,7 +4,7 @@ local M = {}
 
 M.colors = util.createColorPalatte({
   none             = "NONE",
-  bg               = "#010409",
+  bg               = "#101216",
   fg               = "#e6edf3",
   fg_light         = "#6e7681",
   bg_light         = "#161b22",

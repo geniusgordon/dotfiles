@@ -4,13 +4,10 @@ local M = {}
 
 M.colors = util.createColorPalatte({
   none = "NONE",
-  -- bg = "#1e1e2e",
-  bg = "#000000",
+  bg = "#1e1e2e",
   fg = "#cdd6f4",
-  -- fg_light = "#45475a",
-  -- bg_light = "#2A2B3C",
   fg_light = "#45475a",
-  bg_light = "#111111",
+  bg_light = "#181825",
   bg_visual = "#45475a",
   bg_cursor_line = "#2A2B3C",
   line = "#6c7086",
