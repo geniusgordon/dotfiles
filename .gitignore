@@ -34,6 +34,15 @@ stow/.claude/*
 stow/.claude/skills/**/config.json
 stow/.claude/settings.local.json
 
+# Pi: only track hand-written config. The global ~/.gitignore excludes .pi/,
+# so re-include the directory first.
+!stow/.pi/
+stow/.pi/agent/*
+!stow/.pi/agent/.i-have-adhd-always
+!stow/.pi/agent/AGENTS.md
+!stow/.pi/agent/keybindings.json
+!stow/.pi/agent/zentui.json
+
 # OpenCode: only track opencode.json and oh-my-opencode.json
 stow/.config/opencode/*
 !stow/.config/opencode/package.json
