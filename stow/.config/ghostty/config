@@ -1,10 +1,15 @@
 shell-integration-features = sudo
 macos-option-as-alt = true
-# palette = 0=#000000
 cursor-style = block
-font-family = "Google Sans Code"
-font-family = "Noto Sans TC"
-font-family = "Noto Sans JP"
+# font-family = "Google Sans Code"
+# font-family = "JetBrainsMono Nerd Font"
+# font-family = "Noto Sans TC"
+# font-family = "Noto Sans SC"
+# font-family = "Noto Sans JP"
+font-family = "GoogleSansCode Nerd Font"
+font-family = "PingFang TC"
+font-family = "PingFang SC"
+font-family = "Hiragino Sans"
 font-size = 20.0
 font-feature = -calt
 font-feature = -liga
