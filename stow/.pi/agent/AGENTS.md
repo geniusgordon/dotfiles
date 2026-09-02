@@ -18,3 +18,16 @@ Report the command you ran and the result you saw. Do not report a guess as a fa
 ## Background work
 
 Use `bg_run` for any command longer than about 30 seconds.
+
+## Delegation
+
+Set `maxTurns` on each `bg_delegate` call. The default is 24, and the child aborts
+mid-call at that limit. The abort loses the whole report.
+
+- Set `maxTurns: 40` for a survey with more than 3 questions.
+- Split a survey with more than 6 questions into two delegates.
+- Raise `maxToolCalls` to 200 together with `maxTurns: 40`, because each search
+  costs one turn and one tool call.
+
+Read the terminal reason from `child-terminal.json` in the artifact directory. The
+`.output` file holds the abort line only, so it does not name the cause.
