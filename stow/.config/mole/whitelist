@@ -1,0 +1,25 @@
+# Mole Whitelist - Protected paths won't be deleted
+# One pattern per line. Absolute paths only. Globs allowed. No ".." and no "//".
+
+# --- zsh (mine) ---
+$HOME/Library/Caches/antidote
+$HOME/.zsh_plugins.zsh
+$HOME/.zcompdump*
+$HOME/.cache/zsh
+$HOME/.zsh_history
+
+# --- mole convenience defaults (a user file replaces them, so keep them) ---
+$HOME/Library/Caches/ms-playwright*
+$HOME/.gradle/caches/*
+$HOME/.gradle/daemon/*
+$HOME/.ollama/models/*
+$HOME/Library/Caches/com.nssurge.surge-mac/*
+$HOME/Library/Application Support/com.nssurge.surge-mac/*
+$HOME/Library/Caches/org.R-project.R/R/renv/*
+$HOME/Library/Caches/JetBrains*
+$HOME/Library/Caches/com.jetbrains.toolbox*
+$HOME/Library/Caches/tealdeer/tldr-pages
+$HOME/Library/Application Support/JetBrains*
+$HOME/Library/Caches/com.apple.finder
+$HOME/Library/Mobile Documents*
+FINDER_METADATA
