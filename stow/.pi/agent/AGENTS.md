@@ -21,43 +21,73 @@ Pick the tool by the work:
 
 1. Use `bg_run` for a shell command longer than about 30 seconds.
 2. Use `bg_delegate` for one read-only question that needs this conversation as context.
-3. Use a `subagent` worker for any child that edits a file.
-4. Use a `subagent` workflow for many children, a review loop, or a gate.
+3. Use `crew` for any child that edits a file, and for a parallel read-only survey.
+4. Use `crew` for a review loop or a gate. Open one member per role.
 5. Use `fusion_reason` for a judgment call that the repository cannot answer.
+
+`crew` needs `HERDR_ENV=1`. Without Herdr, use `bg_delegate` for a read-only
+question and do the edit in the main session.
 
 ### Delegate without being asked
 
-Start a subagent on these triggers. Do not wait for the word "subagent".
+Open a crew member on these triggers. Do not wait for the word "crew".
 
 1. An external fact, an API contract, or a library version decides the work.
-   Run `researcher` first.
+   Open a `researcher` member first.
 2. The task touches code you have not read in this session.
-   Run `scout` first, then plan from its report.
+   Open a `scout` member first, then plan from its report.
 3. You finished an implementation.
-   Run `reviewer` with fresh context before you summarize.
+   Open a `reviewer` member with fresh context before you summarize.
 4. The decision is hard to reverse, such as a schema change or a public API.
-   Run `oracle` before you edit.
+   Open an `oracle` member before you edit.
 5. Three or more independent read-only questions exist.
-   Run one `subagent` workflow with parallel children.
+   Open one member per question, then run them in parallel.
 
 Do not delegate a single file read, a one-line edit, or a command you can run now.
-A subagent costs about 30 seconds of setup, so direct work wins below that.
-Name the trigger in one line when you start a subagent.
+A member costs about 30 seconds of setup, so direct work wins below that.
+Name the trigger in one line when you open a member.
+
+### How to run a member
+
+A member starts with an empty conversation and never sees this session. Restate
+every needed fact in the `task` text, and pass a path as an absolute path.
+
+1. `crew action=open member=<name>` for a read-only member.
+2. `crew action=open member=<name> worktree=true` for a member that edits a file.
+3. `crew action=ask member=<name> task="..."` to send the work and wait.
+4. `crew action=result member=<name> section="..."` to pull one section.
+5. `crew action=close member=<name>` when the work is complete.
+
+Let `ask` use its default file protocol, then pull one section with `result`. The
+file keeps a long answer out of this context. Pass `inline=true` for a one-line
+answer only.
+
+Pass a `task_id` when one member runs several tasks, because each `task_id` gets
+its own directory.
+
+Run members in parallel with `wait=false` on every `ask`, then one `collect` per
+member. Call `collect` again when a wait reports that it ran out of budget,
+because the member keeps working.
+
+Trust `idle` and `done` from `crew action=status`. `unknown` does not prove that a
+member finished. Use `crew action=trace`, not the terminal, when a member answers
+badly. Use `crew action=keys` to answer a dialog that blocks a member.
 
 ### Keep implementation in the main session
 
 Write the code in the main session. The user sees each edit and corrects it at once.
-A `worker` child forks the conversation, so it never sees a later message.
+A writing member forks the work, so it never sees a later message.
 
-Use `worker` only for these cases:
+Use a writing member only for these cases:
 
 1. A written plan exists, the user approved it, and no decision is open. The plan
    is a file, an issue, a PRD, or an approved message in this session. Pass its
-   path or its text to the child, because the child cannot see this session.
+   path or its text to the member, because the member cannot see this session.
 2. Three or more lanes are independent. Give each lane its own git worktree.
 3. The task must read many files, and the main thread must stay clean.
 
-Run one writer per directory. Two writers in one directory destroy each other's edits.
+Run one writer per directory. Two writers in one directory destroy each other's
+edits, so pass `worktree=true` to every writing member.
 
 ### bg_delegate limits
 
