@@ -41,6 +41,7 @@ stow/.pi/agent/*
 !stow/.pi/agent/.i-have-adhd-always
 !stow/.pi/agent/AGENTS.md
 !stow/.pi/agent/keybindings.json
+!stow/.pi/agent/settings.json
 !stow/.pi/agent/zentui.json
 
 # OpenCode: only track opencode.json and oh-my-opencode.json

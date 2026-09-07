@@ -1,0 +1,34 @@
+{
+  "lastChangelogVersion": "0.85.1",
+  "defaultProvider": "connexmatrix-claude",
+  "defaultModel": "claude-opus-5",
+  "theme": "dark",
+  "hideThinkingBlock": true,
+  "quietStartup": false,
+  "steeringMode": "all",
+  "followUpMode": "all",
+  "collapseChangelog": true,
+  "httpIdleTimeoutMs": 120000,
+  "defaultTools": [
+    "read",
+    "bash",
+    "edit",
+    "write",
+    "grep",
+    "find",
+    "ls"
+  ],
+  "packages": [
+    "npm:pi-web-access",
+    "npm:@juicesharp/rpiv-ask-user-question",
+    "npm:pi-background-tasks",
+    "npm:pi-zentui",
+    "npm:@narumitw/pi-btw",
+    "https://github.com/ayghri/i-have-adhd",
+    "npm:@juicesharp/rpiv-todo",
+    "npm:@ff-labs/pi-fff",
+    "npm:pi-context",
+    "npm:pi-matt-pocock",
+    "git:github.com/geniusgordon/pi-herdr-crew"
+  ]
+}
