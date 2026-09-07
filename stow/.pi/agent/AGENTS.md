@@ -17,13 +17,12 @@ Report the command you ran and the result you saw. Do not report a guess as a fa
 
 ## Delegation
 
-Pick the tool by the work:
+The tool descriptions cover each tool. Pick between them by the work:
 
-1. Use `bg_run` for a shell command longer than about 30 seconds.
-2. Use `bg_delegate` for one read-only question that needs this conversation as context.
-3. Use `crew` for any child that edits a file, and for a parallel read-only survey.
-4. Use `crew` for a review loop or a gate. Open one member per role.
-5. Use `fusion_reason` for a judgment call that the repository cannot answer.
+1. Use `crew` for any child that edits a file, and for a parallel read-only survey.
+2. Use `crew` for a review loop or a gate. Open one member per role.
+3. Use `bg_delegate` for one read-only question that needs this conversation.
+4. Use `fusion_reason` for a judgment call that the repository cannot answer.
 
 `crew` needs `HERDR_ENV=1` and the Herdr pi integration. Install it once per
 machine with `herdr integration install pi`, and reinstall it when
@@ -50,41 +49,13 @@ Open a crew member on these triggers. Do not wait for the word "crew".
 
 Do not delegate a single file read, a one-line edit, or a command you can run now.
 A member costs about 30 seconds of setup, so direct work wins below that.
-Name the trigger in one line when you open a member.
 
 ### How to run a member
 
-A member starts with an empty conversation and never sees this session. Restate
-every needed fact in the `task` text, and pass a path as an absolute path.
+The tool description holds the call syntax. These two rules add to it:
 
-1. `crew action=open member=<name> task="..."` for a read-only member.
-2. `crew action=open member=<name> worktree=true task="..."` for a member that edits a file.
-3. `crew action=ask member=<name> task="..."` to send a follow-up task.
-4. `crew action=result member=<name> section="..."` to pull one section.
-5. `crew action=close member=<name>` when the work is complete.
-
-Pass `task` to `open`. It starts the member and sends the first task in one call.
-`open` accepts every `ask` field: `task`, `task_id`, `context`, `inline`, `wait`,
-and `timeout_ms`.
-
-Use `ask` for a second or later task on an open member. The member keeps one
-conversation, so a follow-up can name what the first task found. Omit `task_id`
-to stay in the same task directory, or pass a new one when the topic changes.
-
-Let `open` and `ask` use the default file protocol, then pull one section with
-`result`. The file keeps a long answer out of this context. Pass `inline=true`
-for a one-line answer only.
-
-Pass a `task_id` when one member runs several tasks, because each `task_id` gets
-its own directory.
-
-Run members in parallel with `wait=false` on every `open` or `ask`, then one
-`collect` per member. Call `collect` again when a wait reports that it ran out of
-budget, because the member keeps working.
-
-Trust `idle` and `done` from `crew action=status`. `unknown` does not prove that a
-member finished. Use `crew action=trace`, not the terminal, when a member answers
-badly. Use `crew action=keys` to answer a dialog that blocks a member.
+- Pass every path as an absolute path, because a member has its own cwd.
+- Name the trigger in one line when you open a member.
 
 ### Keep implementation in the main session
 

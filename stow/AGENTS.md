@@ -17,11 +17,8 @@ Thinking is not user-facing.
 - Give the instruction first, then the reason.
 - Write the plain dash "-". The em dash character (U+2014) is prohibited.
 
-Keep these verbatim. STE does not apply to them:
-
-- Technical names: identifiers, file paths, commands, flags, error strings, API names.
-- Quoted text: log output, user text, third-party docs.
-- Text the user asks for in another style or another language.
+Keep these verbatim: identifiers, file paths, commands, flags, error strings, API
+names, quoted text, and text the user asks for in another style or language.
 
 ## Technical decisions
 
@@ -36,6 +33,17 @@ the direct path shows a concrete blocker or a repeated need.
 
 Reproduce the bug end-to-end first, as close to the end user experience as you can.
 The reproduction proves you found the real problem, so the fix solves it.
+
+## File writes
+
+Cap one `write` call at 400 lines. A larger call stalls, because the model emits the
+whole file as one JSON string before the first byte reaches the disk.
+
+1. Write a skeleton of 100 lines or less.
+2. Add each next block with an `edit` call.
+3. Split a file that needs more than 400 lines into two files.
+
+Do not write a large file through a shell heredoc. The same size limit applies.
 
 ## Quality bar
 
