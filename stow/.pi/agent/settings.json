@@ -3,21 +3,13 @@
   "defaultProvider": "connexmatrix-claude",
   "defaultModel": "claude-opus-5",
   "theme": "dark",
-  "hideThinkingBlock": true,
+  "hideThinkingBlock": false,
   "quietStartup": false,
   "steeringMode": "all",
   "followUpMode": "all",
   "collapseChangelog": true,
   "httpIdleTimeoutMs": 120000,
-  "defaultTools": [
-    "read",
-    "bash",
-    "edit",
-    "write",
-    "grep",
-    "find",
-    "ls"
-  ],
+  "defaultTools": ["read", "bash", "edit", "write", "grep", "find", "ls"],
   "packages": [
     "npm:pi-web-access",
     "npm:@juicesharp/rpiv-ask-user-question",
