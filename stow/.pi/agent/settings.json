@@ -5,10 +5,14 @@
   "theme": "dark",
   "hideThinkingBlock": false,
   "quietStartup": false,
+  "outputPad": 0,
   "steeringMode": "all",
   "followUpMode": "all",
   "collapseChangelog": true,
   "httpIdleTimeoutMs": 120000,
+  "markdown": {
+    "codeBlockIndent": ""
+  },
   "defaultTools": ["read", "bash", "edit", "write", "grep", "find", "ls"],
   "packages": [
     "npm:pi-web-access",
