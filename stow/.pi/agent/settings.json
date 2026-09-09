@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.85.1",
-  "defaultProvider": "connexmatrix-claude",
-  "defaultModel": "claude-opus-5",
+  "defaultProvider": "connexmatrix-gpt",
+  "defaultModel": "gpt-5.6-sol",
   "theme": "dark",
   "hideThinkingBlock": false,
   "quietStartup": false,

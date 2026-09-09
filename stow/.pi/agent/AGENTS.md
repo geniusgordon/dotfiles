@@ -52,10 +52,13 @@ A member costs about 30 seconds of setup, so direct work wins below that.
 
 ### How to run a member
 
-The tool description holds the call syntax. These two rules add to it:
+The tool description holds the call syntax. These rules add to it:
 
 - Pass every path as an absolute path, because a member has its own cwd.
 - Name the trigger in one line when you open a member.
+- Treat `open` and `ask` as asynchronous dispatch. End the turn after useful independent work finishes.
+- The crew notification starts a new main-agent turn when the member settles.
+- Call `collect` once after that notification. Use `result` to read only the needed section.
 
 ### Keep implementation in the main session
 
