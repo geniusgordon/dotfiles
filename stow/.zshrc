@@ -153,6 +153,10 @@ export N_PREFIX=$HOME/.local
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# Android
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+
 # -----------------------------------------------------------------------------
 # Aliases
 # -----------------------------------------------------------------------------
