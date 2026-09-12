@@ -17,62 +17,64 @@ Report the command you ran and the result you saw. Do not report a guess as a fa
 
 ## Delegation
 
-Use the active tool descriptions as the source of truth.
+The tool descriptions cover each tool. Pick between them by the work:
 
-1. Use `subagent` for delegated investigation, implementation, and review.
-2. Use `bg_delegate` for one read-only question that needs the current conversation.
-3. Use `fusion_reason` for a judgment call that the repository cannot answer.
-4. Use `/skill:orchestrate` for a bounded multi-review fan-out.
+1. Use `crew` for any child that edits a file, and for a parallel read-only survey.
+2. Use `crew` for a review loop or a gate. Open one member per role.
+3. Use `bg_delegate` for one read-only question that needs this conversation.
+4. Use `fusion_reason` for a judgment call that the repository cannot answer.
 
-Use public subagent tools only when the harness exposes them.
-`subagent` requires `HERDR_ENV=1`.
+`crew` needs `HERDR_ENV=1` and the Herdr pi integration. Install it once per
+machine with `herdr integration install pi`, and reinstall it when
+`herdr integration status` reports `outdated`. Without that integration Herdr
+reports no session path, so `open` fails and `status` reads `unknown`.
+
+Without Herdr, use `bg_delegate` for a read-only question and do the edit in the
+main session.
 
 ### Delegate without being asked
 
-Launch a subagent on these triggers:
+Open a crew member on these triggers. Do not wait for the word "crew".
 
-1. An external contract decides the work. Launch a `scout` first.
-2. A non-trivial task touches unread code. Launch a `scout` first.
-3. An implementation is complete. Launch a fresh `reviewer`.
-4. The task has independent parallel work. Launch one child per bounded outcome.
+1. An external fact, an API contract, or a library version decides the work.
+   Open a `researcher` member first.
+2. The task touches code you have not read in this session.
+   Open a `scout` member first, then plan from its report.
+3. You finished an implementation.
+   Open a `reviewer` member with fresh context before you summarize.
+4. The decision is hard to reverse, such as a schema change or a public API.
+   Open an `oracle` member before you edit.
+5. Three or more independent read-only questions exist.
+   Open one member per question, then run them in parallel.
 
-Do not delegate a single file read, a one-line edit, or a short command.
+Do not delegate a single file read, a one-line edit, or a command you can run now.
+A member costs about 30 seconds of setup, so direct work wins below that.
 
-### Subagent contract
+### How to run a member
 
-- Give each child one bounded outcome.
-- Include the goal, allowed files, verification, and commit policy.
-- Use an ordinary pane for read-only work.
-- Restrict report-only children to safe inspection tools and commands.
-- Do not run artifact-producing checks in a report-only checkout.
-- Keep one sequential writer in the parent checkout.
-- Give each parallel independent writer a unique managed worktree.
-- Keep dependent or overlapping writers sequential.
-- Treat children as leaves.
-- Keep integration, verification, and cleanup in the parent.
-- Let completion arrive automatically. Do not poll or collect results.
+The tool description holds the call syntax. These rules add to it:
+
+- Pass every path as an absolute path, because a member has its own cwd.
+- Name the trigger in one line when you open a member.
+- Treat `open` and `ask` as asynchronous dispatch. End the turn after useful independent work finishes.
+- The crew notification starts a new main-agent turn when the member settles.
+- Call `collect` once after that notification. Use `result` to read only the needed section.
 
 ### Keep implementation in the main session
 
-Write code in the main session when one writer is sufficient.
-Use a `worker` only when delegation reduces risk or keeps the main context small.
+Write the code in the main session. The user sees each edit and corrects it at once.
+A writing member forks the work, so it never sees a later message.
 
-For each worktree child:
+Use a writing member only for these cases:
 
-- Set `cwd` to the source repository.
-- Set a unique `worktree.branch`.
-- Set `worktree.base` from that repository's required branch, tag, or commit.
-- Omit `worktree.base` only when the committed `HEAD` is the correct base.
-- Remember that uncommitted and untracked parent files are not copied.
-- Ask the worker to commit and report its SHA.
-- Keep these actions in the parent:
-  - branch switching
-  - push
-  - PR creation
-  - merge
-  - cherry-pick
-  - integration
-  - worktree removal
+1. A written plan exists, the user approved it, and no decision is open. The plan
+   is a file, an issue, a PRD, or an approved message in this session. Pass its
+   path or its text to the member, because the member cannot see this session.
+2. Three or more lanes are independent. Give each lane its own git worktree.
+3. The task must read many files, and the main thread must stay clean.
+
+Run one writer per directory. Two writers in one directory destroy each other's
+edits, so pass `worktree=true` to every writing member.
 
 ### bg_delegate limits
 
