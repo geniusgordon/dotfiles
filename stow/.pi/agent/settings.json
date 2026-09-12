@@ -13,15 +13,7 @@
   "markdown": {
     "codeBlockIndent": ""
   },
-  "defaultTools": [
-    "read",
-    "bash",
-    "edit",
-    "write",
-    "grep",
-    "find",
-    "ls"
-  ],
+  "defaultTools": ["read", "bash", "edit", "write", "grep", "find", "ls"],
   "packages": [
     "npm:pi-web-access",
     "npm:@juicesharp/rpiv-ask-user-question",
@@ -34,6 +26,6 @@
     "npm:pi-context",
     "npm:pi-matt-pocock",
     "git:github.com/DietrichGebert/ponytail",
-    "npm:pi-herdr-agents"
+    "git:github.com/geniusgordon/pi-herdr-crew"
   ]
 }
