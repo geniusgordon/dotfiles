@@ -1,12 +1,24 @@
 {
-  "tui": "fullscreen",
-  "agentPushNotifEnabled": true,
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
       "source": {
         "source": "github",
         "repo": "anthropics/claude-plugins-official"
       }
+    },
+    "firstory-tools": {
+      "source": {
+        "source": "github",
+        "repo": "geniusgordon/firstory-tools"
+      }
+    },
+    "firstory": {
+      "source": {
+        "source": "github",
+        "repo": "Firstory/firstory-skills"
+      }
     }
-  }
+  },
+  "tui": "fullscreen",
+  "agentPushNotifEnabled": true
 }

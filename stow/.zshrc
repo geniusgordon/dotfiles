@@ -103,6 +103,7 @@ eval "$(starship init zsh)"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR=nvim
+export AWS_PAGER=""
 if [[ -n ${TTY-} ]]; then
   export GPG_TTY=$TTY
 fi
@@ -113,6 +114,7 @@ export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 # -----------------------------------------------------------------------------
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
 # Homebrew binaries (if available)
 if [[ -n "$HOMEBREW_PREFIX" ]]; then
