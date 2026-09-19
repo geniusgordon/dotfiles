@@ -1,6 +1,11 @@
 patch:
   speller/initials: "1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/-6347"
   translator/dictionary: bopomofo.extended
+  # 使用 Squirrel 內建的 Octagram 繁體中文詞語模型
+  grammar/language: zh-hant-t-essay-bgw
+  translator/contextual_suggestions: true
+  translator/max_homophones: 7
+  translator/max_homographs: 7
   # 用臺灣字形：羣→群、裏→裡、峯→峰（OpenCC t2tw）
   switches/@2/reset: 2
   zh_hant_tw/opencc_config: t2tw_custom.json
