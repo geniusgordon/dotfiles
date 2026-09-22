@@ -11,7 +11,8 @@
   "collapseChangelog": true,
   "httpIdleTimeoutMs": 120000,
   "markdown": {
-    "codeBlockIndent": ""
+    "codeBlockIndent": "",
+    "mermaid": "streaming"
   },
   "defaultTools": [
     "read",
@@ -36,5 +37,9 @@
     "git:github.com/DietrichGebert/ponytail",
     "git:github.com/geniusgordon/pi-herdr-crew"
   ],
-  "tuiMode": "fullscreen"
+  "tuiMode": "fullscreen",
+  "treeFilterMode": "user-only",
+  "warnings": {
+    "anthropicExtraUsage": true
+  }
 }
