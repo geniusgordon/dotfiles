@@ -3,7 +3,7 @@
   "defaultProvider": "connexmatrix-gpt",
   "defaultModel": "gpt-5.6-sol",
   "theme": "dark",
-  "hideThinkingBlock": false,
+  "hideThinkingBlock": true,
   "quietStartup": false,
   "outputPad": 0,
   "steeringMode": "all",
