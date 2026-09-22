@@ -215,8 +215,11 @@ function herdr_workspacizer() {
 # -----------------------------------------------------------------------------
 # Key Bindings
 # -----------------------------------------------------------------------------
+autoload -Uz edit-command-line
+zle -N edit-command-line
 zle -N herdr_workspacizer
 bindkey -e
+bindkey '^G' edit-command-line
 bindkey '^s' herdr_workspacizer
 
 # -----------------------------------------------------------------------------
