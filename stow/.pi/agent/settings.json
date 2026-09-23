@@ -1,6 +1,6 @@
 {
-  "lastChangelogVersion": "0.87.0",
-  "defaultProvider": "connexmatrix-gpt",
+  "lastChangelogVersion": "0.87.1",
+  "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.6-sol",
   "theme": "dark",
   "hideThinkingBlock": true,
@@ -14,15 +14,7 @@
     "codeBlockIndent": "",
     "mermaid": "streaming"
   },
-  "defaultTools": [
-    "read",
-    "bash",
-    "edit",
-    "write",
-    "grep",
-    "find",
-    "ls"
-  ],
+  "defaultTools": ["read", "bash", "edit", "write", "grep", "find", "ls"],
   "packages": [
     "npm:pi-web-access",
     "npm:@juicesharp/rpiv-ask-user-question",

@@ -198,6 +198,15 @@ require("lazy").setup({
     },
   },
 
+  {
+    "Kicamon/markdown-table-mode.nvim",
+    ft = "markdown",
+    config = function()
+      require("markdown-table-mode").setup()
+      vim.cmd("Mtm")
+    end,
+  },
+
   -- { "OXY2DEV/markview.nvim" },
   -- { "OXY2DEV/helpview.nvim" },
 })
