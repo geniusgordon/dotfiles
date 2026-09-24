@@ -65,6 +65,11 @@ autocmd("FileType", {
     vim.opt_local.breakindent = true -- 續行對齊原本的縮排
     vim.opt_local.showbreak = "↪ "
     vim.keymap.set("n", "<leader>uw", "<cmd>setlocal wrap!<CR>", { buffer = args.buf, desc = "Toggle line wrap" })
+    if vim.bo[args.buf].filetype == "markdown" then
+      vim.keymap.set("n", "<leader>mf", function()
+        require("markdown-table-mode").format_markdown_table()
+      end, { buffer = args.buf, desc = "Format Markdown table" })
+    end
     -- j/k 走視覺行，不是實際行
     for _, key in ipairs({ "j", "k" }) do
       vim.keymap.set("n", key, function()

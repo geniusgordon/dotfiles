@@ -34,6 +34,7 @@ require("gordon.config.base64")
 require("gordon.config.tint")
 require("gordon.config.lilypond")
 require("gordon.config.colors")
+require("gordon.config.markview")
 require("gordon.config.tailwind")
 
 require("gordon.config.lsp")

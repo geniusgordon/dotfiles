@@ -22,6 +22,8 @@ require("nvim-treesitter").install({
   "kotlin",
   "latex",
   "lua",
+  "markdown",
+  "markdown_inline",
   "passwd",
   "python",
   "ruby",

@@ -207,6 +207,9 @@ require("lazy").setup({
     end,
   },
 
-  -- { "OXY2DEV/markview.nvim" },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+  },
   -- { "OXY2DEV/helpview.nvim" },
 })

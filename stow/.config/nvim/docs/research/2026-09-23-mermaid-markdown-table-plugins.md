@@ -90,16 +90,16 @@
 
 ## 現有設定狀態
 
-- `stow/.config/nvim/lua/gordon/config/lazy.lua:210` 已有 Markview 插件，但目前被註解。
-- `stow/.config/nvim/lua/gordon/config/markview.lua:1` 已有 Markview 設定。
-- `stow/.config/nvim/lua/gordon/config/markview.lua:8` 已有 `<leader>mv` keymap。
-- `stow/.config/nvim/lua/gordon/init.lua:1-39` 沒有載入 `gordon.config.markview`。
-- `stow/.config/nvim/lua/gordon/config/treesitter.lua:2-41` 沒有安裝 `markdown` 和 `markdown_inline` parsers。
-- `stow/.config/nvim/lua/gordon/config/autocmd.lua:59-75` 為 Markdown 啟用 wrap。
+- `stow/.config/nvim/lua/gordon/config/lazy.lua:210-213` 已啟用 Markview，並設定 `lazy = false`。
+- `stow/.config/nvim/lua/gordon/config/markview.lua:1-8` 使用目前的 `markdown.headings` API。
+- `stow/.config/nvim/lua/gordon/config/markview.lua:10` 提供 `<leader>mv` keymap。
+- `stow/.config/nvim/lua/gordon/init.lua:37` 在 colorscheme 設定後載入 `gordon.config.markview`。
+- `stow/.config/nvim/lua/gordon/config/treesitter.lua:25-26` 安裝 `markdown` 和 `markdown_inline` parsers。
+- `stow/.config/nvim/lua/gordon/config/autocmd.lua:59-81` 為 Markdown 啟用 wrap 與 table keymap。
 
-Markview 官方文件說明，wrap 模式只支援部分 table rendering。
+Markview 支援 wrap，但官方仍建議使用 nowrap。
 
-現有 Markview 設定也使用舊結構。新版應把 `headings` 放在 `markdown` 內：
+目前 Markview 設定把 `headings` 放在 `markdown` 內：
 
 ```lua
 require("markview").setup({
@@ -134,4 +134,4 @@ require("markview").setup({
 
 1. 安裝 `selimacerbas/markdown-preview.nvim`。
 2. 安裝 `Kicamon/markdown-table-mode.nvim`。
-3. 只有需要 buffer 內預覽時，才修正並啟用 Markview。
+3. 已修正並啟用 Markview，提供 buffer 內預覽。
