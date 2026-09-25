@@ -1,6 +1,6 @@
 {
   "lastChangelogVersion": "0.87.1",
-  "defaultProvider": "openai-codex",
+  "defaultProvider": "connexmatrix-gpt",
   "defaultModel": "gpt-5.6-sol",
   "theme": "dark",
   "hideThinkingBlock": true,
