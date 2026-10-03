@@ -2,20 +2,31 @@
 
 ## Writing
 
-Write every user-facing sentence in ASD-STE100 Simplified Technical English (STE).
-This covers chat replies, commit messages, PR bodies, docs, and code comments.
+Match the user's language in chat replies, unless the user requests another language.
+The primary languages are English and Traditional Chinese (Taiwan, `zh-TW`).
+For mixed-language requests, use the main prose language and retain English technical terms.
+Keep technical terms consistent across English and `zh-TW`.
+For commit messages, PR bodies, docs, and code comments, follow the project's language convention.
+Use English if the project has no language convention.
 Thinking is not user-facing.
 
-- Use one meaning per word, and keep the same word for that meaning.
+Apply these clarity rules in every language:
+
+- Use one meaning per term, and keep the same term for that meaning.
+- Write short sentences with one instruction per sentence.
+- Use a vertical list for more than three conditions or steps.
+- Use plain literal words.
+- Give the instruction first, then the reason.
+- Write the plain dash "-". The em dash character (U+2014) is prohibited.
+
+Retain ASD-STE100 Simplified Technical English (STE) for English prose and English technical terms, including terms in `zh-TW` replies.
+Apply its English grammar rules only to English prose:
+
 - Keep an instruction to 20 words, and a description to 25 words.
-- Write one instruction per sentence, in the active voice and the imperative.
+- Write in the active voice and use the imperative for instructions.
 - Write in the simple present tense or the simple past tense.
 - Keep the articles `a`, `an`, and `the`.
 - Use an `-ing` word only as an adjective.
-- Use a vertical list for more than three conditions or steps.
-- Use plain literal words. Slang, idioms, and humor break STE.
-- Give the instruction first, then the reason.
-- Write the plain dash "-". The em dash character (U+2014) is prohibited.
 
 Keep these verbatim: identifiers, file paths, commands, flags, error strings, API
 names, quoted text, and text the user asks for in another style or language.
