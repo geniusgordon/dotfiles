@@ -1,20 +1,28 @@
 {
-  "lastChangelogVersion": "0.87.1",
-  "defaultProvider": "connexmatrix-gpt",
-  "defaultModel": "gpt-5.6-sol",
+  "lastChangelogVersion": "1.0.0",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-6.1-sol",
   "theme": "dark",
   "hideThinkingBlock": true,
   "quietStartup": false,
-  "outputPad": 0,
+  "outputPad": 1,
   "steeringMode": "all",
   "followUpMode": "all",
   "collapseChangelog": true,
   "httpIdleTimeoutMs": 120000,
   "markdown": {
     "codeBlockIndent": "",
-    "mermaid": "streaming"
+    "mermaid": "final"
   },
-  "defaultTools": ["read", "bash", "edit", "write", "grep", "find", "ls"],
+  "defaultTools": [
+    "read",
+    "bash",
+    "edit",
+    "write",
+    "grep",
+    "find",
+    "+codemode"
+  ],
   "packages": [
     "npm:pi-web-access",
     "npm:@juicesharp/rpiv-ask-user-question",
@@ -22,7 +30,6 @@
     "npm:pi-zentui",
     "npm:@narumitw/pi-btw",
     "https://github.com/ayghri/i-have-adhd",
-    "npm:@juicesharp/rpiv-todo",
     "npm:@ff-labs/pi-fff",
     "npm:pi-context",
     "npm:pi-matt-pocock",
@@ -33,5 +40,12 @@
   "treeFilterMode": "user-only",
   "warnings": {
     "anthropicExtraUsage": true
+  },
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "editorPaddingX": 0,
+  "compaction": {
+    "enabled": true
   }
 }

@@ -38,7 +38,7 @@
     },
     "userMessages": {
       "enabled": true,
-      "style": "framed",
+      "style": "framed-copy-friendly",
       "colorSource": "theme",
       "styles": {
         "framed": {},
