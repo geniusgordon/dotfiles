@@ -2,6 +2,17 @@
   "lastChangelogVersion": "1.0.0",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-6.1-sol",
+  "defaultThinkingLevel": "medium",
+  "modelThinkingLevels": {
+    "openai/gpt-6-astra": "medium",
+    "openai-codex/gpt-6-astra": "medium",
+    "connexmatrix-gpt/gpt-6-astra": "medium",
+    "openai/gpt-6.1-sol": "medium",
+    "openai-codex/gpt-6.1-sol": "medium",
+    "anthropic/claude-opus-5.5": "medium",
+    "connexmatrix-gpt/gpt-6.1-sol": "medium",
+    "connexmatrix-claude/claude-opus-5.5": "medium"
+  },
   "theme": "dark",
   "hideThinkingBlock": true,
   "quietStartup": false,
