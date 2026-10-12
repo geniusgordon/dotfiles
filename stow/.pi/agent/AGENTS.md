@@ -2,6 +2,10 @@
 
 Shared rules live in ~/AGENTS.md. Pi concatenates both files, so do not repeat a topic.
 
+## Context
+
+Use the context-management skill for multi-phase or noisy tasks, and follow its compact gate.
+
 ## Search
 
 Use the `grep`, `find`, and `ls` tools to explore. Do not use `bash` for discovery.
